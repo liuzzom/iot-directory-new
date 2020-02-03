@@ -15,7 +15,7 @@ function showAddCbModal()
     // addCbConditionsArray['inputLoginCB'] = true;
     // addCbConditionsArray['inputPasswordCB'] = true;
 
-     $("#addContextBrokerConfirmBtn").attr("disabled", true);
+    $("#addContextBrokerConfirmBtn").attr("disabled", true);
 
 	
 	$("#infoTabCB #inputNameCB").on('input', checkCbName); 
@@ -47,9 +47,14 @@ function showAddCbModal()
 	checkCbLatitude();
 	checkCbLongitude();
 	// checkCbLogin();
-	// checkCbpassword();
-	
-	 $("#addContextBrokerModal").modal('show');
+    // checkCbpassword();
+    
+    // Author: Antonino Mauro Liuzzo
+    checkCbService();
+    $("#serviceTenantTabCB #inputServiceCB").on('input', checkCbService);
+    $("#serviceTenantTabCB #inputServiceCB").on('input', checkAddCbConditions);
+
+	$("#addContextBrokerModal").modal('show');
      
 }
 
@@ -240,7 +245,7 @@ function checkCbLogin()
 function checkCbpassword()
 {
     var message = null;
-     var value = document.getElementById("inputPasswordCB").value;
+    var value = document.getElementById("inputPasswordCB").value;
     if ((value.length < 6) && (value.length > 0))
       {
         message = 'If you have a password, it should contain at least 5 characters';
@@ -286,4 +291,26 @@ function checkAddCbConditions()
     {
         $("#addContextBrokerConfirmBtn").attr("disabled", true);
     }
+}
+
+// Author: Antonino Mauro Liuzzo
+function checkCbService(){
+    var message = null;
+    var value = document.getElementById("inputServiceCB").value;
+
+    if(value === ""){
+        message = 'Service/Tenant is mandatory';
+        addCbConditionsArray['inputServiceCB'] = false;
+        $("#inputServiceCBMsg").css("color", "red");
+    }else if(value.indexOf(' ') !== -1){
+        message = 'The use of white spaces is not allowed';
+        addCbConditionsArray['inputServiceCB'] = false;
+        $("#inputServiceCBMsg").css("color", "red");
+    }else{
+        message = 'Ok';
+        addCbConditionsArray['inputServiceCB'] = true;
+        $("#inputServiceCBMsg").css("color", "#337ab7");
+    }
+
+    $("#inputServiceCBMsg").html(message);
 }

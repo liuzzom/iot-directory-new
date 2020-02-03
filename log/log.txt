@@ -3571,3 +3571,142 @@ This combination of host and port requires TLS.
  action:get_all_ou. Ok, got n-entries:1
 2020-02-03 06:31:56pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 06:49:39pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-02-03 06:49:39pm: \n\naction:get_param_values
+2020-02-03 06:49:40pm: 
+ action=get_all_device 
+
+2020-02-03 06:49:40pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 06:49:40pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 06:49:51pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'mydevices.php'
+2020-02-03 06:49:51pm: \n\naction:get_param_values
+2020-02-03 06:49:51pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 06:49:51pm: 
+ action=get_all_private_event_value 
+
+2020-02-03 06:49:51pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 06:49:52pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 06:49:53pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 06:49:53pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 06:49:53pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 06:51:53pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 06:51:54pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 06:51:54pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 06:51:54pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 06:51:56pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 06:51:56pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 06:51:57pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 06:51:57pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 06:51:59pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-02-03 06:51:59pm: \n\naction:get_param_values
+2020-02-03 06:51:59pm: 
+ action=get_all_device 
+
+2020-02-03 06:51:59pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 06:51:59pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 06:52:01pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 06:52:01pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 06:52:01pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 06:52:01pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:24:28pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-02-03 07:24:29pm: \n\naction:get_param_values
+2020-02-03 07:24:30pm: 
+ action=get_all_device 
+
+2020-02-03 07:24:30pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:24:30pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:24:34pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 07:24:35pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:24:35pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 07:24:36pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:25:25pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 07:25:26pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 07:25:26pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:25:27pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:28:38pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 07:28:38pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 07:28:38pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:28:39pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:29:10pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 07:29:11pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 07:29:11pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:29:12pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:31:05pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 07:31:06pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 07:31:06pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:31:06pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:32:04pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 07:32:06pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 07:32:06pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:32:06pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-03 07:34:04pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-03 07:34:05pm: 
+ action=get_all_contextbroker 
+
+2020-02-03 07:34:06pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-03 07:34:06pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0

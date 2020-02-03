@@ -5,22 +5,22 @@ var _serviceIP = "..";
 // var _serviceIP = "http://iot-app.snap4city.org/iotdirectory";
 
 
-function ajaxRequest()
-{var request=false;
-  try { request = new XMLHttpRequest()}catch(e1){
-	try{request = new ActiveXObject("Msxml2.XMLHTTP")}catch(e2){
-		try{ request = new ActiveXObject("Microsoft.XMLHTTP")
-		}catch(e3){request = false}
-	}
-  }
-  return request
+function ajaxRequest(){
+	var request=false;
+  	try { request = new XMLHttpRequest()}catch(e1){
+		try{request = new ActiveXObject("Msxml2.XMLHTTP")}catch(e2){
+			try{ request = new ActiveXObject("Microsoft.XMLHTTP")
+			}catch(e3){request = false}
+		}
+  	}
+  	return request
 }
 
 function activateStub(button,cb,ip,port,protocol)
 {
     
 	var data = "contextbroker=" + cb + "&ip=" + ip + "&port=" + port;
-        var service = _serviceIP + "/stub/"+protocol;
+    var service = _serviceIP + "/stub/"+protocol;
 	console.log(data);
 	console.log(service);
 	var xhr = ajaxRequest();
@@ -623,7 +623,7 @@ function format ( d ) {
 
 // DELETE CONTEXT BROKER 
 
-		//To be modified 
+	//To be modified 
 	$('#contextBrokerTable button.delDashBtn').off('hover');
 	$('#contextBrokerTable button.delDashBtn').hover(function(){
 		$(this).css('background', '#ffcc00');
@@ -1090,6 +1090,117 @@ function format ( d ) {
 	 // $("#addContextBrokerModal").modal('show');
 		
 	});
+
+	// BEGIN ADD BROKER MULTISERVCE SECTION
+	// Author: Antonino Mauro Liuzzo
+	
+	function createServiceRowElem(initalValue){
+		// creation of the components of a row element
+		var row = document.createElement("div");
+		$(row).attr('class', 'row');
+		$(row).attr('name', 'additionalRow');
+
+		var modalCell1 = document.createElement("div");
+		$(modalCell1).attr('class', 'col-xs-12 col-md-8 modalCell');
+
+		var modalFieldCnt1 = document.createElement("div");
+		$(modalFieldCnt1).attr('class', 'modalFieldCnt');
+
+		var modalInputTxt = document.createElement("input");
+		$(modalInputTxt).attr('type', 'text');
+		$(modalInputTxt).attr('class', 'modalInputTxt');
+		$(modalInputTxt).attr('name', 'inputServiceCB');
+		$(modalInputTxt).attr('onkeyup', 'checkStrangeCharacters(this)');
+		$(modalInputTxt).val(initalValue);
+
+		var modalFieldLabelCnt = document.createElement("div");
+		$(modalFieldLabelCnt).attr('class', 'modalFieldLabelCnt');
+		$(modalFieldLabelCnt).text("Service/Tenant");
+
+		var modalCell2 = document.createElement("div");
+		$(modalCell2).attr('class', 'col-xs-12 col-md-4 modalCell');
+
+		var modalFieldCnt2 = document.createElement("div");
+		$(modalFieldCnt2).attr('class', 'modalFieldCnt');
+
+		var rmButton = document.createElement("button");
+		$(rmButton).attr('type', 'text');
+		$(rmButton).attr('name', 'removeCBServiceBtn');
+		$(rmButton).attr('class', 'btn btn-danger');
+		$(rmButton).text("Remove");
+		
+		rmButton.addEventListener('click', function(){row.remove()});
+
+		// row element composition
+		$(row).append(modalCell1);
+		$(modalCell1).append(modalFieldCnt1);
+		$(modalFieldCnt1).append(modalInputTxt);
+		$(modalCell1).append(modalFieldLabelCnt);
+		$(row).append(modalCell2)
+		$(modalCell2).append(modalFieldCnt2);
+		$(modalFieldCnt2).append(rmButton);
+
+		return row
+	}
+
+	/**
+	 * Add new Service/Tenant Text Field when the "Add Service/Tenant" is pressed
+	 */
+	$('#addNewCBServiceBtn').click(function(){
+		// get the service/tenant tab
+		var stTab = $('#serviceTenantTabCB').last();
+		// create a new row element
+		var row = createServiceRowElem('');
+		// append of the row element
+		stTab.append(row);
+	});
+
+	/**
+	 * Trigger the MultiService tab visibility
+	 * The MultiService tab is visible only if the ngsi w/MultiService protocol is selected
+	 * When the user choose another protocol, inserted values are saved, except for empty strings
+	 * If the user choose back ngsi w/MultiService, saved values are restored
+	 */
+	var oldServicesValues = []; 
+	$('#selectProtocolCB').change(function(){
+		if($('#selectProtocolCB').val() !== "ngsi w/MultiService"){
+			// hide the MultiService selector
+			$('#multiServiceTabSelector').addClass("hidden");
+
+			// save the first Service row and clear the row
+			var rowValue = $('#serviceCBRow1').find('.modalInputTxt').val().trim();
+			if(rowValue !== "") oldServicesValues.push(rowValue);
+			$('#serviceCBRow1').find('.modalInputTxt').val('');
+
+			// save every additional row and remove them
+			var additionalRows = $('div[name="additionalRow"]');
+			for(let i = 0; i < additionalRows.length; i++){
+				var rowValue = $(additionalRows[i]).find('.modalInputTxt').val().trim();
+				if(rowValue !== "") oldServicesValues.push(rowValue);
+				additionalRows[i].remove();
+			}
+			
+		}else{
+			// show the MultiService selector
+			$('#multiServiceTabSelector').removeClass("hidden");
+			restoreServicesValues(oldServicesValues);
+			oldServicesValues = [];
+		}
+	});
+
+	function restoreServicesValues(servicesArray){
+		// restore the first row
+		$('#serviceCBRow1').find('.modalInputTxt').val(servicesArray[0]);
+
+		// restore additional rows
+		var stTab = $('#serviceTenantTabCB').last();
+		for(let i = 1; i < servicesArray.length; i++){
+			row = createServiceRowElem(servicesArray[i]);
+			stTab.append(row);
+		}
+	}
+	
+	// END ADD BROKER MULTISERVCE SECTION
 
 	$('#contextBrokerTable thead').css("background", "rgba(0, 162, 211, 1)");
 	$('#contextBrokerTable thead').css("color", "white");
