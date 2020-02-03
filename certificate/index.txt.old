@@ -1,0 +1,3 @@
+V	470315134639Z		885879CFD9525E16	unknown	/C=IT/ST=Florence/O=Your_CA_organization_name/OU=Your_CA_organization_unit_name/CN=Your_CA_Root_name/emailAddress=your@ca.email
+V	220131134655Z		885879CFD9525E17	unknown	/C=IT/ST=Florence/O=Your_SERVER_organization_name/OU=Your_SERVER_organization_unit_name/CN=iotobsf/emailAddress=your@server.email
+V	201028143744Z		885879CFD9525E18	unknown	/CN=iotobsf/mybuttondevice7?usermanager
