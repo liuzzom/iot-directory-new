@@ -301,6 +301,7 @@ function checkCbService(){
     var value = document.getElementById("inputServiceCB").value;
     var isHidden = $('#multiServiceTabSelector').hasClass('hidden');
 
+    // check if the MultiService tab is hidden
     if(isHidden){
         addCbConditionsArray['inputServiceCB'] = true;
         return;

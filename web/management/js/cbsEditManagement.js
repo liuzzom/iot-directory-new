@@ -47,6 +47,12 @@ function showEditCbModal()
 	//checkEditCbLogin();
 	//checkEditCbpassword();
 
+    // Author: Antonino Mauro Liuzzo
+    checkEditCbService();
+    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbService);
+    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbConditions);
+    $('#selectProtocolCBM').on('change', checkEditCbService);
+    $('#selectProtocolCBM').on('change', checkEditCbConditions);
 
      
 }
@@ -267,5 +273,36 @@ function checkEditCbConditions()
     else
     {
         $("#editContextBrokerConfirmBtn").attr("disabled", true);
+    }
+}
+
+// Author: Antonino Mauro Liuzzo
+function checkEditCbService(){
+    var message = null;
+    var value = document.getElementById("editInputServiceCB").value;
+    var isHidden = $('#editMultiServiceTabSelector').hasClass('hidden');
+
+    // check if the MultiService tab is hidden
+    if(isHidden){
+        console.log("hidden");
+        editCbConditionsArray['inputServiceCB'] = true;
+        return;
+    }else{
+        console.log("shown");
+        if(value === ""){
+            message = 'Service/Tenant is mandatory';
+            editCbConditionsArray['inputServiceCB'] = false;
+            $("#editInputServiceCBMsg").css("color", "red");
+        }else if(value.indexOf(' ') !== -1){
+            message = 'The use of white spaces is not allowed';
+            editCbConditionsArray['inputServiceCB'] = false;
+            $("#editInputServiceCBMsg").css("color", "red");
+        }else{
+            message = 'Ok';
+            editCbConditionsArray['inputServiceCB'] = true;
+            $("#editInputServiceCBMsg").css("color", "#337ab7");
+        }
+    
+        $("#editInputServiceCBMsg").html(message);
     }
 }
