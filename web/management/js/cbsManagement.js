@@ -53,6 +53,8 @@ function showAddCbModal()
     checkCbService();
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkCbService);
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkAddCbConditions);
+    $('#selectProtocolCB').on('change', checkCbService);
+    $('#selectProtocolCB').on('change', checkAddCbConditions);
 
 	$("#addContextBrokerModal").modal('show');
      
@@ -282,7 +284,7 @@ function checkAddCbConditions()
             break;
         }
     }
-    console.log("value enabled" +  enableButton);
+    console.log("value enabled:" +  enableButton);
     if(enableButton)
     {
         $("#addContextBrokerConfirmBtn").attr("disabled", false);
@@ -297,20 +299,26 @@ function checkAddCbConditions()
 function checkCbService(){
     var message = null;
     var value = document.getElementById("inputServiceCB").value;
+    var isHidden = $('#multiServiceTabSelector').hasClass('hidden');
 
-    if(value === ""){
-        message = 'Service/Tenant is mandatory';
-        addCbConditionsArray['inputServiceCB'] = false;
-        $("#inputServiceCBMsg").css("color", "red");
-    }else if(value.indexOf(' ') !== -1){
-        message = 'The use of white spaces is not allowed';
-        addCbConditionsArray['inputServiceCB'] = false;
-        $("#inputServiceCBMsg").css("color", "red");
-    }else{
-        message = 'Ok';
+    if(isHidden){
         addCbConditionsArray['inputServiceCB'] = true;
-        $("#inputServiceCBMsg").css("color", "#337ab7");
+        return;
+    }else{
+        if(value === ""){
+            message = 'Service/Tenant is mandatory';
+            addCbConditionsArray['inputServiceCB'] = false;
+            $("#inputServiceCBMsg").css("color", "red");
+        }else if(value.indexOf(' ') !== -1){
+            message = 'The use of white spaces is not allowed';
+            addCbConditionsArray['inputServiceCB'] = false;
+            $("#inputServiceCBMsg").css("color", "red");
+        }else{
+            message = 'Ok';
+            addCbConditionsArray['inputServiceCB'] = true;
+            $("#inputServiceCBMsg").css("color", "#337ab7");
+        }
+    
+        $("#inputServiceCBMsg").html(message);
     }
-
-    $("#inputServiceCBMsg").html(message);
 }
