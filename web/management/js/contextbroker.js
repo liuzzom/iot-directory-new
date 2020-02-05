@@ -1091,7 +1091,7 @@ function format ( d ) {
 		
 	});
 
-	// BEGIN ADD BROKER MULTISERVCE SECTION
+	// BEGIN ADD BROKER MULTISERVICE SECTION
 	// Author: Antonino Mauro Liuzzo
 	
 	function createServiceRowElem(initalValue){
@@ -1173,22 +1173,24 @@ function format ( d ) {
 			$('#serviceCBRow1').find('.modalInputTxt').val('');
 
 			// save every additional row and remove them
-			var additionalRows = $('div[name="additionalRow"]');
+			var additionalRows = $('#serviceTenantTabCB div[name="additionalRow"]');
 			for(let i = 0; i < additionalRows.length; i++){
 				var rowValue = $(additionalRows[i]).find('.modalInputTxt').val().trim();
 				if(rowValue !== "") oldServicesValues.push(rowValue);
 				additionalRows[i].remove();
 			}
-			
+			console.log(oldServicesValues);
 		}else{
 			// show the MultiService selector
+			console.log(oldServicesValues);
 			$('#multiServiceTabSelector').removeClass("hidden");
-			restoreServicesValues(oldServicesValues);
+			restoreServicesValuesAdd(oldServicesValues);
 			oldServicesValues = [];
 		}
 	});
 
-	function restoreServicesValues(servicesArray){
+	function restoreServicesValuesAdd(servicesArray){
+		console.log(oldServicesValues);
 		// restore the first row
 		$('#serviceCBRow1').find('.modalInputTxt').val(servicesArray[0]);
 
@@ -1200,7 +1202,69 @@ function format ( d ) {
 		}
 	}
 	
-	// END ADD BROKER MULTISERVCE SECTION
+	// END ADD BROKER MULTISERVICE SECTION
+
+	// BEGIN EDIT BROKER MULTISERVICE SECTION
+	// Author: Antonino Mauro Liuzzo
+	
+	/**
+	 * Add new Service/Tenant Text Field when the "Add Service/Tenant" is pressed
+	 */
+	$('#editAddNewCBServiceBtn').click(function(){
+		// get the service/tenant tab
+		var stTab = $('#editServiceTenantTabCB').last();
+		// create a new row element
+		var row = createServiceRowElem('');
+		// append of the row element
+		stTab.append(row);
+	});
+
+	/**
+	 * Trigger the MultiService tab visibility
+	 * The MultiService tab is visible only if the ngsi w/MultiService protocol is selected
+	 * When the user choose another protocol, inserted values are saved, except for empty strings
+	 * If the user choose back ngsi w/MultiService, saved values are restored
+	 */
+	var editOldServicesValues = []; 
+	$('#selectProtocolCBM').change(function(){
+		if($('#selectProtocolCBM').val() !== "ngsi w/MultiService"){
+			// hide the MultiService selector
+			$('#editMultiServiceTabSelector').addClass("hidden");
+
+			// save the first Service row and clear the row
+			var rowValue = $('#editServiceCBRow1').find('.modalInputTxt').val().trim();
+			if(rowValue !== "") editOldServicesValues.push(rowValue);
+			$('#editServiceCBRow1').find('.modalInputTxt').val('');
+
+			// save every additional row and remove them
+			var additionalRows = $('#editServiceTenantTabCB div[name="additionalRow"]');
+			for(let i = 0; i < additionalRows.length; i++){
+				var rowValue = $(additionalRows[i]).find('.modalInputTxt').val().trim();
+				if(rowValue !== "") editOldServicesValues.push(rowValue);
+				additionalRows[i].remove();
+			}
+			
+		}else{
+			// show the MultiService selector
+			$('#editMultiServiceTabSelector').removeClass("hidden");
+			restoreServicesValuesEdit(editOldServicesValues);
+			editOldServicesValues = [];
+		}
+	});
+
+	function restoreServicesValuesEdit(servicesArray){
+		// restore the first row
+		$('#editServiceCBRow1').find('.modalInputTxt').val(servicesArray[0]);
+
+		// restore additional rows
+		var stTab = $('#editServiceTenantTabCB').last();
+		for(let i = 1; i < servicesArray.length; i++){
+			row = createServiceRowElem(servicesArray[i]);
+			stTab.append(row);
+		}
+	}
+	
+	// END EDIT BROKER MULTISERVICE SECTION
 
 	$('#contextBrokerTable thead').css("background", "rgba(0, 162, 211, 1)");
 	$('#contextBrokerTable thead').css("color", "white");

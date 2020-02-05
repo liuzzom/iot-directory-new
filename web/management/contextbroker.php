@@ -602,7 +602,7 @@
 		</div>
 	</div>
 	
-
+		<!-- Edit Context Broker -->
 		<div class="modal fade" id="editContextBrokerModal" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 			  <div class="modal-content">
@@ -634,10 +634,10 @@
 					</div>
 				</div>  
 				<div id="editContextBrokerModalBody" class="modal-body modalBody">
-				   <!--				   <form id="editUserForm" name="editUserForm" role="form" method="post" action="process-form.php" data-toggle="validator">-->
-						
+				
 					<ul id="editContextBrokerModalTabs" class="nav nav-tabs nav-justified">
 						<li class="active"><a data-toggle="tab" href="#editInfoTabCB">Info</a></li>
+						<li id="editMultiServiceTabSelector" class="hidden"><a data-toggle="tab" href="#editServiceTenantTabCB">Services/Tenants</a></li>
 						<li><a data-toggle="tab" href="#editGeoPositionTabCB">Geo-Position</a></li>
 						<li><a data-toggle="tab" href="#editSecurityTabCB">Security</a></li>
 					</ul>
@@ -791,7 +791,27 @@
 							</div>
 							
 						</div>
-						 
+
+						<!-- MultiService/Tenant tab -->
+						<!-- Author: Antonino Mauro Liuzzo -->
+						<div id="editServiceTenantTabCB" class="tab-pane fade">
+							<div class="row" id="editServiceCBRow1">
+								<div class="col-xs-12 col-md-8 modalCell">          
+									<div class="modalFieldCnt">
+                                        <input type="text" class="modalInputTxt" name="editInputServiceCB" id="editInputServiceCB" onkeyup="checkStrangeCharacters(this)" required>
+                                    </div>
+                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
+									<div id="editInputServiceCBMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                </div>
+								
+								<div class="col-xs-12 col-md-4 modalCell">
+                                    <div class="modalFieldCnt">
+										<button type="text" id="editAddNewCBServiceBtn" class="btn confirmBtn">Add Service/Tenant</button>
+                                    </div>
+                                </div>	
+							</div>
+						</div>
+
 						<!-- Geo-Position tab -->
 						<div id="editGeoPositionTabCB" class="tab-pane fade">
 							<div class="row">
