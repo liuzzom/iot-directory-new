@@ -489,13 +489,13 @@
 						<!-- MultiService/Tenant tab -->
 						<!-- Author: Antonino Mauro Liuzzo -->
 						<div id="serviceTenantTabCB" class="tab-pane fade">
+							<div id="inputServiceCBMsg" style="margin-top: 10px;">&nbsp;</div>
 							<div class="row" id="serviceCBRow1">
 								<div class="col-xs-12 col-md-8 modalCell">          
 									<div class="modalFieldCnt">
                                         <input type="text" class="modalInputTxt" name="inputServiceCB" id="inputServiceCB" onkeyup="checkStrangeCharacters(this)" required>
                                     </div>
                                     <div class="modalFieldLabelCnt">Service/Tenant</div>
-									<div id="inputServiceCBMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 								
 								<div class="col-xs-12 col-md-4 modalCell">

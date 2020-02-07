@@ -51,10 +51,36 @@ function showAddCbModal()
     
     // Author: Antonino Mauro Liuzzo
     checkCbService();
+    
+    // hadle first service row
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkCbService);
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkAddCbConditions);
+    
+    // hadle change protocol
     $('#selectProtocolCB').on('change', checkCbService);
     $('#selectProtocolCB').on('change', checkAddCbConditions);
+
+    // handle the additional rows
+    $("#serviceTenantTabCB").on('input', 'div[name="additionalRow"]', checkCbAdditionalServices);
+    $("#serviceTenantTabCB").on('input', 'div[name="additionalRow"]', checkAddCbConditions);
+
+    // handle the add Service button
+    $('#addNewCBServiceBtn').on('click', checkCbAdditionalServices);
+    $('#addNewCBServiceBtn').on('click', checkAddCbConditions);
+
+    // node to observe
+    const targetNode = document.getElementById('serviceTenantTabCB');
+    // Options for the observer (which mutations to observe)
+    const config = {childList: true};
+    // Callback function to execute when mutations are observed
+    const callback = function(mutationsList, observer) {
+        checkCbAdditionalServices();
+        checkAddCbConditions();
+    };
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
 
 	$("#addContextBrokerModal").modal('show');
      
@@ -306,20 +332,57 @@ function checkCbService(){
         addCbConditionsArray['inputServiceCB'] = true;
         return;
     }else{
-        if(value === ""){
-            message = 'Service/Tenant is mandatory';
+        if(value === "" || value.indexOf(' ') !== -1){
+            message = 'Check your values';
             addCbConditionsArray['inputServiceCB'] = false;
-            $("#inputServiceCBMsg").css("color", "red");
-        }else if(value.indexOf(' ') !== -1){
-            message = 'The use of white spaces is not allowed';
-            addCbConditionsArray['inputServiceCB'] = false;
-            $("#inputServiceCBMsg").css("color", "red");
+            $("#inputServiceCBMsg").removeClass("alert alert-success");
+            $("#inputServiceCBMsg").addClass("alert alert-danger");
         }else{
             message = 'Ok';
             addCbConditionsArray['inputServiceCB'] = true;
-            $("#inputServiceCBMsg").css("color", "#337ab7");
+            $("#inputServiceCBMsg").removeClass("alert alert-danger");
+            $("#inputServiceCBMsg").addClass("alert alert-success");
         }
     
         $("#inputServiceCBMsg").html(message);
+    }
+}
+
+function checkCbAdditionalServices(){
+    console.log("checkCbAdditionalServices");
+
+    var message = null;
+    var values = [];
+    var isHidden = $('#multiServiceTabSelector').hasClass('hidden');
+
+    values.push(document.getElementById("inputServiceCB").value);
+    // get values of all the additional rows
+    $('#serviceTenantTabCB div[name="additionalRow"]').find('input[name="inputServiceCB"]').each(function(){
+        values.push($(this).val());
+    });
+
+    console.log(values);
+
+    // check if the MultiService tab is hidden
+    if(isHidden){
+        addCbConditionsArray['inputServiceCB'] = true;
+        return;
+    }else{
+        for(const value of values){
+            if(value === "" || value.indexOf(' ') !== -1){
+                message = 'Check your values';
+                addCbConditionsArray['inputServiceCB'] = false;
+                $("#inputServiceCBMsg").removeClass("alert alert-success");
+                $("#inputServiceCBMsg").addClass("alert alert-danger");
+                $("#inputServiceCBMsg").html(message);
+                break;
+            }else{
+                message = 'Ok';
+                addCbConditionsArray['inputServiceCB'] = true;
+                $("#inputServiceCBMsg").removeClass("alert alert-danger");
+                $("#inputServiceCBMsg").addClass("alert alert-success");
+                $("#inputServiceCBMsg").html(message);
+            }
+        }
     }
 }

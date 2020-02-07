@@ -18,6 +18,6 @@ back-end directory: api
 
 TODO:
 
-- Creare schermata front-end edit CB
+- Modificare schermata front-end edit CB (prendere la schermata di add CB come riferimento)
 - Creare schermata front-end add device
 - Creare schermata front-end edit device

@@ -1108,7 +1108,7 @@ function format ( d ) {
 
 		var modalInputTxt = document.createElement("input");
 		$(modalInputTxt).attr('type', 'text');
-		$(modalInputTxt).attr('class', 'modalInputTxt');
+		$(modalInputTxt).attr('class', 'modalInputTxt inputServiceCB');
 		$(modalInputTxt).attr('name', 'inputServiceCB');
 		$(modalInputTxt).attr('onkeyup', 'checkStrangeCharacters(this)');
 		$(modalInputTxt).val(initalValue);
@@ -1179,10 +1179,8 @@ function format ( d ) {
 				if(rowValue !== "") oldServicesValues.push(rowValue);
 				additionalRows[i].remove();
 			}
-			console.log(oldServicesValues);
 		}else{
 			// show the MultiService selector
-			console.log(oldServicesValues);
 			$('#multiServiceTabSelector').removeClass("hidden");
 			restoreServicesValuesAdd(oldServicesValues);
 			oldServicesValues = [];
@@ -1190,7 +1188,6 @@ function format ( d ) {
 	});
 
 	function restoreServicesValuesAdd(servicesArray){
-		console.log(oldServicesValues);
 		// restore the first row
 		$('#serviceCBRow1').find('.modalInputTxt').val(servicesArray[0]);
 
