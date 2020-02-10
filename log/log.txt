@@ -4844,3 +4844,46 @@ This combination of host and port requires TLS.
  action:get_all_ou. Ok, got n-entries:1
 2020-02-07 10:22:58am: 
  action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-10 09:40:51am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-10 09:40:55am: 
+ action=get_all_contextbroker 
+
+2020-02-10 09:40:55am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-10 09:40:56am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-10 09:41:38am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-10 09:41:39am: 
+ action=get_all_contextbroker 
+
+2020-02-10 09:41:39am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-10 09:41:40am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-10 09:49:40am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-10 09:49:41am: 
+ action=get_all_contextbroker 
+
+2020-02-10 09:49:42am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-10 09:58:03am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-10 09:58:04am: 
+ action=get_all_contextbroker 
+
+2020-02-10 09:58:04am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-10 09:58:04am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-10 10:04:12am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-10 10:04:13am: 
+ action=get_all_contextbroker 
+
+2020-02-10 10:04:13am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-10 10:04:13am: 
+ action:get_group_for_ou. Ok, got n-entries: 0

@@ -49,10 +49,32 @@ function showEditCbModal()
 
     // Author: Antonino Mauro Liuzzo
     checkEditCbService();
+
+    // Handle first service row
     $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbService);
     $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbConditions);
+
+    // Handle change protocol
     $('#selectProtocolCBM').on('change', checkEditCbService);
     $('#selectProtocolCBM').on('change', checkEditCbConditions);
+
+    // Handle the additional rows
+    $("#editServiceTenantTabCB").on('input', 'div[name="additionalRow"]', checkEditCbAdditionalServices);
+    $("#editServiceTenantTabCB").on('input', 'div[name="additionalRow"]', checkEditCbConditions);
+
+    // Observe the Multi-Service/Tenant Tab for child element creation/removal
+    const targetNode = document.getElementById('editServiceTenantTabCB');
+    // Options for the observer (which mutations to observe)
+    const config = {childList: true};
+    // Callback function to execute when mutations are observed
+    const callback = function() {
+        checkEditCbAdditionalServices();
+        checkEditCbConditions();
+    };
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
 
      
 }
@@ -285,24 +307,60 @@ function checkEditCbService(){
     // check if the MultiService tab is hidden
     if(isHidden){
         console.log("hidden");
-        editCbConditionsArray['inputServiceCB'] = true;
+        editCbConditionsArray['inputServiceCBM'] = true;
         return;
     }else{
-        console.log("shown");
-        if(value === ""){
-            message = 'Service/Tenant is mandatory';
-            editCbConditionsArray['inputServiceCB'] = false;
-            $("#editInputServiceCBMsg").css("color", "red");
-        }else if(value.indexOf(' ') !== -1){
-            message = 'The use of white spaces is not allowed';
-            editCbConditionsArray['inputServiceCB'] = false;
-            $("#editInputServiceCBMsg").css("color", "red");
+        if(value === "" || value.indexOf(' ') !== -1){
+            message = 'Check your values (N.B.: white spaces are not allowed)';
+            addCbConditionsArray['inputServiceCBM'] = false;
+            $("#editInputServiceCBMsg").removeClass("alert alert-success");
+            $("#editInputServiceCBMsg").addClass("alert alert-danger");
+            $("#editInputServiceCBMsg").html(message);
         }else{
             message = 'Ok';
-            editCbConditionsArray['inputServiceCB'] = true;
-            $("#editInputServiceCBMsg").css("color", "#337ab7");
+            addCbConditionsArray['inputServiceCBM'] = true;
+            $("#editInputServiceCBMsg").removeClass("alert alert-danger");
+            $("#editInputServiceCBMsg").addClass("alert alert-success");
+            $("#editInputServiceCBMsg").html(message);
         }
-    
-        $("#editInputServiceCBMsg").html(message);
+    }
+}
+
+function checkEditCbAdditionalServices(){
+    // console.log("checkEditCbAdditionalServices");
+
+    var message = null;
+    var values = [];
+    var isHidden = $('#editMultiServiceTabSelector').hasClass('hidden');
+
+    values.push(document.getElementById("editInputServiceCB").value);
+    // get values of all the additional rows
+    $('#editServiceTenantTabCB div[name="additionalRow"]').find('input[name="inputServiceCB"]').each(function(){
+        values.push($(this).val());
+    });
+
+    console.log(values);
+
+    // check if the MultiService tab is hidden
+    if(isHidden){
+        addCbConditionsArray['inputServiceCBM'] = true;
+        return;
+    }else{
+        for(const value of values){
+            if(value === "" || value.indexOf(' ') !== -1){
+                message = 'Check your values (N.B.: white spaces are not allowed)';
+                addCbConditionsArray['inputServiceCBM'] = false;
+                $("#editInputServiceCBMsg").removeClass("alert alert-success");
+                $("#editInputServiceCBMsg").addClass("alert alert-danger");
+                $("#editInputServiceCBMsg").html(message);
+                break;
+            }else{
+                message = 'Ok';
+                addCbConditionsArray['inputServiceCBM'] = true;
+                $("#editInputServiceCBMsg").removeClass("alert alert-danger");
+                $("#editInputServiceCBMsg").addClass("alert alert-success");
+                $("#editInputServiceCBMsg").html(message);
+            }
+        }
     }
 }

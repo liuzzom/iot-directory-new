@@ -52,28 +52,24 @@ function showAddCbModal()
     // Author: Antonino Mauro Liuzzo
     checkCbService();
     
-    // hadle first service row
+    // Handle first service row
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkCbService);
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkAddCbConditions);
     
-    // hadle change protocol
+    // Handle change protocol
     $('#selectProtocolCB').on('change', checkCbService);
     $('#selectProtocolCB').on('change', checkAddCbConditions);
 
-    // handle the additional rows
+    // Handle the additional rows
     $("#serviceTenantTabCB").on('input', 'div[name="additionalRow"]', checkCbAdditionalServices);
     $("#serviceTenantTabCB").on('input', 'div[name="additionalRow"]', checkAddCbConditions);
 
-    // handle the add Service button
-    $('#addNewCBServiceBtn').on('click', checkCbAdditionalServices);
-    $('#addNewCBServiceBtn').on('click', checkAddCbConditions);
-
-    // node to observe
+    // Observe the Multi-Service/Tenant Tab for child element creation/removal
     const targetNode = document.getElementById('serviceTenantTabCB');
     // Options for the observer (which mutations to observe)
     const config = {childList: true};
     // Callback function to execute when mutations are observed
-    const callback = function(mutationsList, observer) {
+    const callback = function() {
         checkCbAdditionalServices();
         checkAddCbConditions();
     };
@@ -349,7 +345,7 @@ function checkCbService(){
 }
 
 function checkCbAdditionalServices(){
-    console.log("checkCbAdditionalServices");
+    // console.log("checkCbAdditionalServices");
 
     var message = null;
     var values = [];
