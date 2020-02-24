@@ -50,9 +50,7 @@ function showAddCbModal()
     // checkCbpassword();
     
     // Author: Antonino Mauro Liuzzo
-    if(!$('#multiServiceTabSelector').hasClass('hidden')){
-        checkCbServices();
-    }
+    checkCbServices();
 
     // Handle first service row
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkCbServices);
@@ -339,14 +337,14 @@ function checkCbServices(){
 
     // check if the MultiService tab is hidden
     if(isHidden){
-        // console.log("hidden")
-        addCbConditionsArray['inputServiceCB'] = true;
+        console.log("hidden")
+        addCbConditionsArray['inputServicesCB'] = true;
         return;
     }else{
         for(const value of values){
             if(value === "" || value.indexOf(' ') !== -1){
-                message = 'Check your values';
-                addCbConditionsArray['inputServiceCB'] = false;
+                message = 'Check your values (N.B.: white spaces are not allowed)';
+                addCbConditionsArray['inputServicesCB'] = false;
                 $("#inputServiceCBMsg").removeClass("alert alert-success");
                 $("#inputServiceCBMsg").addClass("alert alert-danger");
                 $("#inputServiceCBMsg").html(message);
@@ -354,7 +352,7 @@ function checkCbServices(){
                 break;
             }else{
                 message = 'Ok';
-                addCbConditionsArray['inputServiceCB'] = true;
+                addCbConditionsArray['inputServicesCB'] = true;
                 $("#inputServiceCBMsg").removeClass("alert alert-danger");
                 $("#inputServiceCBMsg").addClass("alert alert-success");
                 $("#inputServiceCBMsg").html(message);

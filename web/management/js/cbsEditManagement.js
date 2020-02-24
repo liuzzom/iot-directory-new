@@ -48,18 +48,18 @@ function showEditCbModal()
 	//checkEditCbpassword();
 
     // Author: Antonino Mauro Liuzzo
-    checkEditCbService();
+    checkEditCbServices();
 
     // Handle first service row
-    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbService);
+    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbServices);
     $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbConditions);
 
     // Handle change protocol
-    $('#selectProtocolCBM').on('change', checkEditCbService);
+    $('#selectProtocolCBM').on('change', checkEditCbServices);
     $('#selectProtocolCBM').on('change', checkEditCbConditions);
 
     // Handle the additional rows
-    $("#editServiceTenantTabCB").on('input', 'div[name="additionalRow"]', checkEditCbAdditionalServices);
+    $("#editServiceTenantTabCB").on('input', 'div[name="additionalRow"]', checkEditCbServices);
     $("#editServiceTenantTabCB").on('input', 'div[name="additionalRow"]', checkEditCbConditions);
 
     // Observe the Multi-Service/Tenant Tab for child element creation/removal
@@ -68,7 +68,7 @@ function showEditCbModal()
     const config = {childList: true};
     // Callback function to execute when mutations are observed
     const callback = function() {
-        checkEditCbAdditionalServices();
+        checkEditCbServices();
         checkEditCbConditions();
     };
     // Create an observer instance linked to the callback function
@@ -299,35 +299,9 @@ function checkEditCbConditions()
 }
 
 // Author: Antonino Mauro Liuzzo
-function checkEditCbService(){
-    var message = null;
-    var value = document.getElementById("editInputServiceCB").value;
-    var isHidden = $('#editMultiServiceTabSelector').hasClass('hidden');
 
-    // check if the MultiService tab is hidden
-    if(isHidden){
-        console.log("hidden");
-        editCbConditionsArray['inputServiceCBM'] = true;
-        return;
-    }else{
-        if(value === "" || value.indexOf(' ') !== -1){
-            message = 'Check your values (N.B.: white spaces are not allowed)';
-            addCbConditionsArray['inputServiceCBM'] = false;
-            $("#editInputServiceCBMsg").removeClass("alert alert-success");
-            $("#editInputServiceCBMsg").addClass("alert alert-danger");
-            $("#editInputServiceCBMsg").html(message);
-        }else{
-            message = 'Ok';
-            addCbConditionsArray['inputServiceCBM'] = true;
-            $("#editInputServiceCBMsg").removeClass("alert alert-danger");
-            $("#editInputServiceCBMsg").addClass("alert alert-success");
-            $("#editInputServiceCBMsg").html(message);
-        }
-    }
-}
-
-function checkEditCbAdditionalServices(){
-    // console.log("checkEditCbAdditionalServices");
+function checkEditCbServices(){
+    console.log("checkEditCbServices");
 
     var message = null;
     var values = [];
@@ -343,20 +317,21 @@ function checkEditCbAdditionalServices(){
 
     // check if the MultiService tab is hidden
     if(isHidden){
-        addCbConditionsArray['inputServiceCBM'] = true;
+        console.log("hidden");
+        editCbConditionsArray['inputServicesCBM'] = true;
         return;
     }else{
         for(const value of values){
             if(value === "" || value.indexOf(' ') !== -1){
                 message = 'Check your values (N.B.: white spaces are not allowed)';
-                addCbConditionsArray['inputServiceCBM'] = false;
+                editCbConditionsArray['inputServicesCBM'] = false;
                 $("#editInputServiceCBMsg").removeClass("alert alert-success");
                 $("#editInputServiceCBMsg").addClass("alert alert-danger");
                 $("#editInputServiceCBMsg").html(message);
                 break;
             }else{
                 message = 'Ok';
-                addCbConditionsArray['inputServiceCBM'] = true;
+                editCbConditionsArray['inputServicesCBM'] = true;
                 $("#editInputServiceCBMsg").removeClass("alert alert-danger");
                 $("#editInputServiceCBMsg").addClass("alert alert-success");
                 $("#editInputServiceCBMsg").html(message);
