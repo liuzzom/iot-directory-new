@@ -50,18 +50,20 @@ function showAddCbModal()
     // checkCbpassword();
     
     // Author: Antonino Mauro Liuzzo
-    checkCbService();
-    
+    if(!$('#multiServiceTabSelector').hasClass('hidden')){
+        checkCbServices();
+    }
+
     // Handle first service row
-    $("#serviceTenantTabCB #inputServiceCB").on('input', checkCbService);
+    $("#serviceTenantTabCB #inputServiceCB").on('input', checkCbServices);
     $("#serviceTenantTabCB #inputServiceCB").on('input', checkAddCbConditions);
     
     // Handle change protocol
-    $('#selectProtocolCB').on('change', checkCbService);
+    $('#selectProtocolCB').on('change', checkCbServices);
     $('#selectProtocolCB').on('change', checkAddCbConditions);
 
     // Handle the additional rows
-    $("#serviceTenantTabCB").on('input', 'div[name="additionalRow"]', checkCbAdditionalServices);
+    $("#serviceTenantTabCB").on('input', 'div[name="additionalRow"]', checkCbServices);
     $("#serviceTenantTabCB").on('input', 'div[name="additionalRow"]', checkAddCbConditions);
 
     // Observe the Multi-Service/Tenant Tab for child element creation/removal
@@ -70,7 +72,8 @@ function showAddCbModal()
     const config = {childList: true};
     // Callback function to execute when mutations are observed
     const callback = function() {
-        checkCbAdditionalServices();
+        // console.log("Child");
+        checkCbServices();
         checkAddCbConditions();
     };
     // Create an observer instance linked to the callback function
@@ -78,8 +81,8 @@ function showAddCbModal()
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
 
+    checkAddCbConditions();
 	$("#addContextBrokerModal").modal('show');
-     
 }
 
 
@@ -318,34 +321,9 @@ function checkAddCbConditions()
 }
 
 // Author: Antonino Mauro Liuzzo
-function checkCbService(){
-    var message = null;
-    var value = document.getElementById("inputServiceCB").value;
-    var isHidden = $('#multiServiceTabSelector').hasClass('hidden');
 
-    // check if the MultiService tab is hidden
-    if(isHidden){
-        addCbConditionsArray['inputServiceCB'] = true;
-        return;
-    }else{
-        if(value === "" || value.indexOf(' ') !== -1){
-            message = 'Check your values';
-            addCbConditionsArray['inputServiceCB'] = false;
-            $("#inputServiceCBMsg").removeClass("alert alert-success");
-            $("#inputServiceCBMsg").addClass("alert alert-danger");
-        }else{
-            message = 'Ok';
-            addCbConditionsArray['inputServiceCB'] = true;
-            $("#inputServiceCBMsg").removeClass("alert alert-danger");
-            $("#inputServiceCBMsg").addClass("alert alert-success");
-        }
-    
-        $("#inputServiceCBMsg").html(message);
-    }
-}
-
-function checkCbAdditionalServices(){
-    // console.log("checkCbAdditionalServices");
+function checkCbServices(){
+    // console.log("checkCbServices");
 
     var message = null;
     var values = [];
@@ -357,10 +335,11 @@ function checkCbAdditionalServices(){
         values.push($(this).val());
     });
 
-    console.log(values);
+    // console.log(values);
 
     // check if the MultiService tab is hidden
     if(isHidden){
+        // console.log("hidden")
         addCbConditionsArray['inputServiceCB'] = true;
         return;
     }else{
@@ -371,6 +350,7 @@ function checkCbAdditionalServices(){
                 $("#inputServiceCBMsg").removeClass("alert alert-success");
                 $("#inputServiceCBMsg").addClass("alert alert-danger");
                 $("#inputServiceCBMsg").html(message);
+                console.log(message);
                 break;
             }else{
                 message = 'Ok';
@@ -378,6 +358,7 @@ function checkCbAdditionalServices(){
                 $("#inputServiceCBMsg").removeClass("alert alert-danger");
                 $("#inputServiceCBMsg").addClass("alert alert-success");
                 $("#inputServiceCBMsg").html(message);
+                console.log(message);
             }
         }
     }
