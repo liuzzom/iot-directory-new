@@ -428,7 +428,6 @@ function format ( d ) {
 			//buildMainTable(false);
 			
 		/*  ADD CONTEXT BROKER (INSERT INTO DB) */ 	
-		
         $('#addContextBrokerConfirmBtn').off("click");
         $("#addContextBrokerConfirmBtn").click(function(){
 			
@@ -451,9 +450,9 @@ function format ( d ) {
                 accesslink=$('#inputIpCB').val();
             }
 	
-				$.ajax({
-                 url: "../api/contextbroker.php",
-                 data:{
+			$.ajax({
+                url: "../api/contextbroker.php",
+                data:{
 					action: "insert",
 					//Sara2610 - for logging purpose
 					username: loggedUser,
@@ -473,13 +472,12 @@ function format ( d ) {
 					longitude: $('#inputLongitudeCB').val(),
 					accesslink: accesslink,
 					accessport: $('#inputAccessPortCB').val(),
-					sha: $('#inputSHACB').val()
-										 
-				 },
-                 type: "POST",
-                 async: true,
-                 success: function (data) 
-                 {
+					sha: $('#inputSHACB').val()					 
+				},
+                type: "POST",
+                async: true,
+                success: function(data) 
+                {
                     if(data["status"] === 'ko')
                     {
                         console.log("Error adding Context Broker");
@@ -537,36 +535,36 @@ function format ( d ) {
                         $('#dashboardTotActiveCnt .pageSingleDataCnt').html(parseInt($('#dashboardTotActiveCnt .pageSingleDataCnt').html()) + 1);
                         
                         $('#contextBrokerTable').DataTable().destroy();
-							fetch_data(true);
+						fetch_data(true);
                        
                         $('#inputNameCB').val("");
-								$('#selectKindCB').val("");
-								$('#inputPathCB').val("");
-								$('#selectVisibilityCB').val("");
-								$('#inputVersionCB').val("");
-								$('#inputIpCB').val("");
-								$('#inputPortCB').val("");
-								$('#selectProtocolCB').val("NULL");
-								$('#inputUriCB').val("");
-								$('#inputLoginCB').val("");
-								$('#inputPasswordCB').val("");
-								$('#inputLatitudeCB').val("");
-								$('#inputLongitudeCB').val("");
-								$('#createdDateCB').val("");
-								$('#inputAccessLinkCB').val("");
-								$('#inputAccessPortCB').val("");
-								$('#inputSHACB').val("");
+						$('#selectKindCB').val("");
+						$('#inputPathCB').val("");
+						$('#selectVisibilityCB').val("");
+						$('#inputVersionCB').val("");
+						$('#inputIpCB').val("");
+						$('#inputPortCB').val("");
+						$('#selectProtocolCB').val("NULL");
+						$('#inputUriCB').val("");
+						$('#inputLoginCB').val("");
+						$('#inputPasswordCB').val("");
+						$('#inputLatitudeCB').val("");
+						$('#inputLongitudeCB').val("");
+						$('#createdDateCB').val("");
+						$('#inputAccessLinkCB').val("");
+						$('#inputAccessPortCB').val("");
+						$('#inputSHACB').val("");
                                   
-                       /* setTimeout(function(){
-                            $('#addContextBrokerModal').modal('hide');
+                       	/* setTimeout(function(){
+                        	$('#addContextBrokerModal').modal('hide');
                             //buildMainTable(true);
 							$('#contextBrokerTable').DataTable().destroy();
 							fetch_data(true);
 							
                             setTimeout(function(){
 								
-                                $('#addCBOkMsg').hide();
-                                $('#addCBOkIcon').hide();
+                            	$('#addCBOkMsg').hide();
+                            	$('#addCBOkIcon').hide();
 								
 								$('#inputNameCB').val("");
 								$('#selectKindCB').val("");
@@ -589,8 +587,8 @@ function format ( d ) {
 											
 								$('#addContextBrokerModalTabs').show();
                                 $('#addContextBrokerModal div.modalCell').show();
-                                //$('#addContextBrokerModalFooter').show()
-                                $('#addContextBrokerCancelBtn').show();
+                            	//$('#addContextBrokerModalFooter').show()
+                               	$('#addContextBrokerCancelBtn').show();
 						        $('#addContextBrokerConfirmBtn').show();
                             }, 500); 
                         }, 3000);*/
@@ -600,24 +598,24 @@ function format ( d ) {
                 {
 					
 					console.log("Ko result: " + data);
-                     $("#addContextBrokerModal").modal('hide');
+                    $("#addContextBrokerModal").modal('hide');
 					 
-					 $('#addContextBrokerModalTabs').hide();
-					 $('#addContextBrokerModalBody').hide();	
-					 $('#addContextBrokerModal div.modalCell').hide();
-					 $('#addContextBrokerModalFooter').hide();
-					 $('#addCBOkMsg').hide();
-					 $('#addCBOkIcon').hide();	
+					$('#addContextBrokerModalTabs').hide();
+					$('#addContextBrokerModalBody').hide();	
+					$('#addContextBrokerModal div.modalCell').hide();
+					$('#addContextBrokerModalFooter').hide();
+					$('#addCBOkMsg').hide();
+					$('#addCBOkIcon').hide();	
 					
 			
-					 $('#addCBKoMsg').show();
-					 $('#addCBKoIcon').show();
-                     //$("#addContextBrokerModal").show();
-                   //  $("#addContextBrokerModalFooter").show();
+					$('#addCBKoMsg').show();
+					$('#addCBKoIcon').show();
+                    // $("#addContextBrokerModal").show();
+                   	// $("#addContextBrokerModalFooter").show();
 					
                 }
                  
-             });
+            });
         });	
 
 

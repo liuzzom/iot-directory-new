@@ -48,6 +48,8 @@ function showEditCbModal()
 	//checkEditCbpassword();
 
     // Author: Antonino Mauro Liuzzo
+
+    // check CB service values
     checkEditCbServices();
 
     // Handle first service row
@@ -301,23 +303,27 @@ function checkEditCbConditions()
 // Author: Antonino Mauro Liuzzo
 
 function checkEditCbServices(){
-    console.log("checkEditCbServices");
+    // console.log("checkEditCbServices");
 
+    // feedback message to the user
     var message = null;
+    // service values
     var values = [];
+    // check if the tab is hidden or not
     var isHidden = $('#editMultiServiceTabSelector').hasClass('hidden');
 
+    // insert first row value
     values.push(document.getElementById("editInputServiceCB").value);
     // get values of all the additional rows
     $('#editServiceTenantTabCB div[name="additionalRow"]').find('input[name="inputServiceCB"]').each(function(){
         values.push($(this).val());
     });
 
-    console.log(values);
+    // console.log(values);
 
     // check if the MultiService tab is hidden
     if(isHidden){
-        console.log("hidden");
+        // console.log("hidden");
         editCbConditionsArray['inputServicesCBM'] = true;
         return;
     }else{

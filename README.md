@@ -18,6 +18,47 @@ back-end directory: api
 
 TODO:
 
-- Revisione Schermate CB (Add/Edit)
-- Creare schermata front-end add device
-- Creare schermata front-end edit device
+- Add Broker:
+    - ~~Inserimento elementi di interfaccia~~
+    - ~~Controllo sui valori inseriti e feedback all'utente~~
+    - Gestione richiesta al server
+    - Controlli lato server
+    - Operazioni sul DB
+    - Risposta al client
+    - Relazione
+- Edit Broker:
+    - ~~Inserimento elementi di interfaccia~~
+    - ~~Controllo sui valori inseriti e feedback all'utente~~
+    - Gestione richiesta al server
+    - Controlli lato server
+    - Operazioni sul DB
+    - Risposta al client
+    - Relazione
+- Delete Broker:
+    - Gestione richiesta al server
+    - Controlli lato server
+    - Operazioni sul DB
+    - Risposta al client
+    - Relazione
+- Add Device:
+    - Inserimento elementi di interfaccia
+    - Controllo sui valori inseriti e feedback all'utente
+    - Gestione richiesta al server
+    - Controlli lato server
+    - Operazioni sul DB
+    - Risposta al client
+    - Relazione
+- Edit Device:
+    - Inserimento elementi di interfaccia
+    - Controllo sui valori inseriti e feedback all'utente
+    - Gestione richiesta al server
+    - Controlli lato server
+    - Operazioni sul DB
+    - Risposta al client
+    - Relazione
+- Delete Device:
+    - Gestione richiesta al server
+    - Controlli lato server
+    - Operazioni sul DB
+    - Risposta al client
+    - Relazione

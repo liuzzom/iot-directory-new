@@ -323,10 +323,14 @@ function checkAddCbConditions()
 function checkCbServices(){
     // console.log("checkCbServices");
 
+    // feedback message to the user
     var message = null;
+    // service values
     var values = [];
+    // check if the tab is hidden or not
     var isHidden = $('#multiServiceTabSelector').hasClass('hidden');
 
+    // insert first row value
     values.push(document.getElementById("inputServiceCB").value);
     // get values of all the additional rows
     $('#serviceTenantTabCB div[name="additionalRow"]').find('input[name="inputServiceCB"]').each(function(){
@@ -337,7 +341,7 @@ function checkCbServices(){
 
     // check if the MultiService tab is hidden
     if(isHidden){
-        console.log("hidden")
+        // console.log("hidden")
         addCbConditionsArray['inputServicesCB'] = true;
         return;
     }else{
@@ -348,7 +352,7 @@ function checkCbServices(){
                 $("#inputServiceCBMsg").removeClass("alert alert-success");
                 $("#inputServiceCBMsg").addClass("alert alert-danger");
                 $("#inputServiceCBMsg").html(message);
-                console.log(message);
+                // console.log(message);
                 break;
             }else{
                 message = 'Ok';
@@ -356,7 +360,7 @@ function checkCbServices(){
                 $("#inputServiceCBMsg").removeClass("alert alert-danger");
                 $("#inputServiceCBMsg").addClass("alert alert-success");
                 $("#inputServiceCBMsg").html(message);
-                console.log(message);
+                // console.log(message);
             }
         }
     }
