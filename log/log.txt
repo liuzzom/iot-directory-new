@@ -5229,3 +5229,380 @@ This combination of host and port requires TLS.
 
 2020-02-25 05:41:51pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 04:27:19pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 04:27:21pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 04:27:22pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 04:27:22pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 04:54:40pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 04:54:41pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 04:54:41pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 04:54:42pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 04:55:46pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 04:55:46pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 04:55:47pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 04:55:47pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 04:57:59pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 04:57:59pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 04:58:00pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 04:58:00pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 05:00:56pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 05:00:57pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 05:00:57pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 05:00:57pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 05:06:12pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 05:06:12pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 05:06:12pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 05:06:13pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 05:08:38pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 05:08:39pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 05:08:39pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 05:08:39pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 05:31:46pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 05:31:47pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 05:31:47pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 05:31:47pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 05:32:08pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-26 05:32:08pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 05:32:08pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-26 05:32:09pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-26 05:32:37pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('testName', 'testip', '', 'amqp', '', '8080', '43.75076', '11.23558', '', '', 'testip','', '', 'private', '', 'Organization')
+ the registration of the ownership succeded{"elementId":"Organization:testName","elementName":"Organization:testName","elementUrl":"testip","elementType":"BrokerID","username":"usertooladmin","id":16519}
+2020-02-26 05:32:37pm: 
+ action=get_all_contextbroker 
+
+2020-02-26 05:35:11pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'testName' and organization='Organization';
+2020-02-26 05:35:12pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 11:59:12am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 11:59:18am: 
+ action=get_all_contextbroker 
+
+2020-02-27 11:59:18am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 11:59:19am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 12:45:30pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 12:45:32pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 12:45:33pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 12:45:33pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 03:22:50pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 03:22:53pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 03:22:53pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 03:22:53pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:07:23pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:07:24pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:07:24pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:07:24pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:14:11pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:14:11pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:14:12pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:14:12pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:14:33pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:14:34pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:14:34pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:14:34pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:16:16pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:16:16pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:16:16pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:16:16pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:21:32pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:21:32pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:21:32pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:21:33pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:22:25pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:22:25pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:22:25pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:22:25pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:22:29pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:22:29pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:22:29pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:22:29pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:27:06pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:27:06pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:27:06pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:27:06pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 04:31:25pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 04:31:25pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 04:31:25pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 04:31:25pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:08:37pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 05:08:38pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:08:38pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 05:08:38pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:14:10pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaaaaa', 'aaaaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.79489', '11.21773', '', '', 'aaaaaaaaaaa','', '', 'private', '', 'Organization')
+ the registration of the ownership succeded{"elementId":"Organization:aaaaaaaaaaa","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaaaa","elementType":"BrokerID","username":"usertooladmin","id":16520}
+2020-02-27 05:14:10pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:14:24pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaaaaa' and organization='Organization';
+2020-02-27 05:14:24pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:15:34pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 05:15:34pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:15:34pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 05:15:34pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:15:53pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('testname', 'test', '', 'amqp', '', '8080', '43.78051', '11.21361', '', '', 'test','', '', 'private', '', 'Organization')
+ the registration of the ownership succeded{"elementId":"Organization:testname","elementName":"Organization:testname","elementUrl":"test","elementType":"BrokerID"}
+2020-02-27 05:15:53pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:16:08pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'testname' and organization='Organization';
+2020-02-27 05:16:09pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:26:32pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 05:26:33pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 05:26:34pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:26:34pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:27:52pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 05:27:53pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:27:53pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 05:27:53pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:28:22pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('testName', 'testIp', '', 'ngsi w/MultiService', '', '8080', '43.78993', '11.29944', '', '', 'testIp','', '', 'private', '', 'Organization') [\"topolino\",\"paperino\"]
+ the registration of the ownership succeded{"elementId":"Organization:testName","elementName":"Organization:testName","elementUrl":"testIp","elementType":"BrokerID"}
+2020-02-27 05:28:23pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:32:33pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'testName' and organization='Organization';
+2020-02-27 05:32:34pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:32:39pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 05:32:39pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:32:39pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 05:32:39pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:40:13pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 05:40:14pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 05:40:15pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:40:15pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:41:14pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('TestName', 'testIp', '', 'ngsi w/MultiService', '', '8080', '43.78250', '11.23970', '', '', 'testIp','', '', 'private', '', 'Organization') [
+ the registration of the ownership succeded{"elementId":"Organization:TestName","elementName":"Organization:TestName","elementUrl":"testIp","elementType":"BrokerID"}
+2020-02-27 05:41:15pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:41:38pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'TestName' and organization='Organization';
+2020-02-27 05:41:39pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:44:59pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 05:44:59pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 05:44:59pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:44:59pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 05:51:29pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('testName', 'testIP', '', 'coap', '', '8080', '43.76663', '11.21429', '', '', 'testIP','', '', 'private', '', 'Organization') [
+ the registration of the ownership succeded{"elementId":"Organization:testName","elementName":"Organization:testName","elementUrl":"testIP","elementType":"BrokerID"}
+2020-02-27 05:51:30pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 05:51:43pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'testName' and organization='Organization';
+2020-02-27 05:51:44pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:13:10pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 06:13:11pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:13:11pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 06:13:11pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 06:18:47pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 06:18:48pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 06:18:48pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:18:49pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 06:19:19pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.74530', '11.26579', '', '', 'aaaaaaaaaaaaaa','', '', 'private', '', 'Organization') Array
+ the registration of the ownership succeded{"elementId":"Organization:aaaaaaaaaaaaaaaa","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementType":"BrokerID","username":"usertooladmin","id":16521}
+2020-02-27 06:19:20pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:26:48pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaaaaaaaaaa' and organization='Organization';
+2020-02-27 06:26:48pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:27:08pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 06:27:09pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:27:09pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 06:27:09pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 06:30:50pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 06:30:51pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:30:51pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 06:30:51pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-02-27 06:31:30pm: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaaaaaa', 'aaaaaaaaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.79687', '11.24107', '', '', 'aaaaaaaaaaaaaaa','', '', 'private', '', 'Organization') topolino
+ the registration of the ownership succeded{"elementId":"Organization:aaaaaaaaaaaa","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaa","elementType":"BrokerID","username":"usertooladmin","id":16522}
+2020-02-27 06:31:30pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 06:31:46pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaaaaaa' and organization='Organization';
+2020-02-27 06:31:47pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 07:09:06pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-02-27 07:09:08pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-02-27 07:09:08pm: 
+ action=get_all_contextbroker 
+
+2020-02-27 07:09:08pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0

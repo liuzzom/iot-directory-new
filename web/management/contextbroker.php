@@ -795,7 +795,7 @@
 						<!-- MultiService/Tenant tab -->
 						<!-- Author: Antonino Mauro Liuzzo -->
 						<div id="editServiceTenantTabCB" class="tab-pane fade">
-						<div id="editInputServiceCBMsg" style="margin-top: 10px;">&nbsp;</div>
+							<div id="editInputServiceCBMsg" style="margin-top: 10px;">&nbsp;</div>
 							<div class="row" id="editServiceCBRow1">
 								<div class="col-xs-12 col-md-8 modalCell">          
 									<div class="modalFieldCnt">

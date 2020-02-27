@@ -430,7 +430,7 @@ function format ( d ) {
 		/*  ADD CONTEXT BROKER (INSERT INTO DB) */ 	
         $('#addContextBrokerConfirmBtn').off("click");
         $("#addContextBrokerConfirmBtn").click(function(){
-			
+
 			$('#addContextBrokerModalTabs').hide();
 			$('#addContextBrokerModalBody').hide();	
             $('#addContextBrokerModal div.modalCell').hide();
@@ -448,8 +448,16 @@ function format ( d ) {
             var accesslink= $('#inputAccessLinkCB').val();
             if (accesslink==""){
                 accesslink=$('#inputIpCB').val();
-            }
-	
+			}
+			
+			// Author: Antonino Mauro Liuzzo
+			var servicesArr = $('input[name="inputServiceCB"]');
+			var serviceValues = [];
+			for(let i = 0; i < servicesArr.length; i++){
+				if(servicesArr[i].value) serviceValues.push(servicesArr[i].value);
+			}
+			console.log(JSON.stringify(serviceValues));
+			
 			$.ajax({
                 url: "../api/contextbroker.php",
                 data:{
@@ -472,7 +480,9 @@ function format ( d ) {
 					longitude: $('#inputLongitudeCB').val(),
 					accesslink: accesslink,
 					accessport: $('#inputAccessPortCB').val(),
-					sha: $('#inputSHACB').val()					 
+					sha: $('#inputSHACB').val(),
+					// Author: Antonino Mauro Liuzzo
+					services: JSON.stringify(serviceValues)
 				},
                 type: "POST",
                 async: true,
@@ -496,18 +506,6 @@ function format ( d ) {
                         $('#addCBKoMsg').show();
 						$('#addCBKoMsg div:first-child').html(data["error_msg"]);
                         $('#addCBKoIcon').show();
-						
-                        /*setTimeout(function(){
-							
-						$('#addCBKoMsg').hide();
-						$('#addCBKoIcon').hide();
-						$('#addContextBrokerModalTabs').show();
-						$('#addContextBrokerModal div.modalCell').show();
-						//$('#addContextBrokerModalFooter').show();
-                        $('#addContextBrokerCancelBtn').show();
-						$('#addContextBrokerConfirmBtn').show();
-							
-                        }, 3000);*/
                     }
                     else if (data["status"] === 'ok')
                     {
@@ -554,44 +552,9 @@ function format ( d ) {
 						$('#inputAccessLinkCB').val("");
 						$('#inputAccessPortCB').val("");
 						$('#inputSHACB').val("");
-                                  
-                       	/* setTimeout(function(){
-                        	$('#addContextBrokerModal').modal('hide');
-                            //buildMainTable(true);
-							$('#contextBrokerTable').DataTable().destroy();
-							fetch_data(true);
-							
-                            setTimeout(function(){
-								
-                            	$('#addCBOkMsg').hide();
-                            	$('#addCBOkIcon').hide();
-								
-								$('#inputNameCB').val("");
-								$('#selectKindCB').val("");
-								$('#inputPathCB').val("");
-								$('#selectVisibilityCB').val("");
-								$('#inputVersionCB').val("");
-								$('#inputIpCB').val("");
-								$('#inputPortCB').val("");
-								$('#selectProtocolCB').val("NULL");
-								$('#inputUriCB').val("");
-								$('#inputLoginCB').val("");
-								$('#inputPasswordCB').val("");
-								$('#inputLatitudeCB').val("");
-								$('#inputLongitudeCB').val("");
-								$('#createdDateCB').val("");
-								$('#inputAccessLinkCB').val("");
-								$('#inputAccessPortCB').val("");
-								$('#inputSHACB').val("");
-								
-											
-								$('#addContextBrokerModalTabs').show();
-                                $('#addContextBrokerModal div.modalCell').show();
-                            	//$('#addContextBrokerModalFooter').show()
-                               	$('#addContextBrokerCancelBtn').show();
-						        $('#addContextBrokerConfirmBtn').show();
-                            }, 500); 
-                        }, 3000);*/
+
+						// Author: Antonino Mauro Liuzzo
+						$('input[name="inputServiceCB"]').val("");
                     }
                 },
                 error: function(data)
@@ -613,9 +576,8 @@ function format ( d ) {
                     // $("#addContextBrokerModal").show();
                    	// $("#addContextBrokerModalFooter").show();
 					
-                }
-                 
-            });
+                }     
+			});
         });	
 
 

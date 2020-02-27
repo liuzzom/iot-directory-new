@@ -349,7 +349,7 @@ function checkCbServices(){
             if(value === "" || value.indexOf(' ') !== -1){
                 message = 'Check your values (N.B.: white spaces are not allowed)';
                 addCbConditionsArray['inputServicesCB'] = false;
-                $("#inputServiceCBMsg").removeClass("alert alert-success");
+                $("#inputServiceCBMsg").removeClass("alert alert-info");
                 $("#inputServiceCBMsg").addClass("alert alert-danger");
                 $("#inputServiceCBMsg").html(message);
                 // console.log(message);
@@ -358,7 +358,7 @@ function checkCbServices(){
                 message = 'Ok';
                 addCbConditionsArray['inputServicesCB'] = true;
                 $("#inputServiceCBMsg").removeClass("alert alert-danger");
-                $("#inputServiceCBMsg").addClass("alert alert-success");
+                $("#inputServiceCBMsg").addClass("alert alert-info");
                 $("#inputServiceCBMsg").html(message);
                 // console.log(message);
             }

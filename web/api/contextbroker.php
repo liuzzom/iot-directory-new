@@ -74,8 +74,8 @@ result["log"] keep trace of the operations executed on the db
 This array should be encoded in json
 */	
 	
-if ($action=="insert")
-{   $name = mysqli_real_escape_string($link, $_REQUEST['name']);
+if($action=="insert"){
+	$name = mysqli_real_escape_string($link, $_REQUEST['name']);
 	$kind = mysqli_real_escape_string($link, $_REQUEST['kind']);
 	$ip = mysqli_real_escape_string($link, $_REQUEST['ip']);
 	$port = mysqli_real_escape_string($link, $_REQUEST['port']);
@@ -92,21 +92,27 @@ if ($action=="insert")
 	$sha = mysqli_real_escape_string($link, $_REQUEST['sha']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
- 
- if($accessToken!=""){   
-    checkRegisterOwnerShipObject($accessToken, 'BrokerID',$result);
-    if ($result["status"]=='ok'){ 
-        $q = "INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) " .
-		 "VALUES('$name', '$ip', '$kind', '$protocol', '$version', '$port', '$latitude', '$longitude', '$login', '$password', '$accesslink','$accessport', '$path', '$visibility', '$sha', '$organization')";
-	   $r = mysqli_query($link, $q);
-    }
+	
+	// Author: Antonino Mauro Liuzzo
+	$services = json_decode($_REQUEST['services']);
+	for($i = 0; $i < count($services); $i++){
+		$services[i] = mysqli_real_escape_string($services[i]);
+	}
+	
 
-	if($r)
-	{
-		logAction($link,$username,'contextbroker','insert',$name,$organization,'insertion CB into database','success');
+	if($accessToken!=""){   
+    	checkRegisterOwnerShipObject($accessToken, 'BrokerID',$result);
+    	if ($result["status"]=='ok'){ 
+        	$q = "INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) " .
+		 		"VALUES('$name', '$ip', '$kind', '$protocol', '$version', '$port', '$latitude', '$longitude', '$login', '$password', '$accesslink','$accessport', '$path', '$visibility', '$sha', '$organization')";
+	   		$r = mysqli_query($link, $q);
+    	}
 
-        $result["status"]='ok';
-		$result["log"].='\n\r action: insert ok. ' . $q;
+		if($r){
+			logAction($link,$username,'contextbroker','insert',$name,$organization,'insertion CB into database','success');
+
+        	$result["status"]='ok';
+			$result["log"].='\n\r action: insert ok. ' . $q;
 		    $ownmsg = array();
 			$ownmsg["elementId"]=$organization . ':' . $name; // I am using the new identifier
 			$ownmsg["elementName"]=$organization . ':' . $name;				    
@@ -117,36 +123,32 @@ if ($action=="insert")
             registerOwnerShipObject($ownmsg, $accessToken, 'BrokerID',$result);
             if($result["status"]=='ok'){
                 logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','success');
+            }else{
+            	logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','failure');
             }
-            else{
-                logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','failure');
-            }
+		}else{
+		 	$result["status"]='ko';
+			$result["error_msg"] = "Error occurred when registering the context broker $name. " ;
+			$result["msg"] = "Error: An error occurred when registering the context broker $name. <br/>" .
+				mysqli_error($link) . 
+				' Please enter again the context broker';
+			$result["log"] = "\n\r Error: An error occurred when registering the context broker $name. <br/>" .
+				mysqli_error($link);	
+			logAction($link,$username,'contextbroker','insert',$name,$organization,'','failure');						   
+		}
+ 	}else{
+    	$result["status"]='ko';
+     	$result["error_msg"] = "Error occurred when registering the context broker: accessToken is empty. ";
+     	$result["msg"] = "Error: An error occurred when registering the context broker: accessToken is empty";
+     	$result["log"] = "\n\r Error: An error occurred when registering the context broker: accessToken is empty";
+     	logAction($link,$username,'contextbroker','insert',$name,$organization,'accessToken is empty','failure');
 	}
-	else
-	{
-		 $result["status"]='ko';
-		 $result["error_msg"] = "Error occurred when registering the context broker $name. " ;
-		 $result["msg"] = "Error: An error occurred when registering the context broker $name. <br/>" .
-						   mysqli_error($link) . 
-						   ' Please enter again the context broker';
-		$result["log"] = "\n\r Error: An error occurred when registering the context broker $name. <br/>" .
-						   mysqli_error($link);	
-		logAction($link,$username,'contextbroker','insert',$name,$organization,'','failure');						   
-	}
- }
- else{
-     $result["status"]='ko';
-     $result["error_msg"] = "Error occurred when registering the context broker: accessToken is empty. ";
-     $result["msg"] = "Error: An error occurred when registering the context broker: accessToken is empty";
-     $result["log"] = "\n\r Error: An error occurred when registering the context broker: accessToken is empty";
-     logAction($link,$username,'contextbroker','insert',$name,$organization,'accessToken is empty','failure');
- }
+	
 	my_log($result);
 	mysqli_close($link);
-}
-else
-if ($action=="update")
-{  $name = mysqli_real_escape_string($link, $_REQUEST['name']);
+
+}else if($action=="update"){
+	$name = mysqli_real_escape_string($link, $_REQUEST['name']);
 	$kind = mysqli_real_escape_string($link, $_REQUEST['kind']);
 	$ip = mysqli_real_escape_string($link, $_REQUEST['ip']);
 	$port = mysqli_real_escape_string($link, $_REQUEST['port']);
@@ -168,9 +170,7 @@ if ($action=="update")
 	$q = "UPDATE contextbroker SET name = '$name', kind = '$kind', ip = '$ip', port = '$port', protocol = '$protocol', version = '$version', latitude = '$latitude', longitude = '$longitude', login = '$login', password = '$password', accesslink = '$accesslink', accessport = '$accessport', path = '$path', visibility = '$visibility', sha = '$sha', organization='$organization' WHERE name = '$name' and organization='$organization';";
 	$r = mysqli_query($link, $q);
 
-	if($r)
-	{
-		
+	if($r){
         $ownmsg = array();
         $ownmsg["elementId"]=$obj_organization . ':' . $name; // I am using the new identifier	
         $ownmsg["elementName"]=$obj_organization . ':' . $name;				    
@@ -179,81 +179,68 @@ if ($action=="update")
         registerOwnerShipObject($ownmsg, $accessToken, 'BrokerID',$result);
 		
         if($result["status"]=='ok'){
-          $result["log"].='\n\r action: update ok. ' . $q;  
-          logAction($link,$username,'contextbroker','update',$name,$organization,'','success');
+    		$result["log"].='\n\r action: update ok. ' . $q;  
+        	logAction($link,$username,'contextbroker','update',$name,$organization,'','success');
 		
+        }else{
+        	logAction($link,$username,'contextbroker','update',$name,$organization,'in register ownership','failure');
         }
-        else{
-            logAction($link,$username,'contextbroker','update',$name,$organization,'in register ownership','failure');
-		
-        }
-		//
-	}
-	else
-	{
+	}else{
 		logAction($link,$username,'contextbroker','update',$name,$organization,'','failure');
 		
-		 $result["status"]='ko';
-		 $result["error_msg"] = "Error occurred when updating the context broker $name. <br/>. " ;
-		 $result["msg"] = "Error: An error occurred when updating the context broker $name. <br/>" .
-						   mysqli_error($link) .
-						   ' Please enter again the context broker';
-		 $result["log"] = "\n\r Error: An error occurred when updating the context broker $name. <br/>" .
-						   mysqli_error($link);				   
+		$result["status"]='ko';
+		$result["error_msg"] = "Error occurred when updating the context broker $name. <br/>. " ;
+		$result["msg"] = "Error: An error occurred when updating the context broker $name. <br/>" .
+			mysqli_error($link) .
+			' Please enter again the context broker';
+		$result["log"] = "\n\r Error: An error occurred when updating the context broker $name. <br/>" .
+			mysqli_error($link);				   
 	}
 	my_log($result);
 	mysqli_close($link);
-}
-else if ($action=="delete")
-{
-      $name = mysqli_real_escape_string($link, $_REQUEST['name']);      
-      $organization = mysqli_real_escape_string($link, $_REQUEST['organization']);      
-	  $username = mysqli_real_escape_string($link, $_REQUEST['username']);
+}else if ($action=="delete"){
+    $name = mysqli_real_escape_string($link, $_REQUEST['name']);      
+    $organization = mysqli_real_escape_string($link, $_REQUEST['organization']);      
+	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 
-      $q = "DELETE FROM contextbroker WHERE name = '$name' and organization='$organization';";
+    $q = "DELETE FROM contextbroker WHERE name = '$name' and organization='$organization';";
 	  
-      $r = mysqli_query($link, $q);
+    $r = mysqli_query($link, $q);
 
-      if($r)
-	  {
-          $result["status"]='ok';
+    if($r){
+    	$result["status"]='ok';
           
-          if($accessToken!=""){
-              $elementId=$organization . ':' . $name;
-              removeOwnerShipObject($elementId,$accessToken,"BrokerID",$result);
-          }
-          if($result["status"]='ok'){
-              $result["log"].='\n\r action: delete ok. ' . $q;
-              logAction($link,$username,'contextbroker','delete',$name,$organization,'','success');
-          }
-          else{
-              $result["log"].='\n\r action: delete ok from database, delete Ownership failed. ';
-              logAction($link,$username,'contextbroker','delete',$name,$organization,'delete ok from database, delete Ownership failed.','failure');
-          }
+        if($accessToken!=""){
+            $elementId=$organization . ':' . $name;
+            removeOwnerShipObject($elementId,$accessToken,"BrokerID",$result);
+        }
+        if($result["status"]='ok'){
+            $result["log"].='\n\r action: delete ok. ' . $q;
+            logAction($link,$username,'contextbroker','delete',$name,$organization,'','success');
+        }else{
+            $result["log"].='\n\r action: delete ok from database, delete Ownership failed. ';
+            logAction($link,$username,'contextbroker','delete',$name,$organization,'delete ok from database, delete Ownership failed.','failure');
+        }
 		
-	  }
-	  else
-	  {
+	}else{
 		logAction($link,$username,'contextbroker','delete',$name,$organization,'','faliure');
-		 $result["status"]='ko';
-		 $result["error_msg"] = 'Context broker ' . $name . ' &nbsp; deletion failed. ';
-		 $result["msg"] = 'Context broker <b>' . $name . '</b> &nbsp; deletion failed, ' .
-						   mysqli_error($link) . 
-						   ' Please enter again.';
-		 $result["log"] = '\n\r Context broker <b>' . $name . '</b> &nbsp; deletion failed, ' .
-						   mysqli_error($link) . $q;				   
-	  }
-	  my_log($result);
-	  mysqli_close($link);
-}
-else if($action == 'get_all_contextbroker')
-{
+		$result["status"]='ko';
+		$result["error_msg"] = 'Context broker ' . $name . ' &nbsp; deletion failed. ';
+		$result["msg"] = 'Context broker <b>' . $name . '</b> &nbsp; deletion failed, ' .
+			mysqli_error($link) . 
+			' Please enter again.';
+		$result["log"] = '\n\r Context broker <b>' . $name . '</b> &nbsp; deletion failed, ' .
+			mysqli_error($link) . $q;
+	}
+	my_log($result);
+	mysqli_close($link);
+
+}else if($action == 'get_all_contextbroker'){
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
     
-    if (!empty($accessToken)) 
-	{
+    if (!empty($accessToken)){
         getOwnerShipObject($accessToken, "BrokerID", $result); 
         getDelegatedObject($accessToken, $username, "BrokerID", $result);
 	}
@@ -261,25 +248,19 @@ else if($action == 'get_all_contextbroker')
 	$q = "SELECT * FROM contextbroker";	
 	$r=create_datatable_data($link,$_REQUEST,$q, '');
 	$selectedrows=-1;
-	if($_REQUEST["length"] != -1)
-	{
+	if($_REQUEST["length"] != -1){
 		$start= $_REQUEST['start'];
 		$offset=$_REQUEST['length'];
 		$tobelimited=true;
-	}
-	else
-	{
+	}else{
 		$tobelimited=false;
 	}
 	
-	if($r) 
-	{
-		
+	if($r){
 		$data = array();		 
-		 while($row = mysqli_fetch_assoc($r)) 
-		{
-             $idTocheck=$row["organization"].":".$row["name"];
-             if (
+		while($row = mysqli_fetch_assoc($r)) {
+            $idTocheck=$row["organization"].":".$row["name"];
+            if (
                  ($loggedrole=='RootAdmin')
                  ||($loggedrole=='ToolAdmin') 
                  ||

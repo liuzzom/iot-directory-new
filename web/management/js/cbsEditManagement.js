@@ -331,7 +331,7 @@ function checkEditCbServices(){
             if(value === "" || value.indexOf(' ') !== -1){
                 message = 'Check your values (N.B.: white spaces are not allowed)';
                 editCbConditionsArray['inputServicesCBM'] = false;
-                $("#editInputServiceCBMsg").removeClass("alert alert-success");
+                $("#editInputServiceCBMsg").removeClass("alert alert-info");
                 $("#editInputServiceCBMsg").addClass("alert alert-danger");
                 $("#editInputServiceCBMsg").html(message);
                 break;
@@ -339,7 +339,7 @@ function checkEditCbServices(){
                 message = 'Ok';
                 editCbConditionsArray['inputServicesCBM'] = true;
                 $("#editInputServiceCBMsg").removeClass("alert alert-danger");
-                $("#editInputServiceCBMsg").addClass("alert alert-success");
+                $("#editInputServiceCBMsg").addClass("alert alert-info");
                 $("#editInputServiceCBMsg").html(message);
             }
         }
