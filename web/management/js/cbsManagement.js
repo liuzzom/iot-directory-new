@@ -345,9 +345,16 @@ function checkCbServices(){
         addCbConditionsArray['inputServicesCB'] = true;
         return;
     }else{
+        var serviceRegex = /^([a-z]|_){1,50}$/;
         for(const value of values){
-            if(value === "" || value.indexOf(' ') !== -1){
-                message = 'Check your values (N.B.: white spaces are not allowed)';
+            if(!serviceRegex.test(value)){
+                message = `Check your values <br>
+                    <ul>
+                    <li>white spaces are not allowed</li>
+                    <li>use only lower case letters</li>
+                    <li>special characters are not allowed (except for "_")</li>
+                    <li>service/tenant name must not be longer than 50 characters</li>
+                    </ul>`;
                 addCbConditionsArray['inputServicesCB'] = false;
                 $("#inputServiceCBMsg").removeClass("alert alert-info");
                 $("#inputServiceCBMsg").addClass("alert alert-danger");

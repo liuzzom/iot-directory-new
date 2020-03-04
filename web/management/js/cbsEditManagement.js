@@ -303,8 +303,7 @@ function checkEditCbConditions()
 // Author: Antonino Mauro Liuzzo
 
 function checkEditCbServices(){
-    // console.log("checkEditCbServices");
-
+    console.log("checkEditCbServices");
     // feedback message to the user
     var message = null;
     // service values
@@ -319,17 +318,21 @@ function checkEditCbServices(){
         values.push($(this).val());
     });
 
-    // console.log(values);
-
     // check if the MultiService tab is hidden
     if(isHidden){
-        // console.log("hidden");
         editCbConditionsArray['inputServicesCBM'] = true;
         return;
     }else{
         for(const value of values){
-            if(value === "" || value.indexOf(' ') !== -1){
-                message = 'Check your values (N.B.: white spaces are not allowed)';
+            var serviceRegex = /^([a-z]|_){1,50}$/;
+            if(!serviceRegex.test(value)){
+                message = `Check your values <br>
+                    <ul>
+                    <li>white spaces are not allowed</li>
+                    <li>use only lower case letters</li>
+                    <li>special characters are not allowed (except for "_")</li>
+                    <li>service/tenant name must not     be longer than 50 characters</li>
+                    </ul>`;
                 editCbConditionsArray['inputServicesCBM'] = false;
                 $("#editInputServiceCBMsg").removeClass("alert alert-info");
                 $("#editInputServiceCBMsg").addClass("alert alert-danger");
