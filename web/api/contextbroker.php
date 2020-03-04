@@ -96,23 +96,37 @@ if($action=="insert"){
 	// Author: Antonino Mauro Liuzzo
 	$services = json_decode($_REQUEST['services']);
 	for($i = 0; $i < count($services); $i++){
-		$services[i] = mysqli_real_escape_string($services[i]);
+		$services[$i] = mysqli_real_escape_string($link, $services[$i]);
 	}
-	
 
 	if($accessToken!=""){   
     	checkRegisterOwnerShipObject($accessToken, 'BrokerID',$result);
     	if ($result["status"]=='ok'){ 
+
+			// begin transaction
+			mysqli_autocommit($link, FALSE);
+			$success = TRUE;
+
+			// queries execution
         	$q = "INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) " .
 		 		"VALUES('$name', '$ip', '$kind', '$protocol', '$version', '$port', '$latitude', '$longitude', '$login', '$password', '$accesslink','$accessport', '$path', '$visibility', '$sha', '$organization')";
-	   		$r = mysqli_query($link, $q);
+			if(!mysqli_query($link, $q)) $success = FALSE;
+			
+			if($protocol == 'ngsi w/MultiService'){
+				for($i = 0; $i < count($services); $i++){
+					$service = $services[$i];
+					$qs = "INSERT INTO services(name, broker_name) VALUES ('$service', '$name')";
+					if(!mysqli_query($link, $qs)) $success = FALSE;
+				}	
+			}
     	}
 
-		if($r){
+		if($success){
+			mysqli_commit($link);
 			logAction($link,$username,'contextbroker','insert',$name,$organization,'insertion CB into database','success');
 
         	$result["status"]='ok';
-			$result["log"].='\n\r action: insert ok. ' . $q;
+			$result["log"].='\n\r action: insert ok. ' . $q .  ' services: ' . implode(' ', $services);
 		    $ownmsg = array();
 			$ownmsg["elementId"]=$organization . ':' . $name; // I am using the new identifier
 			$ownmsg["elementName"]=$organization . ':' . $name;				    
@@ -127,6 +141,7 @@ if($action=="insert"){
             	logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','failure');
             }
 		}else{
+			mysqli_rollback($link);
 		 	$result["status"]='ko';
 			$result["error_msg"] = "Error occurred when registering the context broker $name. " ;
 			$result["msg"] = "Error: An error occurred when registering the context broker $name. <br/>" .

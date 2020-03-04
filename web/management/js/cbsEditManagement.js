@@ -303,7 +303,6 @@ function checkEditCbConditions()
 // Author: Antonino Mauro Liuzzo
 
 function checkEditCbServices(){
-    console.log("checkEditCbServices");
     // feedback message to the user
     var message = null;
     // service values
@@ -331,7 +330,7 @@ function checkEditCbServices(){
                     <li>white spaces are not allowed</li>
                     <li>use only lower case letters</li>
                     <li>special characters are not allowed (except for "_")</li>
-                    <li>service/tenant name must not     be longer than 50 characters</li>
+                    <li>service/tenant name must not be longer than 50 characters</li>
                     </ul>`;
                 editCbConditionsArray['inputServicesCBM'] = false;
                 $("#editInputServiceCBMsg").removeClass("alert alert-info");
