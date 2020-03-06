@@ -185,3 +185,21 @@
  action:get_all_ou. Ok, got n-entries:1
 2020-03-04 06:07:53pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-06 03:44:59pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-06 03:45:02pm: 
+ action=get_all_contextbroker 
+
+2020-03-06 03:45:02pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-06 03:45:03pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-06 03:46:34pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-06 03:46:35pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-06 03:46:41pm: 
+ action=get_all_contextbroker 
+
+2020-03-06 03:46:41pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0

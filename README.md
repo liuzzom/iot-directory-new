@@ -17,29 +17,37 @@ front-end directory: management </br>
 back-end directory: api
 
 TODO:
-
-- Add Broker:
+- Vedere come funzionano i get e come modificarli -> chiedere a esperto:
+    - get_all_contextbroker
+    - get_subset_contextbroker
+    - get_all_contextbroker_latlong
+- ~~Add Broker~~:
     - ~~Inserimento elementi di interfaccia~~
     - ~~Controllo sui valori inseriti e feedback all'utente~~
-    - Gestione richiesta al server
-    - Controlli lato server
-    - Operazioni sul DB
-    - Risposta al client
-    - Relazione
+    - ~~Gestione richiesta al server~~
+    - ~~Controlli lato server~~
+    - ~~Operazioni sul DB~~
+    - ~~Risposta al client~~
+    - ~~Relazione~~
 - Edit Broker:
     - ~~Inserimento elementi di interfaccia~~
     - ~~Controllo sui valori inseriti e feedback all'utente~~
     - Gestione richiesta al server
     - Controlli lato server
     - Operazioni sul DB
+        - UPDATE riga contextborker
+        - SELECT su services -> si potrebbe usare la funzione create_datatable_data
+        - Verfica se ci sono differenze tra i vecchi services e i nuovi services
+            - Se non ci sono differenze, basta il CASCADE
+            - Se ci sono differenze, elminare i vecchi services e inserire i nuovi (brutale o mirato?)
     - Risposta al client
     - Relazione
-- Delete Broker:
-    - Gestione richiesta al server
-    - Controlli lato server
-    - Operazioni sul DB
-    - Risposta al client
-    - Relazione
+- ~~Delete Broker~~: -> il CASCADE dovrebbe bastarre -> chiedere a esperto
+    - ~~Gestione richiesta al server~~
+    - ~~Controlli lato server~~
+    - ~~Operazioni sul DB~~
+    - ~~Risposta al client~~
+    - ~~Relazione~~
 - Add Device:
     - Inserimento elementi di interfaccia
     - Controllo sui valori inseriti e feedback all'utente
