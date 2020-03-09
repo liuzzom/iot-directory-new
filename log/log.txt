@@ -1,205 +1,0 @@
-2020-03-04 05:13:30pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 05:13:31pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:13:31pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 05:13:31pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 05:14:03pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaaaa', 'aaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.79439', '11.24451', '', '', 'aaaaaaaaa','', '', 'private', '', 'Organization')1
- the registration of the ownership succeded{"elementId":"Organization:aaaaaaaaaa","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementType":"BrokerID","username":"usertooladmin","id":16526}
-2020-03-04 05:23:29pm: 
- Error: An error occurred when registering the context broker aaaaaaaaaa. <br/>
-2020-03-04 05:23:33pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 05:23:34pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:23:34pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 05:23:34pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 05:23:38pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaaaa' and organization='Organization';
-2020-03-04 05:23:38pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:24:07pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaaa', 'aaaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.80183', '11.15799', '', '', 'aaaaaaaaaa','', '', 'private', '', 'Organization')Array
-(
-    [0] => 
-    [1] => 
-)
-
- the registration of the ownership succeded{"elementId":"Organization:aaaaaaaaa","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementType":"BrokerID"}
-2020-03-04 05:24:07pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:24:40pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaaa' and organization='Organization';
-2020-03-04 05:24:41pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:26:57pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaaa', 'aaaaaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.77010', '11.21841', '', '', 'aaaaaaaaaaaa','', '', '', '', 'Organization') , 
- the registration of the ownership succeded{"elementId":"Organization:aaaaaaaaa","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementType":"BrokerID"}
-2020-03-04 05:26:59pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:27:41pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaaa' and organization='Organization';
-2020-03-04 05:27:42pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:28:03pm: 
- Error: An error occurred when registering the context broker aaaaaaaaa. <br/>
-2020-03-04 05:28:07pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 05:28:08pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:28:08pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 05:28:08pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 05:28:33pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaa', 'aaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.76911', '11.24519', '', '', 'aaaaaa','', '', 'private', '', 'Organization')pippo , pluto , 
- the registration of the ownership succeded{"elementId":"Organization:aaaaaaa","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementType":"BrokerID","username":"usertooladmin","id":16527}
-2020-03-04 05:28:35pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:29:26pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaa' and organization='Organization';
-2020-03-04 05:29:26pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:29:29pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 05:29:29pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:29:30pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 05:29:30pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 05:29:55pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaa', 'aaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.72744', '11.27472', '', '', 'aaaaaaaaa','', '', 'private', '', 'Organization')pippo , topolino , 
- the registration of the ownership succeded{"elementId":"Organization:aaaaaaaa","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementType":"BrokerID","username":"usertooladmin","id":16528}
-2020-03-04 05:29:55pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:31:11pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaa' and organization='Organization';
-2020-03-04 05:31:12pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:46:49pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 05:46:50pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 05:46:50pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 05:46:51pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:47:12pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaaaaa', 'aaaaaaaaaa', '', 'ngsi w/MultiService', '', '8080', '43.74382', '11.25069', '', '', 'aaaaaaaaaa','', '', 'private', '', 'Organization') servicespippo topo
- the registration of the ownership succeded{"elementId":"Organization:aaaaaaaaa","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementType":"BrokerID"}
-2020-03-04 05:47:13pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:47:37pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaaaaa' and organization='Organization';
-2020-03-04 05:47:37pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:47:40pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 05:47:41pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:47:41pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 05:47:41pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 05:49:47pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 05:49:48pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:49:48pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 05:49:48pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 05:50:49pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('testName', 'testIP', '', 'ngsi w/MultiService', '', '8080', '43.73985', '11.24725', '', '', 'testIP','', '', 'private', '', 'Organization') services: pippo topolino
- the registration of the ownership succeded{"elementId":"Organization:testName","elementName":"Organization:testName","elementUrl":"testIP","elementType":"BrokerID"}
-2020-03-04 05:50:49pm: 
- action=get_all_contextbroker 
-
-2020-03-04 05:58:49pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'testName' and organization='Organization';
-2020-03-04 05:58:50pm: 
- action=get_all_contextbroker 
-
-2020-03-04 06:00:21pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 06:00:23pm: 
- action=get_all_contextbroker 
-
-2020-03-04 06:00:24pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 06:00:24pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 06:01:38pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 06:01:39pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 06:01:39pm: 
- action=get_all_contextbroker 
-
-2020-03-04 06:01:39pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 06:01:50pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('aaaaaa', 'aaaa', '', 'amqp', '', '8080', '43.77407', '11.21223', '', '', 'aaaa','', '', 'private', '', 'Organization') services: 
- the registration of the ownership succeded{"elementId":"Organization:aaaaaa","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementType":"BrokerID","username":"usertooladmin","id":16529}
-2020-03-04 06:01:51pm: 
- action=get_all_contextbroker 
-
-2020-03-04 06:02:13pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'aaaaaa' and organization='Organization';
-2020-03-04 06:02:14pm: 
- action=get_all_contextbroker 
-
-2020-03-04 06:07:27pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 06:07:28pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 06:07:28pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-04 06:07:28pm: 
- action=get_all_contextbroker 
-
-2020-03-04 06:07:45pm: 
- Error: An error occurred when registering the context broker testNAME. <br/>
-2020-03-04 06:07:52pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-04 06:07:53pm: 
- action=get_all_contextbroker 
-
-2020-03-04 06:07:53pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-04 06:07:53pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-06 03:44:59pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-06 03:45:02pm: 
- action=get_all_contextbroker 
-
-2020-03-06 03:45:02pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-06 03:45:03pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-06 03:46:34pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-06 03:46:35pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-06 03:46:41pm: 
- action=get_all_contextbroker 
-
-2020-03-06 03:46:41pm: 
- action:get_group_for_ou. Ok, got n-entries: 0

@@ -108,164 +108,153 @@ function format ( d ) {
 
 	
 			
-	function fetch_data(destroyOld, selected=null)
-	{
-		if(destroyOld)
-		{
-			$('#contextBrokerTable').DataTable().clear().destroy();
-			tableFirstLoad = true;
-		}
+function fetch_data(destroyOld, selected=null){
+	
+	if(destroyOld){
+		$('#contextBrokerTable').DataTable().clear().destroy();
+		tableFirstLoad = true;
+	}
 	   
-		 if (selected==null)
-		{
-		  mydata = {action: "get_all_contextbroker",token : sessionToken, username: loggedUser, organization : organization, loggedrole:loggedRole,  no_columns: ["position", "owner", "edit","delete"]};
-		}
-		else
-		{
-		  mydata = {action: "get_subset_contextbroker",token : sessionToken, username: loggedUser, organization : organization,  loggedrole:loggedRole,select : selected, no_columns: ["position", "owner", "edit","delete"]};
-		}
+	if (selected==null){
+		mydata = {action : "get_all_contextbroker", token : sessionToken, username: loggedUser, organization : organization, loggedrole:loggedRole,  no_columns: ["position", "owner", "edit","delete"]};
+	} else {
+		mydata = {action : "get_subset_contextbroker", token : sessionToken, username: loggedUser, organization : organization,  loggedrole:loggedRole,select : selected, no_columns: ["position", "owner", "edit","delete"]};
+	}
 	   
 		   
-        dataTable = $('#contextBrokerTable').DataTable({
+    dataTable = $('#contextBrokerTable').DataTable({
 		"processing" : true,
 		"serverSide" : true,
 		//"responsive" : true,
 		"responsive": {
-        details: false
+        	details: false
 		},
 		"paging"   : true,
 		"ajax" : {
-		 url:"../api/contextbroker.php",
-		 data: mydata,
-		//token : sessionToken,
-		 datatype: 'json',
-		 type: "POST", 
-		//"dataSrc": "";		 
+			url:"../api/contextbroker.php",
+			data: mydata,
+			//token : sessionToken,
+			datatype: 'json',
+			type: "POST", 
+			//"dataSrc": "";		 
 		},
-		"columns": [
-          {
-			"class":          "details-control",
-			"name": "position",
-			"orderable":      false,
-			"data":           null,
-			"defaultContent": "",
+		"columns": [{
+			"class" : "details-control",
+			"name" : "position",
+			"orderable" : false,
+			"data" : null,
+			"defaultContent" : "",
 			"render": function () {
-					 return '<i class="fa fa-plus-square" aria-hidden="true"></i>';
-				 },
+				return '<i class="fa fa-plus-square" aria-hidden="true"></i>';
+			},
 			width:"15px"
-            }, 	
+			},
+		 	
 			{"name": "name", "data": function ( row, type, val, meta ) {
-			
 				return row.name;
-				} },			
+			} },
+
 			{"name": "accesslink", "data": function ( row, type, val, meta ) {
-				  return row.accesslink;
-				} },	
+				return row.accesslink;
+			} },
+
 			{"name": "accessport", "data": function ( row, type, val, meta ) {
-			
-				  return row.accessport;
-				} },
+				return row.accessport;
+			} },
+
 			{"name": "protocol", "data": function ( row, type, val, meta ) {
-			
-				  return row.protocol;
-				} },
-            {"name": "visibility", "data": function ( row, type, val, meta ) {
-			
-				  				  
+				return row.protocol;
+			} },
+
+        	{"name": "visibility", "data": function ( row, type, val, meta ) {
 				if (row.visibility=='MyOwnPrivate'){   
-					return '<button type="button"  class=\"myOwnPrivateBtn\" onclick="changeVisibility(\''+ row.name + '\',\''+ row.visibility + '\',\''+ row.organization + '\',\''+ row.accesslink + '\')">' + row.visibility + '</button>';																				
-					} 
-				else if (row.visibility=='MyOwnPublic'){
+					return '<button type="button"  class=\"myOwnPrivateBtn\" onclick="changeVisibility(\''+ row.name + '\',\''+ row.visibility + '\',\''+ row.organization + '\',\''+ row.accesslink + '\')">' + row.visibility + '</button>';
+				} else if (row.visibility=='MyOwnPublic'){
 					return '<button type="button"  class=\"myOwnPublicBtn\" onclick="changeVisibility(\''+ row.name + '\',\''+ row.visibility + '\',\''+ row.organization + '\',\''+ row.accesslink + '\')">' + row.visibility + '</button>';
-					}
-				else if (row.visibility=='public') 
-				{
+				} else if (row.visibility=='public') {
 					return '<button type="button"  class=\"publicBtn\" >' + row.visibility + '</button>';
-					}
-				else // value is private
-				{
-				  return "<div class=\"delegatedBtn\">"+ row.visibility + "</div>";								  
-					}
-					
-				} },
+				} else { // value is private
+					return "<div class=\"delegatedBtn\">"+ row.visibility + "</div>";								  
+				}
+			} },
+
 			{"name": "organization", "data": function ( row, type, val, meta ) {
-			
-				  return row.organization;
-				} },
-			{"name": "owner", "data": function ( row, type, val, meta ) {
-			
-				  return row.owner;
-				} },
-            {"name": "created", "data": function ( row, type, val, meta ) {
-			
-				  return row.created;
-				} },			
+				return row.organization;
+			} },
+
+			{"name": "owner", "data": function ( row, type, val, meta ) {			
+				return row.owner;
+			} },
+
+        	{"name": "created", "data": function ( row, type, val, meta ) {
+				return row.created;
+			} },			
 								 
 			{
-                data: null,
+            	data: null,
 				"name": "edit",
-				"orderable":      false,
-                className: "center",
+				"orderable": false,
+            	className: "center",
 				render: function(d) {
-                //defaultContent: '<button type="button" id="edit" class="editDashBtn data-id="'+ row.name +'"">Edit</button>'
-				return '<button type="button" class="editDashBtn" ' +
-				'data-name="'+d.name+'" ' +
-				'data-organization="'+d.organization+'" ' +
-				'data-kind="'+d.kind+'" ' +
-				'data-ip="'+d.ip+'" ' +
-				'data-protocol="'+d.protocol+'" ' +
-				'data-version="'+d.version+'" ' +
-				'data-port="'+d.port+'" ' +
-				'data-uri="'+d.uri+'" ' +
-				'data-created="'+d.created+'" ' +
-				'data-visibility="'+d.visibility+'" ' +
-				'data-longitude="'+d.longitude+'" ' +
-				'data-latitude="'+d.latitude+'" ' +
-				'data-login="'+d.login+'" ' +
-				'data-password="'+d.password+'" ' +
-				'data-accesslink="'+d.accesslink+'" ' +
-				'data-accessport="'+d.accessport+'" ' +
-				'data-apikey="'+d.apikey+'" ' +
-				'data-path="'+d.path+'" ' +
-				'data-sha="'+d.sha+'">Edit</button>';	
+            		//defaultContent: '<button type="button" id="edit" class="editDashBtn data-id="'+ row.name +'"">Edit</button>'
+					return '<button type="button" class="editDashBtn" ' +
+					'data-name="'+d.name+'" ' +
+					'data-organization="'+d.organization+'" ' +
+					'data-kind="'+d.kind+'" ' +
+					'data-ip="'+d.ip+'" ' +
+					'data-protocol="'+d.protocol+'" ' +
+					'data-version="'+d.version+'" ' +
+					'data-port="'+d.port+'" ' +
+					'data-uri="'+d.uri+'" ' +
+					'data-created="'+d.created+'" ' +
+					'data-visibility="'+d.visibility+'" ' +
+					'data-longitude="'+d.longitude+'" ' +
+					'data-latitude="'+d.latitude+'" ' +
+					'data-login="'+d.login+'" ' +
+					'data-password="'+d.password+'" ' +
+					'data-accesslink="'+d.accesslink+'" ' +
+					'data-accessport="'+d.accessport+'" ' +
+					'data-apikey="'+d.apikey+'" ' +
+					'data-path="'+d.path+'" ' +
+					'data-sha="'+d.sha+'">Edit</button>';	
 				}
-            },
-			{
-                data: null,
+			},
+		
+			{	
+            	data: null,
 				"name": "delete",
-				"orderable":      false,
-                className: "center",
-                //defaultContent: '<button type="button" id="delete" class="delDashBtn delete">Delete</button>'
+				"orderable" : false,
+            	className: "center",
+            	//defaultContent: '<button type="button" id="delete" class="delDashBtn delete">Delete</button>'
 				render: function(d) {
-				return '<button type="button" class="delDashBtn" ' +
-				'data-name="'+d.name+'">Delete</button>';
+					return '<button type="button" class="delDashBtn" ' +
+					'data-name="'+d.name+'">Delete</button>';
 				}
-            }
+        	}
+		
 			/*,
 			{
-                data: null,
+            	data: null,
 				"name": "stub",
-				"orderable":      false,
-                className: "center",
-                //defaultContent: '<button type="button" id="map" class="delDashBtn delete">Location</button>'
+				"orderable" : false,
+            	className: "center",
+            	//defaultContent: '<button type="button" id="map" class="delDashBtn delete">Location</button>'
 				render: function(d) {
 				return '<button type="button" id ="' + d.name +'" class="viewDashBtn">Stub</button>';
 				}
-            } */
+        	} */
         ],
-    "order" : [] 
-	  
-   });
-  
+    	"order" : [] 
+	});
   
 	if (loggedRole!='RootAdmin' && loggedRole!='ToolAdmin') {		
-	dataTable.columns( [6,7, 9, 10] ).visible( false );		
-	} 
-    if (loggedRole=='ToolAdmin') {		
-	dataTable.columns( [7] ).visible( false );		
+		dataTable.columns( [6,7, 9, 10] ).visible( false );		
 	}
-  
-  }	 
+
+    if (loggedRole=='ToolAdmin') {		
+		dataTable.columns( [7] ).visible( false );		
+	}
+}	 
 
  //end of fetch function 
 
@@ -275,13 +264,12 @@ function format ( d ) {
 
 /*JQuery Started...*/
 
-    $(document).ready(function () 
-    {
+$(document).ready(function () {
 		
-//fetch_data function will load the contextbroker table 	
-		fetch_data(false);	
-		//aggiornaStub();
-//detail control for contextbroker dataTable
+	//fetch_data function will load the contextbroker table 	
+	fetch_data(false);	
+	//aggiornaStub();
+	//detail control for contextbroker dataTable
 	var detailRows = [];
   	
 	$('#contextBrokerTable tbody').on('click', 'td.details-control', function () {
@@ -1121,8 +1109,9 @@ function format ( d ) {
 	 * When the user choose another protocol, inserted values are saved, except for empty strings
 	 * If the user choose back ngsi w/MultiService, saved values are restored
 	 */
-	var oldServicesValues = []; 
-	$('#selectProtocolCB').change(function(){
+	var oldServicesValues = [];
+
+	function addServicesVisibilityCheck(){
 		if($('#selectProtocolCB').val() !== "ngsi w/MultiService"){
 			// hide the MultiService selector
 			$('#multiServiceTabSelector').addClass("hidden");
@@ -1145,7 +1134,8 @@ function format ( d ) {
 			restoreServicesValuesAdd(oldServicesValues);
 			oldServicesValues = [];
 		}
-	});
+	}
+	$('#selectProtocolCB').change(addServicesVisibilityCheck);
 
 	function restoreServicesValuesAdd(servicesArray){
 		// restore the first row
@@ -1182,8 +1172,9 @@ function format ( d ) {
 	 * When the user choose another protocol, inserted values are saved, except for empty strings
 	 * If the user choose back ngsi w/MultiService, saved values are restored
 	 */
-	var editOldServicesValues = []; 
-	$('#selectProtocolCBM').change(function(){
+	var editOldServicesValues = [];
+
+	function editServicesVisibilityCheck(){
 		if($('#selectProtocolCBM').val() !== "ngsi w/MultiService"){
 			// hide the MultiService selector
 			$('#editMultiServiceTabSelector').addClass("hidden");
@@ -1207,7 +1198,13 @@ function format ( d ) {
 			restoreServicesValuesEdit(editOldServicesValues);
 			editOldServicesValues = [];
 		}
-	});
+	}
+	$('#selectProtocolCBM').change(editServicesVisibilityCheck);
+	$('#contextBrokerTable').on('click', '.editDashBtn', editServicesVisibilityCheck);
+
+	// Handle Edit button
+    $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbServices);
+    $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbConditions);
 
 	function restoreServicesValuesEdit(servicesArray){
 		// restore the first row

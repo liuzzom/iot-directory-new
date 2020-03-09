@@ -162,7 +162,7 @@ if($action=="insert"){
 	my_log($result);
 	mysqli_close($link);
 
-}else if($action=="update"){
+} else if($action=="update") {
 	$name = mysqli_real_escape_string($link, $_REQUEST['name']);
 	$kind = mysqli_real_escape_string($link, $_REQUEST['kind']);
 	$ip = mysqli_real_escape_string($link, $_REQUEST['ip']);
@@ -214,7 +214,7 @@ if($action=="insert"){
 	my_log($result);
 	mysqli_close($link);
 
-}else if ($action=="delete"){
+} else if ($action=="delete") {
     $name = mysqli_real_escape_string($link, $_REQUEST['name']);      
     $organization = mysqli_real_escape_string($link, $_REQUEST['organization']);      
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
@@ -251,7 +251,7 @@ if($action=="insert"){
 	my_log($result);
 	mysqli_close($link);
 
-}else if($action == 'get_all_contextbroker'){
+} else if($action == 'get_all_contextbroker') {
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
@@ -268,11 +268,11 @@ if($action=="insert"){
 
 	// TO ASK: A cosa serve? Dove viene impostata $_REQUEST["length"]?
 	if($_REQUEST["length"] != -1){
-		$start= $_REQUEST['start'];
-		$offset=$_REQUEST['length'];
-		$tobelimited=true;
-	}else{
-		$tobelimited=false;
+		$start = $_REQUEST['start'];
+		$offset = $_REQUEST['length'];
+		$tobelimited = true;
+	} else {
+		$tobelimited = false;
 	}
 	
 	if($r){
@@ -280,16 +280,16 @@ if($action=="insert"){
 		// TO ASK: Farsi spiegare cosa succede nel ciclo while	 
 		while($row = mysqli_fetch_assoc($r)) {
             $idTocheck=$row["organization"].":".$row["name"];
-            if (
-                ($loggedrole=='RootAdmin') ||
-                ($loggedrole=='ToolAdmin') ||
-                (($row["organization"]==$organization) && (($row["visibility"]=='public' || (isset($result["delegation"][$idTocheck])&& $result["delegation"][$idTocheck]["kind"]=="anonymous")))) ||
+            if(
+                ($loggedrole=='RootAdmin') || // si possiede il ruolo di RootAdmin
+                ($loggedrole=='ToolAdmin') || // si possiede il ruolo di RootAdmin
+                (($row["organization"] == $organization) && (($row["visibility"] == 'public' || (isset($result["delegation"][$idTocheck]) && $result["delegation"][$idTocheck]["kind"] =="anonymous")))) ||
                 (isset($result["delegation"][$idTocheck])&& $result["delegation"][$idTocheck]["kind"]!="anonymous") ||
                 (isset($result["keys"][$idTocheck]) && $result["keys"][$idTocheck]["owner"]==$username)    
-               ){
-            	$selectedrows++;
-		        if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))
-				{
+              ){
+				
+				$selectedrows++;
+		        if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset))){
 			     
                     if (
 						((isset($result["keys"][$idTocheck]))&&($loggedrole!=='RootAdmin')&&($loggedrole!=='ToolAdmin')) ||
@@ -322,9 +322,11 @@ if($action=="insert"){
 					}
 					
 					$row["owner"]='';
-                    if(isset($result["keys"][$idTocheck]))
+					
+					if(isset($result["keys"][$idTocheck]))
                         $row["owner"]=$result["keys"][$idTocheck]["owner"];
-                    array_push($data, $row);
+
+					array_push($data, $row);
                 }
             }
 		}
@@ -337,17 +339,15 @@ if($action=="insert"){
 	}
 
 	my_log($output);
-	mysqli_close($link); 
-}
-else if($action == "get_subset_contextbroker")
-{
+	mysqli_close($link);
+
+} else if($action == "get_subset_contextbroker") {
 	//Sara511 - For testing purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
 	
-     if (!empty($accessToken)) 
-	{
+    if (!empty($accessToken)) {
         getOwnerShipObject($accessToken, "BrokerID", $result); 
         getDelegatedObject($accessToken, $username, $result);
 	}
@@ -355,124 +355,92 @@ else if($action == "get_subset_contextbroker")
     $selection= json_decode($_REQUEST['select']);
 	$a=0;
 	$cond="";
-	if (count($selection)!=0)
-	{
+	if (count($selection)!=0){
 	    
-		while ($a < count($selection))
-		{
+		while ($a < count($selection)){
 			 $sel = $selection[$a];
 			 $cond .= " (name = '" . $sel->name . "' AND organization = '".$sel->organization."') ";
 			 if ($a != count($selection)-1)  $cond .= " OR ";
 			 $a++;
-		 }
+		}
 		
 		$q = "SELECT DISTINCT * FROM contextbroker WHERE " . $cond;
-	}
-    else
+	}else
 	    $q = "SELECT DISTINCT * FROM contextbroker";
 	
     $r = mysqli_query($link, $q);
 	$selectedrows=-1;
     
-	if($_REQUEST["length"] != -1)
-	{
-			$start= $_REQUEST['start'];
-			$offset=$_REQUEST['length'];
-			$tobelimited=true;
-	}
-	else
-	{
+	if($_REQUEST["length"] != -1){
+		$start= $_REQUEST['start'];
+		$offset=$_REQUEST['length'];
+		$tobelimited=true;
+	}else{
 		$tobelimited=false;
 	}
 	
 	
-	if($r) 
-	{
-		
-	 $data = array();
-     while($row = mysqli_fetch_assoc($r)) 
-     {
-	   
-         $selectedrows++;       
-         if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))		
-         {  
-             $idTocheck=$row["organization"].":".$row["name"];       
-             if (((isset($result["keys"][$idTocheck]))
-                  &&($loggedrole!=='RootAdmin')
-                  &&($loggedrole!=='ToolAdmin'))
-                 ||
-                 ((isset($result["keys"][$idTocheck]))
-                  && 
-                  ($result["keys"][$idTocheck]["owner"]==$username) 
-                  && (($loggedrole==='RootAdmin')
-                      ||($loggedrole==='ToolAdmin'))))
-                               	
-             {
-                 //it's mine                      
-                 if ($row["visibility"]=="public")                      
-                 { 
-                     $row["visibility"]= "MyOwnPublic";  
-                 }
-                 else
-                 {
-                     if (isset($result["delegation"][$idTocheck])   
-                         && $result["delegation"][$idTocheck]["kind"]=="anonymous")    
-                         $row["visibility"]= "MyOwnPublic";
-	                     
-                      else 
-                          $row["visibility"]="MyOwnPrivate";
+	if($r){
+		$data = array();
+
+		while($row = mysqli_fetch_assoc($r)) {
+			$selectedrows++;
+			
+			if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset))) {  
+            	$idTocheck=$row["organization"].":".$row["name"];       
+				 
+				if (((isset($result["keys"][$idTocheck])) &&
+					($loggedrole!=='RootAdmin') && 
+					($loggedrole!=='ToolAdmin')) ||
+					((isset($result["keys"][$idTocheck])) && 
+					($result["keys"][$idTocheck]["owner"]==$username) &&
+					(($loggedrole==='RootAdmin') || 
+					($loggedrole==='ToolAdmin')))) {
+					 
+					//it's mine                      
+                 	if ($row["visibility"]=="public") { 
+						$row["visibility"]= "MyOwnPublic";  
+					} else {
+					if (isset($result["delegation"][$idTocheck]) && $result["delegation"][$idTocheck]["kind"]=="anonymous")    
+                        $row["visibility"]= "MyOwnPublic"; 
+                    else 
+						$row["visibility"]="MyOwnPrivate";
+					}
+	 			} else {
 					
-                 }
-	 				
-             }
-                               
-             else
-                               
-             {//it's not mine
-             
-                                   
-                 if (isset($result["delegation"][$idTocheck])                         
-                     && ($result["delegation"][$idTocheck]["kind"]=="anonymous"))
-                                       
-                 {//it's delegated as public
-                     $row["visibility"]='public';                     
-                 }                     
-                 else if (isset($result["delegation"][$idTocheck]))                     
-                 {//it's delegated personally                               
-                     $row["visibility"]='delegated';              
-                 }             
-                                
-                 else                 
-                 {                    
-                     $row["visibility"]= $row["visibility"];           
-                 }
+					//it's not mine
+             		if (isset($result["delegation"][$idTocheck]) && ($result["delegation"][$idTocheck]["kind"]=="anonymous")) {
+						//it's delegated as public
+						$row["visibility"]='public';                     
+                 	} else if (isset($result["delegation"][$idTocheck])) {
+						//it's delegated personally                               
+						$row["visibility"]='delegated';
+					} else {                    
+						$row["visibility"]= $row["visibility"];
+					}
 				}
-                    
-             array_push($data, $row);
+				
+				array_push($data, $row);
 			}
 				
-         $output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_subset_contextbroker \r\n", 'ok');
-		
-         logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
-
-	 }
-	}
-	else{
+        	$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_subset_contextbroker \r\n", 'ok');
+			logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
+		}
+	} else {
 		
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 		logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
-	}    
+	}
+	    
 	my_log($output);
 	mysqli_close($link);
-}
-else if($action == "get_all_contextbroker_latlong")
-{
+
+} else if($action == "get_all_contextbroker_latlong") {
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
     $username = mysqli_real_escape_string($link, $_REQUEST['username']);
     
-     if (!empty($accessToken)) 
-	{
+    if (!empty($accessToken)) {
         getOwnerShipObject($accessToken, "BrokerID", $result); 
         getDelegatedObject($accessToken, $username, $result);
 	}
@@ -480,49 +448,38 @@ else if($action == "get_all_contextbroker_latlong")
     $q = "SELECT name, latitude, longitude, visibility, organization, accesslink FROM contextbroker;";
 	$r = mysqli_query($link, $q);
 	
-	if($r) 
-	{
-	 $result['status'] = 'ok';
-	 $result['content'] = array();
-     $result["log"].='\n\r action: get_all_contextbroker_latlong ok. ' . $q;
+	if($r) {
+		$result['status'] = 'ok';
+		$result['content'] = array();
+    	$result["log"].='\n\r action: get_all_contextbroker_latlong ok. ' . $q;
+		
+		while($row = mysqli_fetch_assoc($r)) {
+        	$idTocheck=$row["organization"].":".$row["name"];    
+			 
+			if (($loggedrole=='RootAdmin') ||
+				($loggedrole=='ToolAdmin') || 
+				(
+					($row["organization"]==$organization) && 
+					(($row["visibility"]=='public' || 
+					(isset($result["delegation"][$idTocheck]) && 
+					$result["delegation"][$idTocheck]["kind"]=="anonymous")))
+				) ||
+                (isset($result["delegation"][$idTocheck])&& $result["delegation"][$idTocheck]["kind"]!="anonymous") ||
+                (isset($result["keys"][$idTocheck]) && $result["keys"][$idTocheck]["owner"]==$username))
+		 
+				array_push($result['content'], $row);
+	 	}
+    } else {
+		$result['status'] = 'ko';
+		$result['msg'] = 'Error: errors in reading data about devices. <br/>' . mysqli_error($link);
+		$result['log'] = '\n\r Error: errors in reading data about devices. <br/>' . mysqli_error($link);				   
+	}
 
-	 while($row = mysqli_fetch_assoc($r)) 
-     {
-         $idTocheck=$row["organization"].":".$row["name"];    
-         if (($loggedrole=='RootAdmin')
-                 ||($loggedrole=='ToolAdmin') 
-                 || 
-             (
-                    ($row["organization"]==$organization)&&
-                    (   
-                        ($row["visibility"]=='public'  
-                         ||
-                         (isset($result["delegation"][$idTocheck])&& $result["delegation"][$idTocheck]["kind"]=="anonymous")
-                        )
-                    )
-                ) 
-                ||
-                    (isset($result["delegation"][$idTocheck])&& $result["delegation"][$idTocheck]["kind"]!="anonymous")
-                ||
-                    (isset($result["keys"][$idTocheck]) && $result["keys"][$idTocheck]["owner"]==$username)
-                    
-               )
-         array_push($result['content'], $row);
-	 }
-    }
-	else{
-	   $result['status'] = 'ko';
-	   $result['msg'] = 'Error: errors in reading data about devices. <br/>' .
-						   mysqli_error($link);
-	   $result['log'] = '\n\r Error: errors in reading data about devices. <br/>' .
-						   mysqli_error($link);				   
-	}    
 	my_log($result);
 	mysqli_close($link);
-}
 
-else if($action == "get_delegations")
-{
+} else if($action == "get_delegations") {
+
        $accesslink =  mysqli_real_escape_string($link, $_REQUEST['accesslink']);
        $user = mysqli_real_escape_string($link, $_REQUEST['user']);
        $object = mysqli_real_escape_string($link, $_REQUEST['object']);

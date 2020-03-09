@@ -77,8 +77,6 @@ function showEditCbModal()
     const observer = new MutationObserver(callback);
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
-
-     
 }
 
 /* 

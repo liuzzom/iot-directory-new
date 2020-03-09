@@ -50,52 +50,47 @@ function checkRegisterOwnerShipDevice($token, &$result) {
 } 
 
 function checkRegisterOwnerShipObject($token,$object, &$result) {
-        try
-        {
-                $url= $GLOBALS["ownershipURI"] . "ownership-api/v1/limits/?type=".$object."&accessToken=" . $token;
-                $options = array(
-                          'http' => array(
-                                          'header' => "Content-Type: application/json;charset=utf-8",
-                                          'header' => "Access-Control-Allow-Origin: *",
-                                          'method' => 'GET',
-                                         'ignore_errors' => true,
-                                          'timeout' => 30
-                          )
-                );
-                $context = stream_context_create($options);
-                $local_result = @file_get_contents($url, false, $context);
-                if(strpos($http_response_header[0], '200') !== false)
-                {
-                       if ((json_decode($local_result)->limits[0]->current)<(json_decode($local_result)->limits[0]->limit))
-                       {
-                               $result["status"]='ok';
-                               $result["msg"] .= "\n registration is possible";
-                               $result["log"] .= "\n registration is possible";
-                       }
-                       else
-                       {
-                               $result["status"]='ko';
-                                $result["error_msg"] .= "The registration is NOT possible. Reached limit of IoT Devices. ";
-                                $result["msg"] .= "\n The registration is NOT possible. Reached limit of IoT Devices (".json_decode($local_result)->limits[0]->limit.")";
-                                $result["log"] .= "\n The registration is NOT possible. Reached limit of IoT Devices (".json_decode($local_result)->limits[0]->limit.")";
+    try {
+		
+		$url= $GLOBALS["ownershipURI"] . "ownership-api/v1/limits/?type=".$object."&accessToken=" . $token;
+        $options = array(
+			'http' => array(
+            'header' => "Content-Type: application/json;charset=utf-8",
+            'header' => "Access-Control-Allow-Origin: *",
+            'method' => 'GET',
+            'ignore_errors' => true,
+            'timeout' => 30
+			)
+		);
+        $context = stream_context_create($options);
+        $local_result = @file_get_contents($url, false, $context);
+		
+		if (strpos($http_response_header[0], '200') !== false) {
+            if ((json_decode($local_result)->limits[0]->current)<(json_decode($local_result)->limits[0]->limit)) {
+				$result["status"]='ok';
+                $result["msg"] .= "\n registration is possible";
+                $result["log"] .= "\n registration is possible";
+            } else {
+                $result["status"]='ko';
+                $result["error_msg"] .= "The registration is NOT possible. Reached limit of IoT Devices. ";
+                $result["msg"] .= "\n The registration is NOT possible. Reached limit of IoT Devices (".json_decode($local_result)->limits[0]->limit.")";
+				$result["log"] .= "\n The registration is NOT possible. Reached limit of IoT Devices (".json_decode($local_result)->limits[0]->limit.")";
+			}
 
-                       }
-                }
-                else
-                {
-                        $result["status"]='ko';
-                        $result["error_msg"] .= "Error returned in checking the ownership. ";
-                        $result["msg"] .= "\n Error returned in checkRegisterOwnership" . $local_result;
-                        $result["log"] .= "\n Error returner in checkRegisterOwnership". $local_result;
-                }
-        }
-        catch (Exception $ex)
-        {
-               $result["status"]='ko';
-               $result["error_msg"] .= 'General error in checking the ownership. ';
-               $result["msg"] .= '\n general error in checkRegisterOwnership';
-               $result["log"] .= '\n general error in checkRegisterOwnership' . $ex;
-        }
+        } else {
+            $result["status"]='ko';
+            $result["error_msg"] .= "Error returned in checking the ownership. ";
+            $result["msg"] .= "\n Error returned in checkRegisterOwnership" . $local_result;
+            $result["log"] .= "\n Error returner in checkRegisterOwnership". $local_result;
+				
+		}
+    } catch (Exception $ex) {
+			   
+		$result["status"]='ko';
+        $result["error_msg"] .= 'General error in checking the ownership. ';
+        $result["msg"] .= '\n general error in checkRegisterOwnership';
+        $result["log"] .= '\n general error in checkRegisterOwnership' . $ex;
+    }
 } 
 
 function insert_device($link,$id,$devicetype,$contextbroker,$kind,$protocol,$format,$macaddress,$model,
