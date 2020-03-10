@@ -1,0 +1,30 @@
+2020-03-10 10:48:54am: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'testName' and organization='Organization';
+2020-03-10 10:48:54am: 
+ action=get_all_contextbroker 
+
+2020-03-10 10:49:31am: 
+ Error: An error occurred when registering the context broker: accessToken is empty
+2020-03-10 10:49:36am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-10 10:49:37am: 
+ action=get_all_contextbroker 
+
+2020-03-10 10:49:37am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-10 10:49:37am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-10 10:49:43am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-10 10:49:44am: 
+ action=get_all_contextbroker 
+
+2020-03-10 10:49:44am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-10 10:49:44am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-10 10:51:03am: 
+ registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('testName', 'testIp', '', 'ngsi w/MultiService', '', '8080', '43.71454', '11.19919', '', '', 'testIp','', '', 'private', '', 'Organization') services: pippo topolino
+ the registration of the ownership succeded{"elementId":"Organization:testName","elementName":"Organization:testName","elementUrl":"testIp","elementType":"BrokerID"}
+2020-03-10 10:51:04am: 
+ action=get_all_contextbroker 
+

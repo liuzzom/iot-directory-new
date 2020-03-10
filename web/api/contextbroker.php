@@ -110,47 +110,49 @@ if($action=="insert"){
 			// queries execution
         	$q = "INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) " .
 		 		"VALUES('$name', '$ip', '$kind', '$protocol', '$version', '$port', '$latitude', '$longitude', '$login', '$password', '$accesslink','$accessport', '$path', '$visibility', '$sha', '$organization')";
-			if(!mysqli_query($link, $q)) $success = FALSE;
+			if (!mysqli_query($link, $q)) $success = FALSE;
 			
-			if($protocol == 'ngsi w/MultiService'){
+			if ($protocol == 'ngsi w/MultiService'){
 				for($i = 0; $i < count($services); $i++){
 					$service = $services[$i];
 					$qs = "INSERT INTO services(name, broker_name) VALUES ('$service', '$name')";
 					if(!mysqli_query($link, $qs)) $success = FALSE;
 				}	
 			}
-    	}
 
-		if($success){
-			mysqli_commit($link);
-			logAction($link,$username,'contextbroker','insert',$name,$organization,'insertion CB into database','success');
-
-        	$result["status"]='ok';
-			$result["log"].='\n\r action: insert ok. ' . $q .  ' services: ' . implode(' ', $services);
-		    $ownmsg = array();
-			$ownmsg["elementId"]=$organization . ':' . $name; // I am using the new identifier
-			$ownmsg["elementName"]=$organization . ':' . $name;				    
-			$ownmsg["elementUrl"]=$accesslink;
-            $ownmsg["elementType"]="BrokerID";
+			if ($success){
+				// successful transaction
+				mysqli_commit($link);
+				logAction($link,$username,'contextbroker','insert',$name,$organization,'insertion CB into database','success');
+	
+				$result["status"]='ok';
+				$result["log"].='\n\r action: insert ok. ' . $q .  ' services: ' . implode(' ', $services);
+				$ownmsg = array();
+				$ownmsg["elementId"]=$organization . ':' . $name; // I am using the new identifier
+				$ownmsg["elementName"]=$organization . ':' . $name;				    
+				$ownmsg["elementUrl"]=$accesslink;
+				$ownmsg["elementType"]="BrokerID";
+				
 			
-        
-            registerOwnerShipObject($ownmsg, $accessToken, 'BrokerID',$result);
-            if($result["status"]=='ok'){
-                logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','success');
-            }else{
-            	logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','failure');
-            }
-		}else{
-			mysqli_rollback($link);
-		 	$result["status"]='ko';
-			$result["error_msg"] = "Error occurred when registering the context broker $name. " ;
-			$result["msg"] = "Error: An error occurred when registering the context broker $name. <br/>" .
-				mysqli_error($link) . 
-				' Please enter again the context broker';
-			$result["log"] = "\n\r Error: An error occurred when registering the context broker $name. <br/>" .
-				mysqli_error($link);	
-			logAction($link,$username,'contextbroker','insert',$name,$organization,'','failure');						   
-		}
+				registerOwnerShipObject($ownmsg, $accessToken, 'BrokerID',$result);
+				if ($result["status"]=='ok'){
+					logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','success');
+				} else {
+					logAction($link,$username,'contextbroker','insert',$name,$organization,'Registering the ownership of CB','failure');
+				}
+			} else {
+				// unsuccessful transaction
+				mysqli_rollback($link);
+				 $result["status"]='ko';
+				$result["error_msg"] = "Error occurred when registering the context broker $name. " ;
+				$result["msg"] = "Error: An error occurred when registering the context broker $name. <br/>" .
+					mysqli_error($link) . 
+					' Please enter again the context broker';
+				$result["log"] = "\n\r Error: An error occurred when registering the context broker $name. <br/>" .
+					mysqli_error($link);	
+				logAction($link,$username,'contextbroker','insert',$name,$organization,'','failure');						   
+			}
+    	}
  	}else{
     	$result["status"]='ko';
      	$result["error_msg"] = "Error occurred when registering the context broker: accessToken is empty. ";
