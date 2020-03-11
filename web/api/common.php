@@ -2404,8 +2404,15 @@ function logAction($link,$accessed_by,$target_entity_type,$access_type,$entity_n
 	 return $result["msg"];
 }
 //Sara2210 end
-  
 
+/* Author: Antonino Mauro Liuzzo
+ * log a message in /home/debian/iot-directory/log/dev_log.log
+ * 
+ * WARNING: use it ONLY for development purpouse
+ */
+function dev_log($message){
+	error_log(date("Y-m-d h:i:s: ") . $message . "\n", 3, "/home/debian/iot-directory/log/dev_log.log");
+}
 
   
 ?>

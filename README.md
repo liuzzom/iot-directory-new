@@ -17,10 +17,15 @@ front-end directory: management </br>
 back-end directory: api
 
 TODO:
-- Vedere come funzionano i get e come modificarli -> chiedere a esperto:
-    - get_all_contextbroker
-    - get_subset_contextbroker
-    - get_all_contextbroker_latlong
+- get_all_contextbroker:
+    - Chiedere a Difino come posso risolvere il bug di services = undefined per CB senza multiServices e questione encoding
+    - Recupero delle info
+- get_subset_contextbroker:
+    - Lato Server
+    - Lato Client
+- get_all_contextbroker_latlong:
+    - Lato Server
+    - Lato Client
 - ~~Add Broker~~:
     - ~~Inserimento elementi di interfaccia~~
     - ~~Controllo sui valori inseriti e feedback all'utente~~

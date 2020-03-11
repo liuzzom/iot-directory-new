@@ -328,6 +328,32 @@ if($action=="insert"){
 					if(isset($result["keys"][$idTocheck]))
                         $row["owner"]=$result["keys"][$idTocheck]["owner"];
 
+					// Author: Antonino Mauro Liuzzo
+					if ($row["protocol"] == "ngsi w/MultiService") {
+						// the CB supports MultiServices
+						$brokerName = $row["name"];
+						$servicesQueryString = "SELECT * FROM services WHERE broker_name = '$brokerName'";
+						
+						// query to services table
+						$sqr = mysqli_query($link, $servicesQueryString);
+
+						if ($sqr) {
+							
+							dev_log($servicesQueryString . " OK");
+							$row["services"] = array();
+
+							while ($servicesRow = mysqli_fetch_assoc($sqr)) {
+								array_push($row["services"], $servicesRow["name"]);
+							}
+						} else {
+							
+							dev_log($servicesQueryString . " ERROR");
+							$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
+							logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
+						}
+					}
+
+					dev_log(json_encode($row) . "\n");
 					array_push($data, $row);
                 }
             }

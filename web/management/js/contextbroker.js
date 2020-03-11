@@ -189,7 +189,7 @@ function fetch_data(destroyOld, selected=null){
         	{"name": "created", "data": function ( row, type, val, meta ) {
 				return row.created;
 			} },			
-								 
+		
 			{
             	data: null,
 				"name": "edit",
@@ -216,7 +216,8 @@ function fetch_data(destroyOld, selected=null){
 					'data-accessport="'+d.accessport+'" ' +
 					'data-apikey="'+d.apikey+'" ' +
 					'data-path="'+d.path+'" ' +
-					'data-sha="'+d.sha+'">Edit</button>';	
+					'data-sha="'+d.sha+'"' + 
+					'data-services="'+d.services+'">Edit</button>';	
 				}
 			},
 		
@@ -708,7 +709,6 @@ $(document).ready(function () {
 			$("#editContextBrokerModalUpdating").hide();
 			$("#editCBModalLoading").hide();
 			$("#editContextBrokerModalBody").show();
-			//$('#editContextBrokerModalBody div.modalCell').show();
 			$("#editContextBrokerModalFooter").show();
             $("#editContextBrokerCancelBtn").show();
             $("#editContextBrokerConfirmBtn").show();
@@ -722,25 +722,6 @@ $(document).ready(function () {
             $('#editContextBrokerKoIcon').hide();
             $('#editContextBrokerOkBtn').hide();
 			
-        /*$("#editContextBrokerModalUpdating").hide();
-		$("#editCBModalLoading").hide();
-		$("#editContextBrokerModalBody").show();
-		//$('#editContextBrokerModalBody div.modalCell').show();
-        $("#editContextBrokerModalFooter").show();
-        $("#editCBModalLabel").html("Edit Context Broker - " + $(this).attr("data-name"));
-        $("#editContextBrokerModalTabs").show();
-		$('#editContextBrokerModal div.modalCell').show();
-		$("#editContextBrokerCancelBtn").show();
-		$("#editContextBrokerConfirmBtn").show();
-		$('#editContextBrokerLoadingMsg').hide();
-		$('#editContextBrokerLoadingIcon').hide();
-        $('#editContextBrokerOkMsg').hide();		
-        $('#editContextBrokerOkIcon').hide();
-        $('#editContextBrokerKoMsg').hide();
-        $('#editContextBrokerKoIcon').hide();
-        $('#editContextBrokerOkBtn').hide();
-        $("#editContextBrokerModal").modal('show');*/
-        
 		
 			$("#inputNameCBM").val($(this).attr("data-name"));
 			$("#inputOrganizationCBM").val($(this).attr("data-organization"));
@@ -761,70 +742,24 @@ $(document).ready(function () {
 			$("#inputAccessPortCBM").val($(this).attr("data-accessport"));
 			$("#inputApiKeyCBM").val($(this).attr("data-apikey"));
 			$("#inputSHACBM").val($(this).attr("data-sha"));
-					showEditCbModal();
-			
 
-			/*
+			if ($(this).attr("data-protocol") == "ngsi w/MultiService") {
+				// console.log($(this).attr("data-services"));
 
-		$.ajax({
-			url: "../api/contextbroker.php",
-			data: {
-					action: "get_contextbroker", 
-					name: $(this).parents('tr').attr("data-name")
-					},
-			type: "GET",
-			async: true,
-			dataType: 'json',
-			success: function (data) 
-			{
-			  
-			   if(data.result === 'ok')
-			{
-				
-			   $("#inputNameCBM").val($(this).parents('tr').attr("data-name"));
-			   $("#inputIpCBM").val($(this).parents('tr').attr("data-ip"));
-			   $("#inputPortCBM").val($(this).parents('tr').attr("data-port"));
-			   $("#selectProtocolCBM").val($(this).parents('tr').attr("data-protocol"));
-			   $("#inputUriCBM").val($(this).parents('tr').attr("data-uri"));
-			   $("#createdDateCBM").val($(this).parents('tr').attr("data-created"));
-			   $("#inputLatitudeCBM").val($(this).parents('tr').attr("data-latitude"));
-			   $("#inputLongitudeCBM").val($(this).parents('tr').attr("data-longitude"));
-			   $("#inputLoginCBM").val($(this).parents('tr').attr("data-login"));
-			   $("#inputPasswordCBM").val($(this).parents('tr').attr("data-password"));
-				
-			
-			
-				$('#inputNameCBM').val(data.contextBrokerData.name);
-				$('#inputIpCBM').val(data.contextBrokerData.ip);
-				$('#selectProtocolCBM').val(data.contextBrokerData.protocol);
-				$('#inputUriCBM').val(data.contextBrokerData.uri);
-				$('#createdDateCBM').val(data.contextBrokerData.created);
-				$('#inputLatitudeCBM').val(data.contextBrokerData.latitude);
-				$('#inputLongitudeCBM').val(data.contextBrokerData.longitude);
-				$('#inputLoginCBM').val(data.contextBrokerData.login);
-				$('#inputPasswordCBM').val(data.contextBrokerData.password);
-			
-				$('#inputNameCBM').val(inputNameCBM);
-				$('#editContextBrokerModal').modal('show');
-			}
-			else
-			{
-				console.log("Error retrieving  data");
-				console.log(JSON.stringify(data));
-			  //  alert("Error retrieving  data");
+				var services = $(this).attr("data-services").split(",");
+				console.log(services);
+
+				// TO FIX
+				$("#editInputServiceCB").val(services[0]);
+
+				for(let i = 1; i < services.length; i++){
+					
+				}
+
 			}
 
-
-			  // showEditUserModalBody();
-			},
-			error: function (data)
-			{
-			   console.log("KO");
-			   console.log(data);
-			}
-		});
-		
-		*/
+			showEditCbModal();
+			
 	});
 
 	
