@@ -721,7 +721,6 @@ $(document).ready(function () {
             $('#editContextBrokerKoMsg').hide();
             $('#editContextBrokerKoIcon').hide();
             $('#editContextBrokerOkBtn').hide();
-			
 		
 			$("#inputNameCBM").val($(this).attr("data-name"));
 			$("#inputOrganizationCBM").val($(this).attr("data-organization"));
@@ -742,6 +741,8 @@ $(document).ready(function () {
 			$("#inputAccessPortCBM").val($(this).attr("data-accessport"));
 			$("#inputApiKeyCBM").val($(this).attr("data-apikey"));
 			$("#inputSHACBM").val($(this).attr("data-sha"));
+
+			$('#editInputServiceCBMsg').append(createFirstServiceRowElem('', 'editInputServiceCB'));
 
 			showEditCbModal();
 			
@@ -949,6 +950,70 @@ $(document).ready(function () {
 	// BEGIN ADD BROKER MULTISERVICE SECTION
 	// Author: Antonino Mauro Liuzzo
 	
+	function createFirstServiceRowElem(initalValue, name){
+		if($('#editServiceTenantTabCB').find('#editServiceCBRow1').length !== 0){
+			console.log("element already exixts");
+			return;
+		}
+
+		// creation of the components of a row element
+		var row = document.createElement("div");
+		$(row).attr('class', 'row');
+		$(row).attr('id', 'editServiceCBRow1');
+
+		var modalCell1 = document.createElement("div");
+		$(modalCell1).attr('class', 'col-xs-12 col-md-8 modalCell');
+
+		var modalFieldCnt1 = document.createElement("div");
+		$(modalFieldCnt1).attr('class', 'modalFieldCnt');
+
+		var modalInputTxt = document.createElement("input");
+		$(modalInputTxt).attr('type', 'text');
+		$(modalInputTxt).attr('class', 'modalInputTxt ' + name);
+		$(modalInputTxt).attr('name', name);
+		$(modalInputTxt).attr('name', name);
+		$(modalInputTxt).attr('onkeyup', 'checkStrangeCharacters(this)');
+		$(modalInputTxt).val(initalValue);
+
+		var modalFieldLabelCnt = document.createElement("div");
+		$(modalFieldLabelCnt).attr('class', 'modalFieldLabelCnt');
+		$(modalFieldLabelCnt).text("Service/Tenant");
+
+		var modalCell2 = document.createElement("div");
+		$(modalCell2).attr('class', 'col-xs-12 col-md-4 modalCell');
+
+		var modalFieldCnt2 = document.createElement("div");
+		$(modalFieldCnt2).attr('class', 'modalFieldCnt');
+
+		var rmButton = document.createElement("button");
+		$(rmButton).attr('type', 'text');
+		$(rmButton).attr('id', 'editAddNewCBServiceBtn');
+		$(rmButton).attr('class', 'btn confirmBtn');
+		$(rmButton).text("Add Service/Tenant");
+	
+		rmButton.addEventListener('click', function(){
+			// get the service/tenant tab
+			var stTab = $('#editServiceTenantTabCB').last();
+			// create a new row element
+			var row = createServiceRowElem('', 'editInputServiceCB');
+			// append of the row element
+			stTab.append(row);
+		});
+
+		// row element composition
+		$(row).append(modalCell1);
+		$(modalCell1).append(modalFieldCnt1);
+		$(modalFieldCnt1).append(modalInputTxt);
+		$(modalCell1).append(modalFieldLabelCnt);
+		$(row).append(modalCell2)
+		$(modalCell2).append(modalFieldCnt2);
+		$(modalFieldCnt2).append(rmButton);
+
+		console.log("first row created");
+		return row;
+
+	}
+
 	function createServiceRowElem(initalValue, name){
 		// creation of the components of a row element
 		var row = document.createElement("div");
@@ -995,7 +1060,7 @@ $(document).ready(function () {
 		$(modalCell2).append(modalFieldCnt2);
 		$(modalFieldCnt2).append(rmButton);
 
-		return row
+		return row;
 	}
 
 	/**
@@ -1064,6 +1129,7 @@ $(document).ready(function () {
 	/**
 	 * Add new Service/Tenant Text Field when the "Add Service/Tenant" is pressed
 	 */
+	/* Replaced in Button creation
 	$('#editAddNewCBServiceBtn').click(function(){
 		// get the service/tenant tab
 		var stTab = $('#editServiceTenantTabCB').last();
@@ -1072,6 +1138,7 @@ $(document).ready(function () {
 		// append of the row element
 		stTab.append(row);
 	});
+	*/
 
 	/**
 	 * Trigger the MultiService tab visibility
@@ -1109,11 +1176,12 @@ $(document).ready(function () {
 	$('#selectProtocolCBM').change(editServicesVisibilityCheck);
 	$('#contextBrokerTable').on('click', '.editDashBtn', editServicesVisibilityCheck);
 
-	// Handle Edit button
-    $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbServices);
-    $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbConditions);
+	// Handle Edit button -> TO FIX
+    // $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbServices);
+    // $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbConditions);
 
 	function restoreServicesValuesEdit(servicesArray){
+		console.log("restore");
 		// restore the first row
 		$('#editServiceCBRow1').find('.modalInputTxt').val(servicesArray[0]);
 

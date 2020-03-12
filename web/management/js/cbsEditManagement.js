@@ -47,6 +47,7 @@ function showEditCbModal()
 	//checkEditCbLogin();
 	//checkEditCbpassword();
 
+    /* TO FIX
     // Author: Antonino Mauro Liuzzo
 
     // check CB service values
@@ -77,6 +78,7 @@ function showEditCbModal()
     const observer = new MutationObserver(callback);
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
+    */
 }
 
 /* 
@@ -298,7 +300,7 @@ function checkEditCbConditions()
     }
 }
 
-// Author: Antonino Mauro Liuzzo
+// Author: Antonino Mauro Liuzzo -> TO FIX
 
 function checkEditCbServices(){
     // feedback message to the user

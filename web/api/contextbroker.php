@@ -198,11 +198,13 @@ if($action=="insert"){
 	$q = "UPDATE contextbroker SET name = '$name', kind = '$kind', ip = '$ip', port = '$port', protocol = '$protocol', version = '$version', latitude = '$latitude', longitude = '$longitude', login = '$login', password = '$password', accesslink = '$accesslink', accessport = '$accessport', path = '$path', visibility = '$visibility', sha = '$sha', organization='$organization' WHERE name = '$name' and organization='$organization';";
 	if (!mysqli_query($link, $q)) $success = FALSE;
 
+	// delete old services
+	$qrs = "DELETE FROM services WHERE broker_name = '$name'";
+	if (!mysqli_query($link, $qrs)) $success = FALSE;
+
 	if ($protocol == 'ngsi w/MultiService') {
 
-		$qrs = "DELETE FROM services WHERE broker_name = '$name'";
-		if (!mysqli_query($link, $qrs)) $success = FALSE;
-
+		// insert new services
 		for($i = 0; $i < count($services); $i++){
 			$service = $services[$i];
 			$qs = "INSERT INTO services(name, broker_name) VALUES ('$service', '$name')";
