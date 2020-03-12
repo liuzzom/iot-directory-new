@@ -184,10 +184,37 @@ if($action=="insert"){
 	$obj_organization = mysqli_real_escape_string($link, $_REQUEST['obj_organization']);
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	
-	$q = "UPDATE contextbroker SET name = '$name', kind = '$kind', ip = '$ip', port = '$port', protocol = '$protocol', version = '$version', latitude = '$latitude', longitude = '$longitude', login = '$login', password = '$password', accesslink = '$accesslink', accessport = '$accessport', path = '$path', visibility = '$visibility', sha = '$sha', organization='$organization' WHERE name = '$name' and organization='$organization';";
-	$r = mysqli_query($link, $q);
+	// Author: Antonino Mauro Liuzzo
+	$services = json_decode($_REQUEST['services']);
+	for($i = 0; $i < count($services); $i++){
+		$services[$i] = mysqli_real_escape_string($link, $services[$i]);
+	}
+	dev_log($_REQUEST['services']);
 
-	if($r){
+	// begin transaction
+	mysqli_autocommit($link, FALSE);
+	$success = TRUE;
+
+	$q = "UPDATE contextbroker SET name = '$name', kind = '$kind', ip = '$ip', port = '$port', protocol = '$protocol', version = '$version', latitude = '$latitude', longitude = '$longitude', login = '$login', password = '$password', accesslink = '$accesslink', accessport = '$accessport', path = '$path', visibility = '$visibility', sha = '$sha', organization='$organization' WHERE name = '$name' and organization='$organization';";
+	if (!mysqli_query($link, $q)) $success = FALSE;
+
+	if ($protocol == 'ngsi w/MultiService') {
+
+		$qrs = "DELETE FROM services WHERE broker_name = '$name'";
+		if (!mysqli_query($link, $qrs)) $success = FALSE;
+
+		for($i = 0; $i < count($services); $i++){
+			$service = $services[$i];
+			$qs = "INSERT INTO services(name, broker_name) VALUES ('$service', '$name')";
+			if(!mysqli_query($link, $qs)) $success = FALSE;
+		}	
+	}
+
+	if($success){
+
+		// successful transaction
+		mysqli_commit($link);
+
         $ownmsg = array();
         $ownmsg["elementId"]=$obj_organization . ':' . $name; // I am using the new identifier	
         $ownmsg["elementName"]=$obj_organization . ':' . $name;				    
@@ -203,6 +230,10 @@ if($action=="insert"){
         	logAction($link,$username,'contextbroker','update',$name,$organization,'in register ownership','failure');
         }
 	}else{
+
+		// unsuccessful transaction
+		mysqli_rollback($link);
+
 		logAction($link,$username,'contextbroker','update',$name,$organization,'','failure');
 		
 		$result["status"]='ko';
@@ -268,7 +299,6 @@ if($action=="insert"){
 	$r = create_datatable_data($link,$_REQUEST,$q, '');
 	$selectedrows = -1;
 
-	// TO ASK: A cosa serve? Dove viene impostata $_REQUEST["length"]?
 	if($_REQUEST["length"] != -1){
 		$start = $_REQUEST['start'];
 		$offset = $_REQUEST['length'];
@@ -279,12 +309,12 @@ if($action=="insert"){
 	
 	if($r){
 		$data = array();
-		// TO ASK: Farsi spiegare cosa succede nel ciclo while	 
+
 		while($row = mysqli_fetch_assoc($r)) {
             $idTocheck=$row["organization"].":".$row["name"];
             if(
-                ($loggedrole=='RootAdmin') || // si possiede il ruolo di RootAdmin
-                ($loggedrole=='ToolAdmin') || // si possiede il ruolo di RootAdmin
+                ($loggedrole=='RootAdmin') || 
+                ($loggedrole=='ToolAdmin') || 
                 (($row["organization"] == $organization) && (($row["visibility"] == 'public' || (isset($result["delegation"][$idTocheck]) && $result["delegation"][$idTocheck]["kind"] =="anonymous")))) ||
                 (isset($result["delegation"][$idTocheck])&& $result["delegation"][$idTocheck]["kind"]!="anonymous") ||
                 (isset($result["keys"][$idTocheck]) && $result["keys"][$idTocheck]["owner"]==$username)    

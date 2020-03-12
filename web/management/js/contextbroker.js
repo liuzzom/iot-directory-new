@@ -443,7 +443,7 @@ $(document).ready(function () {
 			var servicesArr = $('input[name="inputServiceCB"]');
 			var serviceValues = [];
 			for(let i = 0; i < servicesArr.length; i++){
-				if(servicesArr[i].value) serviceValues.push(servicesArr[i].value);
+				if(servicesArr[i].value && !(serviceValues.includes(servicesArr[i].value))) serviceValues.push(servicesArr[i].value);
 			}
 			console.log(JSON.stringify(serviceValues));
 			
@@ -690,9 +690,9 @@ $(document).ready(function () {
             $("#deleteCBModalInnerDiv2").hide();
         });   
 			
-// EDIT CONTEXT BROKER  
+	// EDIT CONTEXT BROKER  
 
-		//To be modified 
+	//To be modified 
 	$('#contextBrokerTable button.editDashBtn').off('hover');
 	$('#contextBrokerTable button.editDashBtn').hover(function(){
 		$(this).css('background', '#ffcc00');
@@ -703,7 +703,7 @@ $(document).ready(function () {
 		$(this).parents('tr').find('td').eq(1).css('background', $(this).parents('td').css('background'));
 	});
 
-// Edit Context broker			
+	// Edit Context broker			
 	$('#contextBrokerTable tbody').on('click', 'button.editDashBtn', function () {
 
 			$("#editContextBrokerModalUpdating").hide();
@@ -742,21 +742,6 @@ $(document).ready(function () {
 			$("#inputAccessPortCBM").val($(this).attr("data-accessport"));
 			$("#inputApiKeyCBM").val($(this).attr("data-apikey"));
 			$("#inputSHACBM").val($(this).attr("data-sha"));
-
-			if ($(this).attr("data-protocol") == "ngsi w/MultiService") {
-				// console.log($(this).attr("data-services"));
-
-				var services = $(this).attr("data-services").split(",");
-				console.log(services);
-
-				// TO FIX
-				$("#editInputServiceCB").val(services[0]);
-
-				for(let i = 1; i < services.length; i++){
-					
-				}
-
-			}
 
 			showEditCbModal();
 			
@@ -807,6 +792,14 @@ $(document).ready(function () {
 		$('#editContextBrokerLoadingIcon').show();
 		// console.log(JSON.stringify(deviceJson));
 
+		// Author: Antonino Mauro Liuzzo
+		var servicesArr = $('input[name="editInputServiceCB"]');
+		var serviceValues = [];
+		for(let i = 0; i < servicesArr.length; i++){
+			if(servicesArr[i].value && !(serviceValues.includes(servicesArr[i].value))) serviceValues.push(servicesArr[i].value);
+		}
+		console.log(JSON.stringify(serviceValues));
+
              $.ajax({
                  url: "../api/contextbroker.php",
                  data:{
@@ -832,7 +825,9 @@ $(document).ready(function () {
 					accesslink: $('#inputAccessLinkCBM').val(),
 					accessport: $('#inputAccessPortCBM').val(),
 					apikey: $('#inputApiKeyCBM').val(),
-					sha: $('#inputSHACBM').val()
+					sha: $('#inputSHACBM').val(),
+					// Author: Antonino Mauro Liuzzo
+					services: JSON.stringify(serviceValues)
 				 
 				 },
                  type: "POST",
@@ -840,14 +835,7 @@ $(document).ready(function () {
                  success: function (data) 
                  {
                      if(data["status"] === 'ko')
-						{
-							/* $("#editContextBrokerModal").modal('hide');
-							 $("#editContextBrokerKoModalInnerDiv1").html(data["msg"]);
-							 $("#editContextBrokerKoModal").modal('show');
-							 $("#editContextBrokerModalUpdating").hide();
-							 $("#editContextBrokerModalBody").show();
-							 $("#editContextBrokerModalFooter").show();*/
-                            
+						{   
                             $('#editContextBrokerLoadingMsg').hide();
                             $('#editContextBrokerLoadingIcon').hide();
                             $('#editContextBrokerOkMsg').hide();
@@ -872,7 +860,9 @@ $(document).ready(function () {
                             $('#inputLongitudeCBM').val("");
                             $('#inputLoginCBM').val("");
                             $('#inputPasswordCBM').val("");
-                            $('#inputSHACBM').val("");         
+							$('#inputSHACBM').val("");
+							// Author: Antonino Mauro Liuzzo
+							$('input[name="editInputServiceCB"]').val("");     
 
                             $('#editContextBrokerLoadingMsg').hide();
                             $('#editContextBrokerLoadingIcon').hide();
@@ -884,30 +874,12 @@ $(document).ready(function () {
 
                             $('#contextBrokerTable').DataTable().destroy();
 				            fetch_data(true);
-                            
-                            /*$("#editContextBrokerModal").modal('hide');
-                             $("#editCBOkModalInnerDiv1").html('<h5>Context Broker successfully updated</h5>');
-                             $("#editCBOkModal").modal('show');
-                            // setTimeout(updateCBTimeout, 500);
-							setTimeout (function(){
-								// $('#contextBrokerTable').bootstrapTable("load");
-								   // buildMainTable(true);
-								   $('#contextBrokerTable').DataTable().destroy();
-									fetch_data(true);
-									location.reload();
-									}, 500);*/
                           
                      }
                  },
                  error: function (data) 
                  {
                      console.log("Ko result: " + data);
-                    /* $("#editContextBrokerModal").modal('hide');
-                     $("#editContextBrokerKoModalInnerDiv1").html(data["msg"]);
-                     $("#editContextBrokerKoModal").modal('show');
-                     $("#editContextBrokerModalUpdating").hide();
-                     $("#editContextBrokerModalBody").show();
-                     $("#editContextBrokerModalFooter").show();*/
                      
                      $('#editContextBrokerLoadingMsg').hide();
                     $('#editContextBrokerLoadingIcon').hide();
@@ -917,7 +889,7 @@ $(document).ready(function () {
                     $('#editContextBrokerKoIcon').show();
                     $('#editContextBrokerOkBtn').show();
                  }
-             });
+			 });
         });
         
     
@@ -977,7 +949,7 @@ $(document).ready(function () {
 	// BEGIN ADD BROKER MULTISERVICE SECTION
 	// Author: Antonino Mauro Liuzzo
 	
-	function createServiceRowElem(initalValue){
+	function createServiceRowElem(initalValue, name){
 		// creation of the components of a row element
 		var row = document.createElement("div");
 		$(row).attr('class', 'row');
@@ -991,8 +963,8 @@ $(document).ready(function () {
 
 		var modalInputTxt = document.createElement("input");
 		$(modalInputTxt).attr('type', 'text');
-		$(modalInputTxt).attr('class', 'modalInputTxt inputServiceCB');
-		$(modalInputTxt).attr('name', 'inputServiceCB');
+		$(modalInputTxt).attr('class', 'modalInputTxt ' + name);
+		$(modalInputTxt).attr('name', name);
 		$(modalInputTxt).attr('onkeyup', 'checkStrangeCharacters(this)');
 		$(modalInputTxt).val(initalValue);
 
@@ -1033,7 +1005,7 @@ $(document).ready(function () {
 		// get the service/tenant tab
 		var stTab = $('#serviceTenantTabCB').last();
 		// create a new row element
-		var row = createServiceRowElem('');
+		var row = createServiceRowElem('', 'inputServiceCB');
 		// append of the row element
 		stTab.append(row);
 	});
@@ -1079,7 +1051,7 @@ $(document).ready(function () {
 		// restore additional rows
 		var stTab = $('#serviceTenantTabCB').last();
 		for(let i = 1; i < servicesArray.length; i++){
-			row = createServiceRowElem(servicesArray[i]);
+			row = createServiceRowElem(servicesArray[i], 'inputServiceCB');
 			stTab.append(row);
 		}
 	}
@@ -1096,7 +1068,7 @@ $(document).ready(function () {
 		// get the service/tenant tab
 		var stTab = $('#editServiceTenantTabCB').last();
 		// create a new row element
-		var row = createServiceRowElem('');
+		var row = createServiceRowElem('', 'editInputServiceCB');
 		// append of the row element
 		stTab.append(row);
 	});
@@ -1148,7 +1120,7 @@ $(document).ready(function () {
 		// restore additional rows
 		var stTab = $('#editServiceTenantTabCB').last();
 		for(let i = 1; i < servicesArray.length; i++){
-			row = createServiceRowElem(servicesArray[i]);
+			row = createServiceRowElem(servicesArray[i], 'editInputServiceCB');
 			stTab.append(row);
 		}
 	}
