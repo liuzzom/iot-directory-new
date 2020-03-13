@@ -1198,6 +1198,9 @@ $(document).ready(function () {
 			console.log("show");
 			// show the MultiService selector
 			$('#editMultiServiceTabSelector').removeClass("hidden");
+			// add first Services row element
+			$('#editServiceTenantTabCB').append(createFirstServiceRowElem('', 'editInputServiceCB'));
+			// restore elements
 			restoreServicesValuesEdit(editOldServicesValues);
 			editOldServicesValues = [];
 		}

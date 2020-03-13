@@ -1790,3 +1790,53 @@
  action:get_all_ou. Ok, got n-entries:1
 2020-03-13 06:44:18pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 06:56:39pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 06:56:40pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 06:56:40pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 06:56:40pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 07:02:26pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 07:02:26pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 07:02:26pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 07:02:26pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 07:07:22pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 07:07:23pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 07:07:23pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 07:07:23pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 07:10:26pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 07:10:26pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 07:10:27pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 07:10:27pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 07:10:41pm: 
+ The registration is NOT possible. Reached limit of IoT Devices \n\r action: update ok. UPDATE contextbroker SET name = 'testName', kind = '', ip = 'testIp', port = '8080', protocol = 'ngsi w/MultiService', version = '', latitude = '43.71454', longitude = '11.19919', login = '', password = '', accesslink = 'testIp', accessport = '', path = '', visibility = '', sha = '', organization='Organization' WHERE name = 'testName' and organization='Organization';
+2020-03-13 07:10:41pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 07:10:45pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 07:10:46pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 07:10:46pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 07:10:46pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0

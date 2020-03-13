@@ -17,9 +17,9 @@ front-end directory: management </br>
 back-end directory: api
 
 TODO:
-- get_all_contextbroker:
-    - Chiedere a Difino come posso risolvere il bug di services = undefined per CB senza multiServices e questione encoding
-    - Recupero delle info
+- ~~get_all_contextbroker~~:
+    - ~~Lato Server~~
+    - ~~Lato Client~~
 - get_subset_contextbroker:
     - Lato Server
     - Lato Client
@@ -35,13 +35,12 @@ TODO:
     - ~~Risposta al client~~
     - ~~Relazione~~
 - Edit Broker:
-    - Inserimento elementi di interfaccia:
-        - Funzionalità save and restore valori
-    - Controllo sui valori inseriti e feedback all'utente
-    - Gestione richiesta al server
+    - ~~Inserimento elementi di interfaccia~~:
+    - ~~Controllo sui valori inseriti e feedback all'utente~~
+    - ~~Gestione richiesta al server~~
     - ~~Controlli lato server~~
     - ~~Operazioni sul DB~~
-    - Risposta al client
+    - ~~Risposta al client~~
     - Relazione
 - ~~Delete Broker~~: -> il CASCADE dovrebbe bastarre
     - ~~Gestione richiesta al server~~
