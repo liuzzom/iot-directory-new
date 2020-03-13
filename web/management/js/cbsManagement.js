@@ -70,7 +70,6 @@ function showAddCbModal()
     const config = {childList: true};
     // Callback function to execute when mutations are observed
     const callback = function() {
-        // console.log("Child");
         checkCbServices();
         checkAddCbConditions();
     };
@@ -298,7 +297,6 @@ function checkCbpassword()
 function checkAddCbConditions()
 {
     var enableButton = true;
-    // console.log(addCbConditionsArray);
     for(var key in addCbConditionsArray) 
     {
         if(addCbConditionsArray[key] === false)
@@ -321,7 +319,6 @@ function checkAddCbConditions()
 // Author: Antonino Mauro Liuzzo
 
 function checkCbServices(){
-    // console.log("checkCbServices");
 
     // feedback message to the user
     var message = null;
@@ -337,11 +334,8 @@ function checkCbServices(){
         values.push($(this).val());
     });
 
-    // console.log(values);
-
     // check if the MultiService tab is hidden
     if(isHidden){
-        // console.log("hidden")
         addCbConditionsArray['inputServicesCB'] = true;
         return;
     }else{
@@ -359,7 +353,6 @@ function checkCbServices(){
                 $("#inputServiceCBMsg").removeClass("alert alert-info");
                 $("#inputServiceCBMsg").addClass("alert alert-danger");
                 $("#inputServiceCBMsg").html(message);
-                // console.log(message);
                 break;
             }else{
                 message = 'Ok';
@@ -367,7 +360,6 @@ function checkCbServices(){
                 $("#inputServiceCBMsg").removeClass("alert alert-danger");
                 $("#inputServiceCBMsg").addClass("alert alert-info");
                 $("#inputServiceCBMsg").html(message);
-                // console.log(message);
             }
         }
     }

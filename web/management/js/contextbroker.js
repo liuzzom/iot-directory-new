@@ -742,7 +742,8 @@ $(document).ready(function () {
 			$("#inputApiKeyCBM").val($(this).attr("data-apikey"));
 			$("#inputSHACBM").val($(this).attr("data-sha"));
 
-			$('#editInputServiceCBMsg').append(createFirstServiceRowElem('', 'editInputServiceCB'));
+			// Author: Antonino Mauro Liuzzo
+			editCBSManagementButtonPressed($(this).attr("data-services"));
 
 			showEditCbModal();
 			
@@ -949,70 +950,6 @@ $(document).ready(function () {
 
 	// BEGIN ADD BROKER MULTISERVICE SECTION
 	// Author: Antonino Mauro Liuzzo
-	
-	function createFirstServiceRowElem(initalValue, name){
-		if($('#editServiceTenantTabCB').find('#editServiceCBRow1').length !== 0){
-			console.log("element already exixts");
-			return;
-		}
-
-		// creation of the components of a row element
-		var row = document.createElement("div");
-		$(row).attr('class', 'row');
-		$(row).attr('id', 'editServiceCBRow1');
-
-		var modalCell1 = document.createElement("div");
-		$(modalCell1).attr('class', 'col-xs-12 col-md-8 modalCell');
-
-		var modalFieldCnt1 = document.createElement("div");
-		$(modalFieldCnt1).attr('class', 'modalFieldCnt');
-
-		var modalInputTxt = document.createElement("input");
-		$(modalInputTxt).attr('type', 'text');
-		$(modalInputTxt).attr('class', 'modalInputTxt ' + name);
-		$(modalInputTxt).attr('name', name);
-		$(modalInputTxt).attr('name', name);
-		$(modalInputTxt).attr('onkeyup', 'checkStrangeCharacters(this)');
-		$(modalInputTxt).val(initalValue);
-
-		var modalFieldLabelCnt = document.createElement("div");
-		$(modalFieldLabelCnt).attr('class', 'modalFieldLabelCnt');
-		$(modalFieldLabelCnt).text("Service/Tenant");
-
-		var modalCell2 = document.createElement("div");
-		$(modalCell2).attr('class', 'col-xs-12 col-md-4 modalCell');
-
-		var modalFieldCnt2 = document.createElement("div");
-		$(modalFieldCnt2).attr('class', 'modalFieldCnt');
-
-		var rmButton = document.createElement("button");
-		$(rmButton).attr('type', 'text');
-		$(rmButton).attr('id', 'editAddNewCBServiceBtn');
-		$(rmButton).attr('class', 'btn confirmBtn');
-		$(rmButton).text("Add Service/Tenant");
-	
-		rmButton.addEventListener('click', function(){
-			// get the service/tenant tab
-			var stTab = $('#editServiceTenantTabCB').last();
-			// create a new row element
-			var row = createServiceRowElem('', 'editInputServiceCB');
-			// append of the row element
-			stTab.append(row);
-		});
-
-		// row element composition
-		$(row).append(modalCell1);
-		$(modalCell1).append(modalFieldCnt1);
-		$(modalFieldCnt1).append(modalInputTxt);
-		$(modalCell1).append(modalFieldLabelCnt);
-		$(row).append(modalCell2)
-		$(modalCell2).append(modalFieldCnt2);
-		$(modalFieldCnt2).append(rmButton);
-
-		console.log("first row created");
-		return row;
-
-	}
 
 	function createServiceRowElem(initalValue, name){
 		// creation of the components of a row element
@@ -1125,74 +1062,110 @@ $(document).ready(function () {
 
 	// BEGIN EDIT BROKER MULTISERVICE SECTION
 	// Author: Antonino Mauro Liuzzo
+
+	function createFirstServiceRowElem(initalValue, name){
+		if($('#editServiceTenantTabCB').find('#editServiceCBRow1').length !== 0){
+			console.log("element already exixts");
+			return;
+		}
+
+		// creation of the components of a row element
+		var row = document.createElement("div");
+		$(row).attr('class', 'row');
+		$(row).attr('id', 'editServiceCBRow1');
+
+		var modalCell1 = document.createElement("div");
+		$(modalCell1).attr('class', 'col-xs-12 col-md-8 modalCell');
+
+		var modalFieldCnt1 = document.createElement("div");
+		$(modalFieldCnt1).attr('class', 'modalFieldCnt');
+
+		var modalInputTxt = document.createElement("input");
+		$(modalInputTxt).attr('type', 'text');
+		$(modalInputTxt).attr('class', 'modalInputTxt ' + name);
+		$(modalInputTxt).attr('name', name);
+		$(modalInputTxt).attr('name', name);
+		$(modalInputTxt).attr('onkeyup', 'checkStrangeCharacters(this)');
+		$(modalInputTxt).val(initalValue);
+
+		var modalFieldLabelCnt = document.createElement("div");
+		$(modalFieldLabelCnt).attr('class', 'modalFieldLabelCnt');
+		$(modalFieldLabelCnt).text("Service/Tenant");
+
+		var modalCell2 = document.createElement("div");
+		$(modalCell2).attr('class', 'col-xs-12 col-md-4 modalCell');
+
+		var modalFieldCnt2 = document.createElement("div");
+		$(modalFieldCnt2).attr('class', 'modalFieldCnt');
+
+		var rmButton = document.createElement("button");
+		$(rmButton).attr('type', 'text');
+		$(rmButton).attr('id', 'editAddNewCBServiceBtn');
+		$(rmButton).attr('class', 'btn confirmBtn');
+		$(rmButton).text("Add Service/Tenant");
 	
-	/**
-	 * Add new Service/Tenant Text Field when the "Add Service/Tenant" is pressed
-	 */
-	/* Replaced in Button creation
-	$('#editAddNewCBServiceBtn').click(function(){
-		// get the service/tenant tab
-		var stTab = $('#editServiceTenantTabCB').last();
-		// create a new row element
-		var row = createServiceRowElem('', 'editInputServiceCB');
-		// append of the row element
-		stTab.append(row);
-	});
-	*/
+		rmButton.addEventListener('click', function(){
+			// get the service/tenant tab
+			var stTab = $('#editServiceTenantTabCB').last();
+			// create and append of the row element
+			stTab.append(createServiceRowElem('', 'editInputServiceCB'));
+		});
 
-	/**
-	 * Trigger the MultiService tab visibility
-	 * The MultiService tab is visible only if the ngsi w/MultiService protocol is selected
-	 * When the user choose another protocol, inserted values are saved, except for empty strings
-	 * If the user choose back ngsi w/MultiService, saved values are restored
-	 */
-	var editOldServicesValues = [];
+		// row element composition
+		$(row).append(modalCell1);
+		$(modalCell1).append(modalFieldCnt1);
+		$(modalFieldCnt1).append(modalInputTxt);
+		$(modalCell1).append(modalFieldLabelCnt);
+		$(row).append(modalCell2)
+		$(modalCell2).append(modalFieldCnt2);
+		$(modalFieldCnt2).append(rmButton);
 
-	function editServicesVisibilityCheck(){
-		if($('#selectProtocolCBM').val() !== "ngsi w/MultiService"){
-			// hide the MultiService selector
+		console.log("first row created");
+		return row;
+
+	}
+
+	// Handle the Edit Button click event
+	function editCBSManagementButtonPressed(services){
+		/* services is initially a string with one of these values:
+		 *	- undefined -> if protocol !== "ngsi w/MultiService"
+		 * 	- a non empty of comma-separated values -> if protocol === "ngsi w/MultiService"
+		 */
+
+		var protocol = $("#selectProtocolCBM").val();
+		if (protocol !== "ngsi w/MultiService") {
+			
+			// hide the MultiServices tab
 			$('#editMultiServiceTabSelector').addClass("hidden");
 
-			// save the first Service row and clear the row
-			var rowValue = $('#editServiceCBRow1').find('.modalInputTxt').val().trim();
-			if(rowValue !== "") editOldServicesValues.push(rowValue);
-			$('#editServiceCBRow1').find('.modalInputTxt').val('');
+			$('#editServiceCBRow1').remove();
+			$('div[name="additionalRow"]').remove();
 
-			// save every additional row and remove them
-			var additionalRows = $('#editServiceTenantTabCB div[name="additionalRow"]');
-			for(let i = 0; i < additionalRows.length; i++){
-				var rowValue = $(additionalRows[i]).find('.modalInputTxt').val().trim();
-				if(rowValue !== "") editOldServicesValues.push(rowValue);
-				additionalRows[i].remove();
-			}
+			return;
+		} else {
+
+			// create an array from 
+			services = services.split(",");
+			console.log(services);
 			
-		}else{
-			// show the MultiService selector
+			// show the MultiServices tab
 			$('#editMultiServiceTabSelector').removeClass("hidden");
-			restoreServicesValuesEdit(editOldServicesValues);
-			editOldServicesValues = [];
+
+			// add first Services row element
+			$('#editServiceTenantTabCB').append(createFirstServiceRowElem(services[0], 'editInputServiceCB'));
+
+			// add additional Services row elements
+			if (services.length > 1) {
+				for(let i = 1; i < services.length; i++){
+					// get the service/tenant tab
+					var stTab = $('#editServiceTenantTabCB').last();
+					// create and append of the row element
+					stTab.append(createServiceRowElem(services[i], 'editInputServiceCB'));
+				}
+			}
 		}
 	}
-	$('#selectProtocolCBM').change(editServicesVisibilityCheck);
-	$('#contextBrokerTable').on('click', '.editDashBtn', editServicesVisibilityCheck);
 
-	// Handle Edit button -> TO FIX
-    // $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbServices);
-    // $('#contextBrokerTable').on('click', '.editDashBtn', checkEditCbConditions);
-
-	function restoreServicesValuesEdit(servicesArray){
-		console.log("restore");
-		// restore the first row
-		$('#editServiceCBRow1').find('.modalInputTxt').val(servicesArray[0]);
-
-		// restore additional rows
-		var stTab = $('#editServiceTenantTabCB').last();
-		for(let i = 1; i < servicesArray.length; i++){
-			row = createServiceRowElem(servicesArray[i], 'editInputServiceCB');
-			stTab.append(row);
-		}
-	}
-	
 	// END EDIT BROKER MULTISERVICE SECTION
 
 	$('#contextBrokerTable thead').css("background", "rgba(0, 162, 211, 1)");

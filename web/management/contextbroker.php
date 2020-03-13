@@ -636,7 +636,7 @@
 				<div id="editContextBrokerModalBody" class="modal-body modalBody">
 				
 					<ul id="editContextBrokerModalTabs" class="nav nav-tabs nav-justified">
-						<li class="active"><a data-toggle="tab" href="#editInfoTabCB">Info</a></li>
+						<li id="editInfoTabSelector" class="active"><a data-toggle="tab" href="#editInfoTabCB">Info</a></li>
 						<li id="editMultiServiceTabSelector" class="hidden"><a data-toggle="tab" href="#editServiceTenantTabCB">Services/Tenants</a></li>
 						<li><a data-toggle="tab" href="#editGeoPositionTabCB">Geo-Position</a></li>
 						<li><a data-toggle="tab" href="#editSecurityTabCB">Security</a></li>
@@ -796,22 +796,6 @@
 						<!-- Author: Antonino Mauro Liuzzo -->
 						<div id="editServiceTenantTabCB" class="tab-pane fade">
 							<div id="editInputServiceCBMsg" style="margin-top: 10px;">&nbsp;</div>
-							<!--
-							<div class="row" id="editServiceCBRow1">
-								<div class="col-xs-12 col-md-8 modalCell">          
-									<div class="modalFieldCnt">
-                                        <input type="text" class="modalInputTxt" name="editInputServiceCB" id="editInputServiceCB" onkeyup="checkStrangeCharacters(this)" required>
-                                    </div>
-                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
-                                </div>
-								
-								<div class="col-xs-12 col-md-4 modalCell">
-                                    <div class="modalFieldCnt">
-										<button type="text" id="editAddNewCBServiceBtn" class="btn confirmBtn">Add Service/Tenant</button>
-                                    </div>
-                                </div>	
-							</div>
-							-->
 						</div>
 
 						<!-- Geo-Position tab -->

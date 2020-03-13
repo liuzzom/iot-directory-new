@@ -46,39 +46,6 @@ function showEditCbModal()
 	checkEditCbLongitude();
 	//checkEditCbLogin();
 	//checkEditCbpassword();
-
-    /* TO FIX
-    // Author: Antonino Mauro Liuzzo
-
-    // check CB service values
-    checkEditCbServices();
-
-    // Handle first service row
-    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbServices);
-    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbConditions);
-
-    // Handle change protocol
-    $('#selectProtocolCBM').on('change', checkEditCbServices);
-    $('#selectProtocolCBM').on('change', checkEditCbConditions);
-
-    // Handle the additional rows
-    $("#editServiceTenantTabCB").on('input', 'div[name="additionalRow"]', checkEditCbServices);
-    $("#editServiceTenantTabCB").on('input', 'div[name="additionalRow"]', checkEditCbConditions);
-
-    // Observe the Multi-Service/Tenant Tab for child element creation/removal
-    const targetNode = document.getElementById('editServiceTenantTabCB');
-    // Options for the observer (which mutations to observe)
-    const config = {childList: true};
-    // Callback function to execute when mutations are observed
-    const callback = function() {
-        checkEditCbServices();
-        checkEditCbConditions();
-    };
-    // Create an observer instance linked to the callback function
-    const observer = new MutationObserver(callback);
-    // Start observing the target node for configured mutations
-    observer.observe(targetNode, config);
-    */
 }
 
 /* 
@@ -297,53 +264,5 @@ function checkEditCbConditions()
     else
     {
         $("#editContextBrokerConfirmBtn").attr("disabled", true);
-    }
-}
-
-// Author: Antonino Mauro Liuzzo -> TO FIX
-
-function checkEditCbServices(){
-    // feedback message to the user
-    var message = null;
-    // service values
-    var values = [];
-    // check if the tab is hidden or not
-    var isHidden = $('#editMultiServiceTabSelector').hasClass('hidden');
-
-    // insert first row value
-    values.push(document.getElementById("editInputServiceCB").value);
-    // get values of all the additional rows
-    $('#editServiceTenantTabCB div[name="additionalRow"]').find('input[name="inputServiceCB"]').each(function(){
-        values.push($(this).val());
-    });
-
-    // check if the MultiService tab is hidden
-    if(isHidden){
-        editCbConditionsArray['inputServicesCBM'] = true;
-        return;
-    }else{
-        for(const value of values){
-            var serviceRegex = /^([a-z]|_){1,50}$/;
-            if(!serviceRegex.test(value)){
-                message = `Check your values <br>
-                    <ul>
-                    <li>white spaces are not allowed</li>
-                    <li>use only lower case letters</li>
-                    <li>special characters are not allowed (except for "_")</li>
-                    <li>service/tenant name must not be longer than 50 characters</li>
-                    </ul>`;
-                editCbConditionsArray['inputServicesCBM'] = false;
-                $("#editInputServiceCBMsg").removeClass("alert alert-info");
-                $("#editInputServiceCBMsg").addClass("alert alert-danger");
-                $("#editInputServiceCBMsg").html(message);
-                break;
-            }else{
-                message = 'Ok';
-                editCbConditionsArray['inputServicesCBM'] = true;
-                $("#editInputServiceCBMsg").removeClass("alert alert-danger");
-                $("#editInputServiceCBMsg").addClass("alert alert-info");
-                $("#editInputServiceCBMsg").html(message);
-            }
-        }
     }
 }
