@@ -1736,3 +1736,57 @@
  action:get_all_ou. Ok, got n-entries:1
 2020-03-13 06:08:42pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 06:34:53pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 06:34:54pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 06:34:54pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 06:34:54pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 06:35:39pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 06:35:40pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 06:35:40pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 06:35:40pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 06:36:55pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 06:36:56pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 06:36:56pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 06:36:56pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 06:37:24pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 06:37:25pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 06:37:25pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 06:37:25pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 06:41:20pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 06:41:21pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 06:41:21pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 06:41:21pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-03-13 06:44:18pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-03-13 06:44:18pm: 
+ action=get_all_contextbroker 
+
+2020-03-13 06:44:18pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-03-13 06:44:18pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0

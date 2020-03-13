@@ -1057,7 +1057,7 @@ $(document).ready(function () {
 			stTab.append(row);
 		}
 	}
-	
+
 	// END ADD BROKER MULTISERVICE SECTION
 
 	// BEGIN EDIT BROKER MULTISERVICE SECTION
@@ -1165,6 +1165,57 @@ $(document).ready(function () {
 			}
 		}
 	}
+
+	/**
+	 * Trigger the MultiService tab visibility
+	 * The MultiService tab is visible only if the ngsi w/MultiService protocol is selected
+	 * When the user choose another protocol, inserted values are saved, except for empty strings
+	 * If the user choose back ngsi w/MultiService, saved values are restored
+	 */
+	var editOldServicesValues = [];
+
+	function editServicesVisibilityCheck(){
+		console.log('editServicesVisibilityCheck');
+
+		if($('#selectProtocolCBM').val() !== "ngsi w/MultiService"){
+			console.log("hidden");
+			// hide the MultiService selector
+			$('#editMultiServiceTabSelector').addClass("hidden");
+
+			// save the first Service row and clear the row
+			var rowValue = $('#editServiceCBRow1').find('.modalInputTxt').val().trim();
+			if(rowValue !== "") editOldServicesValues.push(rowValue);
+			$('#serviceCBRow1').find('.modalInputTxt').val('');
+
+			// save every additional row and remove them
+			var additionalRows = $('#editServiceTenantTabCB div[name="additionalRow"]');
+			for(let i = 0; i < additionalRows.length; i++){
+				var rowValue = $(additionalRows[i]).find('.modalInputTxt').val().trim();
+				if(rowValue !== "") editOldServicesValues.push(rowValue);
+				additionalRows[i].remove();
+			}
+		}else{
+			console.log("show");
+			// show the MultiService selector
+			$('#editMultiServiceTabSelector').removeClass("hidden");
+			restoreServicesValuesEdit(editOldServicesValues);
+			editOldServicesValues = [];
+		}
+	}
+	$('#selectProtocolCBM').change(editServicesVisibilityCheck);
+	
+	function restoreServicesValuesEdit(servicesArray){
+		// restore the first row
+		$('#editServiceCBRow1').find('.modalInputTxt').val(servicesArray[0]);
+
+		// restore additional rows
+		var stTab = $('#editServiceTenantTabCB').last();
+		for(let i = 1; i < servicesArray.length; i++){
+			row = createServiceRowElem(servicesArray[i], 'editInputServiceCB');
+			stTab.append(row);
+		}
+	}
+
 
 	// END EDIT BROKER MULTISERVICE SECTION
 
