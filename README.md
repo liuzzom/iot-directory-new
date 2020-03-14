@@ -41,7 +41,7 @@ TODO:
     - ~~Controlli lato server~~
     - ~~Operazioni sul DB~~
     - ~~Risposta al client~~
-    - Relazione
+    - ~~Relazione~~
 - ~~Delete Broker~~: -> il CASCADE dovrebbe bastarre
     - ~~Gestione richiesta al server~~
     - ~~Controlli lato server~~

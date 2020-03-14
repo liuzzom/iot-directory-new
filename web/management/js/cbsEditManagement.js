@@ -300,7 +300,7 @@ function checkEditCbConditions()
 // Author: Antonino Mauro Liuzzo
 
 function checkEditCbServices(){
-    console.log("checkEditCbServices");
+    // console.log("checkEditCbServices");
 
     // feedback message to the user
     var message = null;
