@@ -365,3 +365,118 @@
 2020-03-13 07:10:46: SELECT * FROM services WHERE broker_name = 'testName' OK
 2020-03-13 07:10:46: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
 
+2020-03-14 12:00:41: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:00:41: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:00:41: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:01:54: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:01:54: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:01:54: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:05:31: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:05:31: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:05:31: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:06:05: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:06:05: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:06:05: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:10:39: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:10:39: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:10:39: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:12:05: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:12:05: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:12:05: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:14:02: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:14:02: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:14:02: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:16:44: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:16:44: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:16:44: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:19:15: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:19:15: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:19:15: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:21:53: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:21:53: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:21:53: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:22:15: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:22:15: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:22:15: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:23:12: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:23:12: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:23:12: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:25:37: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:25:37: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:25:37: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:27:34: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:27:34: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:27:34: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:28:53: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:28:53: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:28:53: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:29:57: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:29:57: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:29:57: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:30:42: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:30:42: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:30:42: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:31:52: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:31:52: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:31:52: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:34:34: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:34:34: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:34:34: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:42:26: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:42:26: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:42:26: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:44:24: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:44:24: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:44:24: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:46:07: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:46:07: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:46:07: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+
+2020-03-14 12:47:04: {"name":"iotobsf","protocol":"ngsi","ip":"iotobsf","port":"1026","uri":null,"login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28","accesslink":"iotobsf","accessport":"8080","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"internal","owner":"usertooladmin"}
+
+2020-03-14 12:47:04: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-14 12:47:04: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"MyOwnPrivate","version":"","path":"","kind":"","owner":"usertooladmin","services":["pippo","paperina"]}
+

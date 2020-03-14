@@ -1146,7 +1146,7 @@ $(document).ready(function () {
 
 			// create an array from 
 			services = services.split(",");
-			console.log(services);
+			// console.log(services);
 			
 			// show the MultiServices tab
 			$('#editMultiServiceTabSelector').removeClass("hidden");
@@ -1175,17 +1175,21 @@ $(document).ready(function () {
 	var editOldServicesValues = [];
 
 	function editServicesVisibilityCheck(){
-		console.log('editServicesVisibilityCheck');
+		// console.log('editServicesVisibilityCheck');
 
 		if($('#selectProtocolCBM').val() !== "ngsi w/MultiService"){
-			console.log("hidden");
+			// console.log("hidden");
 			// hide the MultiService selector
 			$('#editMultiServiceTabSelector').addClass("hidden");
 
 			// save the first Service row and clear the row
-			var rowValue = $('#editServiceCBRow1').find('.modalInputTxt').val().trim();
-			if(rowValue !== "") editOldServicesValues.push(rowValue);
-			$('#serviceCBRow1').find('.modalInputTxt').val('');
+			firstRow = $('#editServiceCBRow1').find('.modalInputTxt');
+			console.log(firstRow);
+			if (firstRow.length > 0) {
+				var rowValue = firstRow.val().trim();
+				if (rowValue !== "") editOldServicesValues.push(rowValue);
+				$('#editServiceCBRow1').remove();
+			}
 
 			// save every additional row and remove them
 			var additionalRows = $('#editServiceTenantTabCB div[name="additionalRow"]');
@@ -1195,7 +1199,7 @@ $(document).ready(function () {
 				additionalRows[i].remove();
 			}
 		}else{
-			console.log("show");
+			// console.log("show");
 			// show the MultiService selector
 			$('#editMultiServiceTabSelector').removeClass("hidden");
 			// add first Services row element

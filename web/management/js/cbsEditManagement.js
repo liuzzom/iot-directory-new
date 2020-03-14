@@ -52,8 +52,8 @@ function showEditCbModal()
     checkEditCbServices();
 
     // Handle first service row
-    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbServices);
-    $("#editServiceTenantTabCB #editInputServiceCB").on('input', checkEditCbConditions);
+    $("#editServiceTenantTabCB").find('input[name="editInputServiceCB"]').on('input', checkEditCbServices);
+    $("#editServiceTenantTabCB").find('input[name="editInputServiceCB"]').on('input', checkEditCbConditions);
 
     // Handle change protocol
     $('#selectProtocolCBM').on('change', checkEditCbServices);
@@ -300,6 +300,7 @@ function checkEditCbConditions()
 // Author: Antonino Mauro Liuzzo
 
 function checkEditCbServices(){
+    console.log("checkEditCbServices");
 
     // feedback message to the user
     var message = null;
