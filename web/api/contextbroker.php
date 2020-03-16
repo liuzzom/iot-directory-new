@@ -189,7 +189,7 @@ if($action=="insert"){
 	for($i = 0; $i < count($services); $i++){
 		$services[$i] = mysqli_real_escape_string($link, $services[$i]);
 	}
-	dev_log($_REQUEST['services']);
+	// dev_log($_REQUEST['services']);
 
 	// begin transaction
 	mysqli_autocommit($link, FALSE);
@@ -287,6 +287,8 @@ if($action=="insert"){
 	mysqli_close($link);
 
 } else if($action == 'get_all_contextbroker') {
+	dev_log("get_all_contextbroker BEGIN");
+
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
@@ -371,7 +373,7 @@ if($action=="insert"){
 
 						if ($sqr) {
 							
-							dev_log($servicesQueryString . " OK");
+							// dev_log($servicesQueryString . " OK");
 							$row["services"] = array();
 
 							while ($servicesRow = mysqli_fetch_assoc($sqr)) {
@@ -379,21 +381,23 @@ if($action=="insert"){
 							}
 						} else {
 							
-							dev_log($servicesQueryString . " ERROR");
+							// dev_log($servicesQueryString . " ERROR");
 							$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 							logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
 						}
 					}
 
-					dev_log(json_encode($row) . "\n");
+					// dev_log(json_encode($row) . "\n");
 					array_push($data, $row);
                 }
             }
 		}
 		
+		dev_log("get_all_contextbroker SUCCESS\n");
 		$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_all_contextbroker \r\n", 'ok');
 		logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'','success');
 	} else {
+		dev_log("get_all_contextbroker FAIL\n");
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 		logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');				   
 	}
@@ -415,68 +419,70 @@ if($action=="insert"){
     $selection= json_decode($_REQUEST['select']);
 	$a=0;
 	$cond="";
-	if (count($selection)!=0){
+
+	if (count($selection)!=0) {
 	    
-		while ($a < count($selection)){
-			 $sel = $selection[$a];
-			 $cond .= " (name = '" . $sel->name . "' AND organization = '".$sel->organization."') ";
-			 if ($a != count($selection)-1)  $cond .= " OR ";
-			 $a++;
+		while ($a < count($selection)) {
+			$sel = $selection[$a];
+			$cond .= " (name = '" . $sel->name . "' AND organization = '".$sel->organization."') ";
+			if ($a != count($selection)-1)  $cond .= " OR ";
+			$a++;
 		}
 		
 		$q = "SELECT DISTINCT * FROM contextbroker WHERE " . $cond;
-	}else
-	    $q = "SELECT DISTINCT * FROM contextbroker";
+	} else {
+		$q = "SELECT DISTINCT * FROM contextbroker";
+	}
 	
     $r = mysqli_query($link, $q);
 	$selectedrows=-1;
     
-	if($_REQUEST["length"] != -1){
-		$start= $_REQUEST['start'];
-		$offset=$_REQUEST['length'];
-		$tobelimited=true;
-	}else{
+	if($_REQUEST["length"] != -1) {
+			$start= $_REQUEST['start'];
+			$offset=$_REQUEST['length'];
+			$tobelimited=true;
+	} else {
 		$tobelimited=false;
 	}
 	
 	
-	if($r){
+	if($r) {
+		
 		$data = array();
-
-		while($row = mysqli_fetch_assoc($r)) {
-			$selectedrows++;
-			
-			if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset))) {  
-            	$idTocheck=$row["organization"].":".$row["name"];       
-				 
-				if (((isset($result["keys"][$idTocheck])) &&
-					($loggedrole!=='RootAdmin') && 
-					($loggedrole!=='ToolAdmin')) ||
-					((isset($result["keys"][$idTocheck])) && 
-					($result["keys"][$idTocheck]["owner"]==$username) &&
-					(($loggedrole==='RootAdmin') || 
-					($loggedrole==='ToolAdmin')))) {
-					 
-					//it's mine                      
+    	while($row = mysqli_fetch_assoc($r)) {
+	   
+        	$selectedrows++;       
+        	if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))	{ 
+             	$idTocheck=$row["organization"].":".$row["name"];       
+             	if (((isset($result["keys"][$idTocheck]))
+                	  &&($loggedrole!=='RootAdmin')
+                	  &&($loggedrole!=='ToolAdmin'))
+                	  ||
+                	  ((isset($result["keys"][$idTocheck]))
+                	  && 
+                	  ($result["keys"][$idTocheck]["owner"]==$username) 
+                	  && (($loggedrole==='RootAdmin')
+                    	   ||($loggedrole==='ToolAdmin'))))
+                {
+                	//it's mine                      
                  	if ($row["visibility"]=="public") { 
-						$row["visibility"]= "MyOwnPublic";  
+						$row["visibility"]= "MyOwnPublic";
 					} else {
-					if (isset($result["delegation"][$idTocheck]) && $result["delegation"][$idTocheck]["kind"]=="anonymous")    
-                        $row["visibility"]= "MyOwnPublic"; 
-                    else 
-						$row["visibility"]="MyOwnPrivate";
+                    	if (isset($result["delegation"][$idTocheck]) && $result["delegation"][$idTocheck]["kind"]=="anonymous")    
+							$row["visibility"]= "MyOwnPublic";
+						else 
+							$row["visibility"]="MyOwnPrivate";
 					}
-	 			} else {
-					
+             	} else {
 					//it's not mine
-             		if (isset($result["delegation"][$idTocheck]) && ($result["delegation"][$idTocheck]["kind"]=="anonymous")) {
+					if (isset($result["delegation"][$idTocheck]) && ($result["delegation"][$idTocheck]["kind"]=="anonymous")) {
 						//it's delegated as public
-						$row["visibility"]='public';                     
+                     	$row["visibility"]='public';                     
                  	} else if (isset($result["delegation"][$idTocheck])) {
 						//it's delegated personally                               
 						$row["visibility"]='delegated';
 					} else {                    
-						$row["visibility"]= $row["visibility"];
+						 $row["visibility"]= $row["visibility"];
 					}
 				}
 				
@@ -484,18 +490,18 @@ if($action=="insert"){
 			}
 				
         	$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_subset_contextbroker \r\n", 'ok');
-			logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
+        	logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
 		}
 	} else {
-		
+
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 		logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
-	}
-	    
+	}    
 	my_log($output);
 	mysqli_close($link);
-
 } else if($action == "get_all_contextbroker_latlong") {
+	dev_log("get_all_contextbroker_latlong BEGIN");
+
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
     $username = mysqli_real_escape_string($link, $_REQUEST['username']);
@@ -507,11 +513,12 @@ if($action=="insert"){
     
     $q = "SELECT name, latitude, longitude, visibility, organization, accesslink FROM contextbroker;";
 	$r = mysqli_query($link, $q);
-	
+
 	if($r) {
 		$result['status'] = 'ok';
 		$result['content'] = array();
-    	$result["log"].='\n\r action: get_all_contextbroker_latlong ok. ' . $q;
+		$result["log"].='\n\r action: get_all_contextbroker_latlong ok. ' . $q;
+		dev_log("get_all_contextbroker_latlong SUCCESS\n");
 		
 		while($row = mysqli_fetch_assoc($r)) {
         	$idTocheck=$row["organization"].":".$row["name"];    
@@ -532,7 +539,8 @@ if($action=="insert"){
     } else {
 		$result['status'] = 'ko';
 		$result['msg'] = 'Error: errors in reading data about devices. <br/>' . mysqli_error($link);
-		$result['log'] = '\n\r Error: errors in reading data about devices. <br/>' . mysqli_error($link);				   
+		$result['log'] = '\n\r Error: errors in reading data about devices. <br/>' . mysqli_error($link);
+		dev_log("get_all_contextbroker_latlong FAIL\n");			   
 	}
 
 	my_log($result);
