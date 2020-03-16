@@ -1066,7 +1066,7 @@ $(document).ready(function () {
 	function createFirstServiceRowElem(initalValue, name){
 		if($('#editServiceTenantTabCB').find('#editServiceCBRow1').length !== 0){
 			console.log("element already exixts");
-			return;
+			return null;
 		}
 
 		// creation of the components of a row element
@@ -1141,6 +1141,10 @@ $(document).ready(function () {
 			$('#editServiceCBRow1').remove();
 			$('div[name="additionalRow"]').remove();
 
+			// clear the message section
+			$('#editInputServiceCBMsg').removeClass('alert-info alert');
+			$('#editInputServiceCBMsg').html('');
+
 			return;
 		} else {
 
@@ -1151,16 +1155,21 @@ $(document).ready(function () {
 			// show the MultiServices tab
 			$('#editMultiServiceTabSelector').removeClass("hidden");
 
-			// add first Services row element
-			$('#editServiceTenantTabCB').append(createFirstServiceRowElem(services[0], 'editInputServiceCB'));
+			// check if the first element has already been created
+			let firstRow = createFirstServiceRowElem(services[0], 'editInputServiceCB');
 
-			// add additional Services row elements
-			if (services.length > 1) {
-				for(let i = 1; i < services.length; i++){
-					// get the service/tenant tab
-					var stTab = $('#editServiceTenantTabCB').last();
-					// create and append of the row element
-					stTab.append(createServiceRowElem(services[i], 'editInputServiceCB'));
+			if (firstRow) {
+				// add first Services row element
+				$('#editServiceTenantTabCB').append(firstRow);
+
+				// add additional Services row elements
+				if (services.length > 1) {
+					for(let i = 1; i < services.length; i++){
+						// get the service/tenant tab
+						var stTab = $('#editServiceTenantTabCB').last();
+						// create and append of the row element
+						stTab.append(createServiceRowElem(services[i], 'editInputServiceCB'));
+					}
 				}
 			}
 		}
