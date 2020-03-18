@@ -411,24 +411,20 @@ if($action=="insert"){
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
-	
-	dev_log("username: $username, organization: $organization, role: $loggedrole");
 
-    if (!empty($accessToken)) {
+	// SEGNALAZIONE: Se entra in questo blocco, al client non viene fornito alcun risultato
+	if (!empty($accessToken)) {
 		dev_log("if (!empty(\$accessToken))");
         getOwnerShipObject($accessToken, "BrokerID", $result); 
         getDelegatedObject($accessToken, $username, $result);
 	}
+	
     
     $selection= json_decode($_REQUEST['select']);
 	$a=0;
 	$cond="";
 
-	dev_log("selection: " . json_encode($selection));
-
 	if (count($selection)!=0) {
-		
-		dev_log("array selection non vuoto");
 
 		while ($a < count($selection)) {
 			$sel = $selection[$a];
@@ -439,9 +435,6 @@ if($action=="insert"){
 		
 		$q = "SELECT DISTINCT * FROM contextbroker WHERE " . $cond;
 	} else {
-
-		dev_log("array selection vuoto");
-
 		$q = "SELECT DISTINCT * FROM contextbroker";
 	}
 
@@ -529,14 +522,15 @@ if($action=="insert"){
 				dev_log(json_encode($row));
 				array_push($data, $row);
 			}
-			
-			dev_log("get_subset_contextbroker SUCCESS");
-        	$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_subset_contextbroker \r\n", 'ok');
-        	logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
 		}
+		
+		dev_log("get_subset_contextbroker SUCCESS\n");
+		$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_subset_contextbroker \r\n", 'ok');
+		logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
+
 	} else {
 
-		dev_log("get_subset_contextbroker FAIL");
+		dev_log("get_subset_contextbroker FAIL\n");
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 		logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
 	}    

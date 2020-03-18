@@ -20,12 +20,12 @@ TODO:
 - ~~get_all_contextbroker~~:
     - ~~Lato Server~~
     - ~~Lato Client~~
-- get_subset_contextbroker:
-    - Lato Server
+- ~~get_subset_contextbroker~~:
+    - ~~Lato Server~~
     - Lato Client
-- get_all_contextbroker_latlong:
-    - Lato Server
-    - Lato Client
+- ~~get_all_contextbroker_latlong~~: -> NON necessita modifiche
+    - ~~Lato Server~~
+    - ~~Lato Client~~
 - ~~Add Broker~~:
     - ~~Inserimento elementi di interfaccia~~
     - ~~Controllo sui valori inseriti e feedback all'utente~~
