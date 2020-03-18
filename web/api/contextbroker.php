@@ -406,12 +406,16 @@ if($action=="insert"){
 	mysqli_close($link);
 
 } else if($action == "get_subset_contextbroker") {
+	dev_log("get_subset_contextbroker BEGIN");
 	//Sara511 - For testing purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
 	
+	dev_log("username: $username, organization: $organization, role: $loggedrole");
+
     if (!empty($accessToken)) {
+		dev_log("if (!empty(\$accessToken))");
         getOwnerShipObject($accessToken, "BrokerID", $result); 
         getDelegatedObject($accessToken, $username, $result);
 	}
@@ -420,8 +424,12 @@ if($action=="insert"){
 	$a=0;
 	$cond="";
 
+	dev_log("selection: " . json_encode($selection));
+
 	if (count($selection)!=0) {
-	    
+		
+		dev_log("array selection non vuoto");
+
 		while ($a < count($selection)) {
 			$sel = $selection[$a];
 			$cond .= " (name = '" . $sel->name . "' AND organization = '".$sel->organization."') ";
@@ -431,8 +439,13 @@ if($action=="insert"){
 		
 		$q = "SELECT DISTINCT * FROM contextbroker WHERE " . $cond;
 	} else {
+
+		dev_log("array selection vuoto");
+
 		$q = "SELECT DISTINCT * FROM contextbroker";
 	}
+
+	dev_log("testo della query: $q");
 	
     $r = mysqli_query($link, $q);
 	$selectedrows=-1;
@@ -448,9 +461,11 @@ if($action=="insert"){
 	
 	if($r) {
 		
+		dev_log("query avvenuta con successo");
+
 		$data = array();
     	while($row = mysqli_fetch_assoc($r)) {
-	   
+
         	$selectedrows++;       
         	if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))	{ 
              	$idTocheck=$row["organization"].":".$row["name"];       
@@ -485,20 +500,49 @@ if($action=="insert"){
 						 $row["visibility"]= $row["visibility"];
 					}
 				}
-				
+
+				// Author: Antonino Mauro Liuzzo
+				if ($row["protocol"] == "ngsi w/MultiService") {
+					// the CB supports MultiServices
+					$brokerName = $row["name"];
+					$servicesQueryString = "SELECT * FROM services WHERE broker_name = '$brokerName'";
+					
+					// query to services table
+					$sqr = mysqli_query($link, $servicesQueryString);
+
+					if ($sqr) {
+						
+						dev_log($servicesQueryString . " OK");
+						$row["services"] = array();
+
+						while ($servicesRow = mysqli_fetch_assoc($sqr)) {
+							array_push($row["services"], $servicesRow["name"]);
+						}
+					} else {
+						
+						dev_log($servicesQueryString . " ERROR");
+						$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
+						logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
+					}
+				}
+
+				dev_log(json_encode($row));
 				array_push($data, $row);
 			}
-				
+			
+			dev_log("get_subset_contextbroker SUCCESS");
         	$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_subset_contextbroker \r\n", 'ok');
         	logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
 		}
 	} else {
 
+		dev_log("get_subset_contextbroker FAIL");
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 		logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
 	}    
 	my_log($output);
 	mysqli_close($link);
+
 } else if($action == "get_all_contextbroker_latlong") {
 	dev_log("get_all_contextbroker_latlong BEGIN");
 

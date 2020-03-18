@@ -1,6 +1,12 @@
-2020-03-16 07:19:54: get_all_contextbroker BEGIN
-2020-03-16 07:19:55: get_all_contextbroker SUCCESS
+2020-03-18 12:59:25: get_all_contextbroker_latlong BEGIN
+2020-03-18 12:59:25: get_all_contextbroker_latlong SUCCESS
 
-2020-03-16 07:19:57: get_all_contextbroker_latlong BEGIN
-2020-03-16 07:19:57: get_all_contextbroker_latlong SUCCESS
-
+2020-03-18 12:59:30: get_subset_contextbroker BEGIN
+2020-03-18 12:59:30: username: usertooladmin, organization: Organization, role: ToolAdmin
+2020-03-18 12:59:30: selection: [{"name":"testName","latitude":"43.71454","longitude":"11.19919","visibility":"","organization":"Organization","accesslink":"testIp"}]
+2020-03-18 12:59:30: array selection non vuoto
+2020-03-18 12:59:30: testo della query: SELECT DISTINCT * FROM contextbroker WHERE  (name = 'testName' AND organization = 'Organization') 
+2020-03-18 12:59:30: query avvenuta con successo
+2020-03-18 12:59:30: SELECT * FROM services WHERE broker_name = 'testName' OK
+2020-03-18 12:59:30: {"name":"testName","protocol":"ngsi w\/MultiService","ip":"testIp","port":"8080","uri":null,"login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03","accesslink":"testIp","accessport":"","sha":"","organization":"Organization","apikey":null,"visibility":"","version":"","path":"","kind":"","services":["pippo","paperina"]}
+2020-03-18 12:59:30: get_subset_contextbroker SUCCESS
