@@ -22,7 +22,7 @@ TODO:
     - ~~Lato Client~~
 - ~~get_subset_contextbroker~~:
     - ~~Lato Server~~
-    - Lato Client
+    - ~~Lato Client~~
 - ~~get_all_contextbroker_latlong~~: -> NON necessita modifiche
     - ~~Lato Server~~
     - ~~Lato Client~~
