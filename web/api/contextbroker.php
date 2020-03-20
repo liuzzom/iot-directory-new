@@ -113,8 +113,19 @@ if($action=="insert"){
 			if (!mysqli_query($link, $q)) $success = FALSE;
 			
 			if ($protocol == 'ngsi w/MultiService'){
+
+				// Regex for Syntax Checking
+				$serviceRegex = "/^([a-z]|_){1,50}$/";
+
 				for($i = 0; $i < count($services); $i++){
 					$service = $services[$i];
+
+					// Syntax Checking
+					if(!preg_match($serviceRegex, $service)){
+						dev_log("$service isn't a valid service name");
+						$success = FALSE;
+					}
+
 					$qs = "INSERT INTO services(name, broker_name) VALUES ('$service', '$name')";
 					if(!mysqli_query($link, $qs)) $success = FALSE;
 				}	
@@ -189,7 +200,6 @@ if($action=="insert"){
 	for($i = 0; $i < count($services); $i++){
 		$services[$i] = mysqli_real_escape_string($link, $services[$i]);
 	}
-	// dev_log($_REQUEST['services']);
 
 	// begin transaction
 	mysqli_autocommit($link, FALSE);
@@ -204,15 +214,27 @@ if($action=="insert"){
 
 	if ($protocol == 'ngsi w/MultiService') {
 
+		// Regex for Syntax Checking
+		$serviceRegex = "/^([a-z]|_){1,50}$/";
+
 		// insert new services
 		for($i = 0; $i < count($services); $i++){
 			$service = $services[$i];
+
+			// Syntax Checking
+			if(!preg_match($serviceRegex, $service)){
+				dev_log("$service isn't a valid service name");
+				$success = FALSE;
+			}
+
 			$qs = "INSERT INTO services(name, broker_name) VALUES ('$service', '$name')";
 			if(!mysqli_query($link, $qs)) $success = FALSE;
 		}	
 	}
 
 	if($success){
+
+		dev_log("update: successful transaction\n");
 
 		// successful transaction
 		mysqli_commit($link);
@@ -232,6 +254,8 @@ if($action=="insert"){
         	logAction($link,$username,'contextbroker','update',$name,$organization,'in register ownership','failure');
         }
 	}else{
+
+		dev_log("update: unsuccessful transaction\n");
 
 		// unsuccessful transaction
 		mysqli_rollback($link);

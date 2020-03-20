@@ -802,9 +802,9 @@ $(document).ready(function () {
 		}
 		console.log(JSON.stringify(serviceValues));
 
-             $.ajax({
-                 url: "../api/contextbroker.php",
-                 data:{
+            $.ajax({
+                url: "../api/contextbroker.php",
+                data:{
 					action: "update",
 					//Sara2610 - For logging purpose
 					username: loggedUser,
@@ -831,67 +831,72 @@ $(document).ready(function () {
 					// Author: Antonino Mauro Liuzzo
 					services: JSON.stringify(serviceValues)
 				 
-				 },
-                 type: "POST",
-                 async: true,
-                 success: function (data) 
-                 {
-                     if(data["status"] === 'ko')
-						{   
-                            $('#editContextBrokerLoadingMsg').hide();
-                            $('#editContextBrokerLoadingIcon').hide();
-                            $('#editContextBrokerOkMsg').hide();
-                            $('#editContextBrokerOkIcon').hide();
-                            $('#editContextBrokerKoMsg').show();
-                            $('#editContextBrokerKoIcon').show();
-                            $('#editContextBrokerOkBtn').show();
-						}
+				},
+                type: "POST",
+                async: true,
+                success: function (data) 
+                {
+					console.log(data["status"]);
+                	if(data["status"] === 'ko')
+					{   
+						console.log("ko situation");
+                        $('#editContextBrokerLoadingMsg').hide();
+                        $('#editContextBrokerLoadingIcon').hide();
+                        $('#editContextBrokerOkMsg').hide();
+                        $('#editContextBrokerOkIcon').hide();
+                        $('#editContextBrokerKoMsg').show();
+                        $('#editContextBrokerKoIcon').show();
+						$('#editContextBrokerOkBtn').show();
+						console.log("ko situation end");
+						return;
+					}
 
-					 else (data["status"] === 'ok')
-						{
-                             
-                            $('#inputNameCBM').val("");
-                            $('#inputIpCBM').val("");
-                            $('#inputPortCBM').val("");
-                            $('#inputVersionCBM').val("");
-                            $('#inputAccessLinkCBM').val("");
-                            $('#inputAccessPortCBM').val("");
-                            $('#inputApiKeyCBM').val("");
-                            $('#inputPathCBM').val("");
-                            $('#inputLatitudeCBM').val("");
-                            $('#inputLongitudeCBM').val("");
-                            $('#inputLoginCBM').val("");
-                            $('#inputPasswordCBM').val("");
-							$('#inputSHACBM').val("");
-							// Author: Antonino Mauro Liuzzo
-							$('input[name="editInputServiceCB"]').val("");     
+					else (data["status"] === 'ok')
+					{
+						console.log("ok situation");
+                    	$('#inputNameCBM').val("");
+                        $('#inputIpCBM').val("");
+                        $('#inputPortCBM').val("");
+                        $('#inputVersionCBM').val("");
+                        $('#inputAccessLinkCBM').val("");
+                        $('#inputAccessPortCBM').val("");
+						$('#inputApiKeyCBM').val("");
+                    	$('#inputPathCBM').val("");
+                    	$('#inputLatitudeCBM').val("");
+                        $('#inputLongitudeCBM').val("");
+                        $('#inputLoginCBM').val("");
+                        $('#inputPasswordCBM').val("");
+						$('#inputSHACBM').val("");
+						// Author: Antonino Mauro Liuzzo
+						$('#editServiceCBRow1').remove();
+						$('div[name="additionalRow"]').remove();
 
-                            $('#editContextBrokerLoadingMsg').hide();
-                            $('#editContextBrokerLoadingIcon').hide();
-                            $('#editContextBrokerOkMsg').show();
-                            $('#editContextBrokerOkIcon').show();
-                            $('#editContextBrokerKoMsg').hide();
-                            $('#editContextBrokerKoIcon').hide();
-                            $('#editContextBrokerOkBtn').show();
+                        $('#editContextBrokerLoadingMsg').hide();
+                        $('#editContextBrokerLoadingIcon').hide();
+                        $('#editContextBrokerOkMsg').show();
+                        $('#editContextBrokerOkIcon').show();
+                        $('#editContextBrokerKoMsg').hide();
+                        $('#editContextBrokerKoIcon').hide();
+                        $('#editContextBrokerOkBtn').show();
 
-                            $('#contextBrokerTable').DataTable().destroy();
-				            fetch_data(true);
+                        $('#contextBrokerTable').DataTable().destroy();
+				        fetch_data(true);
                           
-                     }
-                 },
-                 error: function (data) 
-                 {
-                     console.log("Ko result: " + data);
+                    }
+                },
+                error: function (data) 
+				{
+                	console.log("Ko result: " + data);
                      
-                     $('#editContextBrokerLoadingMsg').hide();
+                    $('#editContextBrokerLoadingMsg').hide();
                     $('#editContextBrokerLoadingIcon').hide();
                     $('#editContextBrokerOkMsg').hide();
                     $('#editContextBrokerOkIcon').hide();
                     $('#editContextBrokerKoMsg').show();
                     $('#editContextBrokerKoIcon').show();
                     $('#editContextBrokerOkBtn').show();
-                 }
-			 });
+                }
+			});
         });
         
     
