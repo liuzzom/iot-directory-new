@@ -98,7 +98,6 @@ if($action=="insert"){
 	for($i = 0; $i < count($services); $i++){
 		$services[$i] = mysqli_real_escape_string($link, $services[$i]);
 	}
-
 	if($accessToken!=""){   
     	checkRegisterOwnerShipObject($accessToken, 'BrokerID',$result);
     	if ($result["status"]=='ok'){ 
@@ -112,17 +111,17 @@ if($action=="insert"){
 		 		"VALUES('$name', '$ip', '$kind', '$protocol', '$version', '$port', '$latitude', '$longitude', '$login', '$password', '$accesslink','$accessport', '$path', '$visibility', '$sha', '$organization')";
 			if (!mysqli_query($link, $q)) $success = FALSE;
 			
-			if ($protocol == 'ngsi w/MultiService'){
+			if ($protocol == 'ngsi w/MultiService' && count($services) > 0){
 
-				// Regex for Syntax Checking
+				// regex for syntax checking
 				$serviceRegex = "/^([a-z]|_){1,50}$/";
 
 				for($i = 0; $i < count($services); $i++){
 					$service = $services[$i];
 
-					// Syntax Checking
+					// syntax checking
 					if(!preg_match($serviceRegex, $service)){
-						dev_log("$service isn't a valid service name");
+						dev_log("insert: $service isn't a valid service name");
 						$success = FALSE;
 					}
 
@@ -154,7 +153,7 @@ if($action=="insert"){
 			} else {
 				// unsuccessful transaction
 				mysqli_rollback($link);
-				 $result["status"]='ko';
+				$result["status"]='ko';
 				$result["error_msg"] = "Error occurred when registering the context broker $name. " ;
 				$result["msg"] = "Error: An error occurred when registering the context broker $name. <br/>" .
 					mysqli_error($link) . 
@@ -212,7 +211,7 @@ if($action=="insert"){
 	$qrs = "DELETE FROM services WHERE broker_name = '$name'";
 	if (!mysqli_query($link, $qrs)) $success = FALSE;
 
-	if ($protocol == 'ngsi w/MultiService') {
+	if ($protocol == 'ngsi w/MultiService' && count($services) > 0) {
 
 		// Regex for Syntax Checking
 		$serviceRegex = "/^([a-z]|_){1,50}$/";

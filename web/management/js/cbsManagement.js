@@ -328,10 +328,10 @@ function checkCbServices(){
     var isHidden = $('#multiServiceTabSelector').hasClass('hidden');
 
     // insert first row value
-    values.push(document.getElementById("inputServiceCB").value);
+    values.push(document.getElementById("inputServiceCB").value.trim());
     // get values of all the additional rows
     $('#serviceTenantTabCB div[name="additionalRow"]').find('input[name="inputServiceCB"]').each(function(){
-        values.push($(this).val());
+        values.push($(this).val().trim());
     });
 
     // check if the MultiService tab is hidden
@@ -339,28 +339,58 @@ function checkCbServices(){
         addCbConditionsArray['inputServicesCB'] = true;
         return;
     }else{
-        var serviceRegex = /^([a-z]|_){1,50}$/;
-        for(const value of values){
-            if(!serviceRegex.test(value)){
+
+        if (values.length == 1) {
+            console.log("un solo service");
+
+            var serviceRegex = /^([a-z]|_){1,50}$/;
+            if(values[0] !== "" && !serviceRegex.test(values[0])){
                 message = `Check your values <br>
-                    <ul>
-                        <li>white spaces are not allowed</li>
-                        <li>use only lower case letters</li>
-                        <li>special characters are not allowed (except for "_")</li>
-                        <li>service/tenant name must not be longer than 50 characters</li>
-                    </ul>`;
+                        <ul>
+                            <li>white spaces are not allowed</li>
+                            <li>use only lower case letters</li>
+                            <li>special characters are not allowed (except for "_")</li>
+                            <li>service/tenant name must not be longer than 50 characters</li>
+                        </ul>`;
                 addCbConditionsArray['inputServicesCB'] = false;
                 $("#inputServiceCBMsg").removeClass("alert alert-info");
                 $("#inputServiceCBMsg").addClass("alert alert-danger");
                 $("#inputServiceCBMsg").html(message);
-                break;
-            }else{
+            } else {
                 message = 'Ok';
                 addCbConditionsArray['inputServicesCB'] = true;
                 $("#inputServiceCBMsg").removeClass("alert alert-danger");
                 $("#inputServiceCBMsg").addClass("alert alert-info");
                 $("#inputServiceCBMsg").html(message);
             }
+        } else {
+            console.log("più services");
+
+            var serviceRegex = /^([a-z]|_){1,50}$/;
+            for(const value of values){
+                if(!serviceRegex.test(value)){
+                    message = `Check your values <br>
+                        <ul>
+                            <li>white spaces are not allowed</li>
+                            <li>use only lower case letters</li>
+                            <li>special characters are not allowed (except for "_")</li>
+                            <li>service/tenant name must not be longer than 50 characters</li>
+                        </ul>`;
+                    addCbConditionsArray['inputServicesCB'] = false;
+                    $("#inputServiceCBMsg").removeClass("alert alert-info");
+                    $("#inputServiceCBMsg").addClass("alert alert-danger");
+                    $("#inputServiceCBMsg").html(message);
+                    break;
+                } else {
+                    message = 'Ok';
+                    addCbConditionsArray['inputServicesCB'] = true;
+                    $("#inputServiceCBMsg").removeClass("alert alert-danger");
+                    $("#inputServiceCBMsg").addClass("alert alert-info");
+                    $("#inputServiceCBMsg").html(message);
+                }
+            }
         }
     }
+
+    console.log(addCbConditionsArray['inputServicesCB']);
 }

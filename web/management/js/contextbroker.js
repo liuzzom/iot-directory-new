@@ -851,7 +851,7 @@ $(document).ready(function () {
 						return;
 					}
 
-					else (data["status"] === 'ok')
+					else if (data["status"] === 'ok')
 					{
 						console.log("ok situation");
                     	$('#inputNameCBM').val("");

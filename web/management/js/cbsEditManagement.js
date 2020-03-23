@@ -309,39 +309,69 @@ function checkEditCbServices(){
     // check if the tab is hidden or not
     var isHidden = $('#editMultiServiceTabSelector').hasClass('hidden');
 
-    // insert first row value
-    values.push($('#editServiceCBRow1').find('input[name="editInputServiceCB"]').val());
+    // insert first row value 
+    // the undefined check is done to avoid an error occuring when an update is done
+    var firstValue = $('#editServiceCBRow1').find('input[name="editInputServiceCB"]').val();
+    if (firstValue !== undefined) values.push(firstValue.trim());
     // get values of all the additional rows
     $('#editServiceTenantTabCB div[name="additionalRow"]').find('input[name="editInputServiceCB"]').each(function(){
-        values.push($(this).val());
+        values.push($(this).val().trim());
     });
 
     // check if the MultiService tab is hidden
-    if(isHidden){
+    if (isHidden) {
         editCbConditionsArray['inputServicesCBM'] = true;
         return;
-    }else{
-        for(const value of values){
+    } else {
+
+        if (values.length == 1){
+            console.log("un solo service");
+
             var serviceRegex = /^([a-z]|_){1,50}$/;
-            if(!serviceRegex.test(value)){
+            if (values[0] !== "" && !serviceRegex.test(values[0])) {
                 message = `Check your values <br>
-                    <ul>
-                        <li>white spaces are not allowed</li>
-                        <li>use only lower case letters</li>
-                        <li>special characters are not allowed (except for "_")</li>
-                        <li>service/tenant name must not be longer than 50 characters</li>
-                    </ul>`;
+                        <ul>
+                            <li>white spaces are not allowed</li>
+                            <li>use only lower case letters</li>
+                            <li>special characters are not allowed (except for "_")</li>
+                            <li>service/tenant name must not be longer than 50 characters</li>
+                        </ul>`;
                 editCbConditionsArray['inputServicesCBM'] = false;
                 $("#editInputServiceCBMsg").removeClass("alert alert-info");
                 $("#editInputServiceCBMsg").addClass("alert alert-danger");
                 $("#editInputServiceCBMsg").html(message);
-                break;
-            }else{
+            } else {
                 message = 'Ok';
                 editCbConditionsArray['inputServicesCBM'] = true;
                 $("#editInputServiceCBMsg").removeClass("alert alert-danger");
                 $("#editInputServiceCBMsg").addClass("alert alert-info");
                 $("#editInputServiceCBMsg").html(message);
+            }
+        } else {
+            console.log("più services");
+
+            for(const value of values){
+                var serviceRegex = /^([a-z]|_){1,50}$/;
+                if(!serviceRegex.test(value)){
+                    message = `Check your values <br>
+                        <ul>
+                            <li>white spaces are not allowed</li>
+                            <li>use only lower case letters</li>
+                            <li>special characters are not allowed (except for "_")</li>
+                            <li>service/tenant name must not be longer than 50 characters</li>
+                        </ul>`;
+                    editCbConditionsArray['inputServicesCBM'] = false;
+                    $("#editInputServiceCBMsg").removeClass("alert alert-info");
+                    $("#editInputServiceCBMsg").addClass("alert alert-danger");
+                    $("#editInputServiceCBMsg").html(message);
+                    break;
+                }else{
+                    message = 'Ok';
+                    editCbConditionsArray['inputServicesCBM'] = true;
+                    $("#editInputServiceCBMsg").removeClass("alert alert-danger");
+                    $("#editInputServiceCBMsg").addClass("alert alert-info");
+                    $("#editInputServiceCBMsg").html(message);
+                }
             }
         }
     }
