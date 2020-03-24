@@ -443,7 +443,7 @@ $(document).ready(function () {
 			var servicesArr = $('input[name="inputServiceCB"]');
 			var serviceValues = [];
 			for(let i = 0; i < servicesArr.length; i++){
-				if(servicesArr[i].value && !(serviceValues.includes(servicesArr[i].value))) serviceValues.push(servicesArr[i].value);
+				if(servicesArr[i].value && !(serviceValues.includes(servicesArr[i].value))) serviceValues.push(servicesArr[i].value.trim());
 			}
 			console.log(JSON.stringify(serviceValues));
 			
@@ -798,7 +798,7 @@ $(document).ready(function () {
 		var servicesArr = $('input[name="editInputServiceCB"]');
 		var serviceValues = [];
 		for(let i = 0; i < servicesArr.length; i++){
-			if(servicesArr[i].value && !(serviceValues.includes(servicesArr[i].value))) serviceValues.push(servicesArr[i].value);
+			if(servicesArr[i].value && !(serviceValues.includes(servicesArr[i].value))) serviceValues.push(servicesArr[i].value.trim());
 		}
 		console.log(JSON.stringify(serviceValues));
 

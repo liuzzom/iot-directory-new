@@ -1,76 +1,19 @@
-2020-03-23 06:58:03: count($services):0
-2020-03-23 06:58:03: get_all_contextbroker BEGIN
-2020-03-23 06:58:04: get_all_contextbroker SUCCESS
+2020-03-24 12:39:43: get_all_contextbroker BEGIN
+2020-03-24 12:39:45: get_all_contextbroker SUCCESS
 
-2020-03-23 06:58:57: get_all_contextbroker BEGIN
-2020-03-23 06:58:57: get_all_contextbroker SUCCESS
+2020-03-24 12:40:10: get_all_contextbroker BEGIN
+2020-03-24 12:40:10: get_all_contextbroker SUCCESS
 
-2020-03-23 07:00:18: count($services): 0
-2020-03-23 07:00:19: get_all_contextbroker BEGIN
-2020-03-23 07:00:19: get_all_contextbroker SUCCESS
+2020-03-24 12:40:29: update: successful transaction
 
-2020-03-23 07:00:47: get_all_contextbroker BEGIN
-2020-03-23 07:00:47: get_all_contextbroker SUCCESS
+2020-03-24 12:40:30: get_all_contextbroker BEGIN
+2020-03-24 12:40:30: get_all_contextbroker SUCCESS
 
-2020-03-23 07:01:11: get_all_contextbroker BEGIN
-2020-03-23 07:01:11: get_all_contextbroker SUCCESS
+2020-03-24 12:40:45: update: successful transaction
 
-2020-03-23 07:01:49: count($services): 2
-2020-03-23 07:02:23: get_all_contextbroker BEGIN
-2020-03-23 07:02:23: get_all_contextbroker SUCCESS
+2020-03-24 12:40:45: get_all_contextbroker BEGIN
+2020-03-24 12:40:45: get_all_contextbroker SUCCESS
 
-2020-03-23 07:03:02: count($services): 2
-2020-03-23 07:03:02: array services non vuoto
-2020-03-23 07:03:03: get_all_contextbroker BEGIN
-2020-03-23 07:03:03: get_all_contextbroker SUCCESS
-
-2020-03-23 07:03:19: get_all_contextbroker BEGIN
-2020-03-23 07:03:19: get_all_contextbroker SUCCESS
-
-2020-03-23 07:10:21: get_all_contextbroker BEGIN
-2020-03-23 07:10:21: get_all_contextbroker SUCCESS
-
-2020-03-23 07:11:31: get_all_contextbroker BEGIN
-2020-03-23 07:11:31: get_all_contextbroker SUCCESS
-
-2020-03-23 07:14:29: get_all_contextbroker BEGIN
-2020-03-23 07:14:29: get_all_contextbroker SUCCESS
-
-2020-03-23 07:14:54: get_all_contextbroker BEGIN
-2020-03-23 07:14:55: get_all_contextbroker SUCCESS
-
-2020-03-23 07:15:08: update: successful transaction
-
-2020-03-23 07:15:09: get_all_contextbroker BEGIN
-2020-03-23 07:15:10: get_all_contextbroker SUCCESS
-
-2020-03-23 07:15:51: get_all_contextbroker BEGIN
-2020-03-23 07:15:51: get_all_contextbroker SUCCESS
-
-2020-03-23 07:16:42: update: successful transaction
-
-2020-03-23 07:16:42: get_all_contextbroker BEGIN
-2020-03-23 07:16:42: get_all_contextbroker SUCCESS
-
-2020-03-23 07:22:38: update: successful transaction
-
-2020-03-23 07:22:38: get_all_contextbroker BEGIN
-2020-03-23 07:22:39: get_all_contextbroker SUCCESS
-
-2020-03-23 07:25:36: get_all_contextbroker BEGIN
-2020-03-23 07:25:37: get_all_contextbroker SUCCESS
-
-2020-03-23 07:26:17: get_all_contextbroker BEGIN
-2020-03-23 07:26:18: get_all_contextbroker SUCCESS
-
-2020-03-23 07:26:36: update: successful transaction
-
-2020-03-23 07:26:36: get_all_contextbroker BEGIN
-2020-03-23 07:26:36: get_all_contextbroker SUCCESS
-
-2020-03-23 07:26:48: get_all_contextbroker BEGIN
-2020-03-23 07:26:48: get_all_contextbroker SUCCESS
-
-2020-03-23 07:26:58: get_all_contextbroker BEGIN
-2020-03-23 07:26:58: get_all_contextbroker SUCCESS
+2020-03-24 12:40:49: get_all_contextbroker BEGIN
+2020-03-24 12:40:49: get_all_contextbroker SUCCESS
 
