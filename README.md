@@ -60,7 +60,7 @@ back-end directory: api
 ### Sezione Modelli
 
 #### Add Model:
-- Inserimento elementi nell'interfaccia utente
+- ~~Inserimento elementi nell'interfaccia utente~~
 - Controllo sui valori inseriti e feedback all'utente
 - Gestione richiesta al server
 - Controlli lato server
@@ -69,7 +69,7 @@ back-end directory: api
 - Relazione
 
 #### Edit Model
-- Inserimento elementi nell'interfaccia utente
+- ~~Inserimento elementi nell'interfaccia utente~~
 - Controllo sui valori inseriti e feedback all'utente
 - Gestione richiesta al server
 - Controlli lato server
