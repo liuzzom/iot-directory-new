@@ -1,29 +1,0 @@
-2020-03-24 12:39:34pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
-2020-03-24 12:39:43pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-03-24 12:39:46pm: 
- action=get_all_contextbroker 
-
-2020-03-24 12:39:46pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-03-24 12:40:09pm: 
- registration is possible\n\r action: insert ok. INSERT INTO contextbroker(name, ip, kind, protocol, version, port, latitude, longitude, login, password, accesslink, accessport, path, visibility, sha, organization) VALUES('LilloName', 'LilloIp', '', 'ngsi w/MultiService', '', '8080', '43.76366', '11.30424', '', '', 'LilloIp','', '', 'private', '', 'Organization') services: 
- the registration of the ownership succeded{"elementId":"Organization:LilloName","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementType":"BrokerID"}
-2020-03-24 12:40:10pm: 
- action=get_all_contextbroker 
-
-2020-03-24 12:40:29pm: 
- The registration is NOT possible. Reached limit of IoT Devices \n\r action: update ok. UPDATE contextbroker SET name = 'LilloName', kind = '', ip = 'LilloIp', port = '8080', protocol = 'ngsi w/MultiService', version = '', latitude = '43.76366', longitude = '11.30424', login = '', password = '', accesslink = 'LilloIp', accessport = '', path = '', visibility = '', sha = '', organization='Organization' WHERE name = 'LilloName' and organization='Organization';
-2020-03-24 12:40:30pm: 
- action=get_all_contextbroker 
-
-2020-03-24 12:40:45pm: 
- The registration is NOT possible. Reached limit of IoT Devices \n\r action: update ok. UPDATE contextbroker SET name = 'LilloName', kind = '', ip = 'LilloIp', port = '8080', protocol = 'ngsi w/MultiService', version = '', latitude = '43.76366', longitude = '11.30424', login = '', password = '', accesslink = 'LilloIp', accessport = '', path = '', visibility = '', sha = '', organization='Organization' WHERE name = 'LilloName' and organization='Organization';
-2020-03-24 12:40:45pm: 
- action=get_all_contextbroker 
-
-2020-03-24 12:40:48pm: \n\r action: delete ok. DELETE FROM contextbroker WHERE name = 'LilloName' and organization='Organization';
-2020-03-24 12:40:49pm: 
- action=get_all_contextbroker 
-
