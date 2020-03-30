@@ -78,8 +78,6 @@ back-end directory: api
 - Relazione
 
 #### Delete Model
-- Inserimento elementi nell'interfaccia utente
-- Controllo sui valori inseriti e feedback all'utente
 - Gestione richiesta al server
 - Controlli lato server
 - Operazioni sul DB

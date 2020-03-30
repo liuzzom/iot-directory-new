@@ -462,7 +462,7 @@
                         <!-- IOT Broker tab -->
                         <div id="addIOTBrokerTabModel" class="tab-pane fade">
 						
-			              <div class="row">
+			            	<div class="row">
 								<div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
                                         <select id="selectContextBroker" name="selectContextBroker" class="modalInputTxt">

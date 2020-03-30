@@ -576,9 +576,8 @@ $accessToken = "";
 						
 						
                             <div class="row">
-							
-							
-							 <div class="col-xs-12 col-md-6 modalCell">
+
+							    <div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
                                         <select id="selectContextBroker" name="selectContextBroker" class="modalInputTxt">
 										<option></option>
@@ -606,8 +605,9 @@ $accessToken = "";
 										</select>
                                     </div>
                                     <div class="modalFieldLabelCnt">ContextBroker</div>
-								<div id="selectContextBrokerMsg" class="modalFieldMsgCnt">&nbsp;</div>
+								    <div id="selectContextBrokerMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
+
                                 <div class="col-xs-12 col-md-6 modalCell">
                                      
                                      <div class="modalFieldCnt">
@@ -619,8 +619,9 @@ $accessToken = "";
                                     <div class="modalFieldLabelCnt">Kind</div>
                                     <div id="selectKindDeviceMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
+                            </div>
 
-                                
+                            <div class="row">    
                                 <div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
                                         <select id="selectProtocolDevice" name="selectProtocolDevice" class="modalInputTxt">
@@ -649,7 +650,34 @@ $accessToken = "";
 								<div class="col-xs-12 col-md-6 modalCell"><div id="externalContextBrokerMsg" class="modalFieldMsgCnt"></div></div>
                                 <div class="col-xs-12 col-md-6 modalCell"></div>
 						
-                            </div>    
+                            </div> 
+
+                            <!-- Author: Antonino Mauro Liuzzo -->
+							<!-- Start MultiService + ServicePath Section -->
+							<div class = "row" id = "multiServiceAndServicePath">
+								<div class="col-xs-12 col-md-6 modalCell">
+                                    <div class="modalFieldCnt">
+                                        <select id="selectServiceModel" name="selectServiceModel" class="modalInputTxt" required>
+											<option value="" selected></option>
+											<option value="service_a">service_a</option>
+											<option value="service_b">service_b</option>
+											<option value="service_c">service_c</option>
+										</select>
+                                    </div>
+                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
+									<div id="selectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                </div>
+
+								<div class="col-xs-12 col-md-6 modalCell">          
+									<div class="modalFieldCnt">
+                                        <input type="text" class="modalInputTxt" name="inputServicePathModel" id="inputServicePathModel" required>
+                                    </div>
+                                    <div class="modalFieldLabelCnt">ServicePath</div>
+									<div id="inputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                </div>
+							</div>
+							<!-- End MultiService + ServicePath Section -->
+
                         </div>
                         <!-- Info tab -->
                         <div id="addInfoTabDevice" class="tab-pane fade">
@@ -1087,7 +1115,32 @@ $accessToken = "";
                                 </div>
                                
 							</div>
-				 
+                            
+                            <!-- Author: Antonino Mauro Liuzzo -->
+							<!-- Start MultiService + ServicePath Section -->
+							<div class = "row" id = "editMultiServiceAndServicePath">
+								<div class="col-xs-12 col-md-6 modalCell">
+                                    <div class="modalFieldCnt">
+                                        <select id="editSelectServiceModel" name="editSelectServiceModel" class="modalInputTxt" required>
+											<option value="" selected></option>
+											<option value="service_a">service_a</option>
+											<option value="service_b">service_b</option>
+											<option value="service_c">service_c</option>
+										</select>
+                                    </div>
+                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
+									<div id="editSelectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                </div>
+
+								<div class="col-xs-12 col-md-6 modalCell">          
+									<div class="modalFieldCnt">
+                                        <input type="text" class="modalInputTxt" name="editInputServicePathModel" id="editInputServicePathModel" required>
+                                    </div>
+                                    <div class="modalFieldLabelCnt">ServicePath</div>
+									<div id="editInputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                </div>
+							</div>
+							<!-- End MultiService + ServicePath Section -->
                         </div>
                          <!-- Info tab -->
                         <div id="editInfoTabDevice" class="tab-pane fade ">

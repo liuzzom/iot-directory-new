@@ -1137,12 +1137,23 @@ $(document).ready(function () {
 		 * 	- a non empty of comma-separated values -> if protocol === "ngsi w/MultiService"
 		 */
 
+		// set the Info section as visible
+		$('#editMultiServiceTabSelector').removeClass('active');
+		$('#editGeoPositionTabSelector').removeClass('active');
+		$('#editSecurityTabSelector').removeClass('active');
+		$('#editInfoTabSelector').addClass('active');
+		$('#editServiceTenantTabCB').removeClass("active in");
+		$('#editGeoPositionTabCB').removeClass("active in");
+		$('#editSecurityTabCB').removeClass("active in");
+		$('#editInfoTabCB').addClass("active in");	
+		 
 		var protocol = $("#selectProtocolCBM").val();
 		if (protocol !== "ngsi w/MultiService") {
 			
 			// hide the MultiServices tab
 			$('#editMultiServiceTabSelector').addClass("hidden");
 
+			// remove form elements
 			$('#editServiceCBRow1').remove();
 			$('div[name="additionalRow"]').remove();
 

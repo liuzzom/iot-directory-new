@@ -638,8 +638,8 @@
 					<ul id="editContextBrokerModalTabs" class="nav nav-tabs nav-justified">
 						<li id="editInfoTabSelector" class="active"><a data-toggle="tab" href="#editInfoTabCB">Info</a></li>
 						<li id="editMultiServiceTabSelector" class="hidden"><a data-toggle="tab" href="#editServiceTenantTabCB">Services/Tenants</a></li>
-						<li><a data-toggle="tab" href="#editGeoPositionTabCB">Geo-Position</a></li>
-						<li><a data-toggle="tab" href="#editSecurityTabCB">Security</a></li>
+						<li id="editGeoPositionTabSelector"><a data-toggle="tab" href="#editGeoPositionTabCB">Geo-Position</a></li>
+						<li id="editSecurityTabSelector"><a data-toggle="tab" href="#editSecurityTabCB">Security</a></li>
 					</ul>
 					
 					<div class="tab-content">
