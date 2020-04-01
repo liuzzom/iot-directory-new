@@ -199,6 +199,7 @@ $accessToken = "";
 		<script  src="js/fieldsManagement.js"></script>
 		<script  src="js/devicesEditManagement.js"></script>
         <script  src="../js/dashboard_mng.js"></script>
+        <script type="text/javascript" src="js/commonModelDevice.js"></script>
 		
 		
 		<!-- leaflet scripts -->
@@ -630,6 +631,7 @@ $accessToken = "";
 											<option value="coap">coap</option>
 											<option value="mqtt">mqtt</option>
 											<option value="ngsi">ngsi</option>
+                                            <option value="ngsi w/MultiService">ngsi w/MultiService</option>
 										</select>
                                     </div>
                                     <div class="modalFieldLabelCnt">Protocol</div>
@@ -664,7 +666,7 @@ $accessToken = "";
 											<option value="service_c">service_c</option>
 										</select>
                                     </div>
-                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
+                                    <div id="selectServiceModelLabel" class="modalFieldLabelCnt">Service/Tenant</div>
 									<div id="selectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 
@@ -672,7 +674,7 @@ $accessToken = "";
 									<div class="modalFieldCnt">
                                         <input type="text" class="modalInputTxt" name="inputServicePathModel" id="inputServicePathModel" required>
                                     </div>
-                                    <div class="modalFieldLabelCnt">ServicePath</div>
+                                    <div id="inputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
 									<div id="inputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 							</div>
@@ -1128,7 +1130,7 @@ $accessToken = "";
 											<option value="service_c">service_c</option>
 										</select>
                                     </div>
-                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
+                                    <div id="editSelectServiceModelLabel" class="modalFieldLabelCnt">Service/Tenant</div>
 									<div id="editSelectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 
@@ -1136,7 +1138,7 @@ $accessToken = "";
 									<div class="modalFieldCnt">
                                         <input type="text" class="modalInputTxt" name="editInputServicePathModel" id="editInputServicePathModel" required>
                                     </div>
-                                    <div class="modalFieldLabelCnt">ServicePath</div>
+                                    <div id="editInputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
 									<div id="editInputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 							</div>

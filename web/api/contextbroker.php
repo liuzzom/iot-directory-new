@@ -121,7 +121,7 @@ if($action=="insert"){
 
 					// syntax checking
 					if(!preg_match($serviceRegex, $service)){
-						dev_log("insert: $service isn't a valid service name");
+						// dev_log("insert: $service isn't a valid service name");
 						$success = FALSE;
 					}
 
@@ -222,7 +222,7 @@ if($action=="insert"){
 
 			// Syntax Checking
 			if(!preg_match($serviceRegex, $service)){
-				dev_log("$service isn't a valid service name");
+				// dev_log("$service isn't a valid service name");
 				$success = FALSE;
 			}
 
@@ -233,7 +233,7 @@ if($action=="insert"){
 
 	if($success){
 
-		dev_log("update: successful transaction\n");
+		// dev_log("update: successful transaction\n");
 
 		// successful transaction
 		mysqli_commit($link);
@@ -254,7 +254,7 @@ if($action=="insert"){
         }
 	}else{
 
-		dev_log("update: unsuccessful transaction\n");
+		// dev_log("update: unsuccessful transaction\n");
 
 		// unsuccessful transaction
 		mysqli_rollback($link);
@@ -310,7 +310,7 @@ if($action=="insert"){
 	mysqli_close($link);
 
 } else if($action == 'get_all_contextbroker') {
-	dev_log("get_all_contextbroker BEGIN");
+	// dev_log("get_all_contextbroker BEGIN");
 
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
@@ -416,11 +416,11 @@ if($action=="insert"){
             }
 		}
 		
-		dev_log("get_all_contextbroker SUCCESS\n");
+		// dev_log("get_all_contextbroker SUCCESS\n");
 		$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_all_contextbroker \r\n", 'ok');
 		logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'','success');
 	} else {
-		dev_log("get_all_contextbroker FAIL\n");
+		// dev_log("get_all_contextbroker FAIL\n");
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 		logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');				   
 	}
@@ -429,7 +429,7 @@ if($action=="insert"){
 	mysqli_close($link);
 
 } else if($action == "get_subset_contextbroker") {
-	dev_log("get_subset_contextbroker BEGIN");
+	// dev_log("get_subset_contextbroker BEGIN");
 	//Sara511 - For testing purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
@@ -437,7 +437,7 @@ if($action=="insert"){
 
 	// SEGNALAZIONE: Se entra in questo blocco, al client non viene fornito alcun risultato
 	if (!empty($accessToken)) {
-		dev_log("if (!empty(\$accessToken))");
+		// dev_log("if (!empty(\$accessToken))");
         getOwnerShipObject($accessToken, "BrokerID", $result); 
         getDelegatedObject($accessToken, $username, $result);
 	}
@@ -461,7 +461,7 @@ if($action=="insert"){
 		$q = "SELECT DISTINCT * FROM contextbroker";
 	}
 
-	dev_log("testo della query: $q");
+	// dev_log("testo della query: $q");
 	
     $r = mysqli_query($link, $q);
 	$selectedrows=-1;
@@ -477,7 +477,7 @@ if($action=="insert"){
 	
 	if($r) {
 		
-		dev_log("query avvenuta con successo");
+		// dev_log("query avvenuta con successo");
 
 		$data = array();
     	while($row = mysqli_fetch_assoc($r)) {
@@ -528,7 +528,7 @@ if($action=="insert"){
 
 					if ($sqr) {
 						
-						dev_log($servicesQueryString . " OK");
+						// dev_log($servicesQueryString . " OK");
 						$row["services"] = array();
 
 						while ($servicesRow = mysqli_fetch_assoc($sqr)) {
@@ -536,24 +536,24 @@ if($action=="insert"){
 						}
 					} else {
 						
-						dev_log($servicesQueryString . " ERROR");
+						// dev_log($servicesQueryString . " ERROR");
 						$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 						logAction($link,$username,'contextbroker','get_all_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
 					}
 				}
 
-				dev_log(json_encode($row));
+				// dev_log(json_encode($row));
 				array_push($data, $row);
 			}
 		}
 		
-		dev_log("get_subset_contextbroker SUCCESS\n");
+		// dev_log("get_subset_contextbroker SUCCESS\n");
 		$output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_subset_contextbroker \r\n", 'ok');
 		logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'','success');
 
 	} else {
 
-		dev_log("get_subset_contextbroker FAIL\n");
+		// dev_log("get_subset_contextbroker FAIL\n");
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about IOT Broker. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about IOT Broker.' . generateErrorMessage($link), 'ko');
 		logAction($link,$username,'contextbroker','get_subset_contextbroker','',$organization,'Error: errors in reading data about IOT Broker.','faliure');
 	}    
@@ -561,7 +561,7 @@ if($action=="insert"){
 	mysqli_close($link);
 
 } else if($action == "get_all_contextbroker_latlong") {
-	dev_log("get_all_contextbroker_latlong BEGIN");
+	// dev_log("get_all_contextbroker_latlong BEGIN");
 
 	$organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
     $loggedrole= mysqli_real_escape_string($link, $_REQUEST['loggedrole']);
@@ -579,7 +579,7 @@ if($action=="insert"){
 		$result['status'] = 'ok';
 		$result['content'] = array();
 		$result["log"].='\n\r action: get_all_contextbroker_latlong ok. ' . $q;
-		dev_log("get_all_contextbroker_latlong SUCCESS\n");
+		// dev_log("get_all_contextbroker_latlong SUCCESS\n");
 		
 		while($row = mysqli_fetch_assoc($r)) {
         	$idTocheck=$row["organization"].":".$row["name"];    
@@ -601,7 +601,7 @@ if($action=="insert"){
 		$result['status'] = 'ko';
 		$result['msg'] = 'Error: errors in reading data about devices. <br/>' . mysqli_error($link);
 		$result['log'] = '\n\r Error: errors in reading data about devices. <br/>' . mysqli_error($link);
-		dev_log("get_all_contextbroker_latlong FAIL\n");			   
+		// dev_log("get_all_contextbroker_latlong FAIL\n");			   
 	}
 
 	my_log($result);

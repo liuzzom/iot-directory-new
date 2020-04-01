@@ -194,6 +194,7 @@
 <script type="text/javascript" src="js/modelManagement.js"></script>
 <script type="text/javascript" src="js/modelEditManagement.js"></script>
 <script type="text/javascript" src="js/fieldsManagement.js"></script>
+<script type="text/javascript" src="js/commonModelDevice.js"></script>
 
         
         <!--<link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700|Catamaran|Varela+Round" rel="stylesheet">
@@ -503,6 +504,7 @@
 											<option value="coap">coap</option>
 											<option value="mqtt">mqtt</option>
 											<option value="ngsi">ngsi</option>
+											<option value="ngsi w/MultiService">ngsi w/MultiService</option>
 										</select>
                                     </div>
                                     <div class="modalFieldLabelCnt">Protocol</div>
@@ -546,22 +548,22 @@
 							<div class = "row" id = "multiServiceAndServicePath">
 								<div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
-                                        <select id="selectServiceModel" name="selectServiceModel" class="modalInputTxt" required>
+                                        <select id="selectServiceModel" name="selectServiceModel" class="modalInputTxt">
 											<option value="" selected></option>
 											<option value="service_a">service_a</option>
 											<option value="service_b">service_b</option>
 											<option value="service_c">service_c</option>
 										</select>
                                     </div>
-                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
+                                    <div id="selectServiceModelLabel" class="modalFieldLabelCnt">Service/Tenant</div>
 									<div id="selectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 
 								<div class="col-xs-12 col-md-6 modalCell">          
 									<div class="modalFieldCnt">
-                                        <input type="text" class="modalInputTxt" name="inputServicePathModel" id="inputServicePathModel" required>
+                                        <input type="text" class="modalInputTxt" name="inputServicePathModel" id="inputServicePathModel">
                                     </div>
-                                    <div class="modalFieldLabelCnt">ServicePath</div>
+                                    <div id="inputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
 									<div id="inputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 							</div>
@@ -827,6 +829,7 @@
 											<option value="coap">coap</option>
 											<option value="mqtt">mqtt</option>
 											<option value="ngsi">ngsi</option>
+											<option value="ngsi w/MultiService">ngsi w/MultiService</option>
 										</select>
                                     </div>
                                     <div class="modalFieldLabelCnt">Protocol</div>
@@ -870,22 +873,22 @@
 							<div class = "row" id = "editMultiServiceAndServicePath">
 								<div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
-                                        <select id="editSelectServiceModel" name="editSelectServiceModel" class="modalInputTxt" required>
+                                        <select id="editSelectServiceModel" name="editSelectServiceModel" class="modalInputTxt">
 											<option value="" selected></option>
 											<option value="service_a">service_a</option>
 											<option value="service_b">service_b</option>
 											<option value="service_c">service_c</option>
 										</select>
                                     </div>
-                                    <div class="modalFieldLabelCnt">Service/Tenant</div>
+                                    <div id="editSelectServiceModelLabel" class="modalFieldLabelCnt">Service/Tenant</div>
 									<div id="editSelectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 
 								<div class="col-xs-12 col-md-6 modalCell">          
 									<div class="modalFieldCnt">
-                                        <input type="text" class="modalInputTxt" name="editInputServicePathModel" id="editInputServicePathModel" required>
+                                        <input type="text" class="modalInputTxt" name="editInputServicePathModel" id="editInputServicePathModel">
                                     </div>
-                                    <div class="modalFieldLabelCnt">ServicePath</div>
+                                    <div id="editInputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
 									<div id="editInputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 							</div>
