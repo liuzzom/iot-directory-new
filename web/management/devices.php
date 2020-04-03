@@ -672,7 +672,7 @@ $accessToken = "";
 
 								<div class="col-xs-12 col-md-6 modalCell">          
 									<div class="modalFieldCnt">
-                                        <input type="text" class="modalInputTxt" name="inputServicePathModel" id="inputServicePathModel" required>
+                                        <input type="text" class="modalInputTxt" name="inputServicePathDevice" id="inputServicePathDevice" required>
                                     </div>
                                     <div id="inputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
 									<div id="inputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
@@ -1136,7 +1136,7 @@ $accessToken = "";
 
 								<div class="col-xs-12 col-md-6 modalCell">          
 									<div class="modalFieldCnt">
-                                        <input type="text" class="modalInputTxt" name="editInputServicePathModel" id="editInputServicePathModel" required>
+                                        <input type="text" class="modalInputTxt" name="editInputServicePathDevice" id="editInputServicePathDevice" required>
                                     </div>
                                     <div id="editInputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
 									<div id="editInputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
