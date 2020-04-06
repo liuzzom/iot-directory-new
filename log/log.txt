@@ -1,76 +1,364 @@
-2020-04-03 05:39:16pm: 
+2020-04-06 11:40:41am: 
  action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 05:39:16pm: \n\naction:get_param_values
-2020-04-03 05:39:17pm: 
+2020-04-06 11:40:41am: \n\naction:get_param_values
+2020-04-06 11:40:42am: 
  action=get_all_models_DataTable 
 
-2020-04-03 05:39:17pm: 
+2020-04-06 11:40:42am: 
  action:get_all_ou. Ok, got n-entries:1
-2020-04-03 05:39:17pm: 
+2020-04-06 11:40:42am: 
  action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 05:39:19pm: 
+2020-04-06 11:40:45am: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 11:56:22am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 11:56:22am: \n\naction:get_param_values
+2020-04-06 11:56:23am: 
+ action=get_all_models_DataTable 
+
+2020-04-06 11:56:23am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 11:56:23am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 11:56:30am: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 11:56:47am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 11:56:47am: \n\naction:get_param_values
+2020-04-06 11:56:47am: 
+ action=get_all_models_DataTable 
+
+2020-04-06 11:56:47am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 11:56:48am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 11:56:50am: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 11:57:04am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 11:57:04am: \n\naction:get_param_values
+2020-04-06 11:57:04am: 
+ action=get_all_models_DataTable 
+
+2020-04-06 11:57:04am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 11:57:04am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 11:57:06am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 11:57:06am: \n\naction:get_param_values
+2020-04-06 11:57:07am: 
+ action=get_all_models_DataTable 
+
+2020-04-06 11:57:07am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 11:57:07am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 11:57:10am: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 11:57:13am: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 11:57:13am: \n\naction:get_param_values
+2020-04-06 11:57:14am: 
+ action=get_all_models_DataTable 
+
+2020-04-06 11:57:14am: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 11:57:14am: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 12:07:40pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 12:07:40pm: \n\naction:get_param_values
+2020-04-06 12:07:41pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 12:07:41pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 12:07:41pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 12:07:47pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 12:35:11pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 12:35:12pm: \n\naction:get_param_values
+2020-04-06 12:35:13pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 12:35:13pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 12:35:13pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 12:35:16pm: 
+ action:get_cb. ok 
+2020-04-06 12:36:07pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 12:36:07pm: \n\naction:get_param_values
+2020-04-06 12:36:07pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 12:36:07pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 12:36:08pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 12:37:19pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 12:37:19pm: \n\naction:get_param_values
+2020-04-06 12:37:19pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 12:37:19pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 12:37:19pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 12:42:52pm: 
+ action:get_cb. ok 
+2020-04-06 12:44:47pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 12:44:47pm: \n\naction:get_param_values
+2020-04-06 12:44:48pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 12:44:48pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 12:44:48pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 12:45:07pm: 
+ action:get_cb. ok 
+2020-04-06 01:02:00pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:02:00pm: \n\naction:get_param_values
+2020-04-06 01:02:00pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:02:00pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:02:01pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:02:03pm: 
+ action:get_cb. ok 
+2020-04-06 01:03:21pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:03:21pm: \n\naction:get_param_values
+2020-04-06 01:03:21pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:03:21pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:03:22pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:03:23pm: 
+ action:get_cb. ok 
+2020-04-06 01:03:46pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:03:46pm: \n\naction:get_param_values
+2020-04-06 01:03:46pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:03:46pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:03:47pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:03:47pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:03:47pm: \n\naction:get_param_values
+2020-04-06 01:03:48pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:03:48pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:03:48pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:03:53pm: 
+ action:get_cb. ok 
+2020-04-06 01:05:20pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:05:20pm: \n\naction:get_param_values
+2020-04-06 01:05:20pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:05:20pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:05:20pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:05:24pm: 
+ action:get_cb. ok 
+2020-04-06 01:07:14pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:07:14pm: \n\naction:get_param_values
+2020-04-06 01:07:14pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:07:14pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:07:14pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:07:17pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:07:17pm: \n\naction:get_param_values
+2020-04-06 01:07:17pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:07:18pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:07:18pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:07:20pm: 
+ action:get_cb. ok 
+2020-04-06 01:12:17pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:12:17pm: \n\naction:get_param_values
+2020-04-06 01:12:17pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:12:18pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:12:18pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:12:20pm: 
+ action:get_cb. ok 
+2020-04-06 01:12:27pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:12:27pm: \n\naction:get_param_values
+2020-04-06 01:12:28pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:12:28pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:12:28pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:12:32pm: 
+ action:get_cb. ok 
+2020-04-06 01:13:00pm: 
  action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 05:39:19pm: \n\naction:get_param_values
-2020-04-03 05:39:19pm: 
+2020-04-06 01:13:00pm: \n\naction:get_param_values
+2020-04-06 01:13:02pm: 
  action=get_all_device 
 
-2020-04-03 05:39:19pm: 
+2020-04-06 01:13:02pm: 
  action:get_all_ou. Ok, got n-entries:1
-2020-04-03 05:39:19pm: 
+2020-04-06 01:13:02pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 05:39:24pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 05:45:39pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 05:45:39pm: \n\naction:get_param_values
-2020-04-03 05:45:39pm: 
- action=get_all_models_DataTable 
+2020-04-06 01:13:27pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'alldevices.php'
+2020-04-06 01:13:27pm: \n\naction:get_param_values
+2020-04-06 01:13:28pm: 
+ action=get_all_device_admin 
 
-2020-04-03 05:45:40pm: 
+2020-04-06 01:13:28pm: 
  action:get_all_ou. Ok, got n-entries:1
-2020-04-03 05:45:40pm: 
+2020-04-06 01:13:28pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:11:58pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:12:00pm: \n\naction:get_param_values
-2020-04-03 10:12:08pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:12:10pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:12:11pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:16:08pm: 
+2020-04-06 01:13:33pm: 
  action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 10:16:08pm: \n\naction:get_param_values
-2020-04-03 10:16:10pm: 
+2020-04-06 01:13:33pm: \n\naction:get_param_values
+2020-04-06 01:13:34pm: 
  action=get_all_device 
 
-2020-04-03 10:16:10pm: 
+2020-04-06 01:13:34pm: 
  action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:16:10pm: 
+2020-04-06 01:13:34pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:16:14pm: [
+2020-04-06 01:13:36pm: [
 {"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
@@ -92,17 +380,327 @@
 {"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
 ]
 \n identified 1 private objects \n
-2020-04-03 10:29:16pm: 
+2020-04-06 01:13:46pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:16:13pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:16:13pm: \n\naction:get_param_values
+2020-04-06 01:16:14pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:16:14pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:16:14pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:16:17pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:16:35pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:18:59pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:18:59pm: \n\naction:get_param_values
+2020-04-06 01:18:59pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:18:59pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:18:59pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:21:52pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:22:55pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:22:55pm: \n\naction:get_param_values
+2020-04-06 01:22:55pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:22:55pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:22:55pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:22:58pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:23:30pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:23:30pm: \n\naction:get_param_values
+2020-04-06 01:23:30pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:23:30pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:23:31pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:23:34pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:23:55pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:24:07pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:24:07pm: \n\naction:get_param_values
+2020-04-06 01:24:08pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:24:08pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:24:08pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:28:57pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:28:57pm: \n\naction:get_param_values
+2020-04-06 01:28:58pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:28:58pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:28:58pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:29:01pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:30:40pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:30:40pm: \n\naction:get_param_values
+2020-04-06 01:30:40pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:30:41pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:30:41pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:30:42pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:34:28pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:34:28pm: \n\naction:get_param_values
+2020-04-06 01:34:29pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:34:29pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:34:29pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:34:34pm: 
  action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 10:29:16pm: \n\naction:get_param_values
-2020-04-03 10:29:17pm: 
+2020-04-06 01:34:34pm: \n\naction:get_param_values
+2020-04-06 01:34:34pm: [
+{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
+,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
+,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
+,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
+,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
+,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
+]
+\n identified 15 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
+]
+\n identified 1 private objects \n
+2020-04-06 01:34:34pm: 
  action=get_all_device 
 
-2020-04-03 10:29:17pm: 
+2020-04-06 01:34:35pm: 
  action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:29:17pm: 
+2020-04-06 01:34:35pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:29:19pm: [
+2020-04-06 01:36:16pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:36:17pm: \n\naction:get_param_values
+2020-04-06 01:36:18pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:36:18pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:36:18pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:36:23pm: [
 {"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
@@ -124,17 +722,17 @@
 {"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
 ]
 \n identified 1 private objects \n
-2020-04-03 10:29:42pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 10:29:42pm: \n\naction:get_param_values
-2020-04-03 10:29:43pm: 
- action=get_all_device 
+2020-04-06 01:36:49pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:36:49pm: \n\naction:get_param_values
+2020-04-06 01:36:50pm: 
+ action=get_all_models_DataTable 
 
-2020-04-03 10:29:43pm: 
+2020-04-06 01:36:50pm: 
  action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:29:43pm: 
+2020-04-06 01:36:50pm: 
  action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:29:48pm: [
+2020-04-06 01:36:57pm: [
 {"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
@@ -156,7 +754,17 @@
 {"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
 ]
 \n identified 1 private objects \n
-2020-04-03 10:30:54pm: [
+2020-04-06 01:37:19pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-06 01:37:19pm: \n\naction:get_param_values
+2020-04-06 01:37:19pm: 
+ action=get_all_models_DataTable 
+
+2020-04-06 01:37:19pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-06 01:37:19pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-06 01:37:28pm: [
 {"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
@@ -178,27 +786,7 @@
 {"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
 ]
 \n identified 1 private objects \n
-2020-04-03 10:31:57pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:31:57pm: \n\naction:get_param_values
-2020-04-03 10:31:58pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:31:58pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:31:58pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:31:59pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 10:31:59pm: \n\naction:get_param_values
-2020-04-03 10:32:00pm: 
- action=get_all_device 
-
-2020-04-03 10:32:00pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:32:00pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:32:02pm: [
+2020-04-06 01:37:45pm: [
 {"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
 ,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
@@ -220,683 +808,3 @@
 {"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
 ]
 \n identified 1 private objects \n
-2020-04-03 10:32:27pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:32:27pm: \n\naction:get_param_values
-2020-04-03 10:32:28pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:32:28pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:32:28pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:32:30pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:33:04pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:33:04pm: \n\naction:get_param_values
-2020-04-03 10:33:05pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:33:05pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:33:05pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:33:11pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:34:18pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:34:18pm: \n\naction:get_param_values
-2020-04-03 10:34:19pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:34:19pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:34:19pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:34:24pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:34:44pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:34:44pm: \n\naction:get_param_values
-2020-04-03 10:34:45pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:34:45pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:34:45pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:34:54pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:34:59pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:34:59pm: \n\naction:get_param_values
-2020-04-03 10:35:00pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:35:00pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:35:00pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:35:04pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:35:08pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 10:35:08pm: \n\naction:get_param_values
-2020-04-03 10:35:09pm: 
- action=get_all_device 
-
-2020-04-03 10:35:09pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:35:09pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:35:11pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:37:31pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:37:31pm: \n\naction:get_param_values
-2020-04-03 10:37:32pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:37:32pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:37:33pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:37:36pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:45:40pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:45:40pm: \n\naction:get_param_values
-2020-04-03 10:45:41pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:45:41pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:45:41pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:45:50pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 10:45:52pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:45:52pm: \n\naction:get_param_values
-2020-04-03 10:45:53pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:45:53pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:45:53pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:48:41pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 10:48:41pm: \n\naction:get_param_values
-2020-04-03 10:48:42pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 10:48:42pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 10:48:42pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 10:48:45pm: 
- action:get_cb. ok 
-2020-04-03 11:03:59pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:03:59pm: \n\naction:get_param_values
-2020-04-03 11:04:00pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:04:00pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:04:00pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:04:04pm: 
- action:get_cb. ok 
-2020-04-03 11:12:34pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:12:34pm: \n\naction:get_param_values
-2020-04-03 11:12:34pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:12:34pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:12:34pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:12:39pm: 
- action:get_cb. ok 
-2020-04-03 11:13:13pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:13:13pm: \n\naction:get_param_values
-2020-04-03 11:13:13pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:13:13pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:13:13pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:13:17pm: 
- action:get_cb. ok 
-2020-04-03 11:14:28pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:14:28pm: \n\naction:get_param_values
-2020-04-03 11:14:28pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:14:28pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:14:28pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:14:32pm: 
- action:get_cb. ok 
-2020-04-03 11:16:18pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:16:18pm: \n\naction:get_param_values
-2020-04-03 11:16:19pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:16:19pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:16:19pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:16:22pm: 
- action:get_cb. ok 
-2020-04-03 11:16:39pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:16:39pm: \n\naction:get_param_values
-2020-04-03 11:16:40pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:16:40pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:16:40pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:18:22pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:18:22pm: \n\naction:get_param_values
-2020-04-03 11:18:22pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:18:22pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:18:23pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:18:26pm: 
- action:get_cb. ok 
-2020-04-03 11:19:46pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:19:46pm: \n\naction:get_param_values
-2020-04-03 11:19:46pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:19:46pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:19:46pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:19:52pm: 
- action:get_cb. ok 
-2020-04-03 11:21:46pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:21:46pm: \n\naction:get_param_values
-2020-04-03 11:21:46pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:21:46pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:21:46pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:21:53pm: 
- action:get_cb. ok 
-2020-04-03 11:23:23pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:23:23pm: \n\naction:get_param_values
-2020-04-03 11:23:23pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:23:24pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:23:24pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:23:27pm: 
- action:get_cb. ok 
-2020-04-03 11:26:08pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:26:08pm: \n\naction:get_param_values
-2020-04-03 11:26:08pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:26:08pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:26:08pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:26:13pm: 
- action:get_cb. ok 
-2020-04-03 11:28:12pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:28:12pm: \n\naction:get_param_values
-2020-04-03 11:28:13pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:28:13pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:28:13pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:28:21pm: 
- action:get_cb. ok 
-2020-04-03 11:29:30pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:29:30pm: \n\naction:get_param_values
-2020-04-03 11:29:31pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:29:31pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:29:31pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:29:47pm: 
- action:get_cb. ok 
-2020-04-03 11:29:58pm: 
- action:get_cb. ok 
-2020-04-03 11:33:10pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 11:33:10pm: \n\naction:get_param_values
-2020-04-03 11:33:11pm: 
- action=get_all_device 
-
-2020-04-03 11:33:11pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:33:11pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:33:17pm: 
- action:get_cb. ok 
-2020-04-03 11:48:52pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:48:52pm: \n\naction:get_param_values
-2020-04-03 11:48:53pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:48:53pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:48:53pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:50:27pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 11:51:56pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:51:56pm: \n\naction:get_param_values
-2020-04-03 11:51:57pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:51:57pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:51:57pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:52:13pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 11:53:22pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:53:22pm: \n\naction:get_param_values
-2020-04-03 11:53:22pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:53:23pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:53:23pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:53:29pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 11:54:33pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
-2020-04-03 11:54:33pm: \n\naction:get_param_values
-2020-04-03 11:54:35pm: 
- action=get_all_device 
-
-2020-04-03 11:54:35pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:54:35pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:54:39pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 11:58:40pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:58:40pm: \n\naction:get_param_values
-2020-04-03 11:58:41pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:58:41pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:58:41pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-03 11:59:17pm: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-03 11:59:35pm: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-03 11:59:35pm: \n\naction:get_param_values
-2020-04-03 11:59:35pm: 
- action=get_all_models_DataTable 
-
-2020-04-03 11:59:36pm: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-03 11:59:36pm: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-04 12:00:05am: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-04 12:07:50am: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-04 12:07:50am: \n\naction:get_param_values
-2020-04-04 12:07:51am: 
- action=get_all_models_DataTable 
-
-2020-04-04 12:07:51am: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-04 12:07:51am: 
- action:get_group_for_ou. Ok, got n-entries: 0
-2020-04-04 12:07:55am: [
-{"username":"usertooladmin","elementId":"Organization:aaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaa","elementUrl":"aaaa","elementDetails":null,"created":"2020-03-04 18:01:50"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaa","elementUrl":"aaaaaa","elementDetails":null,"created":"2020-03-04 17:28:33"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:29:55"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:02:49"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-03-04 17:14:03"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaa","elementUrl":"aaaaaaaaa","elementDetails":null,"created":"2020-02-27 17:14:10"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaa","elementUrl":"aaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:31:29"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:49:42"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaa","elementDetails":null,"created":"2020-02-27 18:19:19"}
-,{"username":"usertooladmin","elementId":"Organization:aaaaaaaaaaaaaaaaa","elementType":"BrokerID","elementName":"Organization:aaaaaaaaaaaaaaaaa","elementUrl":"aaaaaaaaaaaaaaaaa","elementDetails":null,"created":"2020-03-04 16:07:10"}
-,{"username":"usertooladmin","elementId":"Organization:cdcdcdcdcddc","elementType":"BrokerID","elementName":"Organization:cdcdcdcdcddc","elementUrl":"cadcdc","elementDetails":null,"created":"2020-03-12 12:52:30"}
-,{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
-,{"username":"usertooladmin","elementId":"Organization:LilloCB","elementType":"BrokerID","elementName":"Organization:LilloCB","elementUrl":"lilloIP","elementDetails":null,"created":"2020-03-20 11:57:04"}
-,{"username":"usertooladmin","elementId":"Organization:LilloName","elementType":"BrokerID","elementName":"Organization:LilloName","elementUrl":"LilloIp","elementDetails":null,"created":"2020-03-23 18:56:26"}
-,{"username":"usertooladmin","elementId":"Organization:testName","elementType":"BrokerID","elementName":"Organization:testName","elementUrl":"testIp","elementDetails":null,"created":"2020-02-26 17:32:37"}
-]
-\n identified 15 private objects \n
- action:get_cb. ok [
-{"username":"usertooladmin","elementId":"Organization:Raspberry snap4city 1","elementType":"ModelID","elementName":"Organization:Raspberry snap4city 1","elementUrl":"Organization:Raspberry snap4city 1","elementDetails":null,"created":"2020-03-22 16:53:36"}
-]
-\n identified 1 private objects \n
-2020-04-04 12:10:03am: 
- action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
-2020-04-04 12:10:03am: \n\naction:get_param_values
-2020-04-04 12:10:04am: 
- action=get_all_models_DataTable 
-
-2020-04-04 12:10:04am: 
- action:get_all_ou. Ok, got n-entries:1
-2020-04-04 12:10:04am: 
- action:get_group_for_ou. Ok, got n-entries: 0

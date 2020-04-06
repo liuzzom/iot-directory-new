@@ -19,7 +19,7 @@ $(document).ready(function () {
     // handle the click on "Add Device" button
     $('#addDeviceBtn').click(function () {
         checkServicePath($('#inputServicePathDevice').val(), 'add', 'device');
-        checkProtocol($('#selectProtocolModel').val(), 'add', 'device');
+        checkProtocol($('#selectProtocolDeviceM').val(), 'add', 'device');
         checkAddDeviceConditions();
     });
 
@@ -85,31 +85,29 @@ function checkServicePath(value, mode, context) {
     var conditionsArray = null;
 
     if (mode === 'add') {
-        // console.log('checkServicePath: add check');
-        servicePathModelMsg = $('#inputServicePathModelMsg');
+        servicePathModelMsg = $('#inputServicePathMsg');
 
         if (context === 'model') {
-            // console.log('checkServicePath: model');
+            console.log('checkServicePath: add model');
             conditionsArray = addModelConditionsArray;
         } else if (context === 'device') {
-            // console.log('checkServicePath: device');
+            console.log('checkServicePath: add device');
             conditionsArray = addDeviceConditionsArray;
         } else {
-            console.log('checkServicePath: error in context value: ' + context);
+            console.log('checkServicePath: (add) error in context value: ' + context);
             return;
         }
     } else if (mode == 'edit') {
-        // console.log('checkServicePath: edit check');
-        servicePathModelMsg = $('#editInputServicePathModelMsg');
+        servicePathModelMsg = $('#editInputServicePathMsg');
 
         if (context === 'model') {
-            // console.log('checkServicePath: model');
+            console.log('checkServicePath: edit model');
             conditionsArray = editModelConditionsArray;
         } else if (context === 'device') {
-            // console.log('checkServicePath: device');
+            console.log('checkServicePath: edit device');
             conditionsArray = editDeviceConditionsArray;
         } else {
-            console.log('checkServicePath: error in context value: ' + context);
+            console.log('checkServicePath: (edit) error in context value: ' + context);
             return;
         }
     } else {
@@ -193,7 +191,7 @@ function checkServicePath(value, mode, context) {
  *      0 otherwise
  */
 function servicePathSyntaxCheck(servicePath) {
-    // remove initial /, if any
+    // remove initial "/", if any
     if (servicePath[0] === "/") servicePath = servicePath.substr(1);
 
     // case: empty string
@@ -201,7 +199,7 @@ function servicePathSyntaxCheck(servicePath) {
 
     // get single servicePath "levels"
     var levels = servicePath.split("/");
-    console.log(levels)
+    // console.log(levels);
 
     // case: too many levels
     if (levels.length > 10) return 2;
@@ -238,65 +236,64 @@ function checkProtocol(value, mode, context) {
     var selectServiceMsg = null;
     var selectServiceLabel = null
 
-    if (mode === 'add' && context === 'model') {
-        // console.log("checkProtocol add model case");
+    if (mode === 'add') {
 
-        servicePath = $('#inputServicePathModel');
-        servicePathMsg = $('#inputServicePathModelMsg');
-        servicePathLabel = $('#inputServicePathModelLabel');
+        if (context === "model"){
+            console.log("checkProtocol add model case");
+            servicePath = $('#inputServicePathModel');
+        } else if (context === "device") {
+            console.log("checkProtocol add device case");
+            servicePath = $('#inputServicePathDevice');
+        } else {
+            console.log('checkServicePath: (add) error in context value: ' + context);
+            return;
+        }
 
-        selectService = $('#selectServiceModel');
-        selectServiceMsg = $('#selectServiceModelMsg');
-        selectServiceLabel = $('#selectServiceModelLabel');
-    } else if (mode === 'edit' && context === 'model') {
-        // console.log("checkProtocol edit model case");
+        servicePathMsg = $('#inputServicePathMsg');
+        servicePathLabel = $('#inputServicePathLabel');
 
-        servicePath = $('#editInputServicePathModel');
-        servicePathMsg = $('#editInputServicePathModelMsg');
-        servicePathLabel = $('#editInputServicePathModelLabel');
+        selectService = $('#selectService');
+        selectServiceMsg = $('#selectServiceMsg');
+        selectServiceLabel = $('#selectServiceLabel');
+    } else if (mode === 'edit') {
+        console.log("checkProtocol edit case");
 
-        selectService = $('#editSelectServiceModel');
-        selectServiceMsg = $('#editSelectServiceModelMsg');
-        selectServiceLabel = $('#editSelectServiceModelLabel');
-    } else if (mode === 'add' && context === 'device') {
-        // console.log("checkProtocol add device case");
+        if (context === "model"){
+            console.log("checkProtocol model case");
+            servicePath = $('#editInputServicePathModel');
+        } else if (context === "device") {
+            console.log("checkProtocol device case");
+            servicePath = $('#editInputServicePathDevice');
+        } else {
+            console.log('checkServicePath: (edit) error in context value: ' + context);
+            return;
+        }
 
-        servicePath = $('#inputServicePathDevice');
-        servicePathMsg = $('#inputServicePathModelMsg');
-        servicePathLabel = $('#inputServicePathModelLabel');
+        servicePathMsg = $('#editInputServicePathMsg');
+        servicePathLabel = $('#editInputServicePathLabel');
 
-        selectService = $('#selectServiceModel');
-        selectServiceMsg = $('#selectServiceModelMsg');
-        selectServiceLabel = $('#selectServiceModelLabel');
-    } else if (mode === 'edit' && context === 'device') {
-        // console.log("checkProtocol edit device case");
-
-        servicePath = $('#editInputServicePathDevice');
-        servicePathMsg = $('#editInputServicePathModelMsg');
-        servicePathLabel = $('#editInputServicePathModelLabel');
-
-        selectService = $('#editSelectServiceModel');
-        selectServiceMsg = $('#editSelectServiceModelMsg');
-        selectServiceLabel = $('#editSelectServiceModelLabel');
+        selectService = $('#editSelectService');
+        selectServiceMsg = $('#editSelectServiceMsg');
+        selectServiceLabel = $('#editSelectServiceLabel');
     } else {
         console.log("checkProtocol error case");
         return;
     }
 
     if (value === "ngsi w/MultiService") {
-        // console.log("equal");
+        // console.log("checkProtocol: equal");
         // enable ServicePath input (and put some graphical sugar for the user)
         servicePath.prop('disabled', false);
         servicePathLabel.css("color", "black");
         checkServicePath(servicePath.val(), mode, context);
 
-        // disable Service/Tenant select (and put some graphical sugar for the user)
+        // enable Service/Tenant select (and put some graphical sugar for the user)
         selectService.prop('disabled', false);
         selectServiceLabel.css("color", "black");
         selectServiceMsg.css("color", "#337ab7");
         selectServiceMsg.html("select one Service/Tenant");
     } else {
-        // console.log("not equal");
+        // console.log("checkProtocol: not equal");
         // disable ServicePath input (and put some graphical sugar for the user)
         servicePath.val("");
         servicePathLabel.css("color", "lightgrey");

@@ -659,23 +659,23 @@ $accessToken = "";
 							<div class = "row" id = "multiServiceAndServicePath">
 								<div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
-                                        <select id="selectServiceModel" name="selectServiceModel" class="modalInputTxt" required>
+                                        <select id="selectService" name="selectService" class="modalInputTxt" required>
 											<option value="" selected></option>
 											<option value="service_a">service_a</option>
 											<option value="service_b">service_b</option>
 											<option value="service_c">service_c</option>
 										</select>
                                     </div>
-                                    <div id="selectServiceModelLabel" class="modalFieldLabelCnt">Service/Tenant</div>
-									<div id="selectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                    <div id="selectServiceLabel" class="modalFieldLabelCnt">Service/Tenant</div>
+									<div id="selectServiceMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 
 								<div class="col-xs-12 col-md-6 modalCell">          
 									<div class="modalFieldCnt">
                                         <input type="text" class="modalInputTxt" name="inputServicePathDevice" id="inputServicePathDevice" required>
                                     </div>
-                                    <div id="inputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
-									<div id="inputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                    <div id="inputServicePathLabel" class="modalFieldLabelCnt">ServicePath</div>
+									<div id="inputServicePathMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 							</div>
 							<!-- End MultiService + ServicePath Section -->
@@ -1123,23 +1123,23 @@ $accessToken = "";
 							<div class = "row" id = "editMultiServiceAndServicePath">
 								<div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
-                                        <select id="editSelectServiceModel" name="editSelectServiceModel" class="modalInputTxt" required>
+                                        <select id="editSelectService" name="editSelectService" class="modalInputTxt" required>
 											<option value="" selected></option>
 											<option value="service_a">service_a</option>
 											<option value="service_b">service_b</option>
 											<option value="service_c">service_c</option>
 										</select>
                                     </div>
-                                    <div id="editSelectServiceModelLabel" class="modalFieldLabelCnt">Service/Tenant</div>
-									<div id="editSelectServiceModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                    <div id="editSelectServiceLabel" class="modalFieldLabelCnt">Service/Tenant</div>
+									<div id="editSelectServiceMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 
 								<div class="col-xs-12 col-md-6 modalCell">          
 									<div class="modalFieldCnt">
                                         <input type="text" class="modalInputTxt" name="editInputServicePathDevice" id="editInputServicePathDevice" required>
                                     </div>
-                                    <div id="editInputServicePathModelLabel" class="modalFieldLabelCnt">ServicePath</div>
-									<div id="editInputServicePathModelMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                    <div id="editInputServicePathLabel" class="modalFieldLabelCnt">ServicePath</div>
+									<div id="editInputServicePathMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
 							</div>
 							<!-- End MultiService + ServicePath Section -->
