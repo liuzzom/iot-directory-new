@@ -550,9 +550,7 @@
                                     <div class="modalFieldCnt">
                                         <select id="selectService" name="selectService" class="modalInputTxt">
 											<option value="" selected></option>
-											<option value="service_a">service_a</option>
-											<option value="service_b">service_b</option>
-											<option value="service_c">service_c</option>
+											<!-- other options will be created dynamically-->
 										</select>
                                     </div>
                                     <div id="selectServiceLabel" class="modalFieldLabelCnt">Service/Tenant</div>
@@ -875,9 +873,7 @@
                                     <div class="modalFieldCnt">
                                         <select id="editSelectService" name="editSelectService" class="modalInputTxt">
 											<option value="" selected></option>
-											<option value="service_a">service_a</option>
-											<option value="service_b">service_b</option>
-											<option value="service_c">service_c</option>
+											<!-- other options will be created dynamically-->
 										</select>
                                     </div>
                                     <div id="editSelectServiceLabel" class="modalFieldLabelCnt">Service/Tenant</div>

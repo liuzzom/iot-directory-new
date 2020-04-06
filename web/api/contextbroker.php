@@ -322,7 +322,6 @@ if($action=="insert"){
 	}
 
 	$q = "SELECT * FROM contextbroker";
-	// create_datatable_data è definita in common.php
 	$r = create_datatable_data($link,$_REQUEST,$q, '');
 	$selectedrows = -1;
 
@@ -761,7 +760,42 @@ else if ($action =='change_owner')
  	my_log($result);
     	mysqli_close($link);
 }
-	
+// Author: Antonino Mauro Liuzzo
+// Used for retrieve all the services, given a CB name
+else if($action == 'get_services_by_cb_name'){
+	dev_log("get services: begin");
+
+	$brokerName = mysqli_real_escape_string($link, $_REQUEST['brokerName']);
+	dev_log("get services: $brokerName");
+
+	$services = array();
+	$queryString = "SELECT name FROM services WHERE broker_name = '$brokerName'";
+
+	// query execution
+	$res = mysqli_query($link, $queryString);
+
+	if ($res) {
+		// successful query
+		dev_log("query success");
+		$row_cnt = mysqli_num_rows($res);
+		dev_log("row_cnt: $row_cnt");
+
+		while($row = mysqli_fetch_assoc($res)){
+			array_push($services, $row);
+		}
+		$result["status"]="ok";
+		$result["content"] = $services;
+		dev_log("get_services: success");
+	} else {
+		// unsuccessful query
+		$result["status"]="ko";
+		dev_log("get_services: error " . mysqli_error($link));
+	}
+
+	// send result to client
+	echo json_encode($result);
+	dev_log("get services: end\n");
+}
 else 
 	{
 	    $result['status'] = 'ko';

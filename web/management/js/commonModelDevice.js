@@ -6,6 +6,7 @@ $(document).ready(function () {
     $('#addModelBtn').click(function () {
         checkServicePath($('#inputServicePathModel').val(), 'add', 'model');
         checkProtocol($('#selectProtocolModel').val(), 'add', 'model');
+        getServicesByCBName($('#selectContextBroker').val(), 'add');
         checkAddModelConditions();
     });
 
@@ -13,6 +14,7 @@ $(document).ready(function () {
     $('#modelTable tbody').on('click', 'button.editDashBtn', function () {
         checkServicePath($('#editInputServicePathModel').val(), 'edit', 'model');
         checkProtocol($('#selectProtocolModelM').val(), 'edit', 'model');
+        getServicesByCBName($('#selectContextBrokerM').val(), 'edit');
         checkEditModelConditions();
     });
 
@@ -69,11 +71,20 @@ $(document).ready(function () {
 
     // TODO: Handle model protocol change into "Edit Model" section
 
+    // Handle changes in "Add Model" broker select element
+    $('#selectContextBroker').change(function(){
+        getServicesByCBName($('#selectContextBroker').val(), 'add');
+    });
+
+    // Handle changes in "Add Model" broker select element
+    $('#selectContextBrokerM').change(function(){
+        getServicesByCBName($('#selectContextBrokerM').val(), 'edit');
+    });
 });
 
 /**
  * 
- * @param value: servicePath value to chieck 
+ * @param value: servicePath value to check 
  * @param mode: add or edit
  * @param context: model or device
  */
@@ -308,4 +319,59 @@ function checkProtocol(value, mode, context) {
         selectServiceMsg.html("only ngsi w/MultiService supports Service/Tenant selection");
         selectService.prop('disabled', true);
     }
+}
+
+/**
+ * 
+ * @param name: context broker's name
+ * @param mode: add or edit
+ */
+function getServicesByCBName(name, mode){
+    console.log('getServicesByCBName');
+
+    // data to send to server
+    var data = {
+        action : "get_services_by_cb_name",
+        brokerName : name
+    };
+
+    // send POST request to server and manage its result
+    $.post('../api/contextbroker.php', data).done(function(data){
+
+        var servicesObj = data['content'];
+        var services = [];
+
+        for (let i = 0; i < servicesObj.length; i++){
+            services.push(servicesObj[i]['name']);
+        }
+        
+        var selectService = null;
+
+        if (mode == 'add'){
+            console.log('getServicesByCBName : add case');
+            selectService = $('#selectService');
+        } else if (mode == 'edit') {
+            console.log('getServicesByCBName : edit case');
+            selectService = $('#editSelectService');
+        } else {
+            console.log('getServicesByCBName : ERROR');
+            return;
+        }
+
+        // remove "old" services
+        selectService.find('.extraService').remove();
+
+        // option creations
+        for(let i = 0; i < services.length; i++){
+            var option = document.createElement('option');
+            $(option).attr('class', 'extraService');
+            $(option).attr('value', services[i]);
+            $(option).html(services[i]);
+
+            selectService.append(option)
+        }
+        return;
+    }).fail(function(){
+        alert("Something wrong during getting services");
+    });
 }
