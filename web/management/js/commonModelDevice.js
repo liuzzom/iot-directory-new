@@ -131,8 +131,13 @@ function checkServicePath(value, mode, context) {
         case 0:
         case 1:
 
-            if (value[0] !== "/" || checkValue === 1 && value !== "/") message = "servicePath preview: /" + value;
-            else message = "servicePath preview: " + value;
+            // In this case, following operations are made only for graphical pourpose
+            // During model creation, these operations must be done before sending data to server
+            var valueToPrint = value;
+            console.log(valueToPrint);
+            if (valueToPrint[0] !== "/" || valueToPrint === "") valueToPrint = "/" + valueToPrint;
+            if (valueToPrint[valueToPrint.length -1] === "/" && valueToPrint.length > 1) valueToPrint = valueToPrint.substr(0, valueToPrint.length -1); 
+            message = "servicePath preview: " + valueToPrint;
 
             if (message.length >= 50) message = message.substring(0, 45) + "...";
 
@@ -202,8 +207,9 @@ function checkServicePath(value, mode, context) {
  *      0 otherwise
  */
 function servicePathSyntaxCheck(servicePath) {
-    // remove initial "/", if any
+    // remove initial and final "/", if any
     if (servicePath[0] === "/") servicePath = servicePath.substr(1);
+    if (servicePath[servicePath.length -1] === "/") servicePath = servicePath.substr(0, servicePath.length -1);
 
     // case: empty string
     if (servicePath === "") return 1;
