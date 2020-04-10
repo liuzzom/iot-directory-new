@@ -1097,6 +1097,7 @@ $accessToken = "";
 											<option value="coap">coap</option>
 											<option value="mqtt">mqtt</option>
 											<option value="ngsi">ngsi</option>
+                                            <option value="ngsi w/MultiService">ngsi w/MultiService</option>
 										</select>
                                     </div>
                                     <div class="modalFieldLabelCnt">Protocol</div>

@@ -255,7 +255,7 @@ function checkEditDeviceConditions()
     
     for(var key in editDeviceConditionsArray) 
     {
-        console.log(key);
+        // console.log(key);
         if(editDeviceConditionsArray[key] === false)
         {
             enableButton = false;

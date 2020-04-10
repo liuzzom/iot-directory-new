@@ -22,10 +22,18 @@ $(document).ready(function () {
     $('#addDeviceBtn').click(function () {
         checkServicePath($('#inputServicePathDevice').val(), 'add', 'device');
         checkProtocol($('#selectProtocolDeviceM').val(), 'add', 'device');
+        getServicesByCBName($('#selectContextBroker').val(), 'add');
         checkAddDeviceConditions();
     });
 
-    // TODO: Handle "Edit Device" buttons
+    // handle the click on "Edit Device" buttons
+    $('#devicesTable tbody').on('click', 'button.editDashBtn', function () {
+        console.log("edit device");
+        checkServicePath($('#editInputServicePathDevice').val(), 'edit', 'device');
+        checkProtocol($('#selectProtocolDeviceM').val(), 'edit', 'device');
+        getServicesByCBName($('#selectContextBrokerM').val(), 'edit');
+        checkEditDeviceConditions();
+    });
 
     // handle the "ServicePath" input into the "Add model" section
     $('#inputServicePathModel').on('input', function () {
@@ -69,17 +77,39 @@ $(document).ready(function () {
         checkAddDeviceConditions();
     });
 
-    // TODO: Handle model protocol change into "Edit Model" section
+    // handle model protocol value change into "Edit Device" section
+    $('#selectProtocolDeviceM').change(function () {
+        checkProtocol($('#selectProtocolDeviceM').val(), 'edit', 'device');
+        checkEditDeviceConditions();
+    });
 
-    // Handle changes in "Add Model" broker select element
+    // Handle changes in "Add Model/Device" broker select element
     $('#selectContextBroker').change(function(){
         getServicesByCBName($('#selectContextBroker').val(), 'add');
+        
+        if ($('#inputServicePathDevice').val() !== undefined) {
+            checkProtocol($('#selectProtocolDevice').val(), 'add', 'device');
+        }
+
+        if ($('#inputServicePathModel').val() !== undefined) {
+            checkProtocol($('#selectProtocolModel').val(), 'add', 'model');
+        }
     });
 
-    // Handle changes in "Add Model" broker select element
+    // Handle changes in "Edit Model/Device" broker select element
     $('#selectContextBrokerM').change(function(){
         getServicesByCBName($('#selectContextBrokerM').val(), 'edit');
+
+        if ($('#editInputServicePathDevice').val() !== undefined) {
+            checkProtocol($('#selectProtocolDeviceM').val(), 'edit', 'device');
+        }
+
+        if ($('#editInputServicePathModel').val() !== undefined) {
+            checkProtocol($('#selectProtocolModelM').val(), 'edit', 'model');
+        }
     });
+
+
 });
 
 /**
@@ -273,13 +303,11 @@ function checkProtocol(value, mode, context) {
         selectServiceMsg = $('#selectServiceMsg');
         selectServiceLabel = $('#selectServiceLabel');
     } else if (mode === 'edit') {
-        console.log("checkProtocol edit case");
-
         if (context === "model"){
-            console.log("checkProtocol model case");
+            console.log("checkProtocol edit model case");
             servicePath = $('#editInputServicePathModel');
         } else if (context === "device") {
-            console.log("checkProtocol device case");
+            console.log("checkProtocol edit device case");
             servicePath = $('#editInputServicePathDevice');
         } else {
             console.log('checkServicePath: (edit) error in context value: ' + context);
@@ -374,7 +402,7 @@ function getServicesByCBName(name, mode){
             $(option).attr('value', services[i]);
             $(option).html(services[i]);
 
-            selectService.append(option)
+            selectService.append(option);
         }
         return;
     }).fail(function(){

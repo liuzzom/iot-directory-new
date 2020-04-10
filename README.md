@@ -71,6 +71,7 @@ back-end directory: api
 #### Edit Model
 - ~~Inserimento elementi nell'interfaccia utente~~
 - ~~Controllo sui valori inseriti e feedback all'utente~~
+- Modifica alla get per l'ottenimento delle informazioni del service e del servicePath usato
 - Gestione richiesta al server
 - Controlli lato server
 - Operazioni sul DB
@@ -105,8 +106,8 @@ back-end directory: api
 - Relazione
 
 ####  Edit Device
-- Inserimento elementi di interfaccia -> da testare
-- Controllo sui valori inseriti e feedback all'utente -> da testare
+- Inserimento elementi di interfaccia 
+- Controllo sui valori inseriti e feedback all'utente 
 - Gestione richiesta al server
 - Controlli lato server
 - Operazioni sul DB
