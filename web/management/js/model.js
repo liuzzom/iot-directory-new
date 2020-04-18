@@ -300,7 +300,9 @@ function format ( d ) {
 				'data-attributes="'+d.attributes+'" ' +
 				'data-k1="'+d.k1+'" ' +
 				'data-k2="'+d.k2+'" ' +
-				'data-policy="'+d.policy+'">Edit</button>';
+				'data-policy="'+d.policy+'" ' + 
+				'data-service="'+d.service+'" ' + 
+				'data-servicePath="'+d.servicePath+'">Edit</button>';
 				
 				}
             },
@@ -635,7 +637,20 @@ function format ( d ) {
             $('#addModelLoadingIcon').show();    
            
             
-            console.log("XIEL" + JSON.stringify(mynewAttributes));
+			console.log("XIEL" + JSON.stringify(mynewAttributes));
+			
+			// Author: Antonino Mauro Liuzzo
+			var service = $('#selectService').val();
+			var servicePath = $('#inputServicePathModel').val();
+
+			if ($('#selectProtocolModel').val() === "ngsi w/MultiService"){
+				// servicePath value pre-processing
+				if (servicePath[0] !== "/" || servicePath === "") servicePath = "/" + servicePath;
+				if (servicePath[servicePath.length -1] === "/" && servicePath.length > 1) servicePath = servicePath.substr(0, servicePath.length -1);
+			}
+
+			console.log("service: " + service);
+			console.log("servicePath: " + servicePath);
 			
              $.ajax({
                  url: "../api/model.php",
@@ -664,7 +679,11 @@ function format ( d ) {
 				
 					  token : sessionToken,
 
-					 },
+					  // Author: Antonino Mauro Liuzzo
+					  service: service,
+					  servicePath: servicePath
+
+					},
                  type: "POST",
                  async: true,
                  dataType: "JSON",
@@ -688,7 +707,7 @@ function format ( d ) {
 						$('#addModelLoadingMsg').hide();
                         $('#addModelLoadingIcon').hide();
                         $('#addModelKoMsg').show();
-						$('#addModelKoMsg div:first-child').html(data["error_msg"]);
+						$('#addModelKoMsg div:first-child').html(mydata["error_msg"]);
                         $('#addModelKoIcon').show();
                  
 				 
@@ -947,7 +966,11 @@ function format ( d ) {
 			$('#selectFormatModelM').val(format);
 			//$('#selectActiveModelM').val(active);
 			$('#selectHCModelM').val(hc);															  
-			$('#inputHVModelM').val(hv);	
+			$('#inputHVModelM').val(hv);
+
+			// Author: Antonino Mauro Liuzzo
+			// This function is defined in commonModelDevice.js
+			fillMultiTenancyFormSection($(this).attr('data-service'), $(this).attr('data-servicePath'), contextbroker, 'model');
 		 
         $.ajax({
                 url: "../api/value.php",
@@ -1160,99 +1183,97 @@ function format ( d ) {
 		   document.getElementById('deletedAttributes').innerHTML = "";  
 
 		
-		$("#editModelModalTabs").hide();
-		$('#editModelModal div.modalCell').hide();
-		//$("#editModelModalFooter").hide();
-		$("#addAttrMBtn").hide();
-		$('#editModelLoadingMsg').show();
-		$('#editModelLoadingIcon').show();
-		// console.log(JSON.stringify(deviceJson));
-        $("#editModelCancelBtn").hide();
-		$("#editModelConfirmBtn").hide();
-		$("#editModelModalBody").hide();
+			$("#editModelModalTabs").hide();
+			$('#editModelModal div.modalCell').hide();
+			//$("#editModelModalFooter").hide();
+			$("#addAttrMBtn").hide();
+			$('#editModelLoadingMsg').show();
+			$('#editModelLoadingIcon').show();
+			// console.log(JSON.stringify(deviceJson));
+        	$("#editModelCancelBtn").hide();
+			$("#editModelConfirmBtn").hide();
+			$("#editModelModalBody").hide();
 
-			
+			// Author: Antonino Mauro Liuzzo
+			var service = $('#editSelectService').val();
+			var servicePath = $('#editInputServicePathModel').val();
+
+			if ($('#selectProtocolModelM').val() === "ngsi w/MultiService"){
+				// servicePath value pre-processing
+				if (servicePath[0] !== "/" || servicePath === "") servicePath = "/" + servicePath;
+				if (servicePath[servicePath.length -1] === "/" && servicePath.length > 1) servicePath = servicePath.substr(0, servicePath.length -1);
+			}
+
+			console.log("service: " + service);
+			console.log("servicePath: " + servicePath);
 		
-		 $.ajax({
-			 url: "../api/model.php",
-			 data:{
-			 action: "update", 
-			 //MARCO newattributes: JSON.stringify(mynewAttributes),
-			 attributes: JSON.stringify(myAttributes),
-			 //MARCO deleteattributes: JSON.stringify(mydeletedAttributes), 
-				  //Sara2510 - for logging purpose
-				  username: loggedUser,
-                  organization:organization,
-                  obj_organization:$('#inputOrganizationModelM').val(),
+			$.ajax({
+				url: "../api/model.php",
+				data:{
+			 		action: "update", 
+					//MARCO newattributes: JSON.stringify(mynewAttributes),
+					attributes: JSON.stringify(myAttributes),
+					//MARCO deleteattributes: JSON.stringify(mydeletedAttributes), 
+					//Sara2510 - for logging purpose
+					username: loggedUser,
+                	organization:organization,
+                	obj_organization:$('#inputOrganizationModelM').val(),
 	
-				  id: $('#inputIdModelM').val(),
-				  name: $('#inputNameModelM').val(),
-				  description: $('#inputDescriptionModelM').val(),
-				  type: $('#inputTypeModelM').val(),
-				  kind: $('#selectKindModelM').val(),
-				  producer: $('#inputProducerModelM').val(),
-				  frequency: $('#inputFrequencyModelM').val(),	  
-				  //policy: $('#inputPolicyModelM').val(),
-				  kgenerator: $('#selectKGeneratorModelM').val(),
-				  edgegateway_type:$('#selectEdgeGatewayTypeM').val(),
-				  contextbroker: $('#selectContextBrokerM').val(),
-				  protocol: $('#selectProtocolModelM').val(),
-				  format: $('#selectFormatModelM').val(),
-				 //active: $('#selectActiveModelM').val(),
-				  hc: $('#selectHCModelM').val(),
-				  hv: $('#inputHVModelM').val(),
-			
-				 },
-			 type: "POST",
-			 async: true,
-			 success: function (data) 
-			 {
-				   if(data["status"] === 'ko')
-				{
-					console.log("Error editing Model type");
-					console.log(data);                
-                    ////////
-                    $('#editModelLoadingMsg').hide();        
-                    $('#editModelLoadingIcon').hide();
-                    $('#editModelOkMsg').hide();
-                    $('#editModelOkIcon').hide();
-                    $('#editModelKoMsg').show();
-                    $('#editModelKoIcon').show();
-                    $('#editModelOkBtn').show();
-                    ///////////
-                  
-				}
-				 
-				else if (data["status"] === 'ok')
-				{
-						
-								
-					//$("#editModelModalInnerDiv1").html('Model &nbsp; successfully Updated');
-					//$("#editModelModalInnerDiv2").html('<i class="fa fa-check" style="font-size:42px"></i>');
-                    
-                    $('#editModelLoadingMsg').hide();        
-                    $('#editModelLoadingIcon').hide();
-                    $('#editModelOkMsg').show();
-                    $('#editModelOkIcon').show();
-                    $('#editModelKoMsg').hide();
-                    $('#editModelKoIcon').hide();
-                    $('#editModelOkBtn').show();
-                    
-                    
-				
-					
-					
-		} else {console.log(data);}
-				 
-                 $('#modelTable').DataTable().destroy();
-                    fetch_data(true);
-			 },
-			 error: function (data) 
-			 {
-				 console.log("Ko result: " + JSON.stringify(data));
-				 
+					id: $('#inputIdModelM').val(),
+					name: $('#inputNameModelM').val(),
+					description: $('#inputDescriptionModelM').val(),
+					type: $('#inputTypeModelM').val(),
+					kind: $('#selectKindModelM').val(),
+					producer: $('#inputProducerModelM').val(),
+					frequency: $('#inputFrequencyModelM').val(),	  
+					//policy: $('#inputPolicyModelM').val(),
+					kgenerator: $('#selectKGeneratorModelM').val(),
+					edgegateway_type:$('#selectEdgeGatewayTypeM').val(),
+					contextbroker: $('#selectContextBrokerM').val(),
+					protocol: $('#selectProtocolModelM').val(),
+					format: $('#selectFormatModelM').val(),
+					//active: $('#selectActiveModelM').val(),
+					hc: $('#selectHCModelM').val(),
+					hv: $('#inputHVModelM').val(),
+					service: service,
+					servicePath: servicePath
+				},
+			 	type: "POST",
+			 	async: true,
+			 	success: function (data) {
+					if(data["status"] === 'ko'){
+						console.log("Error editing Model type");
+						console.log(data);                
+                    	////////
+                    	$('#editModelLoadingMsg').hide();        
+                    	$('#editModelLoadingIcon').hide();
+                    	$('#editModelOkMsg').hide();
+                    	$('#editModelOkIcon').hide();
+                    	$('#editModelKoMsg').show();
+                    	$('#editModelKoIcon').show();
+                    	$('#editModelOkBtn').show();
+                    	///////////
+					} else if (data["status"] === 'ok') {						
+						//$("#editModelModalInnerDiv1").html('Model &nbsp; successfully Updated');
+						//$("#editModelModalInnerDiv2").html('<i class="fa fa-check" style="font-size:42px"></i>');
+                    	$('#editModelLoadingMsg').hide();        
+                    	$('#editModelLoadingIcon').hide();
+                    	$('#editModelOkMsg').show();
+                    	$('#editModelOkIcon').show();
+                    	$('#editModelKoMsg').hide();
+                    	$('#editModelKoIcon').hide();
+                    	$('#editModelOkBtn').show();					
+					} else {
+						console.log(data);
+					}
+					 
+					$('#modelTable').DataTable().destroy();
+					fetch_data(true);
+				},
+				error: function (data) {
+				 	console.log("Ko result: " + JSON.stringify(data));
                  
-                 $('#editModelLoadingMsg').hide();
+                	$('#editModelLoadingMsg').hide();
                     $('#editModelLoadingIcon').hide();
                     $('#editModelOkMsg').hide();
                     $('#editModelOkIcon').hide();
@@ -1260,34 +1281,30 @@ function format ( d ) {
                     $('#editModelKoIcon').show();
                     $('#editModelOkBtn').show();
 
-            
-                 $('#inputNameModelM').val("");
-                 $('#inputDescriptionModelM').val("");
-			     $('#inputTypeModelM').val("");
-			     $('#selectKindModelM').val("");
-			     //$('#selectActiveModel').val("");
-			     $('#selectHCModelM').val("");
-			     $('#inputHVModelM').val("");
-			     $('#selectContextBrokerM').val("");
-			     $('#selectProtocolModelM').val("");
-			     $('#selectFormatModelM').val("");
-			
-                 $('#inputProducerModelM').val("");
-			     $('#inputFrequencyModelM').val("");
-			     //$('#inputPolicyModel').val("");
-			     $('#selectKGeneratorModelM').val("");
-			     $('#editlistAttributes').html("");	
-                 
-                 $('#modelTable').DataTable().destroy();
-                    fetch_data(true);
-		
-				
-				  
-			 }
-		 });
-        }
-        else{
-            alert("Check the values of your device, make sure that data you entered are valid");
+
+                 	$('#inputNameModelM').val("");
+                 	$('#inputDescriptionModelM').val("");
+			     	$('#inputTypeModelM').val("");
+			     	$('#selectKindModelM').val("");
+			     	//$('#selectActiveModel').val("");
+			     	$('#selectHCModelM').val("");
+			     	$('#inputHVModelM').val("");
+			     	$('#selectContextBrokerM').val("");
+			     	$('#selectProtocolModelM').val("");
+					$('#selectFormatModelM').val("");
+					 
+                 	$('#inputProducerModelM').val("");
+			     	$('#inputFrequencyModelM').val("");
+			     	//$('#inputPolicyModel').val("");
+			     	$('#selectKGeneratorModelM').val("");
+					$('#editlistAttributes').html("");
+					
+					$('#modelTable').DataTable().destroy();
+					fetch_data(true);
+				}
+			});
+        } else {
+        	alert("Check the values of your device, make sure that data you entered are valid");
         }
 	});
         

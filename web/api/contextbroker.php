@@ -75,6 +75,7 @@ This array should be encoded in json
 */	
 	
 if($action=="insert"){
+	dev_log("insert: BEGIN");
 	$name = mysqli_real_escape_string($link, $_REQUEST['name']);
 	$kind = mysqli_real_escape_string($link, $_REQUEST['kind']);
 	$ip = mysqli_real_escape_string($link, $_REQUEST['ip']);
@@ -121,7 +122,7 @@ if($action=="insert"){
 
 					// syntax checking
 					if(!preg_match($serviceRegex, $service)){
-						// dev_log("insert: $service isn't a valid service name");
+						dev_log("insert: $service isn't a valid service name");
 						$success = FALSE;
 					}
 
@@ -132,6 +133,7 @@ if($action=="insert"){
 
 			if ($success){
 				// successful transaction
+				dev_log("insert: successful transaction");
 				mysqli_commit($link);
 				logAction($link,$username,'contextbroker','insert',$name,$organization,'insertion CB into database','success');
 	
@@ -152,6 +154,7 @@ if($action=="insert"){
 				}
 			} else {
 				// unsuccessful transaction
+				dev_log("insert: unsuccessful transaction");
 				mysqli_rollback($link);
 				$result["status"]='ko';
 				$result["error_msg"] = "Error occurred when registering the context broker $name. " ;
@@ -173,8 +176,10 @@ if($action=="insert"){
 	
 	my_log($result);
 	mysqli_close($link);
+	dev_log("insert: END");
 
 } else if($action=="update") {
+	dev_log("update BEGIN");
 	$name = mysqli_real_escape_string($link, $_REQUEST['name']);
 	$kind = mysqli_real_escape_string($link, $_REQUEST['kind']);
 	$ip = mysqli_real_escape_string($link, $_REQUEST['ip']);
@@ -206,10 +211,14 @@ if($action=="insert"){
 
 	$q = "UPDATE contextbroker SET name = '$name', kind = '$kind', ip = '$ip', port = '$port', protocol = '$protocol', version = '$version', latitude = '$latitude', longitude = '$longitude', login = '$login', password = '$password', accesslink = '$accesslink', accessport = '$accessport', path = '$path', visibility = '$visibility', sha = '$sha', organization='$organization' WHERE name = '$name' and organization='$organization';";
 	if (!mysqli_query($link, $q)) $success = FALSE;
+	dev_log($q);
+	dev_log("success: $success");
 
 	// delete old services
 	$qrs = "DELETE FROM services WHERE broker_name = '$name'";
 	if (!mysqli_query($link, $qrs)) $success = FALSE;
+	dev_log($qrs);
+	dev_log("success: $success");
 
 	if ($protocol == 'ngsi w/MultiService' && count($services) > 0) {
 
@@ -222,18 +231,20 @@ if($action=="insert"){
 
 			// Syntax Checking
 			if(!preg_match($serviceRegex, $service)){
-				// dev_log("$service isn't a valid service name");
+				dev_log("$service isn't a valid service name");
 				$success = FALSE;
 			}
 
 			$qs = "INSERT INTO services(name, broker_name) VALUES ('$service', '$name')";
 			if(!mysqli_query($link, $qs)) $success = FALSE;
+			dev_log($qs);
+			dev_log("success: $success");
 		}	
 	}
 
 	if($success){
 
-		// dev_log("update: successful transaction\n");
+		dev_log("update: successful transaction");
 
 		// successful transaction
 		mysqli_commit($link);
@@ -254,7 +265,7 @@ if($action=="insert"){
         }
 	}else{
 
-		// dev_log("update: unsuccessful transaction\n");
+		dev_log("update: unsuccessful transaction");
 
 		// unsuccessful transaction
 		mysqli_rollback($link);
@@ -271,6 +282,7 @@ if($action=="insert"){
 	}
 	my_log($result);
 	mysqli_close($link);
+	dev_log("update END\n");
 
 } else if ($action=="delete") {
     $name = mysqli_real_escape_string($link, $_REQUEST['name']);      

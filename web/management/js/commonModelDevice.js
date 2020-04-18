@@ -6,7 +6,6 @@ $(document).ready(function () {
     $('#addModelBtn').click(function () {
         checkServicePath($('#inputServicePathModel').val(), 'add', 'model');
         checkProtocol($('#selectProtocolModel').val(), 'add', 'model');
-        getServicesByCBName($('#selectContextBroker').val(), 'add');
         checkAddModelConditions();
     });
 
@@ -14,7 +13,6 @@ $(document).ready(function () {
     $('#modelTable tbody').on('click', 'button.editDashBtn', function () {
         checkServicePath($('#editInputServicePathModel').val(), 'edit', 'model');
         checkProtocol($('#selectProtocolModelM').val(), 'edit', 'model');
-        getServicesByCBName($('#selectContextBrokerM').val(), 'edit');
         checkEditModelConditions();
     });
 
@@ -22,16 +20,13 @@ $(document).ready(function () {
     $('#addDeviceBtn').click(function () {
         checkServicePath($('#inputServicePathDevice').val(), 'add', 'device');
         checkProtocol($('#selectProtocolDeviceM').val(), 'add', 'device');
-        getServicesByCBName($('#selectContextBroker').val(), 'add');
         checkAddDeviceConditions();
     });
 
     // handle the click on "Edit Device" buttons
     $('#devicesTable tbody').on('click', 'button.editDashBtn', function () {
-        console.log("edit device");
         checkServicePath($('#editInputServicePathDevice').val(), 'edit', 'device');
         checkProtocol($('#selectProtocolDeviceM').val(), 'edit', 'device');
-        getServicesByCBName($('#selectContextBrokerM').val(), 'edit');
         checkEditDeviceConditions();
     });
 
@@ -129,30 +124,30 @@ function checkServicePath(value, mode, context) {
         servicePathModelMsg = $('#inputServicePathMsg');
 
         if (context === 'model') {
-            console.log('checkServicePath: add model');
+            // console.log('checkServicePath: add model');
             conditionsArray = addModelConditionsArray;
         } else if (context === 'device') {
-            console.log('checkServicePath: add device');
+            // console.log('checkServicePath: add device');
             conditionsArray = addDeviceConditionsArray;
         } else {
-            console.log('checkServicePath: (add) error in context value: ' + context);
+            // console.log('checkServicePath: (add) error in context value: ' + context);
             return;
         }
     } else if (mode == 'edit') {
         servicePathModelMsg = $('#editInputServicePathMsg');
 
         if (context === 'model') {
-            console.log('checkServicePath: edit model');
+            // console.log('checkServicePath: edit model');
             conditionsArray = editModelConditionsArray;
         } else if (context === 'device') {
-            console.log('checkServicePath: edit device');
+            // console.log('checkServicePath: edit device');
             conditionsArray = editDeviceConditionsArray;
         } else {
-            console.log('checkServicePath: (edit) error in context value: ' + context);
+            // console.log('checkServicePath: (edit) error in context value: ' + context);
             return;
         }
     } else {
-        console.log("checkServicePath: error in mode value");
+        // console.log("checkServicePath: error in mode value");
         return;
     }
 
@@ -164,7 +159,7 @@ function checkServicePath(value, mode, context) {
             // In this case, following operations are made only for graphical pourpose
             // During model creation, these operations must be done before sending data to server
             var valueToPrint = value;
-            console.log(valueToPrint);
+            // console.log(valueToPrint);
             if (valueToPrint[0] !== "/" || valueToPrint === "") valueToPrint = "/" + valueToPrint;
             if (valueToPrint[valueToPrint.length -1] === "/" && valueToPrint.length > 1) valueToPrint = valueToPrint.substr(0, valueToPrint.length -1); 
             message = "servicePath preview: " + valueToPrint;
@@ -281,18 +276,18 @@ function checkProtocol(value, mode, context) {
     // service elements
     var selectService = null;
     var selectServiceMsg = null;
-    var selectServiceLabel = null
+    var selectServiceLabel = null;
 
     if (mode === 'add') {
 
         if (context === "model"){
-            console.log("checkProtocol add model case");
+            // console.log("checkProtocol add model case");
             servicePath = $('#inputServicePathModel');
         } else if (context === "device") {
-            console.log("checkProtocol add device case");
+            // console.log("checkProtocol add device case");
             servicePath = $('#inputServicePathDevice');
         } else {
-            console.log('checkServicePath: (add) error in context value: ' + context);
+            // console.log('checkServicePath: (add) error in context value: ' + context);
             return;
         }
 
@@ -304,13 +299,13 @@ function checkProtocol(value, mode, context) {
         selectServiceLabel = $('#selectServiceLabel');
     } else if (mode === 'edit') {
         if (context === "model"){
-            console.log("checkProtocol edit model case");
+            // console.log("checkProtocol edit model case");
             servicePath = $('#editInputServicePathModel');
         } else if (context === "device") {
-            console.log("checkProtocol edit device case");
+            // console.log("checkProtocol edit device case");
             servicePath = $('#editInputServicePathDevice');
         } else {
-            console.log('checkServicePath: (edit) error in context value: ' + context);
+            // console.log('checkServicePath: (edit) error in context value: ' + context);
             return;
         }
 
@@ -321,7 +316,7 @@ function checkProtocol(value, mode, context) {
         selectServiceMsg = $('#editSelectServiceMsg');
         selectServiceLabel = $('#editSelectServiceLabel');
     } else {
-        console.log("checkProtocol error case");
+        // console.log("checkProtocol error case");
         return;
     }
 
@@ -360,8 +355,9 @@ function checkProtocol(value, mode, context) {
  * @param name: context broker's name
  * @param mode: add or edit
  */
-function getServicesByCBName(name, mode){
-    console.log('getServicesByCBName');
+function getServicesByCBName(name, mode){   
+
+    console.log("CB name: " + name);
 
     // data to send to server
     var data = {
@@ -378,6 +374,7 @@ function getServicesByCBName(name, mode){
         for (let i = 0; i < servicesObj.length; i++){
             services.push(servicesObj[i]['name']);
         }
+        console.log(JSON.stringify(services));
         
         var selectService = null;
 
@@ -395,7 +392,7 @@ function getServicesByCBName(name, mode){
         // remove "old" services
         selectService.find('.extraService').remove();
 
-        // option creations
+        // option elements creation
         for(let i = 0; i < services.length; i++){
             var option = document.createElement('option');
             $(option).attr('class', 'extraService');
@@ -404,7 +401,124 @@ function getServicesByCBName(name, mode){
 
             selectService.append(option);
         }
+        console.log("getServicesByCBName END");
         return;
+    }).fail(function(){
+        alert("Something wrong during getting services");
+        return;
+    });
+}
+
+/**
+ * 
+ * @param {string} serviceVal: service value, taken from edit button's attributes
+ * @param {string} servicePathVal: servicePath value, taken from edit button's attributes
+ * @param {string} brokerName: broker name, used to get services options
+ * @param {string} context: model or device
+ */
+function fillMultiTenancyFormSection(serviceVal, servicePathVal, brokerName, context){
+
+    console.log("serviceVal:" + serviceVal + " " + typeof(serviceVal));
+    console.log("servicePathVal:" + servicePathVal + " " + typeof(serviceVal));
+    console.log("context:" + context);
+
+    // servicePath elements
+    var servicePath = null;
+    var servicePathMsg = null;
+    var servicePathLabel = null;
+
+    // service elements
+    var selectService = null;
+    var selectServiceMsg = null;
+    var selectServiceLabel = null;
+
+    // protocol element
+    var selectProtocol = null;
+
+    // data to send to server
+    var data = {
+        action : "get_services_by_cb_name",
+        brokerName : brokerName
+    };
+
+    // send POST request to server and manage its result
+    $.post('../api/contextbroker.php', data).done(function(data){
+
+        var servicesObj = data['content'];
+        var services = [];
+
+        for (let i = 0; i < servicesObj.length; i++){
+            services.push(servicesObj[i]['name']);
+        }
+        console.log(JSON.stringify(services));
+
+        // select element for Service/Tenant
+        selectService = $('#editSelectService');
+        
+        // remove "old" services
+        selectService.find('.extraService').remove();
+
+        // option elements creation
+        for(let i = 0; i < services.length; i++){
+            var option = document.createElement('option');
+            $(option).attr('class', 'extraService');
+            $(option).attr('value', services[i]);
+            $(option).html(services[i]);
+
+            selectService.append(option);
+        }
+
+        if (context === 'model') {
+            // console.log("fillMultiTenancyFormSection model context");
+            servicePath = $('#editInputServicePathModel');
+            selectProtocol = $('#selectProtocolModelM');
+        } else if (context === 'device') {
+            // console.log("fillMultiTenancyFormSection device context");
+            servicePath = $('#editInputServicePathDevice');
+            selectProtocol = $('#selectProtocolDeviceM');
+        } else {
+            // console.log("ERROR in fillMultiTenancyFormSection evaluation");
+            return;
+        }
+    
+        servicePathMsg = $('#editInputServicePathMsg');
+        servicePathLabel = $('#editInputServicePathLabel');
+    
+        selectServiceMsg = $('#editSelectServiceMsg');
+        selectServiceLabel = $('#editSelectServiceLabel');
+    
+        if (selectProtocol.val() === 'ngsi w/MultiService') {
+            console.log("equal");
+    
+            // enable ServicePath input (and put some graphical sugar for the user)
+            servicePath.prop('disabled', false);
+            servicePathLabel.css("color", "black");
+            if (servicePathVal !== "null") servicePath.val(servicePathVal);
+            checkServicePath(servicePath.val(), 'edit', context);
+    
+            // enable Service/Tenant select (and put some graphical sugar for the user)
+            selectService.prop('disabled', false);
+            selectServiceLabel.css("color", "black");
+            selectServiceMsg.css("color", "#337ab7");
+            selectServiceMsg.html("select one Service/Tenant");
+            if (serviceVal !== "null") selectService.val(serviceVal);
+        } else {
+            console.log("not equal");
+            
+            // disable ServicePath input (and put some graphical sugar for the user)
+            servicePath.val("");
+            servicePathLabel.css("color", "lightgrey");
+            servicePathMsg.css("color", "lightgrey");
+            servicePathMsg.html("only ngsi w/MultiService supports ServicePath");
+            servicePath.prop('disabled', true);
+    
+            // disable Service/Tenant select (and put some graphical sugar for the user)
+            selectService.val("");
+            selectServiceLabel.css("color", "lightgrey");
+            selectServiceMsg.css("color", "lightgrey");
+            selectServiceMsg.html("only ngsi w/MultiService supports Service/Tenant selection");
+            selectService.prop('disabled', true);
+        }
     }).fail(function(){
         alert("Something wrong during getting services");
     });

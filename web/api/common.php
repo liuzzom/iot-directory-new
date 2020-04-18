@@ -2414,7 +2414,40 @@ function dev_log($message){
 	error_log(date("Y-m-d h:i:s: ") . $message . "\n", 3, "/home/debian/iot-directory/log/dev_log.log");
 }
 
-  
+/**
+ * Returns 0 if the value if valid, 1 otherwise
+ */
+function servicePathSyntaxCheck($servicePath) {
+	// remove initial and final "/", if any
+	if ($servicePath[0] == "/") $servicePath = substr($servicePath, 1);
+	if ($servicePath[strlen($servicePath) -1] == "/") $servicePath = substr($servicePath, 0, -1);
+	dev_log("value to check:" . $servicePath);
+
+    // case: empty string
+    if ($servicePath == "") return 0;
+
+    // get single servicePath "levels"
+    $levels = explode("/", $servicePath);
+    dev_log("levels: " . json_encode($levels));
+
+    // case: too many levels
+    if (count($levels) > 10) return 1;
+
+    for ($i = 0; $i < count($levels); $i++) {
+        // case: some level is too long
+        if (strlen($levels[$i]) > 50) return 1;
+
+        // case: there are some empty level
+        if ($levels[$i] == "") return 1;
+
+        // case: some level contains some whitespaces
+        if (preg_match("/\s/", $levels[$i])) return 1;
+    }
+
+    // case: everything is ok
+    return 0;
+}
+
 ?>
 
 

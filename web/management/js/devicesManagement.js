@@ -764,12 +764,12 @@ function checkAddDeviceConditions()
 {
     var enableButton = true;
 	
-	   console.log(addDeviceConditionsArray);
+	   console.log("addDeviceConditionsArray");
 
 	var n = $('#addSchemaTabDevice #addlistAttributes .row input:even').filter(function(){return this.value.length>=5}).length;
 	var n1 =n;// $('#addSchemaTabDevice #addlistAttributes .row input:even').length;
     //troubles are in this function, removed, to be investigated further
-	console.log("valore di n=" + n + " valore di n1" + n1);
+	//console.log("valore di n=" + n + " valore di n1" + n1);
 	if (n==n1)
 	{
 		addDeviceConditionsArray['attributeWithName'] = true; 
@@ -786,11 +786,11 @@ function checkAddDeviceConditions()
         {
             enableButton = false;
 			
-			console.log("need" + key);
+			// console.log("need" + key);
             break;
         }
     }
-    console.log(JSON.stringify(addDeviceConditionsArray));
+    // console.log(JSON.stringify(addDeviceConditionsArray));
     if(enableButton)
     {
         $("#addNewDeviceConfirmBtn").attr("disabled", false);

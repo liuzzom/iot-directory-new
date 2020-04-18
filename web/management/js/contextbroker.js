@@ -216,7 +216,7 @@ function fetch_data(destroyOld, selected=null){
 					'data-accessport="'+d.accessport+'" ' +
 					'data-apikey="'+d.apikey+'" ' +
 					'data-path="'+d.path+'" ' +
-					'data-sha="'+d.sha+'"' + 
+					'data-sha="'+d.sha+'" ' + 
 					'data-services="'+d.services+'">Edit</button>';	
 				}
 			},
