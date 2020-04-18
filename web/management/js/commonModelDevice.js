@@ -109,9 +109,9 @@ $(document).ready(function () {
 
 /**
  * 
- * @param value: servicePath value to check 
- * @param mode: add or edit
- * @param context: model or device
+ * @param {string} value: servicePath value to check 
+ * @param {string} mode: add or edit
+ * @param {string} context: model or device
  */
 function checkServicePath(value, mode, context) {
     value = value.trim();
@@ -223,7 +223,7 @@ function checkServicePath(value, mode, context) {
 /**
  * 
  * @param {string} servicePath 
- * @returns:
+ * @returns {number}:
  *      1 if the string is empty
  *      2 if there are more than 10 levels
  *      3 if some level has more than 50 characters
@@ -263,9 +263,9 @@ function servicePathSyntaxCheck(servicePath) {
 
 /**
  * @description this function enables/disables Service/Tenant select and ServicePath input, based on protocol value
- * @param value: protocol value to check
- * @param mode: add or edit
- * @param context: model or device
+ * @param {string} value: protocol value to check
+ * @param {string} mode: add or edit
+ * @param {string} context: model or device
  */
 function checkProtocol(value, mode, context) {
     // servicePath elements
@@ -352,10 +352,11 @@ function checkProtocol(value, mode, context) {
 
 /**
  * 
- * @param name: context broker's name
- * @param mode: add or edit
+ * @param {string} name: context broker's name
+ * @param {string} mode: add or edit
+ * @param {string} initialValue: initial selected option (default = null)
  */
-function getServicesByCBName(name, mode){   
+function getServicesByCBName(name, mode, initialValue=null){   
 
     console.log("CB name: " + name);
 
@@ -401,6 +402,14 @@ function getServicesByCBName(name, mode){
 
             selectService.append(option);
         }
+
+        if (initialValue){
+            console.log(initialValue);
+            selectService.val(initialValue);
+        } else {
+            console.log("no initial value");
+        }
+
         console.log("getServicesByCBName END");
         return;
     }).fail(function(){

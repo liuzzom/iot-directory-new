@@ -288,7 +288,6 @@ else if ($action=="get_all_models_DataTable")
                     if(isset($result["keys"][$idTocheck]))									   
 						$row["owner"]=$result["keys"][$idTocheck]["owner"];
 						
-					dev_log("row: " . json_encode($row));
                     array_push($data, $row);
                 }
             }

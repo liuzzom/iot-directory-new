@@ -667,7 +667,7 @@ function drawAttributeMenu
 
                         $("#addNewDeviceGenerateKeyBtn").show();    
                         showAddDeviceModal();
-                        $("#selectContextBroker").change();
+						$("#selectContextBroker").change();
 				
                         }
                     else{
@@ -1415,6 +1415,11 @@ function drawAttributeMenu
 								checkMAC(); 
 								checkAtlistOneAttribute();
 								checkAddDeviceConditions();
+
+								// Author: Antonino Mauro Liuzzo
+								getServicesByCBName($('#selectContextBroker').val(), 'add', data.content.service);
+								checkProtocol($('#selectProtocolDevice').val(), 'add', 'device');
+								$('#inputServicePathDevice').val(data.content.servicePath);
 							}
 					 },
 					 error: function (data) 

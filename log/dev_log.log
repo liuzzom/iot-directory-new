@@ -1,0 +1,9 @@
+2020-04-18 06:53:41: insert model BEGIN
+2020-04-18 06:53:41: service: pippo
+2020-04-18 06:53:41: servicePath: /testadd
+2020-04-18 06:53:41: value to check:testadd
+2020-04-18 06:53:41: levels: ["testadd"]
+2020-04-18 06:53:41: /testadd is a valid servicePath
+2020-04-18 06:53:41: query: INSERT INTO model(name, description, devicetype, kind, producer, frequency, contextbroker, protocol, format, healthiness_criteria, healthiness_value, kgenerator, attributes, edgegateway_type, organization, visibility, service, servicePath ) VALUES('TestAdd', 'Test Add', 'TestADD', 'sensor', 'TestADD', '600', 'testName', 'ngsi w/MultiService', 'json', 'refresh_rate', '300', 'normal', '[]', '', 'Organization', 'private', 'pippo', '/testadd')
+2020-04-18 06:53:41: insert model END
+

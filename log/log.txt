@@ -1,0 +1,516 @@
+2020-04-18 06:36:22pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 06:36:22pm: \n\naction:get_param_values
+2020-04-18 06:36:24pm: 
+ action=get_all_device 
+
+2020-04-18 06:36:24pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:36:24pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:36:30pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:36:30pm: \n\naction:get_param_values
+2020-04-18 06:36:31pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:36:31pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:36:31pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:36:34pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+]
+\n identified 0 private objects \n
+2020-04-18 06:38:29pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:38:29pm: \n\naction:get_param_values
+2020-04-18 06:38:30pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:38:30pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:38:30pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:38:34pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'contextbroker.php'
+2020-04-18 06:38:36pm: 
+ action=get_all_contextbroker 
+
+2020-04-18 06:38:36pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:38:36pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:39:20pm: 
+ The registration is NOT possible. Reached limit of IoT Devices \n\r action: update ok. UPDATE contextbroker SET name = 'testName', kind = 'internal', ip = 'iotobsf2', port = '1026', protocol = 'ngsi w/MultiService', version = '', latitude = '43.71454', longitude = '11.19919', login = '', password = '', accesslink = 'iotobsf2', accessport = '8080', path = '', visibility = 'private', sha = '', organization='Organization' WHERE name = 'testName' and organization='Organization';
+2020-04-18 06:39:20pm: 
+ action=get_all_contextbroker 
+
+2020-04-18 06:39:30pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:39:30pm: \n\naction:get_param_values
+2020-04-18 06:39:31pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:39:31pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:39:31pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:39:33pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+]
+\n identified 0 private objects \n
+2020-04-18 06:41:05pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:41:15pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 06:41:15pm: \n\naction:get_param_values
+2020-04-18 06:41:16pm: 
+ action=get_all_device 
+
+2020-04-18 06:41:16pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:41:16pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:41:19pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:43:34pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:44:05pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:46:01pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:46:01pm: \n\naction:get_param_values
+2020-04-18 06:46:02pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:46:02pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:46:02pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:46:04pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:46:26pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:46:26pm: \n\naction:get_param_values
+2020-04-18 06:46:27pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:46:27pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:46:27pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:46:32pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:46:50pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:46:50pm: \n\naction:get_param_values
+2020-04-18 06:46:51pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:46:51pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:46:51pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:46:54pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:50:08pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:50:14pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:50:24pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:50:24pm: \n\naction:get_param_values
+2020-04-18 06:50:24pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:50:24pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:50:25pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:50:32pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:50:39pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:52:10pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:52:10pm: \n\naction:get_param_values
+2020-04-18 06:52:10pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:52:10pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:52:10pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:53:02pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:53:02pm: \n\naction:get_param_values
+2020-04-18 06:53:03pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:53:03pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:53:03pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:53:09pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 06:53:42pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:54:09pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 06:54:09pm: \n\naction:get_param_values
+2020-04-18 06:54:09pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:54:09pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:54:09pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:54:12pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestAdd","elementType":"ModelID","elementName":"Organization:TestAdd","elementUrl":"Organization:TestAdd","elementDetails":null,"created":"2020-04-18 18:53:41"}
+,{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 2 private objects \n
+2020-04-18 06:54:19pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 06:54:29pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 06:54:29pm: \n\naction:get_param_values
+2020-04-18 06:54:29pm: 
+ action=get_all_device 
+
+2020-04-18 06:54:30pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 06:54:30pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 06:54:32pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:00:51pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:00:51pm: \n\naction:get_param_values
+2020-04-18 07:00:52pm: 
+ action=get_all_device 
+
+2020-04-18 07:00:52pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:00:52pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:00:55pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:01:07pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:01:07pm: \n\naction:get_param_values
+2020-04-18 07:01:08pm: 
+ action=get_all_device 
+
+2020-04-18 07:01:09pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:01:09pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:01:40pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:01:40pm: \n\naction:get_param_values
+2020-04-18 07:01:41pm: 
+ action=get_all_device 
+
+2020-04-18 07:01:41pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:01:41pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:01:50pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:05:20pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 07:05:20pm: \n\naction:get_param_values
+2020-04-18 07:05:20pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 07:05:20pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:05:20pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:05:25pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:05:25pm: \n\naction:get_param_values
+2020-04-18 07:05:25pm: 
+ action=get_all_device 
+
+2020-04-18 07:05:26pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:05:26pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:05:29pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:08:21pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:09:25pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:09:25pm: \n\naction:get_param_values
+2020-04-18 07:09:25pm: 
+ action=get_all_device 
+
+2020-04-18 07:09:25pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:09:25pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:09:29pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:10:24pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:10:24pm: \n\naction:get_param_values
+2020-04-18 07:10:24pm: 
+ action=get_all_device 
+
+2020-04-18 07:10:24pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:10:24pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:10:26pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:15:46pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:15:47pm: \n\naction:get_param_values
+2020-04-18 07:15:47pm: 
+ action=get_all_device 
+
+2020-04-18 07:15:47pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:15:47pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:15:50pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:21:07pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:21:07pm: \n\naction:get_param_values
+2020-04-18 07:21:07pm: 
+ action=get_all_device 
+
+2020-04-18 07:21:08pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:21:08pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:21:12pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:21:43pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 07:21:43pm: \n\naction:get_param_values
+2020-04-18 07:21:43pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 07:21:43pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:21:43pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:21:48pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:22:42pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 07:22:42pm: \n\naction:get_param_values
+2020-04-18 07:22:42pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 07:22:42pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:22:42pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:22:46pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:22:55pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 07:22:55pm: \n\naction:get_param_values
+2020-04-18 07:22:56pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:22:56pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 07:22:56pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:23:46pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:24:02pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'model.php'
+2020-04-18 07:24:02pm: \n\naction:get_param_values
+2020-04-18 07:24:02pm: 
+ action=get_all_models_DataTable 
+
+2020-04-18 07:24:02pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:24:03pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:24:53pm: 
+ action: get_functionality ok SELECT * FROM functionalities WHERE link = 'devices.php'
+2020-04-18 07:24:53pm: \n\naction:get_param_values
+2020-04-18 07:24:54pm: 
+ action:get_all_ou. Ok, got n-entries:1
+2020-04-18 07:24:54pm: 
+ action=get_all_device 
+
+2020-04-18 07:24:55pm: 
+ action:get_group_for_ou. Ok, got n-entries: 0
+2020-04-18 07:24:56pm: [
+{"username":"usertooladmin","elementId":"Organization:iotobsf","elementType":"BrokerID","elementName":"Organization:iotobsf","elementUrl":"iotobsf","elementDetails":null,"created":"2019-11-11 15:36:29"}
+]
+\n identified 1 private objects \n
+ action:get_cb. ok [
+{"username":"usertooladmin","elementId":"Organization:TestMultiService","elementType":"ModelID","elementName":"Organization:TestMultiService","elementUrl":"Organization:TestMultiService","elementDetails":null,"created":"2020-04-18 18:41:04"}
+]
+\n identified 1 private objects \n
+2020-04-18 07:25:37pm: 
+ registration is possible
+ an URI has been generated by the KB: http://www.disit.org/km4city/resource/iot/iotobsf/Organization/test_legacy_01 http://kbssm/ServiceMap/api/v1/iot/insert\n response from the ngsi context broker 
+ ok registration in the context broker
+ the model Raspberry snap4city 1 is NOT of type authenticated
+ Device iotobsf/test_legacy_01 correctly inserted with urihttp://www.disit.org/km4city/resource/iot/iotobsf/Organization/test_legacy_01
+
+ the registration of the ownership succededOrganization:iotobsf:test_legacy_01 {"elementId":"Organization:iotobsf:test_legacy_01","elementName":"test_legacy_01","elementUrl":"http:\/\/www.disit.org\/km4city\/resource\/iot\/iotobsf\/Organization\/test_legacy_01","elementDetails":{"k1":"5aa574aa-d960-497c-8552-e58cbeb8dcd6","k2":"33c14823-3628-4a6a-b483-e9345e702729","contextbroker":"iotobsf"},"elementType":"IOTID","username":"usertooladmin","id":16538}
+ attribute temperature correctly inserted
+ attribute humidity correctly inserted
+2020-04-18 07:25:38pm: 
+ action=get_all_device 
+
