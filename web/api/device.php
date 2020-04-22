@@ -125,6 +125,7 @@ foreach ($_REQUEST as $key =>$param) {
 
 if ($action=="insert")
 {   
+	dev_log("insert(device.php): BEGIN");
 	//Sara2510 - for logging purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	
@@ -142,6 +143,12 @@ if ($action=="insert")
 	$visibility = mysqli_real_escape_string($link, $_REQUEST['visibility']);  
 	$frequency= mysqli_real_escape_string($link, $_REQUEST['frequency']);
 	$organization= mysqli_real_escape_string($link, $_REQUEST['organization']);
+
+	// Author: Antonino Mauro Liuzzo
+	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
+	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
+	dev_log("service: " .  $service);
+	dev_log("servicePath: " . $servicePath);
     
 	//MM 
 	if (isset($_REQUEST['shouldbeRegistered'])) $shouldbeRegistered=$_REQUEST['shouldbeRegistered'];
@@ -171,10 +178,12 @@ if ($action=="insert")
 		$kburl=$_SESSION['kbUrl'];
 	}
 
+	// Edited: Antonino Mauro Liuzzo: Added $service and $servicePath
 	insert_device($link, $id,$devicetype,$contextbroker,$kind,$protocol,$format,$macaddress,$model,$producer,
-		   $latitude,$longitude,$visibility, $frequency, $k1, $k2, $edgegateway_type, $edgegateway_uri,
-		   $listAttributes, $pathCertificate,$accessToken,$result,$shouldbeRegistered, $organization, $kburl, $username);
-			//my_log($result);
+			$latitude,$longitude,$visibility, $frequency, $k1, $k2, $edgegateway_type, $edgegateway_uri,
+			$listAttributes, $pathCertificate,$accessToken,$result,$shouldbeRegistered, $organization, $kburl, $username,
+			$service, $servicePath); 
+			
 	
         
 	//Sara2510 - For logging purpose
@@ -186,7 +195,9 @@ if ($action=="insert")
 	else if($result["status"]=="ko"){
 			logAction($link,$username,'device','insert',$deviceName,$organization,'','faliure');				
 	}
-         my_log($result); //MM0301
+	
+	my_log($result); //MM0301
+	dev_log("insert(device.php): END\n");
 }
 else if ($action=="update")
 {   

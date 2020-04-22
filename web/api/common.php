@@ -93,33 +93,37 @@ function checkRegisterOwnerShipObject($token,$object, &$result) {
     }
 } 
 
+// Edited: Antonino Mauro Liuzzo: Added $service and $servicePath
 function insert_device($link,$id,$devicetype,$contextbroker,$kind,$protocol,$format,$macaddress,$model,
 $producer,$latitude,$longitude,$visibility, $frequency, $k1, $k2, $edgegateway_type, $edgegateway_uri,
-$listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes', $organization, $kbUrl="", $username="")
-{
+$listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes', $organization, $kbUrl="", $username="", $service="", $servicePath=""){
+
+	dev_log("insert_device: BEGIN");
 
  checkRegisterOwnerShipDevice($accessToken, $result);
  if ($result["status"]=='ok'){ 
    //Sara312
      
-     $selectDevicesDeleted = "SELECT contextBroker, id
+    $selectDevicesDeleted = "SELECT contextBroker, id
 		FROM deleted_devices WHERE contextBroker = '$contextbroker'
 		AND id = '$id';";
-     $s3 = mysqli_query($link, $selectDevicesDeleted);
-     if($s3){
+    $s3 = mysqli_query($link, $selectDevicesDeleted);
+    if($s3){
 			if(mysqli_num_rows($s3) == 0){
   
 	if(!isset($shouldbeRegistered))
 	{
+		// Edited: Antonino Mauro Liuzzo: Added $service and $servicePath
 		registerKB($link, $id, $devicetype, $contextbroker, $kind, $protocol,
-		 $format, $macaddress, $model, $producer, $latitude, $longitude, $visibility, 
-		 $frequency, $listAttributes, $result,'yes', $organization,$kbUrl); 
+			$format, $macaddress, $model, $producer, $latitude, $longitude, $visibility, 
+			$frequency, $listAttributes, $result,'yes', $organization,$kbUrl, $service, $servicePath); 
 	}
 	else
 	{
-	 registerKB($link, $id, $devicetype, $contextbroker, $kind, $protocol,
-	 $format, $macaddress, $model, $producer, $latitude, $longitude, $visibility, 
-	 $frequency, $listAttributes, $result,$shouldbeRegistered, $organization,$kbUrl); 
+		// Edited: Antonino Mauro Liuzzo: Added $service and $servicePath
+	 	registerKB($link, $id, $devicetype, $contextbroker, $kind, $protocol,
+	 		$format, $macaddress, $model, $producer, $latitude, $longitude, $visibility, 
+	 		$frequency, $listAttributes, $result,$shouldbeRegistered, $organization,$kbUrl, $service, $servicePath); 
 	}
 
 
@@ -127,33 +131,57 @@ $listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes'
 
 	if ($result["status"]=='ko' ) return $result;
 
-	if (registerCertificatePrivateKey($link, $contextbroker, $id, $model, $pathCertificate, $result, $username))
-	{
+	if (registerCertificatePrivateKey($link, $contextbroker, $id, $model, $pathCertificate, $result, $username)) {
 		$privatekey = $id . "-key.pem";
 		$certificate = $id . "-crt.pem";
 		$publickey = $id . "-pubkey.pem";
-	}
-	else
-	{
+	} else {
 		$privatekey = "";
 		$certificate = "";
 		$publickey = "";
-	} 
-
-	if ($result["status"]=='ok' &&  $result["content"]==null)
-	{
-	 $q = "INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude, visibility, frequency, privatekey, certificate, organization) " .
-		 "VALUES('$id', '$devicetype', '$contextbroker', '$kind', '$protocol', '$format', '$macaddress', '$model', '$producer', '$latitude', '$longitude', '$visibility', '$frequency', '$privatekey','$certificate', '$organization')";
-	 }
-	else {
-	$q = "INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude,uri, visibility,  frequency, privatekey, certificate, mandatoryproperties,mandatoryvalues, organization) " .
-		 "VALUES('$id', '$devicetype', '$contextbroker', '$kind', '$protocol', '$format', '$macaddress', '$model', '$producer', '$latitude', '$longitude', '" . $result["content"] . "', '$visibility', '$frequency', '$privatekey','$certificate',1,1, '$organization')";
 	}
+
+	// Author: Antonino Mauro Liuzzo
+	// perform different queries based on protocol value
+	if ($protocol == 'ngsi w/MultiService') {
+		dev_log("insert_device: multiservice device");
+
+		$syntaxRes = servicePathSyntaxCheck($servicePath);
+
+		if ($syntaxRes == 0){
+			// valid servicePath value
+			if ($result["status"]=='ok' &&  $result["content"]==null) {
+				$q = "INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude, visibility, frequency, privatekey, certificate, organization, service, servicePath) " .
+					"VALUES('$id', '$devicetype', '$contextbroker', '$kind', '$protocol', '$format', '$macaddress', '$model', '$producer', '$latitude', '$longitude', '$visibility', '$frequency', '$privatekey','$certificate', '$organization', '$service', '$servicePath')";
+			} else {
+				$q = "INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude,uri, visibility,  frequency, privatekey, certificate, mandatoryproperties,mandatoryvalues, organization, service, servicePath) " .
+					"VALUES('$id', '$devicetype', '$contextbroker', '$kind', '$protocol', '$format', '$macaddress', '$model', '$producer', '$latitude', '$longitude', '" . $result["content"] . "', '$visibility', '$frequency', '$privatekey','$certificate',1,1, '$organization', '$service', '$servicePath')";
+			}			
+		} else {
+			// invalid servicePath value
+			dev_log($servicePath . " is NOT a valid servicePath");
+			$result["status"]='ko';
+			$result["error_msg"] = $servicePath . " is NOT a valid servicePath";
+		}
+	} else {
+		dev_log("insert_device: legacy device");
+
+		if ($result["status"]=='ok' &&  $result["content"]==null) {
+			$q = "INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude, visibility, frequency, privatekey, certificate, organization) " .
+				"VALUES('$id', '$devicetype', '$contextbroker', '$kind', '$protocol', '$format', '$macaddress', '$model', '$producer', '$latitude', '$longitude', '$visibility', '$frequency', '$privatekey','$certificate', '$organization')";
+		} else {
+			$q = "INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude,uri, visibility,  frequency, privatekey, certificate, mandatoryproperties,mandatoryvalues, organization) " .
+				"VALUES('$id', '$devicetype', '$contextbroker', '$kind', '$protocol', '$format', '$macaddress', '$model', '$producer', '$latitude', '$longitude', '" . $result["content"] . "', '$visibility', '$frequency', '$privatekey','$certificate',1,1, '$organization')";
+		}
+	}
+
+	dev_log("insert_device: query\n" . $q);
 	$r = mysqli_query($link, $q);
 	if($r) 
 	{
 		$result["msg"] .= "\n Device $contextbroker/$id correctly inserted with uri " . $result["content"];
 		$result["log"] .= "\r\n Device $contextbroker/$id correctly inserted with uri" . $result["content"] . "\r\n";
+		dev_log("insert_device: Device $contextbroker/$id correctly inserted with uri: " . $result["content"]);
 		
 		// information to be passed to the interface
 		$result["visibility"] = $visibility;	
@@ -202,12 +230,14 @@ $listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes'
 		  {
 				$result["msg"] .= "\n attribute $att->value_name correctly inserted";
 				$result["log"] .= "\n attribute $att->value_name correctly inserted";
+				dev_log("insert_device: attribute $att->value_name correctly inserted");
 		  }
 		  else 
 		  {
 			  $result["error_msg"] .= "Attribute $att->value_name was not inserted. "; 
 			  $result["msg"] .= "<br/> attribute $att->value_name was not inserted <br/>" . generateErrorMessage($link); 
-			  $result["log"] .= "\r\n attribute $att->value_name was not inserted $insertquery " . generateErrorMessage($link); 
+			  $result["log"] .= "\r\n attribute $att->value_name was not inserted $insertquery " . generateErrorMessage($link);
+			  dev_log("insert_device: attribute $att->value_name was not inserted\n query:" . $insertquery);
 			  $ok=false;
 		  }
 		  $b++;
@@ -228,7 +258,8 @@ $listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes'
 	   $result["status"]='ko';
 	   $result["error_msg"] .= "Problem in inserting the device $id in the database. "; 
 	   $result["msg"] .= "\n Problem in inserting the device $id:  <br/>" .  generateErrorMessage($link); 
-	   $result["log"] .= "\r\n Problem in inserting the device $id:  $q  " .  generateErrorMessage($link);  
+	   $result["log"] .= "\r\n Problem in inserting the device $id:  $q  " .  generateErrorMessage($link);
+	   dev_log("insert_device: Problem in inserting the device $id:  $q");  
 	}
                 
     }
@@ -238,7 +269,7 @@ $listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes'
              $result["error_msg"] .= "Problem in inserting the device $id, device name already exists in deleted devices. "; 
              $result["msg"] .= "\n Problem in inserting the device $id, device name already exists in deleted devices"; 
              $result["log"] .= "\r\n Problem in inserting the device $id, device name already exists in deleted devices";
-
+			 dev_log("insert_device: Problem in inserting the device $id, device name already exists in deleted devices");
             }
          
      }
@@ -247,10 +278,11 @@ $listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes'
            $result["error_msg"] .= "Problem in inserting the device $id, related to the deleted_devices table. " ;
            $result["msg"] .= "\n Problem in inserting the device $id, related to the deleted_devices table:  <br/>" .  generateErrorMessage($link); 
            $result["log"] .= "\r\n Problem in inserting the device $id, related to the deleted_devices table:   " .  generateErrorMessage($link);  
-  
+		   dev_log("insert_device: Problem in inserting the device $id, related to the deleted_devices table");
          }
  
  }
+ dev_log("insert_device: END");
 }
 
 
@@ -1307,6 +1339,7 @@ $listnewAttributes, $ip, $port, &$result)
         
 	
 	  $url_orion="http://$ip:$port/v2/entities/";
+	  dev_log("insert_ngsi: url used for registration: $url_orion");
           //echo "stefano ".json_encode($msg_orion) .  $url_orion;
       
       try
@@ -1358,6 +1391,82 @@ $listnewAttributes, $ip, $port, &$result)
             }
             return $res;
 	}
+
+// Author: Antonino Mauro Liuzzo -> Basically an edited version of insert_ngsi
+function insert_ngsi_multiservice($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude,$visibility, $frequency, $listnewAttributes, $ip, $port, &$result, $service, $servicePath){
+	dev_log("insert_ngsi_multiservice: BEGIN");
+
+	$res = "ok";
+	$msg_orion=array();
+      
+	$msg_orion["id"]= $name;
+    $msg_orion["type"]= $type;
+    $msg_orion["latitude"]=array();
+    $msg_orion["longitude"]=array();
+    $msg_orion["latitude"]["value"]= $latitude;
+    $msg_orion["longitude"]["value"]= $longitude;
+    $msg_orion["latitude"]["type"]= "float";
+    $msg_orion["longitude"]["type"]= "float";
+	  
+	$a=0;
+    while ($a < count($listnewAttributes)){
+        $att=$listnewAttributes[$a];
+		$msg_orion[$att->value_name]=array();
+		$msg_orion[$att->value_name]["value"]="0";
+ 		$msg_orion[$att->value_name]["type"]=$att->data_type;
+        $a++;
+	}
+	  
+	$msg_orion["model"]=array();
+	$msg_orion["model"]["value"]= $model;
+ 	$msg_orion["model"]["type"]= "string";
+        
+	
+	$url_orion="http://$ip:$port/v2/entities/";
+	dev_log("insert_ngsi: url used for registration: $url_orion");
+      
+    try{
+		// Setup cURL
+		$ch = curl_init($url_orion);
+		$authToken = 'OAuth 2.0 token here';
+		curl_setopt_array($ch, array(
+    		CURLOPT_POST => TRUE,
+    		CURLOPT_RETURNTRANSFER => TRUE,
+    		CURLOPT_HTTPHEADER => array(
+				'Authorization: '.$authToken,
+				'Content-Type: application/json',
+				'Fiware-Service: ' . $service,
+				'Fiware-ServicePath: ' . $servicePath),
+			CURLOPT_POSTFIELDS => json_encode($msg_orion)
+		));
+
+		// Send the request
+		$response_orion = curl_exec($ch);
+
+		// Check for errors
+		if ($response_orion === FALSE) {
+			$result["error_msg"].= "Error in the connection with the ngsi context broker. ";
+			$result["msg"].= "\n error in the connection with the ngsi context broker";
+			$result["log"].= "\n error in the connection with the ngsi context broker";
+			$res='ko';
+		} else {
+		    // Decode the response
+		    $responseData = json_decode($response_orion, TRUE);
+			$result["status"]='ok';
+		    $result["msg"] .= '\n response from the ngsi context broker ';
+			$result["log"] .= '\n response from the ngsi context broker ' . $response_orion;
+			$res='ok';
+        } 
+    } catch (Exception $ex){
+		$result["status"]='ko';
+		$result["error_msg"] .= 'Error in connecting with the ngsi context broker. ';
+		$result["msg"] .= ' error in connecting with the ngsi context broker ';
+		$result["log"] .= ' error in connecting with the ngsi context broker ' . $ex;
+		$res="ko";
+    }
+		
+	return $res;
+}
 	
 	function insert_mqtt($name, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, $visibility, $frequency, 
 $listnewAttributes, $ip, $port, &$result)
@@ -1387,7 +1496,8 @@ $visibility, $frequency, $listnewAttributes, &$result)
 		{$error=true; $result["msg"].= "\n latitude not correct ";$result["error_msg"].= "latitude not correct. "; $result["log"].= "\n latitude not correct ";}
 	  if ($longitude < -180 && $longitude>180)
 		{$error=true; $result["msg"].= "\n longitude not correct ";$result["error_msg"].= "longitude not correct. ";$result["log"].= "\n longitude not correct ";}
-	  if (!($protocol=="ngsi" || $protocol=="mqtt" || $protocol=="amqp"))
+	  // Edited: Antonino Mauro Liuzzo -> added ngsi w/MultiService into the if condition
+	  if (!($protocol=="ngsi" || $protocol=="mqtt" || $protocol=="amqp" || $protocol == "ngsi w/MultiService"))
 		{$error=true; $result["msg"].= "\n protocol not correct ";$result["error_msg"].= "protocol not correct. ";$result["log"].= "\n protocol not correct ";}
 	  if (count($listnewAttributes)==0)
 		{$error=true; $result["msg"].= "\n at list one attribute";$result["error_msg"].= " at least one attribute is required. ";$result["log"].= "\n at list one attribute";}
@@ -1458,7 +1568,8 @@ $visibility, $frequency, $listnewAttributes, &$result)
 			$result["msg"].= "\n longitude not correct ";
 			$result["log"].= "\n longitude not correct ";
 		}
-	  if (!($protocol=="ngsi" || $protocol=="mqtt" || $protocol=="amqp"))
+	  // Edited: Antonino Mauro Liuzzo -> added ngsi w/MultiService into the if condition
+	  if (!($protocol=="ngsi" || $protocol=="mqtt" || $protocol=="amqp" || $protocol == "ngsi w/MultiService"))
 		{
 			$error=true; 
 			$result["error_msg"].= "protocol not correct. ";
@@ -1515,8 +1626,9 @@ $visibility, $frequency, $listnewAttributes, &$result)
 	   return true;
 	}
 	
+	// Edited: Antonino Mauro Liuzzo: Added $service and $servicePath and call to insert_ngsi_multiservice
 	function registerKB($link, $name, $type, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude,
-			$longitude, $visibility, $frequency, $listnewAttributes,&$result, $shouldbeRegistered, $organization, $kbUrl="")
+			$longitude, $visibility, $frequency, $listnewAttributes,&$result, $shouldbeRegistered, $organization, $kbUrl="", $service="", $servicePath="")
 	{
 		$result["status"]='ok';
 		
@@ -1550,10 +1662,15 @@ $visibility, $frequency, $listnewAttributes, &$result)
 			$msg["longitude"]= $longitude;
 			$msg["frequency"]= $frequency;
 			$msg["organization"]= $organization;
-              		$msg["ownership"]= $visibility;
+			$msg["ownership"]= $visibility;
+
 			$msg["broker"]=array();
 			$msg["broker"]["name"]=$contextbroker;
 			$msg["broker"]["type"]=$rowCB["protocol"];
+			// Author: Antonino Mauro Liuzzo -> this workaround MUST be fixed -> ngsi w/MultiService, for now, isn't a valid broker type
+			if ($rowCB["protocol"] == "ngsi w/MultiService") $msg["broker"]["type"] = "ngsi";
+			dev_log("registerKB protocol value: " . $rowCB["protocol"]);
+	  		dev_log("registerKB broker type: " . $msg["broker"]["type"]);
 			$msg["broker"]["ip"]=$rowCB["ip"];
 			$msg["broker"]["port"]=$rowCB["port"];
 			$msg["broker"]["login"]=($rowCB["login"]==null)?"":$rowCB["login"];
@@ -1582,7 +1699,12 @@ $visibility, $frequency, $listnewAttributes, &$result)
 			}	 
 			$msg["attributes"]=$myAttrs;
 
+			dev_log("registerKB msg: " . json_encode($msg));
+
 			try {
+
+				dev_log("registerKB: kbUrl: $kbUrl");
+
 				if($kbUrl=="") 
 					$url= $_SESSION['kbUrl']."iot/insert";
 				else 
@@ -1596,8 +1718,16 @@ $visibility, $frequency, $listnewAttributes, &$result)
 						'timeout' => 30
 					)
 				);
+
+				dev_log("registerKB: url: $url");
+
 				$context = stream_context_create($options);
 				$local_result = @file_get_contents($url, false, $context);
+
+				dev_log("registerKB local_result: $local_result");
+
+				dev_log("registerKB: options[http][content]: " . json_encode($options['http']['content']));
+
 				if (($local_result!="errore")&&(strlen($local_result)>0)) {
 					$result["status"]='ok';
 					$result["content"]=$local_result;
@@ -1626,6 +1756,10 @@ $visibility, $frequency, $listnewAttributes, &$result)
 								$res = insert_amqp($name, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, 
 										$visibility, $frequency, $listnewAttributes, $ip, $port, $result);
 								break;
+							// Author: Antonino Mauro Liuzzo
+							case "ngsi w/MultiService":
+								$res = insert_ngsi_multiservice($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, 
+								$visibility, $frequency, $listnewAttributes, $ip, $port, $result, $service, $servicePath);
 						}
 					}
 					else {

@@ -1235,6 +1235,7 @@ function format ( d ) {
 					//active: $('#selectActiveModelM').val(),
 					hc: $('#selectHCModelM').val(),
 					hv: $('#inputHVModelM').val(),
+					// Author: Antonino Mauro Liuzzo
 					service: service,
 					servicePath: servicePath
 				},

@@ -1260,7 +1260,8 @@ function drawAttributeMenu
 			   if (!(kind=="sensor" || kind=="actuator")) {var kindNote = ("\n kind not specified");}  else{kindNote = "&#10004;";}
 			   if ((latitude < -90 && latitude > 90) || (latitude=="" || latitude==null)) {var latitudeNote = ("\n latitude not correct ");} else{latitudeNote = "&#10004;";}
 			   if ((longitude < -180 && longitude > 180) || (longitude=="" || longitude==null)) {var longitudeNote = ("\n longitude not correct ");} else{longitudeNote = "&#10004;";}
-			   if (!(protocol=="ngsi" || protocol=="mqtt" || protocol=="amqp")) {var protocolNote = ("protocol not correct ");} else{protocolNote = "&#10004;";}
+			   // Edited: Antonino Mauro Liuzzo -> added ngsi w/MultiService into the if condition
+			   if (!(protocol=="ngsi" || protocol=="mqtt" || protocol=="amqp" || $protocol == "ngsi w/MultiService")) {var protocolNote = ("protocol not correct ");} else{protocolNote = "&#10004;";}
 		
 		console.log(id + contextbroker + type + kind + latitude + longitude + protocol);
 	
@@ -1414,12 +1415,13 @@ function drawAttributeMenu
 								addDeviceConditionsArray['inputMacDevice'] = true;
 								checkMAC(); 
 								checkAtlistOneAttribute();
-								checkAddDeviceConditions();
 
 								// Author: Antonino Mauro Liuzzo
 								getServicesByCBName($('#selectContextBroker').val(), 'add', data.content.service);
 								checkProtocol($('#selectProtocolDevice').val(), 'add', 'device');
 								$('#inputServicePathDevice').val(data.content.servicePath);
+								checkServicePath($('#inputServicePathDevice').val(), 'add', 'device');
+								checkAddDeviceConditions();
 							}
 					 },
 					 error: function (data) 
@@ -1567,7 +1569,18 @@ function drawAttributeMenu
 	console.log($('#inputLatitudeDevice').val());
 	console.log($('#selectContextBroker'));
 	
-	
+	// Author: Antonino Mauro Liuzzo
+	var service = $('#selectService').val();
+	var servicePath = $('#inputServicePathDevice').val();
+
+	if ($('#selectProtocolDevice').val() === "ngsi w/MultiService"){
+		// servicePath value pre-processing
+		if (servicePath[0] !== "/" || servicePath === "") servicePath = "/" + servicePath;
+		if (servicePath[servicePath.length -1] === "/" && servicePath.length > 1) servicePath = servicePath.substr(0, servicePath.length -1);
+	}
+
+	console.log("service: " + service);
+	console.log("servicePath: " + servicePath);
 
 	$.ajax({
 		 url: "../api/device.php",
@@ -1595,7 +1608,11 @@ function drawAttributeMenu
 			  k1 : $("#KeyOneDeviceUser").val(),
 			  k2 : $("#KeyTwoDeviceUser").val(),
 			  edgegateway_type : $("#selectEdgeGatewayType").val(),
-			  edgegateway_uri : $("#inputEdgeGatewayUri").val()	   
+			  edgegateway_uri : $("#inputEdgeGatewayUri").val(), 
+
+			  // Author: Antonino Mauro Liuzzo
+			  service : service,
+			  servicePath : servicePath
 			 },
 		 type: "POST",
 		 async: true,
