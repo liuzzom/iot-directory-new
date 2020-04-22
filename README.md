@@ -79,22 +79,22 @@ back-end directory: api
 - ~~Relazione~~
 
 #### Delete Model -> non dovrebbe richiedere modifiche 
-- Gestione richiesta al server
-- Controlli lato server
-- Operazioni sul DB
-- Risposta al client
-- Relazione
+- ~~Gestione richiesta al server~~
+- ~~Controlli lato server~~
+- ~~Operazioni sul DB~~
+- ~~Risposta al client~~
+- ~~Relazione~~
 
 ### Sezione Device
 
 #### Add Device (IoT Devices)
 - ~~Inserimento elementi di interfaccia~~
 - ~~Controllo sui valori inseriti e feedback all'utente~~
-- Gestione richiesta al server
-- Controlli lato server
-- Operazioni sul DB
-- Risposta al client
-- Relazione
+- ~~Gestione richiesta al server~~
+- ~~Controlli lato server~~
+- ~~Operazioni sul DB~~
+- ~~Risposta al client~~
+- ~~Relazione~~
 
 #### Add Device (My IoT Devices (Schermata più guidata))
 - Inserimento elementi di interfaccia
@@ -123,3 +123,4 @@ back-end directory: api
 
 ## Segnalazioni
 - Problemi con la gestione delle ownership e i limiti
+- Workaround in registerKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)
