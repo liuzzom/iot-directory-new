@@ -528,6 +528,13 @@ function fillMultiTenancyFormSection(serviceVal, servicePathVal, brokerName, con
             selectServiceMsg.html("only ngsi w/MultiService supports Service/Tenant selection");
             selectService.prop('disabled', true);
         }
+
+        // set device section as read-only
+        if (context === 'device') {
+            servicePath.prop('disabled', true);
+            selectService.prop('disabled', true);
+        }
+        
     }).fail(function(){
         alert("Something wrong during getting services");
     });
