@@ -1,0 +1,21 @@
+2020-04-23 06:15:24: insert(device.php): BEGIN
+2020-04-23 06:15:25: service: 
+2020-04-23 06:15:25: servicePath: /
+2020-04-23 06:15:25: insert_device: BEGIN
+2020-04-23 06:15:25: registerKB protocol value: ngsi w/MultiService
+2020-04-23 06:15:25: registerKB broker type: ngsi
+2020-04-23 06:15:25: registerKB msg: {"id":"test_multi_02","type":"TestType","kind":"sensor","protocol":"ngsi w\/MultiService","format":"json","macaddress":"","model":"TestMultiService","producer":"TestProd","latitude":"43.77456","longitude":"11.27026","frequency":"600","organization":"Organization","ownership":"private","broker":{"name":"testName","type":"ngsi","ip":"iotobsf2","port":"1026","login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03"},"attributes":[{"value_name":"temperatura","data_type":"html","value_type":"temperature","value_unit":"\u00b0C","healthiness_criteria":"refresh_rate","value_refresh_rate":"300","order":1}]}
+2020-04-23 06:15:25: registerKB: kbUrl: http://kbssm/ServiceMap/api/v1/
+2020-04-23 06:15:25: registerKB: url: http://kbssm/ServiceMap/api/v1/iot/insert
+2020-04-23 06:15:29: registerKB local_result: http://www.disit.org/km4city/resource/iot/testName/Organization/test_multi_02
+2020-04-23 06:15:29: registerKB: options[http][content]: "{\"id\":\"test_multi_02\",\"type\":\"TestType\",\"kind\":\"sensor\",\"protocol\":\"ngsi w\\\/MultiService\",\"format\":\"json\",\"macaddress\":\"\",\"model\":\"TestMultiService\",\"producer\":\"TestProd\",\"latitude\":\"43.77456\",\"longitude\":\"11.27026\",\"frequency\":\"600\",\"organization\":\"Organization\",\"ownership\":\"private\",\"broker\":{\"name\":\"testName\",\"type\":\"ngsi\",\"ip\":\"iotobsf2\",\"port\":\"1026\",\"login\":\"\",\"password\":\"\",\"latitude\":\"43.71454\",\"longitude\":\"11.19919\",\"created\":\"2020-03-10 10:51:03\"},\"attributes\":[{\"value_name\":\"temperatura\",\"data_type\":\"html\",\"value_type\":\"temperature\",\"value_unit\":\"\\u00b0C\",\"healthiness_criteria\":\"refresh_rate\",\"value_refresh_rate\":\"300\",\"order\":1}]}"
+2020-04-23 06:15:29: insert_ngsi_multiservice: BEGIN
+2020-04-23 06:15:29: insert_ngsi: url used for registration: http://iotobsf2:1026/v2/entities/
+2020-04-23 06:15:29: insert_device: multiservice device
+2020-04-23 06:15:29: value to check:
+2020-04-23 06:15:29: insert_device: query
+INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude,uri, visibility,  frequency, privatekey, certificate, mandatoryproperties,mandatoryvalues, organization, service, servicePath) VALUES('test_multi_02', 'TestType', 'testName', 'sensor', 'ngsi w/MultiService', 'json', '', 'TestMultiService', 'TestProd', '43.77456', '11.27026', 'http://www.disit.org/km4city/resource/iot/testName/Organization/test_multi_02', 'private', '600', '','',1,1, 'Organization', '', '/')
+2020-04-23 06:15:29: insert_device: Device testName/test_multi_02 correctly inserted with uri: http://www.disit.org/km4city/resource/iot/testName/Organization/test_multi_02
+2020-04-23 06:15:29: insert_device: attribute temperatura correctly inserted
+2020-04-23 06:15:29: insert_device: END
+2020-04-23 06:15:30: insert(device.php): END

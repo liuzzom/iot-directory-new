@@ -518,7 +518,9 @@ function drawAttributeMenu
 				'data-edgegateway_uri="'+d.edgegateway_uri+'" ' +
 				'data-k1="'+d.k1+'" ' +
 				'data-k2="'+d.k2+'" ' +
-				'data-status1="'+d.status1+'">Edit</button>';
+				'data-status1="'+d.status1+'" ' +
+				'data-service="'+d.service+'" ' +
+				'data-servicePath="'+d.servicePath+'">Edit</button>';
 				 } else { }
 				
 				}
@@ -803,7 +805,11 @@ function drawAttributeMenu
 		$('#KeyTwoDeviceUserM').val(key2);
 		$('#selectEdgeGatewayTypeM').val(gtw_type);
 		$('#inputEdgeGatewayUriM').val(gtw_uri);
-        
+		
+		// Author: Antonino Mauro Liuzzo
+		// This function is defined in commonModelDevice.js
+		fillMultiTenancyFormSection($(this).attr('data-service'), $(this).attr('data-servicePath'), contextbroker, 'device');
+		
         UserEditKey();
         checkEditDeviceConditions();
 

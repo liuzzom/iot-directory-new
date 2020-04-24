@@ -884,7 +884,7 @@ else if($action == "get_all_device")
     $q = "SELECT d.`contextBroker`, d.`id`, d.`uri`, d.`devicetype`, d.`kind`, 
 	      CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
 	     d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, 
-	     d.`frequency`, d.`created`, d.`privatekey`, d.`certificate`,d.`organization`, cb.`accesslink`, cb.`accessport`, cb.`sha` FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name)"; 
+	     d.`frequency`, d.`created`, d.`privatekey`, d.`certificate`,d.`organization`, d.`service`, d.`servicePath`, cb.`accesslink`, cb.`accessport`, cb.`sha` FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name)"; 
      
 	$r=create_datatable_data($link,$_REQUEST,$q, "deleted IS null");
     
@@ -949,12 +949,16 @@ else if($action == "get_all_device")
 				$rec["organization"]= $row["organization"];
 		
 		        $rec["accesslink"]= $row["accesslink"];
-			$rec["accessport"]= $row["accessport"];
+				$rec["accessport"]= $row["accessport"];
 				$rec["sha"]= $row["sha"];
 				$rec["privatekey"]= "";
 				$rec["certificate"]= "";
 				$rec["edgegateway_type"]= "";
 				$rec["edgegateway_uri"]= "";
+
+				// Author: Antonino Mauro Liuzzo
+				$rec["service"] = $row["service"];
+				$rec["servicePath"] = $row["servicePath"];
 			
 				 if(((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))
                                        ||
