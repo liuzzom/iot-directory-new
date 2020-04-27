@@ -429,6 +429,9 @@ var gb_old_cb="";
 				'data-edgegateway_uri="'+d.edgegateway_uri+'" ' +
 				'data-k1="'+d.k1+'" ' +
 				'data-k2="'+d.k2+'" ' +
+				'data-service="'+d.service+'" ' +
+				// Edited: Antonino Mauro Liuzzo
+				'data-servicePath="'+d.servicePath+'" ' + 
 				'data-status1="'+d.status1+'">Edit</button>';
 				//"data-created": row.created,
 				//"data-properties": row.properties,
@@ -1553,7 +1556,11 @@ var gb_old_cb="";
 		$('#KeyOneDeviceUserM').val(key1);
 		$('#KeyTwoDeviceUserM').val(key2);
 		$('#selectEdgeGatewayTypeM').val(gtw_type);
-		$('#inputEdgeGatewayUriM').val(gtw_uri);	  
+		$('#inputEdgeGatewayUriM').val(gtw_uri);	 
+		
+		// Author: Antonino Mauro Liuzzo
+		// This function is defined in commonModelDevice.js
+		fillMultiTenancyFormSection($(this).attr('data-service'), $(this).attr('data-servicePath'), contextbroker, 'device');
 
 		showEditDeviceModal();
 

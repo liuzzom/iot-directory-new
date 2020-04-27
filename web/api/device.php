@@ -881,6 +881,7 @@ else if($action == "get_all_device")
         
 	}
 	
+	// Edited: Antonino Mauro Liuzzo
     $q = "SELECT d.`contextBroker`, d.`id`, d.`uri`, d.`devicetype`, d.`kind`, 
 	      CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
 	     d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, 
@@ -1053,10 +1054,11 @@ else if($action == "get_all_device_admin")
 	 $ownDevices = getOwnerShipDevice($accessToken, $result); 
 	}
 	
+		// Edited: Antonino Mauro Liuzzo
 	    $q = "SELECT d.`contextBroker`, d.`id`, d.`uri`, d.`devicetype`, d.`kind`, 
 	      CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
 	     d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, d.`organization`,
-	     d.`frequency`, d.`created`, d.`privatekey`, d.`certificate`, cb.`accesslink`,  cb.`accessport`,cb.`sha` FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name) "; //  WHERE visibility =\"public\"";
+	     d.`frequency`, d.`created`, d.`privatekey`, d.`certificate`, d.`service`, d.`servicePath`, cb.`accesslink`,  cb.`accessport`,cb.`sha` FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name) "; //  WHERE visibility =\"public\"";
 
         
 	
@@ -1108,6 +1110,10 @@ else if($action == "get_all_device_admin")
 			 $rec["certificate"]= "";
 			 $rec["edgegateway_type"]= "";
 			 $rec["edgegateway_uri"]= "";
+
+			// Author: Antonino Mauro Liuzzo
+			$rec["service"] = $row["service"];
+			$rec["servicePath"] = $row["servicePath"];
 
 			$eid=$row["organization"].":".$row["contextBroker"].":".$row["id"];
 			
@@ -1234,7 +1240,6 @@ else if($action == "get_all_private_device")
 			$rec["certificate"]= $row["certificate"];
             $rec["edgegateway_type"]= $result["keys"][$rec["id"]]["edgegateway_type"];
 			$rec["edgegateway_uri"]= $result["keys"][$rec["id"]]["edgegateway_uri"];
-			array_push($data, $rec);           
            }
 		   
 		   $output= format_result($_REQUEST["draw"], $selectedrows+1, $selectedrows+1, $data, "", "\r\n action=get_all_private_device \r\n", 'ok');
@@ -1268,7 +1273,7 @@ else if($action == "get_subset_device")
     $q = "SELECT d.`contextBroker`, d.`id`, d.`uri`, d.`devicetype`, d.`kind`, 
 	      CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
 	     d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, 
-	     d.`frequency`, d.`organization`, d.`created`, d.`privatekey`, d.`certificate`, cb.`accesslink`, cb.`accessport`,cb.`sha` 
+	     d.`frequency`, d.`organization`, d.`created`, d.`privatekey`, d.`certificate`, d.`service`, d.`servicePath`, cb.`accesslink`, cb.`accessport`,cb.`sha` 
 		 FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name) ";
 	if (count($selection)!=0)
 	{
@@ -1339,7 +1344,10 @@ else if($action == "get_subset_device")
                     $rec["privatekey"]= "";
                     $rec["certificate"]= "";
                     $rec["edgegateway_type"]= "";
-                    $rec["edgegateway_uri"]= "";
+					$rec["edgegateway_uri"]= "";
+					// Author: Antonino Mauro Liuzzo
+					$rec["service"] = $row["service"];
+					$rec["servicePath"] = $row["servicePath"];
 			
                     if (((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))
                                        ||            

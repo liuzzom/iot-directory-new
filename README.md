@@ -97,13 +97,13 @@ back-end directory: api
 - ~~Relazione~~
 
 #### Add Device (My IoT Devices (Schermata più guidata))
-- Gestione richiesta al server
-- Controlli lato server
-- Operazioni sul DB
-- Risposta al client
-- Relazione
+- ~~Gestione richiesta al server~~
+- ~~Controlli lato server~~
+- ~~Operazioni sul DB~~
+- ~~Risposta al client~~
+- ~~Relazione~~
 
-####  Edit Device
+####  Edit Device -> Non Supportato: Elementi in sola lettura
 - ~~Inserimento elementi di interfaccia~~
 - ~~Controllo sui valori inseriti e feedback all'utente~~
 - Modifiche nelle get sulla mappa
