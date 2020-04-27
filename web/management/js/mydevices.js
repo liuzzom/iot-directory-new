@@ -875,9 +875,20 @@ var dataTable ="";
 						$('#selectContextBroker').val(data.content.contextbroker);
 						$('#selectProtocolDevice').val(data.content.protocol);
 						$('#selectFormatDevice').val(data.content.format); 
-						*/
+                        */
+                        
+                        // Author: Antonino Mauro Liuzzo
+	                    var service = data.content.service;
+	                    var servicePath = data.content.servicePath;
+
+	                    if ($('#selectProtocolDevice').val() === "ngsi w/MultiService"){
+		                    // servicePath value pre-processing
+		                    if (servicePath[0] !== "/" || servicePath === "") servicePath = "/" + servicePath;
+		                    if (servicePath[servicePath.length -1] === "/" && servicePath.length > 1) servicePath = servicePath.substr(0, servicePath.length -1);
+	                    }
 						
-					
+                        console.log("service: " + service);
+                        console.log("servicePath: " + servicePath);
 				 $.ajax({
 					 url: "../api/device.php",
 					 data:{
@@ -904,7 +915,11 @@ var dataTable ="";
 						  token : sessionToken,
 						  k1 :  gb_k1,
 						  k2 : gb_k2,
-						  edgegateway_type:edgegateway_type
+                          edgegateway_type:edgegateway_type,
+                          
+                          // Author: Antonino Mauro Liuzzo
+                          service : service,
+                          servicePath : servicePath
 
 						},
 						 type: "POST",
