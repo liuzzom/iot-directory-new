@@ -1805,8 +1805,10 @@ $visibility, $frequency, $listnewAttributes, &$result)
 	// ****FUNCTIONS FOR THE MODIFICATION OF THE REGISTRATION OF A DEVICE IN THE KNOWLEDGE BASE AND IN THE CONTEXT BROKER ****************** 
 				
 	function update_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, $visibility, $frequency, 
-$listnewAttributes, $ip, $port,$uri, &$result)
+$listnewAttributes, $ip, $port,$uri, $service="", $servicePath="", &$result)
 	{
+	   dev_log("update_ngsi: BEGIN");
+
 	   $res = "ok";
 	   $msg_orion=array();
       
@@ -1844,6 +1846,8 @@ $listnewAttributes, $ip, $port,$uri, &$result)
       }  
      
 	  $url_orion="http://$ip:$port/v2/entities/$name/attrs";
+	  dev_log("update_ngsi: BEGIN");
+
       try
          {
 			// Setup cURL
@@ -1854,7 +1858,10 @@ $listnewAttributes, $ip, $port,$uri, &$result)
     			CURLOPT_RETURNTRANSFER => TRUE,
     			CURLOPT_HTTPHEADER => array(
 					'Authorization: '.$authToken,
-					'Content-Type: application/json'),
+					'Content-Type: application/json',
+					'Fiware-Service: ' . $service,
+					'Fiware-ServicePath: ' . $servicePath
+				),
 				CURLOPT_POSTFIELDS => json_encode($msg_orion)
 		    ));
 
@@ -1865,6 +1872,7 @@ $listnewAttributes, $ip, $port,$uri, &$result)
     			// die(curl_error($ch));
 				$result["error_msg"].= "Error in the connection with the ngsi context broker. ";
 				$result["msg"].= "\n error in the connection with the ngsi context broker";
+				dev_log("update_ngsi: error in the connection with the ngsi context broker");
 				$result["log"].= "\n error in the connection with the ngsi context broker" . curl_error($ch);
 				$res='ko';
 			}
@@ -1873,7 +1881,8 @@ $listnewAttributes, $ip, $port,$uri, &$result)
 		    // Decode the response
 		     $responseData = json_decode($response_orion, TRUE);
 			 $result["status"]='ok';
-		     $result["msg"] .= '\n response from the ngsi context broker ';
+			 $result["msg"] .= '\n response from the ngsi context broker ';
+			 dev_log("response from the ngsi context broker");
 			 $result["log"] .= '\n response from the ngsi context broker ' . $response_orion;
 			 $res='ok';
             } 
@@ -1882,7 +1891,8 @@ $listnewAttributes, $ip, $port,$uri, &$result)
          {
 		       $result["status"]='ko';
 		       $result["error_msg"] .= ' Error in connecting with the ngsi context broker. ';
-		       $result["msg"] .= ' error in connecting with the ngsi context broker ';
+			   $result["msg"] .= ' error in connecting with the ngsi context broker ';
+			   dev_log("error in connecting with the ngsi context broker");
 		       $result["log"] .= ' error in connecting with the ngsi context broker ' . $ex;
 			   $res="ko";
             }
@@ -1901,8 +1911,9 @@ $listnewAttributes, $ip, $port,$uri,&$result)
 	  return "ok";
 	}
 	
+// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
 function updateKB($link, $name, $type, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude, 
-$visibility, $frequency, $attributes, $uri,$organization, &$result) {
+$visibility, $frequency, $attributes, $uri,$organization, &$result, $service, $servicePath) {
   // $result=array();
   $result["status"]='ok';
   // $result["msg"]='';
@@ -1946,6 +1957,10 @@ $visibility, $frequency, $attributes, $result))
 	  $msg["broker"]=array();
 	  $msg["broker"]["name"]=$contextbroker;
 	  $msg["broker"]["type"]=$rowCB["protocol"];
+	  // Author: Antonino Mauro Liuzzo -> this workaround MUST be fixed -> ngsi w/MultiService, for now, isn't a valid broker type
+	  if ($rowCB["protocol"] == "ngsi w/MultiService") $msg["broker"]["type"] = "ngsi";
+	  dev_log("updateKB protocol value: " . $rowCB["protocol"]);
+	  dev_log("updateKB broker type: " . $msg["broker"]["type"]);
 	  $msg["broker"]["ip"]=$rowCB["ip"];
 	  $msg["broker"]["port"]=$rowCB["port"];
 	  $msg["broker"]["login"]=($rowCB["login"]==null)?"":$rowCB["login"];
@@ -1974,10 +1989,16 @@ $visibility, $frequency, $attributes, $result))
 	  }	 
 	  $msg["attributes"]=$myAttrs;
 	
+	  dev_log("updateKB: msg: " . json_encode($msg));
+
 	  try
 	   {
 		 //$url= $GLOBALS["knowledgeBaseURI"] . "api/v1/iot/insert";
 		$url= $_SESSION['kbUrl']."iot/insert";
+
+		dev_log("updateKB: kbUrl: $kbUrl");
+		dev_log("updateKB: url: $url");
+
 
 		 $options = array(
 			  'http' => array(
@@ -1989,6 +2010,9 @@ $visibility, $frequency, $attributes, $result))
 			);
 		 $context = stream_context_create($options);
 		 $local_result = @file_get_contents($url, false, $context);
+
+		dev_log("registerKB local_result: $local_result");
+		dev_log("registerKB: options[http][content]: " . json_encode($options['http']['content']));
 	 } 
 	 catch (Exception $ex)
 	{
@@ -2018,9 +2042,11 @@ $visibility, $frequency, $attributes, $result))
 	if( $rowCB["kind"]!='external'){  
             switch ($protocol)
               {
-               case "ngsi":
+			   case "ngsi":
+			   case "ngsi w/MultiService":
+					// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
                     $res = update_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, $visibility, $frequency, 
-        $attributes, $ip, $port,$uri, $result);
+        $attributes, $ip, $port, $uri, $service, $servicePath, $result);
                     break;
                case "mqtt":
                     $res = update_mqtt($name, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, $visibility, 
@@ -2034,19 +2060,22 @@ $visibility, $frequency, $attributes, $result))
         
         if ($res=="ok")
             {
-             $result["msg"] .= "\n ok updated in the context broker";
+			 $result["msg"] .= "\n ok updated in the context broker";
+			 dev_log("udpateKB: ok updated in the context broker");
              $result["log"] .= "\n ok updated in the context broker";
             }
             else
             {
               $result["status"]='ko';
               $result["error_msg"] .= "No update in the context broker. ";
-              $result["msg"] .= "\n no update in the context broker";
+			  $result["msg"] .= "\n no update in the context broker";
+			  dev_log("updateKB: no update in the context broker");
               $result["log"] .= "\n no update in the context broker";
             }
         }
         else{
-            $result["msg"] .= "\n context broker external, not updated";
+			$result["msg"] .= "\n context broker external, not updated";
+			dev_log("updateKB: context broker external, not updated");
 	        $result["log"] .= "\n context broker external, not updated";
 
         }
@@ -2058,6 +2087,7 @@ $visibility, $frequency, $attributes, $result))
   {
    $result["error_msg"].="Error in the validation w.r.t. the KB. ";
    $result["msg"].="\n error in the validation w.r.t. the KB";
+   dev_log("updateKB: error in the validation w.r.t. the KB");
    $result["log"].="\n error in the validation w.r.t. the KB";
    $result["status"]='ko';
    return 1;

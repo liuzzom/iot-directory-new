@@ -1,0 +1,38 @@
+2020-04-28 12:56:43: update device: BEGIN
+2020-04-28 12:56:43: update device: service: paperino
+2020-04-28 12:56:43: update device: servicePath: /Test/Uno/Due
+2020-04-28 12:56:43: updateKB protocol value: ngsi w/MultiService
+2020-04-28 12:56:43: updateKB broker type: ngsi
+2020-04-28 12:56:43: updateKB: msg: {"id":"test_multi_01","type":"TestType","kind":"sensor","protocol":"ngsi w\/MultiService","format":"json","macaddress":"","model":"TestMultiService","producer":"TestProd","latitude":"43.76861","longitude":"11.31042","frequency":"600","organization":"Organization","ownership":"MyOwnPrivate","broker":{"name":"testName","type":"ngsi","ip":"iotobsf2","port":"1026","login":"","password":"","latitude":"43.71454","longitude":"11.19919","created":"2020-03-10 10:51:03"},"attributes":[{"value_name":"temperatura","data_type":"html","value_type":"temperature","value_unit":"\u00b0C","healthiness_criteria":"refresh_rate","value_refresh_rate":"300","order":1}]}
+2020-04-28 12:56:43: updateKB: kbUrl: 
+2020-04-28 12:56:43: updateKB: url: http://kbssm/ServiceMap/api/v1/iot/insert
+2020-04-28 12:56:45: registerKB local_result: http://www.disit.org/km4city/resource/iot/testName/Organization/test_multi_01
+2020-04-28 12:56:45: registerKB: options[http][content]: "{\"id\":\"test_multi_01\",\"type\":\"TestType\",\"kind\":\"sensor\",\"protocol\":\"ngsi w\\\/MultiService\",\"format\":\"json\",\"macaddress\":\"\",\"model\":\"TestMultiService\",\"producer\":\"TestProd\",\"latitude\":\"43.76861\",\"longitude\":\"11.31042\",\"frequency\":\"600\",\"organization\":\"Organization\",\"ownership\":\"MyOwnPrivate\",\"broker\":{\"name\":\"testName\",\"type\":\"ngsi\",\"ip\":\"iotobsf2\",\"port\":\"1026\",\"login\":\"\",\"password\":\"\",\"latitude\":\"43.71454\",\"longitude\":\"11.19919\",\"created\":\"2020-03-10 10:51:03\"},\"attributes\":[{\"value_name\":\"temperatura\",\"data_type\":\"html\",\"value_type\":\"temperature\",\"value_unit\":\"\\u00b0C\",\"healthiness_criteria\":\"refresh_rate\",\"value_refresh_rate\":\"300\",\"order\":1}]}"
+2020-04-28 12:56:45: update_ngsi: BEGIN
+2020-04-28 12:56:45: update_ngsi: BEGIN
+2020-04-28 12:56:45: response from the ngsi context broker
+2020-04-28 12:56:45: udpateKB: ok updated in the context broker
+2020-04-28 12:56:45: update device: query
+UPDATE  devices SET uri = 'http://www.disit.org/km4city/resource/iot/testName/Organization/test_multi_01', mandatoryproperties=1, mandatoryvalues=1, contextBroker='testName', devicetype='TestType', kind= 'sensor', protocol='ngsi w/MultiService', format='json', macaddress='', model='TestMultiService', producer='TestProd', latitude='43.76861', longitude='11.31042', frequency = '600',organization='Organization'  WHERE id='test_multi_01' and contextBroker='testName'
+2020-04-28 12:56:45: update device: Device testName/test_multi_01 correctly updated
+2020-04-28 12:56:46: update device: END
+
+2020-04-28 12:57:06: update device: BEGIN
+2020-04-28 12:57:06: update device: service: 
+2020-04-28 12:57:06: update device: servicePath: 
+2020-04-28 12:57:06: updateKB protocol value: ngsi
+2020-04-28 12:57:06: updateKB broker type: ngsi
+2020-04-28 12:57:06: updateKB: msg: {"id":"test_legacy_03","type":"Ambiental","kind":"sensor","protocol":"ngsi","format":"json","macaddress":"","model":"Raspberry snap4city 1","producer":"Raspberry PI","latitude":"43.77308","longitude":"11.27094","frequency":"600","organization":"Organization","ownership":"MyOwnPrivate","broker":{"name":"iotobsf","type":"ngsi","ip":"iotobsf","port":"1026","login":"","password":"","latitude":"43.77754","longitude":"11.26030","created":"2019-11-11 15:36:28"},"attributes":[{"value_name":"humidity","data_type":"float","value_type":"humidity","value_unit":"%","healthiness_criteria":"refresh_rate","value_refresh_rate":"300","order":1},{"value_name":"temperature","data_type":"float","value_type":"temperature","value_unit":"\u00b0C","healthiness_criteria":"refresh_rate","value_refresh_rate":"300","order":2}]}
+2020-04-28 12:57:06: updateKB: kbUrl: 
+2020-04-28 12:57:06: updateKB: url: http://kbssm/ServiceMap/api/v1/iot/insert
+2020-04-28 12:57:08: registerKB local_result: http://www.disit.org/km4city/resource/iot/iotobsf/Organization/test_legacy_03
+2020-04-28 12:57:08: registerKB: options[http][content]: "{\"id\":\"test_legacy_03\",\"type\":\"Ambiental\",\"kind\":\"sensor\",\"protocol\":\"ngsi\",\"format\":\"json\",\"macaddress\":\"\",\"model\":\"Raspberry snap4city 1\",\"producer\":\"Raspberry PI\",\"latitude\":\"43.77308\",\"longitude\":\"11.27094\",\"frequency\":\"600\",\"organization\":\"Organization\",\"ownership\":\"MyOwnPrivate\",\"broker\":{\"name\":\"iotobsf\",\"type\":\"ngsi\",\"ip\":\"iotobsf\",\"port\":\"1026\",\"login\":\"\",\"password\":\"\",\"latitude\":\"43.77754\",\"longitude\":\"11.26030\",\"created\":\"2019-11-11 15:36:28\"},\"attributes\":[{\"value_name\":\"humidity\",\"data_type\":\"float\",\"value_type\":\"humidity\",\"value_unit\":\"%\",\"healthiness_criteria\":\"refresh_rate\",\"value_refresh_rate\":\"300\",\"order\":1},{\"value_name\":\"temperature\",\"data_type\":\"float\",\"value_type\":\"temperature\",\"value_unit\":\"\\u00b0C\",\"healthiness_criteria\":\"refresh_rate\",\"value_refresh_rate\":\"300\",\"order\":2}]}"
+2020-04-28 12:57:08: update_ngsi: BEGIN
+2020-04-28 12:57:08: update_ngsi: BEGIN
+2020-04-28 12:57:08: response from the ngsi context broker
+2020-04-28 12:57:08: udpateKB: ok updated in the context broker
+2020-04-28 12:57:08: update device: query
+UPDATE  devices SET uri = 'http://www.disit.org/km4city/resource/iot/iotobsf/Organization/test_legacy_03', mandatoryproperties=1, mandatoryvalues=1, contextBroker='iotobsf', devicetype='Ambiental', kind= 'sensor', protocol='ngsi', format='json', macaddress='', model='Raspberry snap4city 1', producer='Raspberry PI', latitude='43.77308', longitude='11.27094', frequency = '600',organization='Organization'  WHERE id='test_legacy_03' and contextBroker='iotobsf'
+2020-04-28 12:57:08: update device: Device iotobsf/test_legacy_03 correctly updated
+2020-04-28 12:57:08: update device: END
+

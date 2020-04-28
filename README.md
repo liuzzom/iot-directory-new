@@ -106,11 +106,11 @@ back-end directory: api
 ####  Edit Device -> Non Supportato: Elementi in sola lettura
 - ~~Inserimento elementi di interfaccia~~
 - ~~Controllo sui valori inseriti e feedback all'utente~~
-- Modifiche nelle get sulla mappa
-- Gestione richiesta al server
-- Controlli lato server
-- Operazioni sul DB
-- Risposta al client
+- ~~Modifiche nelle get sulla mappa~~
+- ~~Gestione richiesta al server~~
+- ~~Controlli lato server~~
+- ~~Operazioni sul DB~~
+- ~~Risposta al client~~
 - Relazione
 
 #### Delete Device

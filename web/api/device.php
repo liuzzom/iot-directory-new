@@ -201,6 +201,7 @@ if ($action=="insert")
 }
 else if ($action=="update")
 {   
+	dev_log("update device: BEGIN");
 	//Sara2510 - for logging purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
     $organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
@@ -243,7 +244,13 @@ else if ($action=="update")
 	
 	if ($listdeleteAttributes!=null) $merge= array_udiff($merge, $listdeleteAttributes, 'compare_values');
 	
-	
+	// Author: Antonino Mauro Liuzzo
+	// These values are used into updateKB to identify the broker 
+	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
+	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
+	dev_log("update device: service: " .  $service);
+	dev_log("update device: servicePath: " . $servicePath);
+
 	$s1 = true; 
 	$notDuplicate = true;
 	
@@ -263,7 +270,8 @@ else if ($action=="update")
 	}
 	
 	if($notDuplicate){
-	updateKB($link, $id, $devicetype, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude,$visibility, $frequency, $merge, $uri, $dev_organization, $result); 
+	// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
+	updateKB($link, $id, $devicetype, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude,$visibility, $frequency, $merge, $uri, $dev_organization, $result, $service, $servicePath); 
 	
     if ($result["status"]=='ko'){
 		//Sara2510 - for logging purpose
@@ -279,11 +287,14 @@ else if ($action=="update")
 		$q = "UPDATE  devices SET uri = '". $result["content"] . "', mandatoryproperties=1, mandatoryvalues=1, contextBroker='$contextbroker', devicetype='$devicetype', kind= '$kind', protocol='$protocol', format='$format', macaddress='$macaddress', model='$model', producer='$producer', latitude='$latitude', longitude='$longitude', frequency = '$frequency',organization='$dev_organization'  WHERE id='$id' and contextBroker='$old_contextbroker'";
 	}
 	
+
+	dev_log("update device: query\n" . $q);
 	$r = mysqli_query($link, $q);
 			
     if($r) 
     {
 		$result["msg"] .= "\n Device $contextbroker/$id correctly updated";
+		dev_log("update device: Device $contextbroker/$id correctly updated");
 		$result["log"] .= "\r\n Device $contextbroker/$id correctly updated";
 		//Sara2510 - For logging purpose
 		if($result["status"]=="ok"){
@@ -424,6 +435,7 @@ else if ($action=="update")
 	  my_log($result);
 	  mysqli_close($link); 
 	}
+	dev_log("update device: END\n");
 }  
 else if ($action=="delete")
 {

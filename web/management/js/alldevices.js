@@ -1807,7 +1807,18 @@ var gb_old_cb="";
 		$('#editDeviceLoadingIcon').show();
 		// console.log(JSON.stringify(deviceJson));
         
-			
+		// Author: Antonino Mauro Liuzzo
+		var service = $('#editSelectService').val();
+		var servicePath = $('#editInputServicePathDevice').val();
+
+		if ($('#selectProtocolDeviceM').val() === "ngsi w/MultiService"){
+			// servicePath value pre-processing
+			if (servicePath[0] !== "/" || servicePath === "") servicePath = "/" + servicePath;
+			if (servicePath[servicePath.length -1] === "/" && servicePath.length > 1) servicePath = servicePath.substr(0, servicePath.length -1);
+		}
+		
+		console.log("service: " + service);
+		console.log("servicePath: " + servicePath);
 		
 		 $.ajax({
 			 url: "../api/device.php",
@@ -1840,7 +1851,11 @@ var gb_old_cb="";
 		k1: $('#KeyOneDeviceUserM').val(), 
 		k2: $('#KeyTwoDeviceUserM').val(),
 		edgegateway_type : $("#selectEdgeGatewayTypeM").val(),
-		edgegateway_uri : $("#inputEdgeGatewayUriM").val()
+		edgegateway_uri : $("#inputEdgeGatewayUriM").val(),
+
+		// Author: Antonino Mauro Liuzzo
+		service : service,
+		servicePath : servicePath
 			 },
 			 type: "POST",
 			 async: true,
