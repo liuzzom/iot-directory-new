@@ -111,16 +111,18 @@ back-end directory: api
 - ~~Controlli lato server~~
 - ~~Operazioni sul DB~~
 - ~~Risposta al client~~
-- Relazione
+- ~~Relazione~~
 
 #### Delete Device
-- Gestione richiesta al server
-- Controlli lato server
-- Operazioni sul DB
-- Risposta al client
-- Relazione
+- ~~Gestione richiesta al server~~
+- ~~Controlli lato server~~
+- ~~Operazioni sul DB~~
+- ~~Risposta al client~~
+- ~~Relazione~~
 
 ## Segnalazioni
 - Problemi con la gestione delle ownership e i limiti
 - Workaround in registerKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)
+- Workaround in updateKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)
+- Workaround in deleteKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)
 - Impossibilità di modificare i campi service e servicePath di un device a livello di CB -> queste informazioni non sono nel body ma nell'header

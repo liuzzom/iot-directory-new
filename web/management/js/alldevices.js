@@ -451,7 +451,10 @@ var gb_old_cb="";
 				'data-id="'+d.id+'" ' +
 				'data-contextBroker="'+d.contextBroker+'" ' +
 				'data-organization="'+d.organization+'" ' +
-                'data-uri="'+d.uri+'">Delete</button>';
+				'data-uri="'+d.uri+'" ' +
+				// Author: Antonino Mauro Liuzzo
+				'data-service="'+d.service+'" ' +
+				'data-servicePath="'+d.servicePath+'">Delete</button>';
 				}
             },
 			{
@@ -1373,8 +1376,13 @@ var gb_old_cb="";
 		var contextbroker = $(this).attr('data-contextbroker');
 		var dev_organization = $(this).attr('data-organization');
 		var uri = $(this).attr("data-uri");
+
+		// Author: Antonino Mauro Liuzzo
+		var service = $(this).attr('data-service');
+		var servicePath = $(this).attr('data-servicepath');
 		
-		$("#deleteDeviceModal div.modal-body").html('<div class="modalBodyInnerDiv"><span data-id = "' + id + '" data-contextbroker = "' + contextbroker + '" data-organization = "' + dev_organization + '"  data-uri ="' + uri +'">Do you want to confirm deletion of device <b>' + id + '</b>?</span></div>');
+		// Edited: Antonino Mauro Liuzzo -> added service and service path as span's attributes
+		$("#deleteDeviceModal div.modal-body").html('<div class="modalBodyInnerDiv"><span data-id = "' + id + '" data-contextbroker = "' + contextbroker + '" data-organization = "' + dev_organization + '"  data-uri ="' + uri + '" data-service ="' + service + '" data-servicepath="' + servicePath + '">Do you want to confirm deletion of device <b>' + id + '</b>?</span></div>');
 		$("#deleteDeviceModalInnerDiv1").html('<h5>Device deletion in progress, please wait</h5>');
         $("#deleteDeviceModalInnerDiv2").html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:36px"></i>');
         $("#deleteDeviceModalInnerDiv1").hide();
@@ -1392,7 +1400,15 @@ var gb_old_cb="";
 		var contextbroker = $("#deleteDeviceModal span").attr("data-contextBroker");
 		var dev_organization = $("#deleteDeviceModal span").attr("data-organization");
 		var uri = $("#deleteDeviceModal span").attr("data-uri");
-	   
+
+		// Author: Antonino Mauro Liuzzo
+		var service = $("#deleteDeviceModal span").attr("data-service");
+		var servicePath = $("#deleteDeviceModal span").attr("data-servicepath");
+		if(service === "null") service = "";
+		if(servicePath === "null") servicePath = "";
+
+		console.log("service: " + service);
+		console.log("servicePath: " + servicePath);
  
 		$("#deleteDeviceModal div.modal-body").html("");
 		$("#deleteDeviceOkBtn").hide();
@@ -1413,7 +1429,10 @@ var gb_old_cb="";
 				contextbroker : contextbroker,
 				organization : organization, 
 				dev_organization : dev_organization, 
-				token : sessionToken
+				token : sessionToken,
+				// Author: Antonino Mauro Liuzzo
+				service: service,
+				servicePath: servicePath
 				},
 			type: "POST",
 			datatype: "json",

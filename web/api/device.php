@@ -439,6 +439,7 @@ else if ($action=="update")
 }  
 else if ($action=="delete")
 {
+	dev_log("delete device: BEGIN");
      $id = $_REQUEST['id'];
 	 $cb = $_REQUEST['contextbroker'];
 	 $url = $_REQUEST['uri'];
@@ -447,6 +448,13 @@ else if ($action=="delete")
 	 $organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
 	 $dev_organization = mysqli_real_escape_string($link, $_REQUEST['dev_organization']);
 	 $deviceName = $id . " ".$cb;
+
+	// Author: Antonino Mauro Liuzzo
+	// These values are used into updateKB to identify the broker 
+	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
+	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
+	dev_log("delete device: service: " .  $service);
+	dev_log("delete device: servicePath: " . $servicePath);
 	 
     if($accessToken !=""){ 
    
@@ -462,8 +470,8 @@ else if ($action=="delete")
                $kburl=$_SESSION['kbUrl'];
        }
 
- 
-     deleteKB($link, $id, $cb, $kburl,$result);	   
+	// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
+    deleteKB($link, $id, $cb, $kburl,$result, $service, $servicePath);	   
 
 	 //FF: was removed and then I turn it back 
      if ($result["status"]=='ko') return $result;
@@ -476,48 +484,49 @@ else if ($action=="delete")
      COMMIT;";*/
     //FF:Just For Now
     $q1 = "UPDATE devices SET deleted = '". date("Y/m/d") . "' WHERE id = '$id' and contextBroker='$cb';";
-     $q2="INSERT INTO deleted_devices select * from devices WHERE id = '$id' and contextBroker='$cb'and deleted IS NOT NULL;";
-     $q3="INSERT INTO deleted_event_values (select cb,device,value_name,data_type,value_type,editable,value_unit,healthiness_criteria,value_refresh_rate, different_values,value_bounds, event_values.order from event_values where  device = '$id' and cb='$cb' );";
-     $q4="DELETE FROM devices WHERE id = '$id' and contextBroker='$cb' and deleted IS NOT NULL;
-     ";
+    $q2="INSERT INTO deleted_devices select * from devices WHERE id = '$id' and contextBroker='$cb'and deleted IS NOT NULL;";
+    $q3="INSERT INTO deleted_event_values (select cb,device,value_name,data_type,value_type,editable,value_unit,healthiness_criteria,value_refresh_rate, different_values,value_bounds, event_values.order from event_values where  device = '$id' and cb='$cb' );";
+    $q4="DELETE FROM devices WHERE id = '$id' and contextBroker='$cb' and deleted IS NOT NULL;";
      
     $r1 = mysqli_query($link, $q1);
-    if ($r1){$r2 = mysqli_query($link, $q2);
-        if($r2){$r3 = mysqli_query($link, $q3);
-            if($r3){$r4 = mysqli_query($link, $q4);
-                   }
-               }
-            
+    if ($r1){
+		$r2 = mysqli_query($link, $q2);
+        if($r2){
+			$r3 = mysqli_query($link, $q3);
+            if($r3){
+				$r4 = mysqli_query($link, $q4);
             }
-     if($r4)
-	 {
-		 //Sara2510 - for logging purpose
-		logAction($link,$username,'device','delete',$deviceName,$organization,'','success');	
+        }
+    }
+    if($r4){
+		//Sara2510 - for logging purpose
+		logAction($link,$username,'device','delete',$deviceName,$organization,'','success');
+		dev_log("delete device: query eseguite con successo");	
 		
 		$result["status"]='ok';
-		 if ($accessToken != "")
-		{
+		if ($accessToken != ""){
 			$eId=$dev_organization.":".$cb.":".$id;
             removeOwnerShipDevice($eId,$accessToken,$result);
 		}
 		 
-	 }
-	 else
-	 {
+	} else {
 	  //Sara2510 - for logging purpose
 	  logAction($link,$username,'device','delete',$deviceName,$organization,'','faliure');	
 	  $result["status"]='ko';
 	  $result["msg"] .= "\n Problem in deleting the device $id: " . generateErrorMessage($link); 
-	  $result["log"] .= "\n Problem in deleting the device $id: " . $query . " " . generateErrorMessage($link); 
-	 }
-     mysqli_close($link);
+	  $result["log"] .= "\n Problem in deleting the device $id: " . $query . " " . generateErrorMessage($link);
+	  dev_log("delete device: Problem in deleting the device $id: " . $query . " " . generateErrorMessage($link));
+	}
+    mysqli_close($link);
     }
     else{
         $result["status"]='ko';
 	    $result["msg"] .= "\n Problem in the access Token "; 
 	    $result["error_msg"] .= "\n Problem in the access Token "; 
-	    $result["log"] .= "\n Problem in the access Token "; 
-    }
+		$result["log"] .= "\n Problem in the access Token ";
+		dev_log("delete device: Problem in the access Token");
+	}
+	dev_log("delete device: END\n");
     my_log($result);
         
 } // end delete

@@ -1803,8 +1803,9 @@ $visibility, $frequency, $listnewAttributes, &$result)
 	} // end of function registerKB
                 
 	// ****FUNCTIONS FOR THE MODIFICATION OF THE REGISTRATION OF A DEVICE IN THE KNOWLEDGE BASE AND IN THE CONTEXT BROKER ****************** 
-				
-	function update_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, $visibility, $frequency, 
+
+// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
+function update_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, $visibility, $frequency, 
 $listnewAttributes, $ip, $port,$uri, $service="", $servicePath="", &$result)
 	{
 	   dev_log("update_ngsi: BEGIN");
@@ -1846,7 +1847,7 @@ $listnewAttributes, $ip, $port,$uri, $service="", $servicePath="", &$result)
       }  
      
 	  $url_orion="http://$ip:$port/v2/entities/$name/attrs";
-	  dev_log("update_ngsi: BEGIN");
+	  dev_log("update_ngsi: url orion:" . $url_orion);
 
       try
          {
@@ -1913,7 +1914,7 @@ $listnewAttributes, $ip, $port,$uri,&$result)
 	
 // Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
 function updateKB($link, $name, $type, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude, 
-$visibility, $frequency, $attributes, $uri,$organization, &$result, $service, $servicePath) {
+$visibility, $frequency, $attributes, $uri,$organization, &$result, $service="", $servicePath="") {
   // $result=array();
   $result["status"]='ok';
   // $result["msg"]='';
@@ -2042,6 +2043,7 @@ $visibility, $frequency, $attributes, $result))
 	if( $rowCB["kind"]!='external'){  
             switch ($protocol)
               {
+			   // Edited: Antonino Mauro Liuzzo -> added case "ngsi w/MultiService"
 			   case "ngsi":
 			   case "ngsi w/MultiService":
 					// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
@@ -2096,13 +2098,15 @@ $visibility, $frequency, $attributes, $result))
 
 /* ****FUNCTIONS FOR THE DELETION OF THE REGISTRATION OF A DEVICE IN THE KNOWLEDGE BASE AND IN THE CONTEXT BROKER ****************** */
 
+// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
+function delete_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, $visibility, $frequency, 
+$listnewAttributes, $ip, $port, $uri, $service="", $servicePath="", &$result){
+	dev_log("delete_ngsi: BEGIN");
 
-	function delete_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, $visibility, $frequency, 
-$listnewAttributes, $ip, $port,$uri, &$result)
-	{
 	   $res = "ok";
 	   $url_orion="http://$ip:$port/v2/entities/$name";
-      
+	  
+	   dev_log("delete_ngsi: url_orion: " . $url_orion);
       try
          {
 			// Setup cURL
@@ -2112,7 +2116,10 @@ $listnewAttributes, $ip, $port,$uri, &$result)
     			CURLOPT_CUSTOMREQUEST => 'DELETE',
     			CURLOPT_RETURNTRANSFER => TRUE,
     			CURLOPT_HTTPHEADER => array(
-					'Authorization: '.$authToken //, 'Content-Type: application/json'
+					'Authorization: '.$authToken, //, 'Content-Type: application/json'
+					// Author: Antonino Mauro Liuzzo
+					'Fiware-Service: ' . $service,
+					'Fiware-ServicePath: ' . $servicePath
 					),
 				// CURLOPT_POSTFIELDS => json_encode($msg_orion)
 		    ));
@@ -2125,6 +2132,7 @@ $listnewAttributes, $ip, $port,$uri, &$result)
     			// die(curl_error($ch));
 				$result["msg"].= "\n error in the connection with the ngsi context broker";
 				$result["log"].= "\n error in the connection with the ngsi context broker";
+				dev_log("delete_ngsi: error in the connection with the ngsi context broker");
 				$res='ko';
 			}
             else
@@ -2134,6 +2142,7 @@ $listnewAttributes, $ip, $port,$uri, &$result)
 			 $result["status"]='ok';
 		    $result["msg"] .= '\n response from the ngsi context broker ';
 			$result["log"] .= '\n response from the ngsi context broker ' . $response_orion;
+			dev_log("delete_ngsi OK");
 			$res='ok';
 			 
             }
@@ -2145,7 +2154,8 @@ $listnewAttributes, $ip, $port,$uri, &$result)
             {
 		       $result["status"]='ko';
 		       $result["error_msg"] .= 'Error in connecting with the ngsi context broker. ';
-		       $result["msg"] .= ' error in connecting with the ngsi context broker ';
+			   $result["msg"] .= ' error in connecting with the ngsi context broker ';
+			   dev_log("delete_ngsi: error in connecting with the ngsi context broker");
 		       $result["log"] .= ' error in connecting with the ngsi context broker ' . $ex;
 			   $res="ko";
             }
@@ -2168,9 +2178,10 @@ $listnewAttributes, $ip, $port,$uri, &$result)
 
 
 	
-	
-function deleteKB($link, $name, $contextbroker, $kbUrl="", &$result) {
-	
+// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
+function deleteKB($link, $name, $contextbroker, $kbUrl="", &$result, $service="", $servicePath="") {
+	dev_log("deleteKB: BEGIN");
+
 	//$result=array();
     $result["status"]='ok';
     // $result["msg"]='';
@@ -2178,10 +2189,13 @@ function deleteKB($link, $name, $contextbroker, $kbUrl="", &$result) {
   
 	$listnewAttributes=generateAttributes($link, $name, $contextbroker);
 	   
+	// Edited: Antonino Mauro Liuzzo -> added service and servicePath into SELECT fields
 	$query = "SELECT d.organization, d.uri, d.id, d.devicetype AS entityType, d.kind, d.format, d.macaddress, d.model, d.producer, d.protocol, d.longitude, 
-d.latitude, d.visibility, d.frequency, cb.name, cb.protocol as type, cb.ip, cb.port, cb.login, cb.password, cb.latitude as cblatitude, 
+d.latitude, d.visibility, d.frequency, d.service, d.servicePath, cb.name, cb.protocol as type, cb.ip, cb.port, cb.login, cb.password, cb.latitude as cblatitude, 
 cb.longitude as cblongitude, cb.created, cb.kind as cbkind FROM devices d JOIN contextbroker cb ON d.contextBroker = cb.name WHERE d.deleted is null and 
 d.contextBroker='$contextbroker' and d.id='$name';";
+
+	dev_log("deleteKB: query\n" . $query);
 	   
 	$r_init = mysqli_query($link, $query);
 
@@ -2190,6 +2204,7 @@ d.contextBroker='$contextbroker' and d.id='$name';";
 		$result["error_msg"] .= 'Error in reading data from context broker and device ' . mysqli_error($link);
 		$result["msg"] .= '\n error in reading data from context broker and device ' . mysqli_error($link);
 		$result["log"] .= '\n error in reading data from context broker and device ' . mysqli_error($link) . $query;
+		dev_log("error in reading data from context broker and device" . mysqli_error($link));
 		return 1;
 	}
   
@@ -2234,13 +2249,17 @@ $visibility, $frequency, $listnewAttributes, $result))
 		  $msg["longitude"]= $longitude;
 		  $msg["frequency"]= $frequency;
           $msg["organization"]= $organization;
-	 $msg["uri"]= $uri;
+	 	  $msg["uri"]= $uri;
 	      
           $msg["ownership"]= $visibility;
 	      // if ($msg["visibility"]=='private') $msg["owner"]=$owner;
 		  $msg["broker"]=array();
 		  $msg["broker"]["name"]=$contextbroker;
 		  $msg["broker"]["type"]=$row["protocol"];
+		  // Author: Antonino Mauro Liuzzo -> this workaround MUST be fixed -> ngsi w/MultiService, for now, isn't a valid broker type
+		  if ($rowCB["protocol"] == "ngsi w/MultiService") $msg["broker"]["type"] = "ngsi";
+		  dev_log("deleteKB protocol value: " . $rowCB["protocol"]);
+	  	  dev_log("deleteKB broker type: " . $msg["broker"]["type"]);
 		  $msg["broker"]["ip"]=$row["ip"];
 		  $msg["broker"]["port"]=$row["port"];
 		  $msg["broker"]["login"]=($row["login"]==null)?"":$row["login"];
@@ -2270,7 +2289,8 @@ $visibility, $frequency, $listnewAttributes, $result))
 		  $msg["attributes"]=$myAttrs;
 		  
 		  // echo json_encode($msg);
-		  
+		  dev_log("deleteKB: msg: " . json_encode($msg));
+
 		  try
 		   {
 			 //$url= $GLOBALS["knowledgeBaseURI"] . "api/v1/iot/delete";
@@ -2281,6 +2301,8 @@ $visibility, $frequency, $listnewAttributes, $result))
 			 $url=$kbUrl."iot/delete";
 			}
 			 
+			dev_log("deleteKB: url:" . $url);
+
 			 $options = array(
 					  'http' => array(
 							  'header' => "Content-Type: application/json;charset=utf-8",
@@ -2292,12 +2314,16 @@ $visibility, $frequency, $listnewAttributes, $result))
 				);
 			 $context = stream_context_create($options);
 			 $local_result = @file_get_contents($url, false, $context);
+
+			dev_log("deleteKB local_result: " . $local_result);
+			dev_log("deleteKB options[http][content]: " . json_encode($options['http']['content']));
 		 } 
 		 catch (Exception $ex)
 		  {
 			$result["status"]='ko';
 		    $result["error_msg"] .= 'Error in connecting with KB. ';
-		    $result["msg"] .= ' error in connecting with KB ';
+			$result["msg"] .= ' error in connecting with KB ';
+			dev_log("deleteKB: error in connecting with KB");
 			$result["log"] .= ' error in connecting with KB ' . $ex;
 		 } 	
 		/* registration of the device in the corresponding context broker */
@@ -2314,15 +2340,18 @@ $visibility, $frequency, $listnewAttributes, $result))
 		   // end of information to be passed to the interface
 		   $result["msg"] .= "\n the device has been deleted from the KB";
 		   $result["log"] .= "\n the device has been deleted from the KB";
+		   dev_log("deleteKB: the device has been deleted from the KB");
 		   // my_log($result);
             
             if($row["cbkind"]!='external')
             {
                     switch ($protocol)
                    {
-                    case "ngsi":
+					// Edited: Antonino Mauro Liuzzo -> added case "ngsi w/MultiService"
+					case "ngsi":
+					case "ngsi w/MultiService":
                          $res = delete_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, 
-        $visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $result);
+        $visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $service, $servicePath, $result);
                          break;
                     case "mqtt":
                         $res = delete_mqtt($name, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, $visibility, 
