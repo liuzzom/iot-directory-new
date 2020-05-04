@@ -2350,6 +2350,7 @@ $visibility, $frequency, $listnewAttributes, $result))
 					// Edited: Antonino Mauro Liuzzo -> added case "ngsi w/MultiService"
 					case "ngsi":
 					case "ngsi w/MultiService":
+						// Edited: Antonino Mauro Liuzzo -> added service and servicePath as parameters
                          $res = delete_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, 
         $visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $service, $servicePath, $result);
                          break;

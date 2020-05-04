@@ -145,6 +145,9 @@ CREATE TABLE `deleted_devices` (
   `privatekey` varchar(50) DEFAULT NULL,
   `certificate` varchar(50) DEFAULT NULL,
   `organization` varchar(50) DEFAULT 'DISIT',
+  -- Author: Antonino Mauro Liuzzo
+  `service` varchar(64) DEFAULT NULL,
+  `servicePath` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`,`contextBroker`),
   KEY `contextBroker` (`contextBroker`),
   KEY `protocol` (`protocol`),
@@ -197,6 +200,9 @@ CREATE TABLE `devices` (
   `privatekey` varchar(100) DEFAULT NULL,
   `certificate` varchar(100) DEFAULT NULL,
   `organization` varchar(50) DEFAULT 'DISIT',
+  -- Author: Antonino Mauro Liuzzo
+  `service` varchar(64) DEFAULT NULL,
+  `servicePath` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`,`contextBroker`),
   KEY `contextBroker` (`contextBroker`),
   KEY `protocol` (`protocol`),
@@ -311,6 +317,9 @@ CREATE TABLE `model` (
   `edgegateway_type` varchar(20) DEFAULT NULL,
   `organization` varchar(50) DEFAULT 'DISIT',
   `visibility` set('public','private') DEFAULT 'public',
+  -- Author: Antonino Mauro Liuzzo
+  `service` varchar(64) DEFAULT NULL,
+  `servicePath` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `id` (`id`),
@@ -345,6 +354,9 @@ CREATE TABLE `temporary_devices` (
   `toDelete` varchar(10) DEFAULT NULL,
   `should_be_registered` set('yes','no') NOT NULL DEFAULT 'yes',
   `organization` varchar(50) DEFAULT 'DISIT',
+  -- Author: Antonino Mauro Liuzzo
+  `service` varchar(64) DEFAULT NULL,
+  `servicePath` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`,`contextBroker`),
   KEY `contextBroker` (`contextBroker`),
   KEY `protocol` (`protocol`),
@@ -387,6 +399,16 @@ CREATE TABLE `users` (
   `activationHash` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`IdUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Author: Antonino Mauro Liuzzo
+CREATE TABLE `services` (
+  `id` int(32) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `broker_name` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `broker_name` (`broker_name`),
+  CONSTRAINT `broker_name_ibfk_1` FOREIGN KEY (`broker_name`) REFERENCES `contextbroker` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*
 -- Query: SELECT * FROM iotdb.defaultpolicy
