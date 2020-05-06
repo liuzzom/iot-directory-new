@@ -120,6 +120,50 @@ back-end directory: api
 - ~~Risposta al client~~
 - ~~Relazione~~
 
+#### Risoluzione Ambiguità ID
+- Modifica DB 
+    - ~~Modifica lunghezza colonne service e servicePath (25 service, 96 servicePath)~~
+    - ~~Modifica lunghezza colonna id (lunghezza massima 255 -> lunghezza massima nome device = 134)~~
+- Riduzione lunghezza service
+    - ~~Lato client (cbsManagement e cbsEditManagement)~~
+    - ~~Lato server~~
+- Riduzione lunghezza servicePath 
+    - ~~Lato client~~
+    - ~~Lato server~~
+- Impedimento utilizzo ";" nel servicePath
+    - ~~Lato client~~
+    - ~~Lato server~~
+- Insert
+    - ~~insert_device~~
+    - registerKB (modifcare l'uri)
+    - registerOwnerShipDevice (modifcare l'uri)
+- Get
+    - get_all_device -> usata nel caricamento di devices.php (IOT Devices)
+    - get_all_device_admin -> usata nel caricamento di alldevices.php (IOT Devices Management)
+    - get_subset_device -> usata quando si seleziona tramite mappa in devices.php (IOT Devices)
+    - get_subset_device_admin -> usata quando si seleziona tramite mappa in alldevices.php (IOT Devices Management)
+    - get usati in values
+    - vedere se bisogna modificarne altri
+- Update
+- Delete
+- Relazione
+
+- una/due api che puo ricevere
+    - devicename
+    - tenenacy
+    - servicepath
+    - cbname oppure subscription_id
+    - e che ritorna la lista dei sensori (quelli che sono chiamati event_values)
+
+ci sara' sicuro gia' una funzione del genere ma e' da richiamare o da generalizzare per il discorso tenancy/servicapath e il discorso cbname/subscription_id
+
+### Aggiornamento createtables.sql
+- services
+- model
+- devices
+- deleted_devices
+- temporary_devices
+
 ## Segnalazioni
 - Problemi con la gestione delle ownership e i limiti
 - Workaround in registerKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)

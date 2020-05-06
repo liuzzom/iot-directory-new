@@ -244,6 +244,16 @@ var gb_old_cb="";
 		'</div>'; 	  
 		}
 	
+	// Author: Antonino Mauro Liuzzo
+	var multitenancy = "";
+	if (d.service && d.servicePath){
+		multitenancy = '<div class="row">' + 
+			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>Service/Tenant:</b>' + "  " + d.service + '</div>' +
+			'<div class="clearfix visible-xs"></div>' +
+			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>ServicePath:</b>' + "  " + d.servicePath  + '</div>' +	
+		'</div>' ;
+	}
+	
 	
 	var txtCert="";
 		if (d.privatekey!= null && d.privatekey!="" && (d.visibility =='MyOwnPublic' || d.visibility == 'MyOwnPrivate'))
@@ -296,8 +306,9 @@ var gb_old_cb="";
 		'<div class="row">' +
 			'<div class="col-xs-6 col-sm-6" style="background-color:#E6E6FA;"><b>Gateway/Edge Type:</b>' + "  " + d.edgegateway_type + '</div>' +
 			'<div class="clearfix visible-xs"></div>' +
-			'<div class="col-xs-6 col-sm-6" style="background-color:#E6E6FA;"><b>Gateway/Edge Uri:</b>' + "  " + d.edgegateway_uri  + '</div>' +	
-		'</div>' + showKey + txtCert +
+			'<div class="col-xs-6 col-sm-6" style="background-color:#E6E6FA;"><b>Gateway/Edge Uri:</b>' + "  " + d.edgegateway_uri  + '</div>' +
+			// Edited: Antonino Mauro Liuzzo
+		'</div>' + showKey + txtCert + multitenancy +
 	'</div>' ;
 	
 }

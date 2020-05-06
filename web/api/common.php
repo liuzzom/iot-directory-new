@@ -150,6 +150,11 @@ $listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes'
 
 		if ($syntaxRes == 0){
 			// valid servicePath value
+
+			// Create a new id
+			$id = $service . ";" . $servicePath . ";" . $id;
+			dev_log("insert_device: new id: $id");
+
 			if ($result["status"]=='ok' &&  $result["content"]==null) {
 				$q = "INSERT INTO devices(id, devicetype, contextBroker,  kind, protocol, format, macaddress, model, producer, latitude, longitude, visibility, frequency, privatekey, certificate, organization, service, servicePath) " .
 					"VALUES('$id', '$devicetype', '$contextbroker', '$kind', '$protocol', '$format', '$macaddress', '$model', '$producer', '$latitude', '$longitude', '$visibility', '$frequency', '$privatekey','$certificate', '$organization', '$service', '$servicePath')";
@@ -259,7 +264,7 @@ $listAttributes,$pathCertificate,$accessToken,&$result,$shouldbeRegistered='yes'
 	   $result["error_msg"] .= "Problem in inserting the device $id in the database. "; 
 	   $result["msg"] .= "\n Problem in inserting the device $id:  <br/>" .  generateErrorMessage($link); 
 	   $result["log"] .= "\r\n Problem in inserting the device $id:  $q  " .  generateErrorMessage($link);
-	   dev_log("insert_device: Problem in inserting the device $id:  $q");  
+	   dev_log("insert_device: Problem in inserting the device $id\n:  $q\n" . generateErrorMessage($link));  
 	}
                 
     }
@@ -1400,6 +1405,7 @@ function insert_ngsi_multiservice($name, $type, $contextbroker, $kind, $protocol
 	$msg_orion=array();
       
 	$msg_orion["id"]= $name;
+	dev_log("insert_ngsi_multiservice device id for CB: " . $msg_orion["id"]);
     $msg_orion["type"]= $type;
     $msg_orion["latitude"]=array();
     $msg_orion["longitude"]=array();
@@ -1651,6 +1657,9 @@ $visibility, $frequency, $listnewAttributes, &$result)
 			  
 			$msg=array();
 			$msg["id"]= $name;
+			// Author: Antonino Mauro Liuzzo
+			if ($rowCB["protocol"] == "ngsi w/MultiService") $msg["id"] = urlencode($service . ";" . $servicePath . ";" . $name);
+			dev_log("registerKB device id for KB: " . $msg["id"]);
 			$msg["type"]= $type;
 			$msg["kind"]= $kind;
 			$msg["protocol"]= $protocol;
@@ -2618,7 +2627,10 @@ function servicePathSyntaxCheck($servicePath) {
 	dev_log("value to check:" . $servicePath);
 
     // case: empty string
-    if ($servicePath == "") return 0;
+	if ($servicePath == "") return 0;
+	
+	// case: servicePath is too long
+	if (strlen($servicePath) > 95) return 1;
 
     // get single servicePath "levels"
     $levels = explode("/", $servicePath);
@@ -2635,7 +2647,10 @@ function servicePathSyntaxCheck($servicePath) {
         if ($levels[$i] == "") return 1;
 
         // case: some level contains some whitespaces
-        if (preg_match("/\s/", $levels[$i])) return 1;
+		if (preg_match("/\s/", $levels[$i])) return 1;
+		
+		// case: some level contains some semicolons
+		if(strpos($servicePath, ";") !== false) return 1;
     }
 
     // case: everything is ok

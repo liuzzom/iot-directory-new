@@ -981,6 +981,13 @@ else if($action == "get_all_device")
 				// Author: Antonino Mauro Liuzzo
 				$rec["service"] = $row["service"];
 				$rec["servicePath"] = $row["servicePath"];
+				if ($row["protocol"] == "ngsi w/MultiService"){
+					dev_log("get_all_device: multiservice device detected");
+					// get the name from id
+					$rec["id"] = explode(";", $row["id"])[2];
+					dev_log("get_all_device: device full id: " . $row["id"]);
+					dev_log("get_all_device: device name: " . $rec["id"]);
+				}
 			
 				 if(((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))
                                        ||
@@ -1135,6 +1142,13 @@ else if($action == "get_all_device_admin")
 			// Author: Antonino Mauro Liuzzo
 			$rec["service"] = $row["service"];
 			$rec["servicePath"] = $row["servicePath"];
+			if ($row["protocol"] == "ngsi w/MultiService"){
+				dev_log("get_all_device_admin: multiservice device detected");
+				// get the name from id
+				$rec["id"] = explode(";", $row["id"])[2];
+				dev_log("get_all_device_admin: device full id: " . $row["id"]);
+				dev_log("get_all_device_admin: device name: " . $rec["id"]);
+			}
 
 			$eid=$row["organization"].":".$row["contextBroker"].":".$row["id"];
 			
@@ -1291,11 +1305,13 @@ else if($action == "get_subset_device")
     $selection= json_decode($_REQUEST['select']);
 	$a=0;
 	$cond="";
+
+	// Edited: Antonino Mauro Liuzzo
     $q = "SELECT d.`contextBroker`, d.`id`, d.`uri`, d.`devicetype`, d.`kind`, 
-	      CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
-	     d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, 
-	     d.`frequency`, d.`organization`, d.`created`, d.`privatekey`, d.`certificate`, d.`service`, d.`servicePath`, cb.`accesslink`, cb.`accessport`,cb.`sha` 
-		 FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name) ";
+		  CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
+	      d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, 
+	      d.`frequency`, d.`organization`, d.`created`, d.`privatekey`, d.`certificate`, d.`service`, d.`servicePath`, cb.`accesslink`, cb.`accessport`,cb.`sha` 
+		  FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name) ";
 	if (count($selection)!=0)
 	{
 	    
@@ -1366,9 +1382,17 @@ else if($action == "get_subset_device")
                     $rec["certificate"]= "";
                     $rec["edgegateway_type"]= "";
 					$rec["edgegateway_uri"]= "";
+
 					// Author: Antonino Mauro Liuzzo
 					$rec["service"] = $row["service"];
 					$rec["servicePath"] = $row["servicePath"];
+					if ($row["protocol"] == "ngsi w/MultiService"){
+						dev_log("get_subset_device: multiservice device detected");
+						// get the name from id
+						$rec["id"] = explode(";", $row["id"])[2];
+						dev_log("get_subset_device: device full id: " . $row["id"]);
+						dev_log("get_subset_device: device name: " . $rec["id"]);
+					}
 			
                     if (((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))
                                        ||            
@@ -1474,11 +1498,12 @@ else if($action == "get_subset_device_admin")
 			 $a++;
 		 }
 		
+		// Edited: Antonino Mauro Liuzzo
 		$q = "SELECT d.`contextBroker`, d.`id`, d.`uri`, d.`devicetype`, d.`kind`, 
-	      CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
-	     d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, d.`organization`,
-	     d.`frequency`, d.`created`, d.`privatekey`, d.`certificate`, cb.`accesslink`, cb.`accessport`, cb.`sha` 
-		 FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name)";
+	    	  CASE WHEN mandatoryproperties AND mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, 
+	    	  d.`macaddress`, d.`model`, d.`producer`, d.`longitude`, d.`latitude`, d.`protocol`, d.`format`, d.`visibility`, d.`organization`,
+	    	  d.`frequency`, d.`created`, d.`privatekey`, d.`certificate`, d.`service`, d.`servicePath`, cb.`accesslink`, cb.`accessport`, cb.`sha` 
+			  FROM `devices` d JOIN `contextbroker` cb ON (d.contextBroker=cb.name)";
 		
 	 $r=create_datatable_data($link,$_REQUEST,$q, "deleted IS null AND (" . $cond . ")");
 	 
@@ -1536,6 +1561,17 @@ else if($action == "get_subset_device_admin")
 			$rec["certificate"]= ""; 
 			$rec["edgegateway_type"]= "";
 			$rec["edgegateway_uri"]= "";
+
+			// Author: Antonino Mauro Liuzzo
+			$rec["service"] = $row["service"];
+			$rec["servicePath"] = $row["servicePath"];
+			if ($row["protocol"] == "ngsi w/MultiService"){
+				dev_log("get_subset_device_admin: multiservice device detected");
+				// get the name from id
+				$rec["id"] = explode(";", $row["id"])[2];
+				dev_log("get_subset_device_admin: device full id: " . $row["id"]);
+				dev_log("get_subset_device_admin: device name: " . $rec["id"]);
+			}
 			
 			$eid=$row["organization"].":".$row["contextBroker"].":".$row["id"];
                 

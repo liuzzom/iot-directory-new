@@ -200,7 +200,16 @@ function checkServicePath(value, mode, context) {
             conditionsArray['servicePath'] = false;
             break;
         case 5:
-            message = "you can't use whitespaces";
+            message = "you can't use whitespaces or semicolons";
+
+            // set the message color and text
+            servicePathModelMsg.css("color", "red");
+            servicePathModelMsg.html(message);
+
+            conditionsArray['servicePath'] = false;
+            break;
+        case 6:
+            message = "servicePath is too long";
 
             // set the message color and text
             servicePathModelMsg.css("color", "red");
@@ -228,7 +237,8 @@ function checkServicePath(value, mode, context) {
  *      2 if there are more than 10 levels
  *      3 if some level has more than 50 characters
  *      4 if there are some empty level
- *      5 if some level contains some whitespaces
+ *      5 if some level contains some whitespaces or some semicolons
+ *      6 if servicePath is too long
  *      0 otherwise
  */
 function servicePathSyntaxCheck(servicePath) {
@@ -238,6 +248,9 @@ function servicePathSyntaxCheck(servicePath) {
 
     // case: empty string
     if (servicePath === "") return 1;
+
+    // case: servicePath is too long
+    if (servicePath.length > 95) return 6;
 
     // get single servicePath "levels"
     var levels = servicePath.split("/");
@@ -253,8 +266,8 @@ function servicePathSyntaxCheck(servicePath) {
         // case: there are some empty level
         if (levels[i] === "") return 4;
 
-        // case: some level contains some whitespaces
-        if (/\s/.test(levels[i])) return 5;
+        // case: some level contains some whitespaces or some semicolons
+        if (/\s/.test(levels[i]) || levels[i].includes(";")) return 5;
     }
 
     // case: everything is ok
@@ -358,7 +371,7 @@ function checkProtocol(value, mode, context) {
  */
 function getServicesByCBName(name, mode, initialValue=null){   
 
-    console.log("CB name: " + name);
+    // console.log("CB name: " + name);
 
     // data to send to server
     var data = {
@@ -375,15 +388,15 @@ function getServicesByCBName(name, mode, initialValue=null){
         for (let i = 0; i < servicesObj.length; i++){
             services.push(servicesObj[i]['name']);
         }
-        console.log(JSON.stringify(services));
+        // console.log(JSON.stringify(services));
         
         var selectService = null;
 
         if (mode == 'add'){
-            console.log('getServicesByCBName : add case');
+            // console.log('getServicesByCBName : add case');
             selectService = $('#selectService');
         } else if (mode == 'edit') {
-            console.log('getServicesByCBName : edit case');
+            // console.log('getServicesByCBName : edit case');
             selectService = $('#editSelectService');
         } else {
             console.log('getServicesByCBName : ERROR');
@@ -404,13 +417,13 @@ function getServicesByCBName(name, mode, initialValue=null){
         }
 
         if (initialValue){
-            console.log(initialValue);
+            // console.log(initialValue);
             selectService.val(initialValue);
         } else {
-            console.log("no initial value");
+            // console.log("no initial value");
         }
 
-        console.log("getServicesByCBName END");
+        // console.log("getServicesByCBName END");
         return;
     }).fail(function(){
         alert("Something wrong during getting services");
@@ -427,9 +440,9 @@ function getServicesByCBName(name, mode, initialValue=null){
  */
 function fillMultiTenancyFormSection(serviceVal, servicePathVal, brokerName, context){
 
-    console.log("serviceVal:" + serviceVal + " " + typeof(serviceVal));
-    console.log("servicePathVal:" + servicePathVal + " " + typeof(serviceVal));
-    console.log("context:" + context);
+    // console.log("serviceVal:" + serviceVal + " " + typeof(serviceVal));
+    // console.log("servicePathVal:" + servicePathVal + " " + typeof(serviceVal));
+    // console.log("context:" + context);
 
     // servicePath elements
     var servicePath = null;
@@ -459,7 +472,7 @@ function fillMultiTenancyFormSection(serviceVal, servicePathVal, brokerName, con
         for (let i = 0; i < servicesObj.length; i++){
             services.push(servicesObj[i]['name']);
         }
-        console.log(JSON.stringify(services));
+        // console.log(JSON.stringify(services));
 
         // select element for Service/Tenant
         selectService = $('#editSelectService');
@@ -497,7 +510,7 @@ function fillMultiTenancyFormSection(serviceVal, servicePathVal, brokerName, con
         selectServiceLabel = $('#editSelectServiceLabel');
     
         if (selectProtocol.val() === 'ngsi w/MultiService') {
-            console.log("equal");
+            // console.log("equal");
     
             // enable ServicePath input (and put some graphical sugar for the user)
             servicePath.prop('disabled', false);
@@ -512,7 +525,7 @@ function fillMultiTenancyFormSection(serviceVal, servicePathVal, brokerName, con
             selectServiceMsg.html("select one Service/Tenant");
             if (serviceVal !== "null") selectService.val(serviceVal);
         } else {
-            console.log("not equal");
+            // console.log("not equal");
             
             // disable ServicePath input (and put some graphical sugar for the user)
             servicePath.val("");

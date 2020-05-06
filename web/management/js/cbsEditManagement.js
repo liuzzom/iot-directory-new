@@ -327,7 +327,7 @@ function checkEditCbServices(){
         if (values.length == 1){
             console.log("un solo service");
 
-            var serviceRegex = /^([a-z]|_){1,50}$/;
+            var serviceRegex = /^([a-z]|_){1,25}$/;
             if (values[0] !== "" && !serviceRegex.test(values[0])) {
                 message = `Check your values <br>
                         <ul>
@@ -351,7 +351,7 @@ function checkEditCbServices(){
             console.log("più services");
 
             for(const value of values){
-                var serviceRegex = /^([a-z]|_){1,50}$/;
+                var serviceRegex = /^([a-z]|_){1,25}$/;
                 if(!serviceRegex.test(value)){
                     message = `Check your values <br>
                         <ul>
