@@ -150,7 +150,16 @@ function drawAttributeMenu
   
 function format ( d ) {
 
-		
+	// Author: Antonino Mauro Liuzzo
+	var multitenancy = "";
+	if (d.service && d.servicePath){
+		multitenancy = '<div class="row">' + 
+			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>Service/Tenant:</b>' + "  " + d.service + '</div>' +
+			'<div class="clearfix visible-xs"></div>' +
+			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>ServicePath:</b>' + "  " + d.servicePath  + '</div>' +	
+		'</div>' ;
+	}
+	
 		// `d` is the original data object for the row
   	return '<div class="container-fluid">' +
 	'<div class="row">' +
@@ -162,7 +171,8 @@ function format ( d ) {
 		'<div class="col-xs-6 col-sm-6" style="background-color:#E6E6FA;"><b>Link:</b>' + "  " + d.link + '</div>' +
 		'<div class="clearfix visible-xs"></div>' +
 		'<div class="col-xs-6 col-sm-6" style="background-color:#E6E6FA;"><b>Key Generator:</b>' + "  " + d.kgenerator + '</div>' +
-	'</div>' + 
+	// Edited: Antonino Mauro Liuzzo
+	'</div>' + multitenancy + 
 	 
     '</div>' ;
 	

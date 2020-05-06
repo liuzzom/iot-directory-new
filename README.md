@@ -135,17 +135,23 @@ back-end directory: api
     - ~~Lato server~~
 - Insert
     - ~~insert_device~~
-    - registerKB (modifcare l'uri)
-    - registerOwnerShipDevice (modifcare l'uri)
+    - ~~registerKB (modifcare l'uri)~~
 - Get
-    - get_all_device -> usata nel caricamento di devices.php (IOT Devices)
-    - get_all_device_admin -> usata nel caricamento di alldevices.php (IOT Devices Management)
-    - get_subset_device -> usata quando si seleziona tramite mappa in devices.php (IOT Devices)
-    - get_subset_device_admin -> usata quando si seleziona tramite mappa in alldevices.php (IOT Devices Management)
-    - get usati in values
-    - vedere se bisogna modificarne altri
+    - ~~get_all_device -> usata nel caricamento di devices.php (IOT Devices)~~
+    - ~~get_all_device_admin -> usata nel caricamento di alldevices.php (IOT Devices Management)~~
+    - ~~get_subset_device -> usata quando si seleziona tramite mappa in devices.php (IOT Devices)~~
+    - ~~get_subset_device_admin -> usata quando si seleziona tramite mappa in alldevices.php (IOT Devices Management)~~
+    - ~~get_all_private_event_value -> usata in mydevices~~
+    - ~~get_subset_event_value -> usata in mydevices e in value quando si seleziona tramite mappa~~
+    - ~~get_all_delegated_event_value -> usata in mydevices quando si seleziona delegated devices (da testare in maniera approfondita)~~
+    - ~~get_all_event_value -> usata in value~~
+    - ~~get_device_attributes -> usata in devices quando si clicca su edit (modificare anche lato client)~~
 - Update
+    - ~~update_device~~
+    - ~~updateKB~~
 - Delete
+    - ~~delete_device~~
+    - ~~deleteKB~~
 - Relazione
 
 - una/due api che puo ricevere

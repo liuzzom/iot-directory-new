@@ -1627,6 +1627,7 @@ $visibility, $frequency, $listnewAttributes, &$result)
 				}
 		  }
 
+	   dev_log("canBeRegistered " . $result["error_msg"]);
 
 	   if ($error) return false;
 	   return true;
@@ -1854,7 +1855,15 @@ $listnewAttributes, $ip, $port,$uri, $service="", $servicePath="", &$result)
 	    $msg_orion["model"]["value"]= $model;
  	    $msg_orion["model"]["type"]= "string";
       }  
-     
+	 
+		// Author: Antonino Mauro Liuzzo
+		if ($protocol == "ngsi w/MultiService"){
+			dev_log("update_ngsi: multiservice device detected");
+			// get the name from id
+			$name = explode(";", $name)[2];
+			dev_log("update_ngsi: device name: " . $name);
+		}
+
 	  $url_orion="http://$ip:$port/v2/entities/$name/attrs";
 	  dev_log("update_ngsi: url orion:" . $url_orion);
 
@@ -1928,7 +1937,7 @@ $visibility, $frequency, $attributes, $uri,$organization, &$result, $service="",
   $result["status"]='ok';
   // $result["msg"]='';
   // $result["log"]='';
-        
+
   if (canBeRegistered($name, $type, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude, 
 $visibility, $frequency, $attributes, $result))
   {
@@ -1948,6 +1957,9 @@ $visibility, $frequency, $attributes, $result))
 	  
 	  $msg=array();
 	  $msg["id"]= $name;
+	  // Author: Antonino Mauro Liuzzo
+	  if ($rowCB["protocol"] == "ngsi w/MultiService") $msg["id"] = urlencode($service . ";" . $servicePath . ";" . $name);
+	  dev_log("updateKB device id for KB: " . $msg["id"]);
 	  $msg["type"]= $type;
 	  $msg["kind"]= $kind;
 	  $msg["protocol"]= $protocol;
@@ -2112,6 +2124,14 @@ function delete_ngsi($name, $type, $contextbroker, $kind, $protocol, $format, $m
 $listnewAttributes, $ip, $port, $uri, $service="", $servicePath="", &$result){
 	dev_log("delete_ngsi: BEGIN");
 
+	// Author: Antonino Mauro Liuzzo
+	if ($protocol == "ngsi w/MultiService"){
+		dev_log("delete_ngsi: multiservice device detected");
+		// get the name from id
+		$name = explode(";", $name)[2];
+		dev_log("delete_ngsi: device name: " . $name);
+	}
+
 	   $res = "ok";
 	   $url_orion="http://$ip:$port/v2/entities/$name";
 	  
@@ -2205,6 +2225,7 @@ cb.longitude as cblongitude, cb.created, cb.kind as cbkind FROM devices d JOIN c
 d.contextBroker='$contextbroker' and d.id='$name';";
 
 	dev_log("deleteKB: query\n" . $query);
+	dev_log("deleteKB: name: $name");
 	   
 	$r_init = mysqli_query($link, $query);
 
@@ -2218,7 +2239,7 @@ d.contextBroker='$contextbroker' and d.id='$name';";
 	}
   
 	$row = mysqli_fetch_assoc($r_init);
-	$name =$row["id"];
+	$name = $row["id"];
     $organization =$row["organization"];
     
 	$type =$row["entityType"];
@@ -2247,6 +2268,9 @@ $visibility, $frequency, $listnewAttributes, $result))
 		 // echo "entrato";
 		  $msg=array();
 		  $msg["id"]= $name;
+		  // Author: Antonino Mauro Liuzzo
+	  	  if ($rowCB["protocol"] == "ngsi w/MultiService") $msg["id"] = urlencode($service . ";" . $servicePath . ";" . $name);
+	  	  dev_log("updateKB device id for KB: " . $msg["id"]);
 		  $msg["type"]= $type;
 		  $msg["kind"]= $kind;
 		  $msg["protocol"]= $protocol;

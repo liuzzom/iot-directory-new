@@ -296,7 +296,10 @@ var dataTable ="";
 				'data-device="'+d.device+'" ' +
 				'data-cb="'+d.cb+'" ' +
 				'data-editable="'+d.editable+'" ' +
-				'data-value_name="'+d.value_name+'">Delete</button>';
+                'data-value_name="'+d.value_name+'" ' +
+                'data-protocol="'+d.protocol+'" ' +
+                'data-service="'+d.service+'" ' +
+				'data-servicePath="'+d.servicePath+'">Delete</button>';
 				}
             },
 			{
@@ -649,13 +652,17 @@ var dataTable ="";
 
 	$.ajax({
 		url: "../api/device.php",
-		 data: {
-			  action: "get_device_attributes", 
-			   id: $(this).parents('tr').attr("data-id"),
-			   organization : organization,
- 			token : sessionToken,
-			   contextbroker: $(this).parents('tr').attr("data-contextBroker")
-			  },
+		data: {
+            action: "get_device_attributes", 
+            id: $(this).parents('tr').attr("data-id"),
+            organization : organization,
+            token : sessionToken,
+            contextbroker: $(this).parents('tr').attr("data-contextBroker"),
+            // Author: Antonino Mauro Liuzzo
+            protocol: $(this).attr('data-protocol'),
+            service: $(this).attr('data-service'),
+            servicePath: $(this).attr('data-servicePath')
+        },
 		type: "POST",
 		async: true,
 		dataType: 'json',

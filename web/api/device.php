@@ -221,7 +221,7 @@ else if ($action=="update")
 	$uri = mysqli_real_escape_string($link, $_REQUEST['uri']);
 	$dev_organization = mysqli_real_escape_string($link, $_REQUEST['dev_organization']);
 	$k1= $_REQUEST['k1'];
-        $k2= $_REQUEST['k2'];
+    $k2= $_REQUEST['k2'];
 	if (isset( $_REQUEST['edgegateway_type']))
 		$edgegateway_type = $_REQUEST['edgegateway_type'];
 	else $edgegateway_type="";
@@ -250,6 +250,11 @@ else if ($action=="update")
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
 	dev_log("update device: service: " .  $service);
 	dev_log("update device: servicePath: " . $servicePath);
+	if ($protocol == "ngsi w/MultiService") {
+		// Create a new id
+		$id = $service . ";" . $servicePath . ";" . $id;
+		dev_log("update device: new id: $id");
+	}
 
 	$s1 = true; 
 	$notDuplicate = true;
@@ -450,11 +455,17 @@ else if ($action=="delete")
 	 $deviceName = $id . " ".$cb;
 
 	// Author: Antonino Mauro Liuzzo
-	// These values are used into updateKB to identify the broker 
+	// These values are used into updateKB to identify the broker
+	$protocol = mysqli_real_escape_string($link, $_REQUEST['protocol']);
 	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
 	dev_log("delete device: service: " .  $service);
 	dev_log("delete device: servicePath: " . $servicePath);
+	if ($protocol == "ngsi w/MultiService") {
+		// Create a new id
+		$id = $service . ";" . $servicePath . ";" . $id;
+		dev_log("delete device: new id: $id");
+	}
 	 
     if($accessToken !=""){ 
    
@@ -727,6 +738,18 @@ else if($action == 'get_device_attributes')
 
 	$id = mysqli_real_escape_string($link, $_REQUEST['id']);
 	$cb = mysqli_real_escape_string($link, $_REQUEST['contextbroker']);
+	
+	// Author: Antonino Mauro Liuzzo
+	$protocol = mysqli_real_escape_string($link, $_REQUEST['protocol']);
+	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
+	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
+
+	if($protocol == "ngsi w/MultiService"){
+		dev_log("get_device_attributes: multiservice device");
+		// Create a new id
+		$id = $service . ";" . $servicePath . ";" . $id;
+		dev_log("get_device_attributes: new id: $id");
+	}
     
     if($accessToken !=""){ 
 

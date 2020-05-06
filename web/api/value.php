@@ -337,7 +337,8 @@ else if($action == 'get_all_event_value')
 	 getDelegatedDevice($accessToken, $username, $result);
 	}
 	
-    $q = "SELECT cb.sha,cb.accesslink, cb.accessport, v.*, d.kind, d.contextbroker, d.latitude, d.longitude, d.visibility, d.devicetype, d.uri, d.created, d.privatekey, d.organization, d.certificate,d.visibility, CASE WHEN d.mandatoryproperties AND d.mandatoryvalues THEN \"active\" ELSE \"idle\" END	AS status1 FROM event_values v JOIN devices d ON (v.device=d.id AND d.contextbroker=v.cb) JOIN contextbroker cb ON (v.cb=cb.name )"; 
+	// Edited: Antonino Mauro Liuzzo
+    $q = "SELECT cb.sha,cb.accesslink, cb.accessport, v.*, d.kind, d.contextbroker, d.latitude, d.longitude, d.visibility, d.devicetype, d.uri, d.created, d.privatekey, d.organization, d.certificate, d.visibility, d.`protocol`, d.`service`, d.`servicePath`, CASE WHEN d.mandatoryproperties AND d.mandatoryvalues THEN \"active\" ELSE \"idle\" END	AS status1 FROM event_values v JOIN devices d ON (v.device=d.id AND d.contextbroker=v.cb) JOIN contextbroker cb ON (v.cb=cb.name )"; 
     
 	$r=create_datatable_data($link,$_REQUEST,$q, "deleted IS null");
     
@@ -357,11 +358,14 @@ else if($action == 'get_all_event_value')
 	
 	if($r) 
 	{
+		dev_log("get_all_event_value: query success");
 		$data = array();
 			
 		while($row = mysqli_fetch_assoc($r)) 
 		{
-		     
+			
+			dev_log("get_all_event_value: row: " . json_encode($row));
+
             $eid=$row["organization"].":".$row["contextbroker"].":".$row["device"];
             if ( ($loggedrole=="RootAdmin")|| 
                 
@@ -409,14 +413,24 @@ else if($action == 'get_all_event_value')
 			// $rec["visibility"]= $row["visibility"];
 			$rec["kind"]= $row["kind"];
 			$rec["uri"]= $row["uri"];
-            		$rec["status1"]= $row["status1"];			
+            $rec["status1"]= $row["status1"];			
 			$rec["created"]=$row["created"];
 			$rec["privatekey"]=$row["privatekey"];
 			$rec["certificate"]=$row["certificate"];
 			$rec["sha"]=$row["sha"];
 			$rec["accesslink"]=$row["accesslink"];
-                        $rec["accessport"]=$row["accessport"];
-		
+			$rec["accessport"]=$row["accessport"];
+			
+			// Author: Antonino Mauro Liuzzo
+			$rec["service"] = $row["service"];
+			$rec["servicePath"] = $row["servicePath"];
+			if ($row["protocol"] == "ngsi w/MultiService"){
+				dev_log("get_all_private_event_value: multiservice device detected");
+				// get the name from id
+				$rec["device"] = explode(";", $row["device"])[2];
+				dev_log("get_all_private_event_value: new rec[device]: " . $rec["device"]);
+			}
+
 			if (isset($result["keys"][$eid]))
 			{//it's mine
 					if ((isset($result["delegation"][$row["uri"] . "/" . $row["value_name"]])
@@ -484,7 +498,8 @@ else if($action == 'get_all_event_value')
 	} 
 	else
 	{
-			$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about values. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about values.' . generateErrorMessage($link), 'ko');
+		dev_log("get_all_event_value: query fail");
+		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about values. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about values.' . generateErrorMessage($link), 'ko');
 
 			
 	}
@@ -641,7 +656,8 @@ else if($action == 'get_all_private_event_value')
 	if ($ownDevices!="")
 	{	
 		
-		$q = "SELECT v.*, d.`id`, d.`kind`, d.`contextbroker`,  d.`latitude`, d.`longitude`, d.`devicetype`,  d.`organization`, d.`visibility`, d.`uri`,d.`model`, d.`created`, d.`privatekey`, d.`certificate`, cb.`sha`,cb.`accesslink`, cb.`accessport`,
+		// Edited: Antonino Mauro Liuzzo
+		$q = "SELECT v.*, d.`id`, d.`kind`, d.`contextbroker`,  d.`latitude`, d.`longitude`, d.`devicetype`,  d.`organization`, d.`visibility`, d.`uri`,d.`model`, d.`created`, d.`privatekey`, d.`certificate`, d.`protocol`, d.`service`, d.`servicePath`, cb.`sha`,cb.`accesslink`, cb.`accessport`,
 	      CASE WHEN d.mandatoryproperties AND d.mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1,
 	      d.`visibility` FROM `event_values` v JOIN `devices` d ON (v.device=d.id AND d.contextbroker=v.cb) JOIN `contextbroker` cb ON (v.cb=cb.name )"; 
 		
@@ -684,6 +700,9 @@ else if($action == 'get_all_private_event_value')
                  $selectedrows++;
 		        if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))
 				{
+
+				dev_log("get_all_private_event_value: row: " . json_encode($row));
+
 				$rec = array();
 				$rec["id"]=$row["id"];
 				$rec["cb"]= $row["cb"];
@@ -711,6 +730,19 @@ else if($action == 'get_all_private_event_value')
 				$rec["sha"]=$row["sha"];
 				$rec["accesslink"]=$row["accesslink"];
 				$rec["accessport"]=$row["accessport"];
+
+				// Author: Antonino Mauro Liuzzo
+				$rec["protocol"] = $row["protocol"];
+				$rec["service"] = $row["service"];
+				$rec["servicePath"] = $row["servicePath"];
+				if ($row["protocol"] == "ngsi w/MultiService"){
+					dev_log("get_all_private_event_value: multiservice device detected");
+					// get the name from id
+					$rec["device"] = explode(";", $row["device"])[2];
+					$rec["id"] = explode(";", $row["id"])[2];
+					dev_log("get_all_private_event_value: new rec[device]: " . $rec["device"]);
+					dev_log("get_all_private_event_value: new rec[id]: " . $rec["id"]);
+				}
                   
                    /* if ($row["visibility"]=="private")
                     {
@@ -787,8 +819,8 @@ else if($action == 'get_all_delegated_event_value')
 	}
 		
       	
-		
-    $q = "SELECT v.*, d.`id`,d.`contextbroker`, d.`kind`, d.`latitude`, d.`longitude`, d.`devicetype`,  d.`organization`, d.`visibility`, d.`uri`,d.`model`, d.`created` ,cb.`accesslink`, cb.`accessport`,CASE WHEN d.mandatoryproperties AND d.mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, d.`visibility` FROM `event_values` v JOIN `devices` d ON (v.device=d.id AND d.contextbroker=v.cb) JOIN `contextbroker` cb ON (v.cb=cb.name )";
+	// Edited: Antonino Mauro Liuzzo	
+    $q = "SELECT v.*, d.`id`,d.`contextbroker`, d.`kind`, d.`latitude`, d.`longitude`, d.`devicetype`,  d.`organization`, d.`visibility`, d.`uri`, d.`model`, d.`created`, d.`protocol`, d.`service`, d.`servicePath`, cb.`accesslink`, cb.`accessport`,CASE WHEN d.mandatoryproperties AND d.mandatoryvalues THEN \"active\" ELSE \"idle\" END AS status1, d.`visibility` FROM `event_values` v JOIN `devices` d ON (v.device=d.id AND d.contextbroker=v.cb) JOIN `contextbroker` cb ON (v.cb=cb.name )";
     
     $r=create_datatable_data($link,$_REQUEST,$q, "deleted IS null");
 			
@@ -812,7 +844,9 @@ else if($action == 'get_all_delegated_event_value')
     if($r) 
 		
     {
-			
+		
+		dev_log("get_all_delegated_event_value: query success");
+		
         logAction($link,$username,'event_value','get_all_delegated_event_value','',$organization,'','success');		 
         $data = array();
 	 
@@ -859,7 +893,20 @@ else if($action == 'get_all_delegated_event_value')
 				$rec["kind"]= $row["kind"];
 				$rec["status1"]= $row["status1"];
                 $rec["k1"]="";
-				$rec["k2"]=""; 				
+				$rec["k2"]="";
+				
+				// Author: Antonino Mauro Liuzzo
+				$rec["service"] = $row["service"];
+				$rec["servicePath"] = $row["servicePath"];
+				if ($row["protocol"] == "ngsi w/MultiService"){
+					dev_log("get_all_delegated_event_value: multiservice device detected");
+					// get the name from id
+					$rec["device"] = explode(";", $row["device"])[2];
+					$rec["id"] = explode(";", $row["id"])[2];
+					dev_log("get_all_delegated_event_value: new rec[device]: " . $rec["device"]);
+					dev_log("get_all_delegated_event_value: new rec[id]: " . $rec["id"]);
+				}
+
                 if (isset($result["delegation"][$row["uri"] . "/" . $row["value_name"]]["k1"]))
                 { 					
 					$rec["k1"]=$result["delegation"][$row["uri"] . "/" . $row["value_name"]]["k1"]; // to be fixed
@@ -880,6 +927,7 @@ else if($action == 'get_all_delegated_event_value')
 		} 
 		else
 		{
+			dev_log("get_all_delegated_event_value: query fail");
             logAction($link,$username,'event_value','get_all_delegated_event_value','',$organization,'','faliure');
             $output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about devices. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about devices.' . generateErrorMessage($link), 'ko');
 			
@@ -905,7 +953,8 @@ else if($action == 'get_subset_event_value')
 	$a=0;
 	$cond="";
 	
-	$q = "SELECT v.*, d.`kind`, d.`latitude`, d.`longitude`, d.`devicetype`, d.`id`, d.`uri`,  d.`organization`,    
+	// Edited: Antonino Mauro Liuzzo
+	$q = "SELECT v.*, d.`kind`, d.`latitude`, d.`longitude`, d.`devicetype`, d.`id`, d.`uri`,  d.`organization`, d.`protocol`, d.`service`, d.`servicePath`,  
 	      CASE WHEN d.`mandatoryproperties` AND d.`mandatoryvalues` THEN \"active\" ELSE \"idle\" END 
 	      AS status1, d.`visibility` FROM `event_values` v JOIN `devices` d ON (v.`device`=d.`id` AND d.`contextbroker`=v.`cb`)"; 
 	if (count($selection)!=0)
@@ -956,7 +1005,9 @@ else if($action == 'get_subset_event_value')
 
 		while($row = mysqli_fetch_assoc($r)) 
 		{
-	        
+			
+			dev_log("get_subset_event_value: row: " . json_encode($row));	
+			
 			$selectedrows++;
 		        if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))
 				{
@@ -978,8 +1029,19 @@ else if($action == 'get_subset_event_value')
 			$rec["longitude"]= $row["longitude"];
 			// $rec["visibility"]= $row["visibility"];
 			$rec["kind"]= $row["kind"];
-			$rec["status1"]= $row["status1"];			
+			$rec["status1"]= $row["status1"];
 			
+			// Author: Antonino Mauro Liuzzo
+			$rec["service"] = $row["service"];
+			$rec["servicePath"] = $row["servicePath"];
+			if ($row["protocol"] == "ngsi w/MultiService"){
+				dev_log("get_subset_event_value: multiservice device detected");
+				// get the name from id
+				$rec["device"] = explode(";", $row["device"])[2];
+				$rec["id"] = explode(";", $row["id"])[2];
+				dev_log("get_subset_event_value: new rec[device]: " . $rec["device"]);
+				dev_log("get_subset_event_value: new rec[id]: " . $rec["id"]);
+			}
                 
              if (((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))
                                        ||            

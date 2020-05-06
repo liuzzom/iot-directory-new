@@ -76,7 +76,18 @@ function format ( d ) {
 			'<div class="clearfix visible-xs"></div>' +
 			'<div class="col-xs-6 col-sm-6" style="background-color:#E6E6FA;"><b>K2:</b>' + "  " + d.k2  + '</div>' +	
 		'</div>' ;	  
-		}			
+    }
+    
+    // Author: Antonino Mauro Liuzzo
+	var multitenancy = "";
+	if (d.service && d.servicePath){
+		multitenancy = '<div class="row">' + 
+			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>Service/Tenant:</b>' + "  " + d.service + '</div>' +
+			'<div class="clearfix visible-xs"></div>' +
+			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>ServicePath:</b>' + "  " + d.servicePath  + '</div>' +	
+		'</div>' ;
+	}
+
 	var txtCert="";
 	if (d.privatekey!="" && d.privatekey!= null && (d.visibility =='MyOwnPublic' || d.visibility == 'MyOwnPrivate'))
 		txtCert  = '<div class="row">' +
@@ -121,7 +132,8 @@ function format ( d ) {
 					'<div class="clearfix visible-xs"></div>' +	
 				'</div>' + 	 showKey +
 
-				  txtCert + 
+                // Edited: Antonino Mauro Liuzzo
+				txtCert + multitenancy +
 			'</div>' ;
 }
 
