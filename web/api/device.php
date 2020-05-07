@@ -761,6 +761,7 @@ else if($action == 'get_device_attributes')
 	 if($r1){
          while($row = mysqli_fetch_assoc($r1)) 
                 { 
+				  dev_log("get_device_attributes: row: " . json_encode($row));
 				  $rec=array();
 				  $rec["cb"]=$row["cb"];
 				  $rec["device"]=$row["device"];

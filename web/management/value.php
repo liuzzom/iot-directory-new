@@ -436,6 +436,25 @@
                                     <div class="modalFieldLabelCnt">Device</div>
 									<div id="inputNameDeviceMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                 </div>
+
+                                <!-- Author: Antonino Mauro Liuzzo -->
+                                <!-- Multitenancy Subsection-->
+                                <div class="col-xs-12 col-md-6 modalCell">
+                                    <div class="modalFieldCnt">
+                                        <input type="text" class="modalInputTxt" name="inputServiceDevice" id="inputServiceDevice"> 
+                                    </div>
+                                    <div class="modalFieldLabelCnt">Service(Device)</div>
+									<div id="inputServiceDeviceMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 modalCell">
+                                    <div class="modalFieldCnt">
+                                        <input type="text" class="modalInputTxt" name="inputServicePathDevice" id="inputServicePathDevice"> 
+                                    </div>
+                                    <div class="modalFieldLabelCnt">ServicePath(Device)</div>
+									<div id="inputServicePathDeviceMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                </div>
+                                <!-- End Multitenancy Subsection-->
 								
                                 <div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">

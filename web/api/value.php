@@ -98,32 +98,39 @@ if ($action=="insert")
 		 "VALUES('$cb', '$device', '$value_name',  '$data_type', '$value_type', '$editable', '$value_unit', '$healthiness_criteria', '$healthiness_value')"; //, '$order' )";
 	$r = mysqli_query($link, $q);
 
+	dev_log("insert value: query:\n" . $q);
+
 	//Sara2610
 	$deviceName = $device . " ".$cb." ".$value_name;
 	
 	if($r)
 	{
-	    $result["log"] .= "\r\n Value $cb/$device/$value_name correctly inserted \r\n";
+		$result["log"] .= "\r\n Value $cb/$device/$value_name correctly inserted \r\n";
+		dev_log("insert value: Value $cb/$device/$value_name correctly inserted");
 		modify_valueKB($link, $device, $cb, $organization, $result);
         $result["editable"]=$editable;		
         if($result["content"]==null) $result["active"]=false;  else $result["active"]=true;
 		$result["msg"] .= '\n insertion in the db of the value was ok';
+		dev_log("insert value: insertion in the db of the value was ok");
 		if (!isset($result["status"])){
 			//Sara2610 - for logging purpose
 			logAction($link,$username,'event_values','insert',$deviceName,$organization,'','success');
 
 			$result["status"]="ok";
+			dev_log("insert value: !isset(result[status])");
 		}
 		else if ($result["status"]=="ko")  
 		{ 
 			//Sara2610 - for logging purpose
 			logAction($link,$username,'event_values','insert',$deviceName,$organization,'Error occurred in the KB','faliure');
-		  $result["msg"] .= '\n an error occurred in the KB or context broker';
-          $result["log"] .= '\n an error occurred in the KB or context broker';
+		  	$result["msg"] .= '\n an error occurred in the KB or context broker';
+			$result["log"] .= '\n an error occurred in the KB or context broker';
+			dev_log("insert value: an error occurred in the KB or context broker");  
         }
 		else if($result["status"]=="ok"){
 				//Sara2610 - for logging purpose
-			logAction($link,$username,'event_values','insert',$deviceName,$organization,'','success');		
+			logAction($link,$username,'event_values','insert',$deviceName,$organization,'','success');
+			dev_log("insert value: status ok");
 		}
 		
 	}
@@ -358,13 +365,13 @@ else if($action == 'get_all_event_value')
 	
 	if($r) 
 	{
-		dev_log("get_all_event_value: query success");
+		// dev_log("get_all_event_value: query success");
 		$data = array();
 			
 		while($row = mysqli_fetch_assoc($r)) 
 		{
 			
-			dev_log("get_all_event_value: row: " . json_encode($row));
+			// dev_log("get_all_event_value: row: " . json_encode($row));
 
             $eid=$row["organization"].":".$row["contextbroker"].":".$row["device"];
             if ( ($loggedrole=="RootAdmin")|| 
@@ -425,10 +432,10 @@ else if($action == 'get_all_event_value')
 			$rec["service"] = $row["service"];
 			$rec["servicePath"] = $row["servicePath"];
 			if ($row["protocol"] == "ngsi w/MultiService"){
-				dev_log("get_all_private_event_value: multiservice device detected");
+				// dev_log("get_all_event_value: multiservice device detected");
 				// get the name from id
 				$rec["device"] = explode(";", $row["device"])[2];
-				dev_log("get_all_private_event_value: new rec[device]: " . $rec["device"]);
+				// dev_log("get_all_event_value: new rec[device]: " . $rec["device"]);
 			}
 
 			if (isset($result["keys"][$eid]))
@@ -498,7 +505,7 @@ else if($action == 'get_all_event_value')
 	} 
 	else
 	{
-		dev_log("get_all_event_value: query fail");
+		// dev_log("get_all_event_value: query fail");
 		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about values. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about values.' . generateErrorMessage($link), 'ko');
 
 			

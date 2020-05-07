@@ -865,7 +865,7 @@ function drawAttributeMenu
                  console.log("error in the call to get the context brokers "+data);   
                 }
           });
-        
+		
 
 		$.ajax({
 			url: "../api/device.php",

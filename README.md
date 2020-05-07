@@ -149,9 +149,17 @@ back-end directory: api
 - Update
     - ~~update_device~~
     - ~~updateKB~~
+    - ~~update_ngsi~~
 - Delete
     - ~~delete_device~~
     - ~~deleteKB~~
+    - ~~delete_ngsi~~
+- Insert Value (Dovrebbe bastare solo lato client)
+    - lato client
+- Edit Value (Dovrebbe bastare solo lato client)
+    - ~~lato client~~
+- Delete Value (Dovrebbe bastare solo lato client)
+    - ~~lato client~~
 - Relazione
 
 - una/due api che puo ricevere

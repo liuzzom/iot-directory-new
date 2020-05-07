@@ -82,8 +82,8 @@ function format ( d ) {
 	var multitenancy = "";
 	if (d.service && d.servicePath){
 		multitenancy = '<div class="row">' + 
-			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>Service/Tenant:</b>' + "  " + d.service + '</div>' +
-			'<div class="clearfix visible-xs"></div>' +
+			'<div id="service" class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>Service/Tenant:</b>' + "  " + d.service + '</div>' +
+			'<div id="service" class="clearfix visible-xs"></div>' +
 			'<div class="col-xs-6 col-sm-6" style="background-color:#B3D9FF;"><b>ServicePath:</b>' + "  " + d.servicePath  + '</div>' +	
 		'</div>' ;
 	}
@@ -267,8 +267,11 @@ function format ( d ) {
 				'data-mandatoryproperties="'+d.mandatoryproperties+'" ' +
 				'data-mandatoryvalues="'+d.mandatoryvalues+'" ' +
 				'data-k1="'+d.k1+'" ' +
-				'data-k2="'+d.k2+'" ' +
-				'data-status1="'+d.status1+'">Edit</button>';
+                'data-k2="'+d.k2+'" ' +
+                'data-status1="'+d.status1+'" ' +
+                // Author: Antonino Mauro Liuzzo
+                'data-service="'+d.service+'" ' + 
+                'data-servicePath="'+d.servicePath+'">Edit</button>';
 				} else { }
 				
 				}
@@ -284,7 +287,11 @@ function format ( d ) {
 				return '<button type="button" class="delDashBtn" ' +
 				'data-cb="'+d.cb+'" ' +
 				'data-device="'+d.device+'" ' +
-				'data-value_name="'+d.value_name+'">Delete</button>';
+                'data-value_name="'+d.value_name+'"' + 
+                // Author: Antonino Mauro Liuzzo
+                'data-status1="'+d.status1+'" ' +
+                'data-service="'+d.service+'" ' + 
+                'data-servicePath="'+d.servicePath+'">Delete</button>';
 				 } else { }
 				}
             },
@@ -692,8 +699,18 @@ function format ( d ) {
 		
         $('#addNewValueConfirmBtn').off("click");
         $("#addNewValueConfirmBtn").click(function(){
-			
-	       $("#addValueModalTabs").hide();
+            
+            // Author: Antonino Mauro Liuzzo
+            var deviceName = $('#inputNameDevice').val();
+            var service = $('#inputServiceDevice').val();
+            var servicePath = $('#inputServicePathDevice').val();
+
+            if (service && servicePath){
+                deviceName = service + ";" + servicePath + ";" + deviceName;
+            }
+            console.log("device name: " + deviceName);
+            
+	        $("#addValueModalTabs").hide();
 			$('#addValueModal div.modalCell').hide();
             //$("#addValueModalFooter").hide();
             $("#addNewValueCancelBtn").hide();
@@ -711,7 +728,7 @@ function format ( d ) {
 					  username: loggedUser,
 					  organization : organization, 
 					  contextbroker: $('#selectContextBroker').val(),
-		 			  device: $('#inputNameDevice').val(),
+		 			  device: deviceName,
 					  value_name: $('#inputValueNameDevice').val(),
 					  data_type: $('#selectDataType').val(),
 					  organization : organization, 
@@ -863,9 +880,13 @@ function format ( d ) {
 		var cb = $(this).parents("tr").find("td").eq(1).html();
 		var device = $(this).parents("tr").find("td").eq(2).html();
 		var value_name = $(this).parents("tr").find("td").eq(3).html();
-		var editable = $(this).parents("tr").find("td").eq(6).html();
-		 
-		$("#deleteValueModal div.modal-body").html('<div class="modalBodyInnerDiv"><span data-value_name = "' + value_name + '" data-cb = "' + cb + '" data-device = "' + device + '" data-editable = "' + editable +'">Do you want to confirm deletion of value <b>' + value_name + '</b> from Device <b>' + device + '</b>?</span></div>');
+        var editable = $(this).parents("tr").find("td").eq(6).html();
+        
+        // Author: Antonino Mauro Liuzzo
+        var service = $(this).attr('data-service');
+        var servicePath = $(this).attr('data-servicePath');
+		// Edited: added service and servicePath
+		$("#deleteValueModal div.modal-body").html('<div class="modalBodyInnerDiv"><span data-value_name = "' + value_name + '" data-cb = "' + cb + '" data-device = "' + device + '" data-editable = "' + editable +'" data-service = "' + service + '" data-servicePath = "' + servicePath + '">Do you want to confirm deletion of value <b>' + value_name + '</b> from Device <b>' + device + '</b>?</span></div>');
 		
         
 		$("#deleteValueModalInnerDiv1").html('<h5>Device deletion in progress, please wait</h5>');
@@ -886,8 +907,17 @@ function format ( d ) {
 		var device = $("#deleteValueModal span").attr("data-device");
 		var cb = $("#deleteValueModal span").attr("data-cb");
 		var value_name   = $("#deleteValueModal span").attr("data-value_name");	
-		var editable = $("#deleteValueModal span").attr("data-editable");
-		
+        var editable = $("#deleteValueModal span").attr("data-editable");
+        
+        // Author: Antonino Mauro Liuzzo
+        // detect service and servicePath and prepend them to device name (if needed)
+        var service = $("#deleteValueModal span").attr("data-service");
+        var servicePath = $("#deleteValueModal span").attr("data-servicePath");
+        if (service !== "null" && servicePath !== "null"){
+            device = service + ";" + servicePath + ";" + device;
+        }
+        console.log("device name:" + device);
+        
 		$("#deleteValueModal div.modal-body").html("");
 		$("#deleteValueOkBtn").hide();
 		$("#deleteValueCancelBtn").hide();
@@ -1026,9 +1056,19 @@ function format ( d ) {
 	  $('#selectHealthinessCriteriaM').val($(this).attr('data-healthiness_criteria'));
 	  $('#inputHealthinessValueM').val($(this).attr('data-value_refresh_rate'));
 	  $('#inputOrderM').val($(this).attr('data-order'));
-	  
-
-
+      
+        // Author: Antonino Mauro Liuzzo
+        var service = $(this).attr('data-service');
+        var servicePath = $(this).attr('data-servicePath');
+        if(service !== 'null' && servicePath !== 'null') {
+            // embed service and servicePath infos into name device input element
+            $('#inputNameDeviceM').attr('service', service);
+            $('#inputNameDeviceM').attr('servicePath', servicePath);
+        } else {
+            // remove service and servicePath infos from name device input element
+            $('#inputNameDeviceM').removeAttr('service');
+            $('#inputNameDeviceM').removeAttr('servicePath');
+        }
 	});
 
 
@@ -1036,7 +1076,17 @@ function format ( d ) {
 	$('#editValueConfirmBtn').off("click");
 	$("#editValueConfirmBtn").click(function(){
 
-		
+        // Author: Antonino Mauro Liuzzo
+        // detect service and servicePath and prepend them to device name (if needed)
+        var deviceName = $('#inputNameDeviceM').val();
+        var service = $('#inputNameDeviceM').attr('service');
+        var servicePath = $('#inputNameDeviceM').attr('servicePath');
+
+        if (service && servicePath){
+            deviceName = service + ";" + servicePath + ";" + deviceName;
+        }
+        console.log("device name:" + deviceName);
+
 		$("#editValueModalTabs").hide();
 		$('#editValueModal div.modalCell').hide();
 		//$("#editValueModalFooter").hide();
@@ -1047,7 +1097,6 @@ function format ( d ) {
 		$('#editValueLoadingIcon').show();
         //$("#editValueModalBody").hide();
 
-	  
 
 		 // Edit Value
 		 $.ajax({
@@ -1058,7 +1107,7 @@ function format ( d ) {
 			  username: loggedUser,
 			  organization : organization, 
 			  contextbroker: $('#selectContextBrokerM').val(),
-			  device: $('#inputNameDeviceM').val(),
+			  device: deviceName,
 			  value_name: $('#inputValueNameDeviceM').val(),
 			  data_type: $('#selectDataTypeM').val(),
 			  value_type: $('#selectValueTypeM').val(),

@@ -1507,10 +1507,14 @@ $visibility, $frequency, $listnewAttributes, &$result)
 		{$error=true; $result["msg"].= "\n protocol not correct ";$result["error_msg"].= "protocol not correct. ";$result["log"].= "\n protocol not correct ";}
 	  if (count($listnewAttributes)==0)
 		{$error=true; $result["msg"].= "\n at list one attribute";$result["error_msg"].= " at least one attribute is required. ";$result["log"].= "\n at list one attribute";}
-	    
-	   foreach($listnewAttributes as $att)
-		  {
-		   if ($att["data_type"]==null || $att["data_type"]=="")
+		
+	  dev_log("canBeModified: listnewAttributes: " . json_encode($listAttributes));
+
+	  foreach($listnewAttributes as $att){
+
+			dev_log("canBeModified: att: " . json_encode($att));
+
+			if ($att["data_type"]==null || $att["data_type"]=="")
 		        {$error=true; $result["msg"].= "\n data type for attribute $att[value_name] not specified";$result["error_msg"].= " data type for attribute $att[value_name] not specified. ";
 				              $result["log"].= "\n data type for attribute $att[value_name] not specified";}
 			if ($att["value_unit"]==null || $att["value_unit"]=="")
@@ -1530,6 +1534,7 @@ $visibility, $frequency, $listnewAttributes, &$result)
 		  }
 
 
+		dev_log("canBeModified: result[log]: " . $result["log"]);
 	   if ($error) return false;
 	   return true;
 	}
@@ -2437,9 +2442,9 @@ function modify_valueKB($link, $device, $contextbroker, $organization, &$result)
 	$listnewAttributes=generateAttributes($link, $device, $contextbroker);
 	   
 	$query = "SELECT d.uri, d.id, d.devicetype AS entityType, d.kind, d.format, d.macaddress, d.model, d.producer, d.protocol, d.longitude, 
-d.latitude, d.visibility, d.frequency, cb.name, cb.protocol as type, cb.ip, cb.port, cb.login, cb.password, cb.latitude as cblatitude, 
-cb.longitude as cblongitude, cb.created FROM devices d JOIN contextbroker cb ON d.contextBroker = cb.name WHERE d.deleted is null and 
-d.contextBroker='$contextbroker' and d.id='$device';";
+				d.latitude, d.visibility, d.frequency, cb.name, cb.protocol as type, cb.ip, cb.port, cb.login, cb.password, cb.latitude as cblatitude, 
+				cb.longitude as cblongitude, cb.created FROM devices d JOIN contextbroker cb ON d.contextBroker = cb.name WHERE d.deleted is null and 
+				d.contextBroker='$contextbroker' and d.id='$device';";
 	   
 	$r_init = mysqli_query($link, $query);
 
@@ -2451,7 +2456,13 @@ d.contextBroker='$contextbroker' and d.id='$device';";
 		return 1;
 	}
   
+	dev_log("modify_valueKB: query success");
+
 	$row = mysqli_fetch_assoc($r_init);
+
+	dev_log("modify_valueKB: row: " . json_encode($row));
+
+
 	// $device =$row["id"];
 	$type =$row["entityType"];
 	$kind =$row["kind"];
@@ -2470,45 +2481,47 @@ d.contextBroker='$contextbroker' and d.id='$device';";
 	$uri=$row["uri"];
 
 
-	if (canBeModified($device, $type, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude, 
-$visibility, $frequency, $listnewAttributes, $result))
-	  {
+	if (canBeModified($device, $type, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude, $visibility, $frequency, $listnewAttributes, $result)){
 		
-
-
-		  /* msg for the Knowledge base + registration on the KB */
-		 // echo "entrato";
-		  $msg=array();
-		  $msg["id"]= $device;
-		  $msg["type"]= $type;
-		  $msg["kind"]= $kind;
-		  $msg["protocol"]= $protocol;
-		  $msg["format"]= $format;
-		  $msg["macaddress"]= $macaddress;
-		  $msg["model"]= $model;
-		  $msg["producer"]= $producer;
-		  $msg["latitude"]= $latitude;
-		  $msg["longitude"]= $longitude;
-		  $msg["frequency"]= $frequency;
-	      // $msg["visibility"]= $visibility;
-		  $msg["ownership"]= $visibility;
-		  $msg["broker"]=array();
-		  $msg["broker"]["name"]=$contextbroker;
-		  $msg["broker"]["type"]=$row["protocol"];
-		  $msg["broker"]["ip"]=$row["ip"];
-		  $msg["broker"]["port"]=$row["port"];
-		  $msg["broker"]["login"]=($row["login"]==null)?"":$row["login"];
-		  $msg["broker"]["password"]=($row["password"]==null)?"":$row["password"];
-		  $msg["broker"]["latitude"]=$row["cblatitude"];
-		  $msg["broker"]["longitude"]=$row["cblongitude"];
-		  $msg["broker"]["created"]=$row["created"];
-		  $msg["organization"]= $organization;
-		   // $msg["attributes"]=array();
+		dev_log("nell if");
+		
+		/* msg for the Knowledge base + registration on the KB */
+		$msg=array();
+		$msg["id"]= $device;
+		// Author: Antonino Mauro Liuzzo
+	  	if ($protocol == "ngsi w/MultiService") $msg["id"] = urlencode($device);
+		dev_log("modify_valueKB id: " . $msg["id"]);
+		$msg["type"]= $type;
+		$msg["kind"]= $kind;
+		$msg["protocol"]= $protocol;
+		$msg["format"]= $format;
+		$msg["macaddress"]= $macaddress;
+		$msg["model"]= $model;
+		$msg["producer"]= $producer;
+		$msg["latitude"]= $latitude;
+		$msg["longitude"]= $longitude;
+		$msg["frequency"]= $frequency;
+		$msg["ownership"]= $visibility;
+		
+		$msg["broker"]=array();
+		$msg["broker"]["name"]=$contextbroker;
+		$msg["broker"]["type"]=$row["protocol"];
+		// Author: Antonino Mauro Liuzzo -> this workaround MUST be fixed -> ngsi w/MultiService, for now, isn't a valid broker type
+	  	if ($row["protocol"] == "ngsi w/MultiService") $msg["broker"]["type"] = "ngsi";
+		dev_log("modify_valueKB protocol value: " . $row["protocol"]);
+		dev_log("modify_valueKB new protocol value: " . $msg["broker"]["type"]);	
+		$msg["broker"]["ip"]=$row["ip"];
+		$msg["broker"]["port"]=$row["port"];
+		$msg["broker"]["login"]=($row["login"]==null)?"":$row["login"];
+		$msg["broker"]["password"]=($row["password"]==null)?"":$row["password"];
+		$msg["broker"]["latitude"]=$row["cblatitude"];
+		$msg["broker"]["longitude"]=$row["cblongitude"];
+		$msg["broker"]["created"]=$row["created"];
+		$msg["organization"]= $organization;
 		  
-		  $myAttrs=array();
-		  $i=1;
-		  foreach($listnewAttributes as $att)
-		  {
+		$myAttrs=array();
+		$i=1;
+		foreach($listnewAttributes as $att){
 			$myatt = array();
 			$myatt["value_name"] =$att["value_name"];
 			$myatt["data_type"] =$att["data_type"];
@@ -2517,88 +2530,78 @@ $visibility, $frequency, $listnewAttributes, $result))
 			$myatt["healthiness_criteria"]=$att["healthiness_criteria"];
 			if ($att["healthiness_criteria"]=="refresh_rate") $myatt["value_refresh_rate"]=$att["healthiness_value"];
 			else if ($att["healthiness_criteria"]=="different_values") $myatt["different_values"]=$att["healthiness_value"];
-					 else $myatt["value_bounds"]=$att["healthiness_value"];
+			else $myatt["value_bounds"]=$att["healthiness_value"];
 			$myatt["order"]=$att["order"];
 			$myAttrs[]=$myatt;
-			
-		  }	 
-		  $msg["attributes"]=$myAttrs;
+		}	 
+		$msg["attributes"]=$myAttrs;
 		  
-		  // echo json_encode($msg);
 		  
-		  try
-		   {
-			 //$url=$GLOBALS["knowledgeBaseURI"] . "api/v1/iot/insert";
+		try{
 			$url= $_SESSION['kbUrl']."iot/insert";
-
-
-			 $options = array(
-					  'http' => array(
-							  'header' => "Content-Type: application/json;charset=utf-8",
-							  'header' => "Access-Control-Allow-Origin: *",
-							  'method' => 'POST',
-				  'content' => json_encode($msg),
-							  'timeout' => 30
-					  )
-				);
-			 $context = stream_context_create($options);
-			 $local_result = @file_get_contents($url, false, $context);
-			 if ($local_result!="errore")
-			 {
-			   $result["status"]='ok';
-			   $result["content"]=$local_result;
-			   $result["msg"] .= "\n the device has been modified in the KB";
+			$options = array(
+				'http' => array(
+					'header' => "Content-Type: application/json;charset=utf-8",
+					'header' => "Access-Control-Allow-Origin: *",
+					'method' => 'POST',
+					'content' => json_encode($msg),
+					'timeout' => 30
+				)
+			);
+			
+			$context = stream_context_create($options);
+			$local_result = @file_get_contents($url, false, $context);
+			
+			if ($local_result!="errore"){
+				$result["status"]='ok';
+				$result["content"]=$local_result;
+				$result["msg"] .= "\n the device has been modified in the KB";
 				$result["log"] .= "\n the device has been modified in the KB";
-			   // echo "dentro" . json_encode($result);
-			   switch ($protocol)
-			   {
-				case "ngsi":
-					$res = update_ngsi($device, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude,
-$longitude, $visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $result);
-					break;
-				case "mqtt":
-					$res =update_mqtt($device, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, 
-$visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $result);
-					 break;
-				case "amqp":
-					$res = update_amqp($device, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, 
-$visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $result);
-					break;
-			  }
-			  if ($res=='ok')
-			  {
-				$result["msg"] .= "\n ok modification in the context broker";
-				$result["log"] .= "\n ok modification in the context broker";
-			  }
-			  else
-			  {
-			   $result["status"]='ko';
-			   $result["error_msg"] .= "There has been no modification in the context broker. ";
-			   $result["msg"] .= "\n no modification in the context broker";
-			   $result["log"] .= "\n no modification in the context broker";
-			  }
-			  return 1;
+			   
+				switch ($protocol){
+					case "ngsi":
+					case "ngsi w/MultiService":
+						$res = update_ngsi($device, $type, $contextbroker, $kind, $protocol, $format, $model, $latitude, $longitude, $visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $result);
+						break;
+					case "mqtt":
+						$res =update_mqtt($device, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, $visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $result);
+						break;
+					case "amqp":
+						$res = update_amqp($device, $type, $contextbroker, $kind, $protocol, $format, $latitude, $longitude, $visibility, $frequency, $listnewAttributes, $ip, $port,$uri, $result);
+						break;
+					}
+				  
+				if ($res=='ok'){
+					$result["msg"] .= "\n ok modification in the context broker";
+					$result["log"] .= "\n ok modification in the context broker";
+					dev_log("modify_valueKB: ok modification in the context broker");
+				} else {
+			   		$result["status"]='ko';
+			   		$result["error_msg"] .= "There has been no modification in the context broker. ";
+			   		$result["msg"] .= "\n no modification in the context broker";
+			   		$result["log"] .= "\n no modification in the context broker";
+					dev_log("modify_valueKB: no modification in the context broker");
+				}
+				  
+				return 1;
+			} else {
+	  			$result["error_msg"].="Error in the validation w.r.t. the KB. ";
+	  			$result["msg"].="\n error in the validation w.r.t. the KB";
+	  			$result["log"].="\n error in the validation w.r.t. the KB";
+	  			dev_log("modify_valueKB: error in the validation w.r.t. the KB");
+	  			$result["status"]='ko';
+	  			return 1;
 			}
-    else
-    {
-	  $result["error_msg"].="Error in the validation w.r.t. the KB. ";
-	  $result["msg"].="\n error in the validation w.r.t. the KB";
-	  $result["log"].="\n error in the validation w.r.t. the KB";
-	  $result["status"]='ko';
-	  return 1;
-	}
-		 } 
-		 catch (Exception $ex)
-		  {
+		} catch (Exception $ex){
 			$result["status"]='ko';
 		    $result["error_msg"] .= 'Error in connecting with KB. ';
 		    $result["msg"] .= ' error in connecting with KB ' . $ex;
-            $result["log"] .= ' error in connecting with KB ' . $ex;
-		 } 	
-		/* registration of the device in the corresponding context broker */
-		 // echo "valore local_result" . $local_result;
-		
- } 
+			$result["log"] .= ' error in connecting with KB ' . $ex;
+			dev_log("modify_valueKB: error in connecting with KB" . $ex);
+		} 	
+	} else {
+		dev_log("modify_valueKB: canBeModified fails");
+	}
 } // end of function modify_valueKB
 
 function get_organization_info($organizationApiURI, $ou_tmp){

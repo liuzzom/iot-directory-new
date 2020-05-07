@@ -1,0 +1,8 @@
+2020-05-07 08:01:39: modify_valueKB: query success
+2020-05-07 08:01:39: modify_valueKB: row: {"uri":"http:\/\/www.disit.org\/km4city\/resource\/iot\/iotobsf\/Organization\/test_legacy_01","id":"test_legacy_01","entityType":"Ambiental","kind":"sensor","format":"json","macaddress":"","model":"Raspberry snap4city 1","producer":"Raspberry PI","protocol":"ngsi","longitude":"11.29704","latitude":"43.76415","visibility":"private","frequency":"600","name":"iotobsf","type":"ngsi","ip":"iotobsf","port":"1026","login":"","password":"","cblatitude":"43.77754","cblongitude":"11.26030","created":"2019-11-11 15:36:28"}
+2020-05-07 08:01:39: canBeModified: listnewAttributes: null
+2020-05-07 08:01:39: canBeModified: att: {"cb":"iotobsf","device":"test_legacy_01","value_name":"humidity","data_type":"float","value_type":"humidity","editable":"0","value_unit":"%","order":"2","healthiness_criteria":"refresh_rate","healthiness_value":"300"}
+2020-05-07 08:01:39: canBeModified: att: {"cb":"iotobsf","device":"test_legacy_01","value_name":"temperature","data_type":"float","value_type":"temperature","editable":"0","value_unit":"","order":"1","healthiness_criteria":"refresh_rate","healthiness_value":"300"}
+2020-05-07 08:01:39: canBeModified: result[log]: 
+ value unit for attribute temperature not specified
+2020-05-07 08:01:39: modify_valueKB: canBeModified fails
