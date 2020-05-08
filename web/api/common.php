@@ -1489,6 +1489,9 @@ $listnewAttributes, $ip, $port, &$result)
 	function canBeModified($name, $type, $contextbroker, $kind, $protocol, $format, $macaddress, $model, $producer, $latitude, $longitude, 
 $visibility, $frequency, $listnewAttributes, &$result)
 	{
+	  
+	  dev_log("canBeModifed: received data:\n" . json_encode(func_get_args()));
+
 	  $error=false;
 	  if ($name==null || $name=="")
 	      {$error=true; $result["msg"].= "\n id not specified";$result["error_msg"].= " id not specified. ";$result["log"].= "\n id not specified";}

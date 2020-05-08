@@ -155,7 +155,7 @@ back-end directory: api
     - ~~deleteKB~~
     - ~~delete_ngsi~~
 - Insert Value (Dovrebbe bastare solo lato client)
-    - lato client
+    - ~~lato client~~
 - Edit Value (Dovrebbe bastare solo lato client)
     - ~~lato client~~
 - Delete Value (Dovrebbe bastare solo lato client)
@@ -179,8 +179,8 @@ ci sara' sicuro gia' una funzione del genere ma e' da richiamare o da generalizz
 - temporary_devices
 
 ## Segnalazioni
-- Problemi con la gestione delle ownership e i limiti
 - Workaround in registerKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)
 - Workaround in updateKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)
 - Workaround in deleteKB legato al campo "type" del broker (ngsi w/MultiService non è supportato)
 - Impossibilità di modificare i campi service e servicePath di un device a livello di CB -> queste informazioni non sono nel body ma nell'header
+- "Bug" nella funzione `modify_valueKB` che fa fallire `canBeModified` -> a `canBeModified` viene passato null invece che la lista di attributi

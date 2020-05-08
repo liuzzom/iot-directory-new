@@ -74,6 +74,9 @@ if (isset($_REQUEST['username'])) {
 	
 if ($action=="insert")
 {
+
+	dev_log("insert value received data:\n" . json_encode($_REQUEST));
+
 	$cb = mysqli_real_escape_string($link, $_REQUEST['contextbroker']);
 	$device = mysqli_real_escape_string($link, $_REQUEST['device']);
 	$value_name = mysqli_real_escape_string($link, $_REQUEST['value_name']);
@@ -153,7 +156,9 @@ if ($action=="insert")
 else
 if ($action=="update")
 {  
-		
+	
+	dev_log("update value received data:\n" . json_encode($_REQUEST));
+
 	$cb = mysqli_real_escape_string($link, $_REQUEST['contextbroker']);
 	$device = mysqli_real_escape_string($link, $_REQUEST['device']);
 	$value_name = mysqli_real_escape_string($link, $_REQUEST['value_name']);
@@ -219,6 +224,9 @@ if ($action=="update")
 }
 else if ($action=="delete")
 {
+
+	dev_log("delete value received data:\n" . json_encode($_REQUEST));
+
       $cb = mysqli_real_escape_string($link, $_REQUEST['contextbroker']);
 	  $device = mysqli_real_escape_string($link, $_REQUEST['device']);
 	  $value_name = mysqli_real_escape_string($link, $_REQUEST['value_name']);

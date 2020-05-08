@@ -325,7 +325,7 @@ function checkEditCbServices(){
     } else {
 
         if (values.length == 1){
-            console.log("un solo service");
+            console.log("only one service");
 
             var serviceRegex = /^([a-z]|_){1,25}$/;
             if (values[0] !== "" && !serviceRegex.test(values[0])) {
@@ -334,7 +334,7 @@ function checkEditCbServices(){
                             <li>white spaces are not allowed</li>
                             <li>use only lower case letters</li>
                             <li>special characters are not allowed (except for "_")</li>
-                            <li>service/tenant name must not be longer than 50 characters</li>
+                            <li>service/tenant name must not be longer than 25 characters</li>
                         </ul>`;
                 editCbConditionsArray['inputServicesCBM'] = false;
                 $("#editInputServiceCBMsg").removeClass("alert alert-info");
@@ -348,7 +348,7 @@ function checkEditCbServices(){
                 $("#editInputServiceCBMsg").html(message);
             }
         } else {
-            console.log("più services");
+            console.log("more services");
 
             for(const value of values){
                 var serviceRegex = /^([a-z]|_){1,25}$/;
@@ -358,7 +358,7 @@ function checkEditCbServices(){
                             <li>white spaces are not allowed</li>
                             <li>use only lower case letters</li>
                             <li>special characters are not allowed (except for "_")</li>
-                            <li>service/tenant name must not be longer than 50 characters</li>
+                            <li>service/tenant name must not be longer than 25 characters</li>
                         </ul>`;
                     editCbConditionsArray['inputServicesCBM'] = false;
                     $("#editInputServiceCBMsg").removeClass("alert alert-info");
