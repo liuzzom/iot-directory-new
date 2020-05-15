@@ -836,10 +836,8 @@ $(document).ready(function () {
                 async: true,
                 success: function (data) 
                 {
-					console.log(data["status"]);
                 	if(data["status"] === 'ko')
 					{   
-						console.log("ko situation");
                         $('#editContextBrokerLoadingMsg').hide();
                         $('#editContextBrokerLoadingIcon').hide();
                         $('#editContextBrokerOkMsg').hide();
@@ -847,13 +845,11 @@ $(document).ready(function () {
                         $('#editContextBrokerKoMsg').show();
                         $('#editContextBrokerKoIcon').show();
 						$('#editContextBrokerOkBtn').show();
-						console.log("ko situation end");
 						return;
 					}
 
 					else if (data["status"] === 'ok')
 					{
-						console.log("ok situation");
                     	$('#inputNameCBM').val("");
                         $('#inputIpCBM').val("");
                         $('#inputPortCBM').val("");

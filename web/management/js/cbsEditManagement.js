@@ -277,7 +277,6 @@ function checkEditCbpassword()
 function checkEditCbConditions()
 {
     var enableButton = true;
-    console.log(editCbConditionsArray);
     for(var key in editCbConditionsArray) 
     {
         if(editCbConditionsArray[key] === false)
@@ -300,7 +299,6 @@ function checkEditCbConditions()
 // Author: Antonino Mauro Liuzzo
 
 function checkEditCbServices(){
-    // console.log("checkEditCbServices");
 
     // feedback message to the user
     var message = null;
@@ -325,8 +323,6 @@ function checkEditCbServices(){
     } else {
 
         if (values.length == 1){
-            console.log("only one service");
-
             var serviceRegex = /^([a-z]|_){1,25}$/;
             if (values[0] !== "" && !serviceRegex.test(values[0])) {
                 message = `Check your values <br>
@@ -348,8 +344,6 @@ function checkEditCbServices(){
                 $("#editInputServiceCBMsg").html(message);
             }
         } else {
-            console.log("more services");
-
             for(const value of values){
                 var serviceRegex = /^([a-z]|_){1,25}$/;
                 if(!serviceRegex.test(value)){

@@ -125,7 +125,6 @@ foreach ($_REQUEST as $key =>$param) {
 
 if ($action=="insert")
 {   
-	dev_log("insert(device.php): BEGIN");
 	//Sara2510 - for logging purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	
@@ -147,8 +146,6 @@ if ($action=="insert")
 	// Author: Antonino Mauro Liuzzo
 	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
-	dev_log("service: " .  $service);
-	dev_log("servicePath: " . $servicePath);
     
 	//MM 
 	if (isset($_REQUEST['shouldbeRegistered'])) $shouldbeRegistered=$_REQUEST['shouldbeRegistered'];
@@ -197,11 +194,9 @@ if ($action=="insert")
 	}
 	
 	my_log($result); //MM0301
-	dev_log("insert(device.php): END\n");
 }
 else if ($action=="update")
 {   
-	dev_log("update device: BEGIN");
 	//Sara2510 - for logging purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
     $organization = mysqli_real_escape_string($link, $_REQUEST['organization']);
@@ -248,12 +243,9 @@ else if ($action=="update")
 	// These values are used into updateKB to identify the broker 
 	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
-	dev_log("update device: service: " .  $service);
-	dev_log("update device: servicePath: " . $servicePath);
 	if ($protocol == "ngsi w/MultiService") {
 		// Create a new id
 		$id = $service . ";" . $servicePath . ";" . $id;
-		dev_log("update device: new id: $id");
 	}
 
 	$s1 = true; 
@@ -292,14 +284,11 @@ else if ($action=="update")
 		$q = "UPDATE  devices SET uri = '". $result["content"] . "', mandatoryproperties=1, mandatoryvalues=1, contextBroker='$contextbroker', devicetype='$devicetype', kind= '$kind', protocol='$protocol', format='$format', macaddress='$macaddress', model='$model', producer='$producer', latitude='$latitude', longitude='$longitude', frequency = '$frequency',organization='$dev_organization'  WHERE id='$id' and contextBroker='$old_contextbroker'";
 	}
 	
-
-	dev_log("update device: query\n" . $q);
 	$r = mysqli_query($link, $q);
 			
     if($r) 
     {
 		$result["msg"] .= "\n Device $contextbroker/$id correctly updated";
-		dev_log("update device: Device $contextbroker/$id correctly updated");
 		$result["log"] .= "\r\n Device $contextbroker/$id correctly updated";
 		//Sara2510 - For logging purpose
 		if($result["status"]=="ok"){
@@ -440,11 +429,9 @@ else if ($action=="update")
 	  my_log($result);
 	  mysqli_close($link); 
 	}
-	dev_log("update device: END\n");
 }  
 else if ($action=="delete")
 {
-	dev_log("delete device: BEGIN");
      $id = $_REQUEST['id'];
 	 $cb = $_REQUEST['contextbroker'];
 	 $url = $_REQUEST['uri'];
@@ -459,12 +446,9 @@ else if ($action=="delete")
 	$protocol = mysqli_real_escape_string($link, $_REQUEST['protocol']);
 	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
-	dev_log("delete device: service: " .  $service);
-	dev_log("delete device: servicePath: " . $servicePath);
 	if ($protocol == "ngsi w/MultiService") {
 		// Create a new id
 		$id = $service . ";" . $servicePath . ";" . $id;
-		dev_log("delete device: new id: $id");
 	}
 	 
     if($accessToken !=""){ 
@@ -512,7 +496,6 @@ else if ($action=="delete")
     if($r4){
 		//Sara2510 - for logging purpose
 		logAction($link,$username,'device','delete',$deviceName,$organization,'','success');
-		dev_log("delete device: query eseguite con successo");	
 		
 		$result["status"]='ok';
 		if ($accessToken != ""){
@@ -526,7 +509,6 @@ else if ($action=="delete")
 	  $result["status"]='ko';
 	  $result["msg"] .= "\n Problem in deleting the device $id: " . generateErrorMessage($link); 
 	  $result["log"] .= "\n Problem in deleting the device $id: " . $query . " " . generateErrorMessage($link);
-	  dev_log("delete device: Problem in deleting the device $id: " . $query . " " . generateErrorMessage($link));
 	}
     mysqli_close($link);
     }
@@ -535,9 +517,7 @@ else if ($action=="delete")
 	    $result["msg"] .= "\n Problem in the access Token "; 
 	    $result["error_msg"] .= "\n Problem in the access Token "; 
 		$result["log"] .= "\n Problem in the access Token ";
-		dev_log("delete device: Problem in the access Token");
 	}
-	dev_log("delete device: END\n");
     my_log($result);
         
 } // end delete
@@ -745,10 +725,8 @@ else if($action == 'get_device_attributes')
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
 
 	if($protocol == "ngsi w/MultiService"){
-		dev_log("get_device_attributes: multiservice device");
 		// Create a new id
 		$id = $service . ";" . $servicePath . ";" . $id;
-		dev_log("get_device_attributes: new id: $id");
 	}
     
     if($accessToken !=""){ 
@@ -761,7 +739,6 @@ else if($action == 'get_device_attributes')
 	 if($r1){
          while($row = mysqli_fetch_assoc($r1)) 
                 { 
-				  dev_log("get_device_attributes: row: " . json_encode($row));
 				  $rec=array();
 				  $rec["cb"]=$row["cb"];
 				  $rec["device"]=$row["device"];
@@ -1006,11 +983,8 @@ else if($action == "get_all_device")
 				$rec["service"] = $row["service"];
 				$rec["servicePath"] = $row["servicePath"];
 				if ($row["protocol"] == "ngsi w/MultiService"){
-					dev_log("get_all_device: multiservice device detected");
 					// get the name from id
 					$rec["id"] = explode(";", $row["id"])[2];
-					dev_log("get_all_device: device full id: " . $row["id"]);
-					dev_log("get_all_device: device name: " . $rec["id"]);
 				}
 			
 				 if(((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))
@@ -1167,11 +1141,8 @@ else if($action == "get_all_device_admin")
 			$rec["service"] = $row["service"];
 			$rec["servicePath"] = $row["servicePath"];
 			if ($row["protocol"] == "ngsi w/MultiService"){
-				dev_log("get_all_device_admin: multiservice device detected");
 				// get the name from id
 				$rec["id"] = explode(";", $row["id"])[2];
-				dev_log("get_all_device_admin: device full id: " . $row["id"]);
-				dev_log("get_all_device_admin: device name: " . $rec["id"]);
 			}
 
 			$eid=$row["organization"].":".$row["contextBroker"].":".$row["id"];
@@ -1411,11 +1382,8 @@ else if($action == "get_subset_device")
 					$rec["service"] = $row["service"];
 					$rec["servicePath"] = $row["servicePath"];
 					if ($row["protocol"] == "ngsi w/MultiService"){
-						dev_log("get_subset_device: multiservice device detected");
 						// get the name from id
 						$rec["id"] = explode(";", $row["id"])[2];
-						dev_log("get_subset_device: device full id: " . $row["id"]);
-						dev_log("get_subset_device: device name: " . $rec["id"]);
 					}
 			
                     if (((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))
@@ -1590,11 +1558,8 @@ else if($action == "get_subset_device_admin")
 			$rec["service"] = $row["service"];
 			$rec["servicePath"] = $row["servicePath"];
 			if ($row["protocol"] == "ngsi w/MultiService"){
-				dev_log("get_subset_device_admin: multiservice device detected");
 				// get the name from id
 				$rec["id"] = explode(";", $row["id"])[2];
-				dev_log("get_subset_device_admin: device full id: " . $row["id"]);
-				dev_log("get_subset_device_admin: device name: " . $rec["id"]);
 			}
 			
 			$eid=$row["organization"].":".$row["contextBroker"].":".$row["id"];

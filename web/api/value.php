@@ -74,9 +74,6 @@ if (isset($_REQUEST['username'])) {
 	
 if ($action=="insert")
 {
-
-	dev_log("insert value received data:\n" . json_encode($_REQUEST));
-
 	$cb = mysqli_real_escape_string($link, $_REQUEST['contextbroker']);
 	$device = mysqli_real_escape_string($link, $_REQUEST['device']);
 	$value_name = mysqli_real_escape_string($link, $_REQUEST['value_name']);
@@ -101,26 +98,21 @@ if ($action=="insert")
 		 "VALUES('$cb', '$device', '$value_name',  '$data_type', '$value_type', '$editable', '$value_unit', '$healthiness_criteria', '$healthiness_value')"; //, '$order' )";
 	$r = mysqli_query($link, $q);
 
-	dev_log("insert value: query:\n" . $q);
-
 	//Sara2610
 	$deviceName = $device . " ".$cb." ".$value_name;
 	
 	if($r)
 	{
 		$result["log"] .= "\r\n Value $cb/$device/$value_name correctly inserted \r\n";
-		dev_log("insert value: Value $cb/$device/$value_name correctly inserted");
 		modify_valueKB($link, $device, $cb, $organization, $result);
         $result["editable"]=$editable;		
         if($result["content"]==null) $result["active"]=false;  else $result["active"]=true;
 		$result["msg"] .= '\n insertion in the db of the value was ok';
-		dev_log("insert value: insertion in the db of the value was ok");
 		if (!isset($result["status"])){
 			//Sara2610 - for logging purpose
 			logAction($link,$username,'event_values','insert',$deviceName,$organization,'','success');
 
 			$result["status"]="ok";
-			dev_log("insert value: !isset(result[status])");
 		}
 		else if ($result["status"]=="ko")  
 		{ 
@@ -128,12 +120,10 @@ if ($action=="insert")
 			logAction($link,$username,'event_values','insert',$deviceName,$organization,'Error occurred in the KB','faliure');
 		  	$result["msg"] .= '\n an error occurred in the KB or context broker';
 			$result["log"] .= '\n an error occurred in the KB or context broker';
-			dev_log("insert value: an error occurred in the KB or context broker");  
         }
 		else if($result["status"]=="ok"){
 				//Sara2610 - for logging purpose
 			logAction($link,$username,'event_values','insert',$deviceName,$organization,'','success');
-			dev_log("insert value: status ok");
 		}
 		
 	}
@@ -156,9 +146,6 @@ if ($action=="insert")
 else
 if ($action=="update")
 {  
-	
-	dev_log("update value received data:\n" . json_encode($_REQUEST));
-
 	$cb = mysqli_real_escape_string($link, $_REQUEST['contextbroker']);
 	$device = mysqli_real_escape_string($link, $_REQUEST['device']);
 	$value_name = mysqli_real_escape_string($link, $_REQUEST['value_name']);
@@ -224,9 +211,6 @@ if ($action=="update")
 }
 else if ($action=="delete")
 {
-
-	dev_log("delete value received data:\n" . json_encode($_REQUEST));
-
       $cb = mysqli_real_escape_string($link, $_REQUEST['contextbroker']);
 	  $device = mysqli_real_escape_string($link, $_REQUEST['device']);
 	  $value_name = mysqli_real_escape_string($link, $_REQUEST['value_name']);
@@ -373,13 +357,9 @@ else if($action == 'get_all_event_value')
 	
 	if($r) 
 	{
-		// dev_log("get_all_event_value: query success");
-		$data = array();
-			
+		$data = array();			
 		while($row = mysqli_fetch_assoc($r)) 
 		{
-			
-			// dev_log("get_all_event_value: row: " . json_encode($row));
 
             $eid=$row["organization"].":".$row["contextbroker"].":".$row["device"];
             if ( ($loggedrole=="RootAdmin")|| 
@@ -440,10 +420,8 @@ else if($action == 'get_all_event_value')
 			$rec["service"] = $row["service"];
 			$rec["servicePath"] = $row["servicePath"];
 			if ($row["protocol"] == "ngsi w/MultiService"){
-				// dev_log("get_all_event_value: multiservice device detected");
 				// get the name from id
 				$rec["device"] = explode(";", $row["device"])[2];
-				// dev_log("get_all_event_value: new rec[device]: " . $rec["device"]);
 			}
 
 			if (isset($result["keys"][$eid]))
@@ -513,10 +491,7 @@ else if($action == 'get_all_event_value')
 	} 
 	else
 	{
-		// dev_log("get_all_event_value: query fail");
-		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about values. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about values.' . generateErrorMessage($link), 'ko');
-
-			
+		$output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about values. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about values.' . generateErrorMessage($link), 'ko');			
 	}
 
 	 my_log($output);
@@ -716,8 +691,6 @@ else if($action == 'get_all_private_event_value')
 		        if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))
 				{
 
-				dev_log("get_all_private_event_value: row: " . json_encode($row));
-
 				$rec = array();
 				$rec["id"]=$row["id"];
 				$rec["cb"]= $row["cb"];
@@ -751,12 +724,9 @@ else if($action == 'get_all_private_event_value')
 				$rec["service"] = $row["service"];
 				$rec["servicePath"] = $row["servicePath"];
 				if ($row["protocol"] == "ngsi w/MultiService"){
-					dev_log("get_all_private_event_value: multiservice device detected");
 					// get the name from id
 					$rec["device"] = explode(";", $row["device"])[2];
 					$rec["id"] = explode(";", $row["id"])[2];
-					dev_log("get_all_private_event_value: new rec[device]: " . $rec["device"]);
-					dev_log("get_all_private_event_value: new rec[id]: " . $rec["id"]);
 				}
                   
                    /* if ($row["visibility"]=="private")
@@ -860,8 +830,6 @@ else if($action == 'get_all_delegated_event_value')
 		
     {
 		
-		dev_log("get_all_delegated_event_value: query success");
-		
         logAction($link,$username,'event_value','get_all_delegated_event_value','',$organization,'','success');		 
         $data = array();
 	 
@@ -914,12 +882,9 @@ else if($action == 'get_all_delegated_event_value')
 				$rec["service"] = $row["service"];
 				$rec["servicePath"] = $row["servicePath"];
 				if ($row["protocol"] == "ngsi w/MultiService"){
-					dev_log("get_all_delegated_event_value: multiservice device detected");
 					// get the name from id
 					$rec["device"] = explode(";", $row["device"])[2];
 					$rec["id"] = explode(";", $row["id"])[2];
-					dev_log("get_all_delegated_event_value: new rec[device]: " . $rec["device"]);
-					dev_log("get_all_delegated_event_value: new rec[id]: " . $rec["id"]);
 				}
 
                 if (isset($result["delegation"][$row["uri"] . "/" . $row["value_name"]]["k1"]))
@@ -942,7 +907,6 @@ else if($action == 'get_all_delegated_event_value')
 		} 
 		else
 		{
-			dev_log("get_all_delegated_event_value: query fail");
             logAction($link,$username,'event_value','get_all_delegated_event_value','',$organization,'','faliure');
             $output= format_result($_REQUEST["draw"], 0, 0, null, 'Error: errors in reading data about devices. <br/>' . generateErrorMessage($link), '\n\r Error: errors in reading data about devices.' . generateErrorMessage($link), 'ko');
 			
@@ -1019,9 +983,7 @@ else if($action == 'get_subset_event_value')
 		$data = array();
 
 		while($row = mysqli_fetch_assoc($r)) 
-		{
-			
-			dev_log("get_subset_event_value: row: " . json_encode($row));	
+		{	
 			
 			$selectedrows++;
 		        if (!$tobelimited || ($tobelimited && $selectedrows >= $start && $selectedrows < ($start+$offset)))
@@ -1050,12 +1012,9 @@ else if($action == 'get_subset_event_value')
 			$rec["service"] = $row["service"];
 			$rec["servicePath"] = $row["servicePath"];
 			if ($row["protocol"] == "ngsi w/MultiService"){
-				dev_log("get_subset_event_value: multiservice device detected");
 				// get the name from id
 				$rec["device"] = explode(";", $row["device"])[2];
 				$rec["id"] = explode(";", $row["id"])[2];
-				dev_log("get_subset_event_value: new rec[device]: " . $rec["device"]);
-				dev_log("get_subset_event_value: new rec[id]: " . $rec["id"]);
 			}
                 
              if (((isset($result["keys"][$eid]))&&($loggedrole!=='RootAdmin'))

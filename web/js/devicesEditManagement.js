@@ -109,8 +109,6 @@ function checkEditDeviceLongitude()
 function checkEditDeviceConditions()
 {
     var enableButton = true;
-	
-	 // console.log(editDeviceConditionsArray);
     
     for(var key in editDeviceConditionsArray) 
     {

@@ -308,7 +308,6 @@ else if ($action=="get_all_models_DataTable")
 else
 if ($action=="insert")
 {  
-	dev_log("insert model BEGIN");
 	//Sara2510 - for logging purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	
@@ -333,9 +332,6 @@ if ($action=="insert")
 	// Author: Antonino Mauro Liuzzo
 	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
-	dev_log("service: " .  $service);
-	dev_log("servicePath: " . $servicePath);
-
 
 	// perform different queries based on protocol value
 	if ($protocol == 'ngsi w/MultiService'){
@@ -344,12 +340,10 @@ if ($action=="insert")
 		
 		if($syntaxRes == 0){
 			// valid servicePath value
-			dev_log($servicePath . " is a valid servicePath");
 			$q = "INSERT INTO model(name, description, devicetype, kind, producer, frequency, contextbroker, protocol, format, healthiness_criteria, healthiness_value, kgenerator, attributes, edgegateway_type, organization, visibility, service, servicePath ) " .
 		 		"VALUES('$name', '$description', '$type', '$kind', '$producer', '$frequency', '$contextbroker', '$protocol', '$format', '$hc', '$hv', '$kgenerator', '$listAttributes', '$edgegateway_type', '$organization', 'private', '$service', '$servicePath')";
 		} else {
 			// invalid servicePath value
-			dev_log($servicePath . " is NOT a valid servicePath");
 			$result["status"]='ko';
 			$result["error_msg"] = $servicePath . " is NOT a valid servicePath";
 		}
@@ -357,8 +351,6 @@ if ($action=="insert")
 		$q = "INSERT INTO model(name, description, devicetype, kind, producer, frequency, contextbroker, protocol, format, healthiness_criteria, healthiness_value, kgenerator, attributes, edgegateway_type, organization, visibility ) " .
 		 	"VALUES('$name', '$description', '$type', '$kind', '$producer', '$frequency', '$contextbroker', '$protocol', '$format', '$hc', '$hv', '$kgenerator', '$listAttributes', '$edgegateway_type', '$organization', 'private')";
 	}
-
-	dev_log("query: " . $q);
 
 	$r = mysqli_query($link, $q);
 
@@ -396,12 +388,10 @@ if ($action=="insert")
 	}
 	echo json_encode($result);
 	mysqli_close($link);
-	dev_log("insert model END\n");
 }
 else
 if ($action=="update")
 {  
-	dev_log("update model BEGIN");
 	//Sara2510 - for logging purpose
 	$username = mysqli_real_escape_string($link, $_REQUEST['username']);
 	
@@ -430,8 +420,6 @@ if ($action=="update")
 	// Author: Antonino Mauro Liuzzo
 	$service = mysqli_real_escape_string($link, $_REQUEST['service']);
 	$servicePath = mysqli_real_escape_string($link, $_REQUEST['servicePath']);
-	dev_log("\tservice: " .  $service);
-	dev_log("\tservicePath: " . $servicePath);
 
 	// perform different queries based on protocol value
 	if ($protocol == 'ngsi w/MultiService') {
@@ -440,11 +428,9 @@ if ($action=="update")
 
 		if ($syntaxRes == 0){
 			// valid servicePath value
-			dev_log($servicePath . " is a valid servicePath");
 			$q = "UPDATE model SET name = '$name', attributes = '$listAttributes', description = '$description', devicetype = '$type', kind = '$kind',  producer= '$producer', frequency = '$frequency', contextbroker='$contextbroker', protocol = '$protocol', format = '$format', healthiness_criteria = '$hc', healthiness_value='$hv', kgenerator = '$kgenerator', edgegateway_type = '$edgegateway_type', service = '$service', servicePath = '$servicePath' WHERE id = '$id'";
 		} else {
 			// invalid servicePath value
-			dev_log($servicePath . " is NOT a valid servicePath");
 			$result["status"]='ko';
 			$result["error_msg"] = $servicePath . " is NOT a valid servicePath";
 		}
@@ -452,13 +438,10 @@ if ($action=="update")
 		$q = "UPDATE model SET name = '$name', attributes = '$listAttributes', description = '$description', devicetype = '$type', kind = '$kind',  producer= '$producer', frequency = '$frequency', contextbroker='$contextbroker', protocol = '$protocol', format = '$format', healthiness_criteria = '$hc', healthiness_value='$hv', kgenerator = '$kgenerator', edgegateway_type = '$edgegateway_type', service = NULL, servicePath = NULL WHERE id = '$id'";
 	}
 
-	dev_log("query: " . $q);
-
 	$r = mysqli_query($link, $q);
 
 	if($r)
 	{
-		dev_log("\tsuccessful query");
 		$ownmsg = array();
         $ownmsg["elementId"]=$obj_organization . ':' . $name; // I am using the new identifier	
         $ownmsg["elementName"]=$obj_organization . ':' . $name;				    
@@ -478,7 +461,6 @@ if ($action=="update")
 	}
 	else
 	{
-		dev_log("\tunsuccessful query");
 		logAction($link,$username,'model','update',$name,$organization,'An error occurred when updating the model','faliure');
 		$result["status"]='ko';
 		$result["msg"] = "Error: An error occurred when updating the model $name. <br/>" .
@@ -488,7 +470,6 @@ if ($action=="update")
 	}
 	echo json_encode($result);
 	mysqli_close($link);
-	dev_log("update model END\n");
 }
 else 
 if ($action=="delete")

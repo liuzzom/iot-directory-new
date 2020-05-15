@@ -341,8 +341,6 @@ function checkCbServices(){
     }else{
 
         if (values.length == 1) {
-            console.log("only one service");
-
             var serviceRegex = /^([a-z]|_){1,25}$/;
             if(values[0] !== "" && !serviceRegex.test(values[0])){
                 message = `Check your values <br>
@@ -364,8 +362,6 @@ function checkCbServices(){
                 $("#inputServiceCBMsg").html(message);
             }
         } else {
-            console.log("more services");
-
             var serviceRegex = /^([a-z]|_){1,25}$/;
             for(const value of values){
                 if(!serviceRegex.test(value)){
@@ -391,6 +387,4 @@ function checkCbServices(){
             }
         }
     }
-
-    console.log(addCbConditionsArray['inputServicesCB']);
 }
