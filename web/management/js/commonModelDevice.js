@@ -79,6 +79,7 @@ $(document).ready(function () {
     });
 
     // Handle changes in "Add Model/Device" broker select element
+    // if are used to understand the context (i.e. device, model, value)
     $('#selectContextBroker').change(function(){
         getServicesByCBName($('#selectContextBroker').val(), 'add');
         
@@ -88,6 +89,12 @@ $(document).ready(function () {
 
         if ($('#inputServicePathModel').val() !== undefined) {
             checkProtocol($('#selectProtocolModel').val(), 'add', 'model');
+        }
+        
+        if ($('#editInputServicePathValue').val() !== undefined) {
+            var protocol = $('#selectContextBroker').children("option:selected").data("protocol");
+            console.log(protocol);
+            checkProtocol(protocol, 'add', 'value');
         }
     });
 
@@ -111,7 +118,7 @@ $(document).ready(function () {
  * 
  * @param {string} value: servicePath value to check 
  * @param {string} mode: add or edit
- * @param {string} context: model or device
+ * @param {string} context: model, device or value
  */
 function checkServicePath(value, mode, context) {
     value = value.trim();
@@ -129,6 +136,8 @@ function checkServicePath(value, mode, context) {
         } else if (context === 'device') {
             // console.log('checkServicePath: add device');
             conditionsArray = addDeviceConditionsArray;
+        } else if (context === 'value') {
+            // console.log('checkServicePath: add value');
         } else {
             // console.log('checkServicePath: (add) error in context value: ' + context);
             return;
@@ -147,7 +156,7 @@ function checkServicePath(value, mode, context) {
             return;
         }
     } else {
-        // console.log("checkServicePath: error in mode value");
+        console.log("checkServicePath: error in mode value");
         return;
     }
 
@@ -170,7 +179,7 @@ function checkServicePath(value, mode, context) {
             servicePathModelMsg.css("color", "#337ab7");
             servicePathModelMsg.html(message);
 
-            conditionsArray['servicePath'] = true;
+            if (context !== "value") conditionsArray['servicePath'] = true;
             break;
         case 2:
             message = "you can't use more than 10 levels";
@@ -179,7 +188,7 @@ function checkServicePath(value, mode, context) {
             servicePathModelMsg.css("color", "red");
             servicePathModelMsg.html(message);
 
-            conditionsArray['servicePath'] = false;
+            if (context !== "value")  conditionsArray['servicePath'] = false;
             break;
         case 3:
             message = "every level must be shorter than 50 characters";
@@ -188,7 +197,7 @@ function checkServicePath(value, mode, context) {
             servicePathModelMsg.css("color", "red");
             servicePathModelMsg.html(message);
 
-            conditionsArray['servicePath'] = false;
+            if (context !== "value") conditionsArray['servicePath'] = false;
             break;
         case 4:
             message = "you can't use empty levels";
@@ -197,7 +206,7 @@ function checkServicePath(value, mode, context) {
             servicePathModelMsg.css("color", "red");
             servicePathModelMsg.html(message);
 
-            conditionsArray['servicePath'] = false;
+            if (context !== "value") conditionsArray['servicePath'] = false;
             break;
         case 5:
             message = "you can't use whitespaces or semicolons";
@@ -206,7 +215,7 @@ function checkServicePath(value, mode, context) {
             servicePathModelMsg.css("color", "red");
             servicePathModelMsg.html(message);
 
-            conditionsArray['servicePath'] = false;
+            if (context !== "value") conditionsArray['servicePath'] = false;
             break;
         case 6:
             message = "servicePath is too long";
@@ -215,7 +224,7 @@ function checkServicePath(value, mode, context) {
             servicePathModelMsg.css("color", "red");
             servicePathModelMsg.html(message);
 
-            conditionsArray['servicePath'] = false;
+            if (context !== "value") conditionsArray['servicePath'] = false;
             break;
         default:
             message = "error in servicePathSyntaxCheck function";
@@ -278,7 +287,7 @@ function servicePathSyntaxCheck(servicePath) {
  * @description this function enables/disables Service/Tenant select and ServicePath input, based on protocol value
  * @param {string} value: protocol value to check
  * @param {string} mode: add or edit
- * @param {string} context: model or device
+ * @param {string} context: model, device or value
  */
 function checkProtocol(value, mode, context) {
     // servicePath elements
@@ -299,8 +308,11 @@ function checkProtocol(value, mode, context) {
         } else if (context === "device") {
             // console.log("checkProtocol add device case");
             servicePath = $('#inputServicePathDevice');
+        } else if (context === "value") {
+            // console.log("checkProtocol add value case");
+            servicePath = $('#inputServicePathValue');
         } else {
-            // console.log('checkServicePath: (add) error in context value: ' + context);
+            console.log('checkServicePath: (add) error in context value: ' + context);
             return;
         }
 
@@ -318,7 +330,7 @@ function checkProtocol(value, mode, context) {
             // console.log("checkProtocol edit device case");
             servicePath = $('#editInputServicePathDevice');
         } else {
-            // console.log('checkServicePath: (edit) error in context value: ' + context);
+            console.log('checkServicePath: (edit) error in context value: ' + context);
             return;
         }
 
@@ -329,7 +341,7 @@ function checkProtocol(value, mode, context) {
         selectServiceMsg = $('#editSelectServiceMsg');
         selectServiceLabel = $('#editSelectServiceLabel');
     } else {
-        // console.log("checkProtocol error case");
+        console.log("checkProtocol error case");
         return;
     }
 
@@ -360,6 +372,11 @@ function checkProtocol(value, mode, context) {
         selectServiceMsg.css("color", "lightgrey");
         selectServiceMsg.html("only ngsi w/MultiService supports Service/Tenant selection");
         selectService.prop('disabled', true);
+    }
+
+    if(context == "value"){
+        servicePathMsg.html("");
+        selectServiceMsg.html("");
     }
 }
 

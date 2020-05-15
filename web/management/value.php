@@ -198,6 +198,7 @@
 
         <script type="text/javascript" src="js/value.js"></script>
         <script type="text/javascript" src="js/fieldsManagement.js"></script>
+        <script type="text/javascript" src="js/commonModelDevice.js"></script>
 		
 		
 		<!-- leaflet scripts -->
@@ -438,23 +439,28 @@
                                 </div>
 
                                 <!-- Author: Antonino Mauro Liuzzo -->
-                                <!-- Multitenancy Subsection-->
-                                <div class="col-xs-12 col-md-6 modalCell">
-                                    <div class="modalFieldCnt">
-                                        <input type="text" class="modalInputTxt" name="inputServiceDevice" id="inputServiceDevice"> 
+							    <!-- Start MultiService + ServicePath Section -->
+							    <div class = "row" id = "multiServiceAndServicePath">
+								    <div class="col-xs-12 col-md-6 modalCell">
+                                        <div class="modalFieldCnt">
+                                            <select id="selectService" name="selectService" class="modalInputTxt">
+											    <option value="" selected></option>
+											    <!-- other options will be created dynamically-->
+										    </select>
+                                        </div>
+                                        <div id="selectServiceLabel" class="modalFieldLabelCnt">Service/Tenant</div>
+									    <div id="selectServiceMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                     </div>
-                                    <div class="modalFieldLabelCnt">Service(Device)</div>
-									<div id="inputServiceDeviceMsg" class="modalFieldMsgCnt">&nbsp;</div>
-                                </div>
 
-                                <div class="col-xs-12 col-md-6 modalCell">
-                                    <div class="modalFieldCnt">
-                                        <input type="text" class="modalInputTxt" name="inputServicePathDevice" id="inputServicePathDevice"> 
+								    <div class="col-xs-12 col-md-6 modalCell">          
+									    <div class="modalFieldCnt">
+                                            <input type="text" class="modalInputTxt" name="inputServicePathValue" id="inputServicePathValue">
+                                        </div>
+                                        <div id="inputServicePathLabel" class="modalFieldLabelCnt">ServicePath</div>
+									    <div id="inputServicePathMsg" class="modalFieldMsgCnt">&nbsp;</div>
                                     </div>
-                                    <div class="modalFieldLabelCnt">ServicePath(Device)</div>
-									<div id="inputServicePathDeviceMsg" class="modalFieldMsgCnt">&nbsp;</div>
-                                </div>
-                                <!-- End Multitenancy Subsection-->
+							    </div>
+							    <!-- End MultiService + ServicePath Section -->
 								
                                 <div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">
@@ -708,6 +714,27 @@
                                     <div class="modalFieldLabelCnt">Device</div>
 									<div id="inputNameDeviceMMsg" class="modalFieldMsgCnt" >&nbsp;</div>
                                 </div>
+
+                                <!-- Author: Antonino Mauro Liuzzo -->
+							    <!-- Start MultiService + ServicePath Section -->
+							    <div class = "row" id = "multiServiceAndServicePath">
+								    <div class="col-xs-12 col-md-6 modalCell">
+                                        <div class="modalFieldCnt">
+                                            <input id="editSelectService" name="editSelectService" class="modalInputTxt" readonly>
+                                        </div>
+                                        <div id="selectServiceLabel" class="modalFieldLabelCnt">Service/Tenant</div>
+									    <div id="selectServiceMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                    </div>
+
+								    <div class="col-xs-12 col-md-6 modalCell">          
+									    <div class="modalFieldCnt">
+                                            <input type="text" class="modalInputTxt" name="editInputServicePathValue" id="editInputServicePathValue" readonly>
+                                        </div>
+                                        <div id="inputServicePathLabel" class="modalFieldLabelCnt">ServicePath</div>
+									    <div id="inputServicePathMsg" class="modalFieldMsgCnt">&nbsp;</div>
+                                    </div>
+							    </div>
+							    <!-- End MultiService + ServicePath Section -->
 								
                                 <div class="col-xs-12 col-md-6 modalCell">
                                     <div class="modalFieldCnt">

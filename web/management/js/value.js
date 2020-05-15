@@ -560,7 +560,8 @@ function format ( d ) {
                         var $dropdown = $("#selectContextBroker");        
                         $dropdown.empty();
                         $.each(data['content'], function() {
-                            $dropdown.append($("<option />").val(this.name).text(this.name));        
+                            // Edited: Antonino Mauro Liuzzo
+                            $dropdown.append($("<option data-protocol='" + this.protocol + "'/>").val(this.name).text(this.name));        
                         });
                         
                      $("#addValueModalTabs").show();
@@ -577,6 +578,10 @@ function format ( d ) {
                      $("#addValueOkIcon").hide();
                      $("#addValueKoMsg").hide();
                      $("#addValueModal").modal('show');
+                     // Author: Antonino Mauro Liuzzo
+                     var protocol = $('#selectContextBroker').children("option:selected").data("protocol");
+                     console.log(protocol);
+                     checkProtocol(protocol, 'add', 'value');
                         
                         }
                     else{
@@ -1064,10 +1069,14 @@ function format ( d ) {
             // embed service and servicePath infos into name device input element
             $('#inputNameDeviceM').attr('service', service);
             $('#inputNameDeviceM').attr('servicePath', servicePath);
+            $('#editSelectService').val(service);
+            $('#editInputServicePathValue').val(servicePath);
         } else {
             // remove service and servicePath infos from name device input element
             $('#inputNameDeviceM').removeAttr('service');
             $('#inputNameDeviceM').removeAttr('servicePath');
+            $('#editSelectService').val("");
+            $('#editInputServicePathValue').val("");
         }
 	});
 
